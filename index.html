@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pancakes & Booze Art Show | The Wildest Art Party in North America</title>
+  <meta name="description" content="Free pancakes. Flowing drinks. 100+ artists. Live DJs. Body painting. The art show that broke every rule — now in 40+ cities.">
+  <meta name="theme-color" content="#ff2d7b">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.pancakesandbooze.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pancakes & Booze Art Show">
+  <meta property="og:url" content="https://www.pancakesandbooze.com/">
+  <meta property="og:title" content="Pancakes & Booze Art Show | The Wildest Art Party in North America">
+  <meta property="og:description" content="Free pancakes. Flowing drinks. 100+ artists. Live DJs. Body painting. The art show that broke every rule — now in 40+ cities.">
+  <meta property="og:image" content="https://www.pancakesandbooze.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pancakes & Booze Art Show">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pancakes & Booze Art Show | The Wildest Art Party in North America">
+  <meta name="twitter:description" content="Free pancakes. Flowing drinks. 100+ artists. Live DJs. Body painting. The art show that broke every rule — now in 40+ cities.">
+  <meta name="twitter:image" content="https://www.pancakesandbooze.com/images/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       CSS RESET & BASE
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --accent-glow: rgba(255, 45, 123, 0.3);
+      --yellow: #e8ff21;
+      --yellow-glow: rgba(232, 255, 33, 0.3);
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; font-family: inherit; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ═══════════════════════════════════════════
+       ANNOUNCEMENT BAR
+    ═══════════════════════════════════════════ */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .announcement a {
+      text-decoration: underline;
+      font-weight: 800;
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      filter: invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray-light);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--black) !important;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      padding: 8px;
+    }
+    .nav-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: 0.3s;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.4) 0%,
+        rgba(10,10,10,0.6) 50%,
+        rgba(10,10,10,0.95) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 40px 24px;
+    }
+
+    .hero-logo {
+      max-width: 600px;
+      margin: 0 auto 24px;
+      filter: invert(1);
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--gray-light);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--black);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px var(--accent-glow);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL TICKER
+    ═══════════════════════════════════════════ */
+    .ticker {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+      overflow: hidden;
+      padding: 16px 0;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: flex;
+      animation: scroll-ticker 40s linear infinite;
+      width: max-content;
+    }
+
+    .ticker-item {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+      padding: 0 24px;
+    }
+    .ticker-item .dot {
+      color: var(--accent);
+      margin-right: 24px;
+    }
+
+    @keyframes scroll-ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION STYLING
+    ═══════════════════════════════════════════ */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    /* ═══════════════════════════════════════════
+       WHAT IS P&B
+    ═══════════════════════════════════════════ */
+    .about {
+      background: var(--dark);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .about-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .feature {
+      padding: 20px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+    }
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .feature h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .feature p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════════════
+       PHOTO GALLERY STRIP
+    ═══════════════════════════════════════════ */
+    .gallery-strip {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .gallery-row {
+      display: flex;
+      gap: 8px;
+      animation: scroll-gallery 30s linear infinite;
+      width: max-content;
+    }
+
+    .gallery-row img {
+      height: 300px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    @keyframes scroll-gallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════════
+       UPCOMING SHOWS
+    ═══════════════════════════════════════════ */
+    .shows { background: var(--black); }
+
+    .shows-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .show-card {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 24px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+    .show-card:hover {
+      border-color: var(--accent);
+      background: rgba(255, 45, 123, 0.03);
+      transform: translateX(4px);
+    }
+
+    .show-date {
+      text-align: center;
+    }
+    .show-date .month {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .show-date .day {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .show-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+    .show-venue {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    .show-ticket .btn {
+      padding: 12px 28px;
+      font-size: 0.8rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       EXHIBIT YOUR ART (CTA)
+    ═══════════════════════════════════════════ */
+    .exhibit {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exhibit-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .exhibit-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .exhibit-image img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .exhibit-perks {
+      list-style: none;
+      margin: 32px 0;
+    }
+    .exhibit-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 1rem;
+      color: var(--gray-light);
+    }
+    .exhibit-perks li .check {
+      color: var(--yellow);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       EXPERIENCE GRID
+    ═══════════════════════════════════════════ */
+    .experience { background: var(--dark); }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .exp-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .exp-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .exp-card:hover img {
+      transform: scale(1.05);
+    }
+    .exp-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    }
+    .exp-card-overlay h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    .exp-card-overlay p {
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    /* ═══════════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════════ */
+    .testimonials { background: var(--black); }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .test-card {
+      padding: 32px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      position: relative;
+    }
+    .test-card::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--accent);
+      opacity: 0.2;
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      line-height: 1;
+    }
+
+    .test-text {
+      font-size: 1rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .test-author {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .test-handle {
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       CITIES GRID
+    ═══════════════════════════════════════════ */
+    .cities { background: var(--dark); }
+
+    .cities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .city-tag {
+      padding: 10px 20px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .city-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(255, 45, 123, 0.05);
+    }
+
+    /* ═══════════════════════════════════════════
+       FAQ ACCORDION
+    ═══════════════════════════════════════════ */
+    .faq { background: var(--black); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      color: var(--white);
+      text-align: left;
+      padding: 20px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-answer p {
+      padding: 0 0 20px;
+      color: var(--gray-light);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       BIG CTA BANNER
+    ═══════════════════════════════════════════ */
+    .big-cta {
+      position: relative;
+      padding: 120px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .big-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient);
+      opacity: 0.08;
+    }
+
+    .big-cta .section-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      max-width: 800px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+    .big-cta .section-desc {
+      margin: 0 auto 40px;
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .big-cta .hero-buttons {
+      position: relative;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-top: 16px;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      color: var(--gray);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+    .footer-social a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--dark-border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-bottom-links a {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       MOBILE MENU
+    ═══════════════════════════════════════════ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      color: var(--white);
+      font-size: 2rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-image img { height: 350px; }
+      .exhibit-inner { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; gap: 0; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero { min-height: 90vh; }
+      .hero-logo { max-width: 320px; }
+      .hero-stats { gap: 24px; }
+
+      .exp-grid { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+
+      .show-card {
+        grid-template-columns: 60px 1fr;
+        gap: 16px;
+      }
+      .show-ticket { grid-column: 1 / -1; }
+
+      .gallery-row img { height: 200px; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      section { padding: 60px 0; }
+    }
+
+    /* ═══════════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════════ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Glow pulse on the bunny */
+    .bunny-float {
+      position: absolute;
+      bottom: -60px;
+      right: -40px;
+      width: 250px;
+      opacity: 0.06;
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════ ANNOUNCEMENT BAR ════════════ -->
+  <div class="announcement">
+    Coming soon to your city &mdash; <a href="#shows">See all upcoming shows</a>
+  </div>
+
+  <!-- ════════════ NAVIGATION ════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="logo.png" alt="Pancakes & Booze">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#shows">Shows</a></li>
+        <li><a href="#exhibit">Exhibit</a></li>
+        <li><a href="#cities">Cities</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#shows" class="nav-cta">Get Tickets</a></li>
+      </ul>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════ MOBILE MENU ════════════ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#shows" onclick="toggleMenu()">Shows</a>
+    <a href="#exhibit" onclick="toggleMenu()">Exhibit Your Art</a>
+    <a href="#cities" onclick="toggleMenu()">Cities</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#shows" onclick="toggleMenu()">Get Tickets</a>
+  </div>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="images/crowd-energy.jpg" alt="Pancakes & Booze crowd">
+    </div>
+    <div class="hero-content">
+      <img src="hero-logo.png" alt="Pancakes & Booze" class="hero-logo">
+      <p class="hero-tagline">Art Show & Party</p>
+      <p class="hero-sub">
+        The art show that threw out the rulebook. Free pancakes. Open bar vibes.
+        100+ artists. Live DJs. Body painting. One unforgettable night.
+      </p>
+      <div class="hero-buttons">
+        <a href="#shows" class="btn btn-primary">Find Your City</a>
+        <a href="#exhibit" class="btn btn-outline">Exhibit Your Art</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat fade-up">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Shows Thrown</div>
+        </div>
+        <div class="stat fade-up">
+          <div class="stat-number">40+</div>
+          <div class="stat-label">Cities</div>
+        </div>
+        <div class="stat fade-up">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years Running</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CITY TICKER ════════════ -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="dot">&bull;</span>Los Angeles</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>New York</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Austin</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Denver</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Chicago</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Seattle</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Miami</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Nashville</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Portland</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Atlanta</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>London</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Toronto</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Berlin</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Paris</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Vancouver</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item"><span class="dot">&bull;</span>Los Angeles</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>New York</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Austin</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Denver</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Chicago</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Seattle</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Miami</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Nashville</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Portland</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Atlanta</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>London</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Toronto</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Berlin</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Paris</span>
+      <span class="ticker-item"><span class="dot">&bull;</span>Vancouver</span>
+    </div>
+  </div>
+
+  <!-- ════════════ ABOUT ════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image fade-up">
+          <img src="images/gallery-art.jpg" alt="Art on display at Pancakes & Booze">
+        </div>
+        <div class="fade-up">
+          <p class="section-label">What is this?</p>
+          <h2 class="section-title">Not Your Parents' Art Show</h2>
+          <p class="section-desc">
+            Born in a Los Angeles warehouse in 2009, Pancakes & Booze is the art show
+            that proved you don't need a gallery to make great art matter. We took
+            everything pretentious about the art world and set it on fire. What's left
+            is pure — real artists, real crowds, real connections, and a stack of
+            free pancakes that never stops.
+          </p>
+          <div class="about-features">
+            <div class="feature">
+              <div class="feature-icon">&#x1F95E;</div>
+              <h4>Free Pancakes</h4>
+              <p>All night. Unlimited. No catch. Just pancakes.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">&#x1F3A8;</div>
+              <h4>100+ Artists</h4>
+              <p>Emerging to established. Every medium. Every style.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">&#x1F3B6;</div>
+              <h4>Live DJs</h4>
+              <p>The soundtrack that turns a gallery into a party.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">&#x1F3AD;</div>
+              <h4>Body Painting</h4>
+              <p>Live body art that blurs the line between artist and canvas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ GALLERY STRIP ════════════ -->
+  <section class="gallery-strip">
+    <div class="gallery-row">
+      <img src="images/event-vibe1.jpg" alt="P&B event">
+      <img src="images/body-paint.jpg" alt="Body painting at P&B">
+      <img src="images/dj.jpg" alt="DJ at P&B">
+      <img src="images/event-vibe2.jpg" alt="Art display">
+      <img src="images/nola.jpeg" alt="P&B New Orleans">
+      <img src="images/live-painting.jpeg" alt="Live painting">
+      <img src="images/event-vibe3.jpeg" alt="P&B crowd">
+      <img src="images/event-vibe4.jpg" alt="Gallery night">
+      <img src="images/event-vibe5.jpg" alt="Art and cocktails">
+      <img src="images/event-vibe6.jpg" alt="P&B vibes">
+      <!-- duplicate for loop -->
+      <img src="images/event-vibe1.jpg" alt="P&B event">
+      <img src="images/body-paint.jpg" alt="Body painting at P&B">
+      <img src="images/dj.jpg" alt="DJ at P&B">
+      <img src="images/event-vibe2.jpg" alt="Art display">
+      <img src="images/nola.jpeg" alt="P&B New Orleans">
+      <img src="images/live-painting.jpeg" alt="Live painting">
+      <img src="images/event-vibe3.jpeg" alt="P&B crowd">
+      <img src="images/event-vibe4.jpg" alt="Gallery night">
+      <img src="images/event-vibe5.jpg" alt="Art and cocktails">
+      <img src="images/event-vibe6.jpg" alt="P&B vibes">
+    </div>
+  </section>
+
+  <!-- ════════════ UPCOMING SHOWS ════════════ -->
+  <section class="shows" id="shows">
+    <div class="container">
+      <div class="shows-header">
+        <div>
+          <p class="section-label">On Tour Now</p>
+          <h2 class="section-title">Upcoming Shows</h2>
+        </div>
+        <a href="mailto:info@pancakesandbooze.com" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.8rem;">Bring P&B To Your City</a>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">Apr</div><div class="day">18</div></div>
+        <div class="show-info"><h3>Minneapolis, MN</h3><p class="show-venue">Granada Theater</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">Apr</div><div class="day">25</div></div>
+        <div class="show-info"><h3>Seattle, WA</h3><p class="show-venue">El Corazon</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">Apr</div><div class="day">25</div></div>
+        <div class="show-info"><h3>Cincinnati, OH</h3><p class="show-venue">Bogart's</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">Apr</div><div class="day">25</div></div>
+        <div class="show-info"><h3>Oklahoma City, OK</h3><p class="show-venue">OKC Farmer's Market</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">Apr</div><div class="day">30</div></div>
+        <div class="show-info"><h3>Vancouver, BC</h3><p class="show-venue">Fortune Sound</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">May</div><div class="day">01</div></div>
+        <div class="show-info"><h3>Pittsburgh, PA</h3><p class="show-venue">Velum Fermentation</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">May</div><div class="day">01</div></div>
+        <div class="show-info"><h3>Atlanta, GA</h3><p class="show-venue">Underground Atlanta</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">May</div><div class="day">15</div></div>
+        <div class="show-info"><h3>Portland, OR</h3><p class="show-venue">Hawthorne Theatre</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">May</div><div class="day">16</div></div>
+        <div class="show-info"><h3>Washington, D.C.</h3><p class="show-venue">Penn Social</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">May</div><div class="day">16</div></div>
+        <div class="show-info"><h3>Denver, CO</h3><p class="show-venue">Asterisk</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">May</div><div class="day">30</div></div>
+        <div class="show-info"><h3>Austin, TX</h3><p class="show-venue">Far Out Lounge & Stage</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+
+      <div class="show-card fade-up">
+        <div class="show-date"><div class="month">Jun</div><div class="day">06</div></div>
+        <div class="show-info"><h3>Philadelphia, PA</h3><p class="show-venue">Underground Arts</p></div>
+        <div class="show-ticket"><a href="#" class="btn btn-primary">Tickets</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ EXHIBIT YOUR ART ════════════ -->
+  <section class="exhibit" id="exhibit">
+    <div class="container">
+      <div class="exhibit-inner">
+        <div class="fade-up">
+          <p class="section-label">For Artists</p>
+          <h2 class="section-title">Show Your Work to Thousands</h2>
+          <p class="section-desc">
+            No gatekeepers. No commissions. No pretense. We give you walls,
+            lighting, and a packed house of people who actually came to see art.
+            You bring the work. We bring the audience.
+          </p>
+          <ul class="exhibit-perks">
+            <li><span class="check">&#10003;</span> Free to exhibit your first two pieces</li>
+            <li><span class="check">&#10003;</span> Zero commission on sales — keep every dollar</li>
+            <li><span class="check">&#10003;</span> Professional lighting and gallery walls provided</li>
+            <li><span class="check">&#10003;</span> Sell directly to buyers — no middleman</li>
+            <li><span class="check">&#10003;</span> Hundreds of attendees at every show</li>
+            <li><span class="check">&#10003;</span> Live painting spots available</li>
+          </ul>
+          <a href="mailto:info@pancakesandbooze.com" class="btn btn-primary">Apply to Exhibit</a>
+        </div>
+        <div class="exhibit-image fade-up">
+          <img src="images/art-display.jpg" alt="Artist displaying work at P&B">
+        </div>
+      </div>
+    </div>
+    <img src="images/bunny-mascot.png" class="bunny-float" alt="">
+  </section>
+
+  <!-- ════════════ EXPERIENCE ════════════ -->
+  <section class="experience" id="experience">
+    <div class="container">
+      <div style="text-align: center;">
+        <p class="section-label">The Experience</p>
+        <h2 class="section-title">More Than an Art Show</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          It's the collision of art, music, food, and nightlife that shouldn't
+          work — but absolutely does.
+        </p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card fade-up">
+          <img src="images/gallery-crowd.jpg" alt="Gallery experience">
+          <div class="exp-card-overlay">
+            <h3>The Gallery</h3>
+            <p>Salon-style walls packed floor to ceiling with original work</p>
+          </div>
+        </div>
+        <div class="exp-card fade-up">
+          <img src="images/body-paint.jpg" alt="Live body painting">
+          <div class="exp-card-overlay">
+            <h3>Body Painting</h3>
+            <p>Live artists turning bodies into walking masterpieces</p>
+          </div>
+        </div>
+        <div class="exp-card fade-up">
+          <img src="images/dj.jpg" alt="Live DJ set">
+          <div class="exp-card-overlay">
+            <h3>Live Music</h3>
+            <p>DJs keeping the energy up from doors to close</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TESTIMONIALS ════════════ -->
+  <section class="testimonials">
+    <div class="container">
+      <div style="text-align: center;">
+        <p class="section-label">From the Community</p>
+        <h2 class="section-title">Artists Love This Show</h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card fade-up">
+          <p class="test-text">
+            "I've been a full-time artist for over a decade. Pancakes and Booze
+            has been a massive part of my survival and success. The connections
+            you make here are career-changing."
+          </p>
+          <p class="test-author">Full-Time Artist</p>
+          <p class="test-handle">11 years exhibiting</p>
+        </div>
+        <div class="test-card fade-up">
+          <p class="test-text">
+            "The number of people these events attract is insane. I sold four
+            pieces at my very first show and the networking alone was worth
+            showing up."
+          </p>
+          <p class="test-author">Pierrick Senelaer</p>
+          <p class="test-handle">pierrick-senelaer.com</p>
+        </div>
+        <div class="test-card fade-up">
+          <p class="test-text">
+            "This was my first art show ever and I've never felt so much warmth.
+            A gem in the art show circuit. The talent level is unreal and the
+            energy is electric."
+          </p>
+          <p class="test-author">Nailah Carew</p>
+          <p class="test-handle">@afrotheartbabe</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CITIES ════════════ -->
+  <section class="cities" id="cities">
+    <div class="container">
+      <div style="text-align: center;">
+        <p class="section-label">Nationwide & Growing</p>
+        <h2 class="section-title">Find Us in Your City</h2>
+        <p class="section-desc" style="margin: 0 auto 0;">
+          From coast to coast and across the Atlantic — we're coming to a city near you.
+        </p>
+      </div>
+      <div class="cities-grid fade-up">
+        <span class="city-tag">Albuquerque</span>
+        <span class="city-tag">Atlanta</span>
+        <span class="city-tag">Austin</span>
+        <span class="city-tag">Baltimore</span>
+        <span class="city-tag">Bangkok</span>
+        <span class="city-tag">Berlin</span>
+        <span class="city-tag">Boston</span>
+        <span class="city-tag">Brooklyn</span>
+        <span class="city-tag">Calgary</span>
+        <span class="city-tag">Charlotte</span>
+        <span class="city-tag">Chicago</span>
+        <span class="city-tag">Cincinnati</span>
+        <span class="city-tag">Cleveland</span>
+        <span class="city-tag">Columbus</span>
+        <span class="city-tag">Dallas</span>
+        <span class="city-tag">Denver</span>
+        <span class="city-tag">Detroit</span>
+        <span class="city-tag">Honolulu</span>
+        <span class="city-tag">Houston</span>
+        <span class="city-tag">Kansas City</span>
+        <span class="city-tag">Las Vegas</span>
+        <span class="city-tag">London</span>
+        <span class="city-tag">Los Angeles</span>
+        <span class="city-tag">Memphis</span>
+        <span class="city-tag">Mexico City</span>
+        <span class="city-tag">Miami</span>
+        <span class="city-tag">Milwaukee</span>
+        <span class="city-tag">Minneapolis</span>
+        <span class="city-tag">Montreal</span>
+        <span class="city-tag">Nashville</span>
+        <span class="city-tag">New Orleans</span>
+        <span class="city-tag">Oakland</span>
+        <span class="city-tag">Oklahoma City</span>
+        <span class="city-tag">Orlando</span>
+        <span class="city-tag">Paris</span>
+        <span class="city-tag">Philadelphia</span>
+        <span class="city-tag">Phoenix</span>
+        <span class="city-tag">Pittsburgh</span>
+        <span class="city-tag">Portland</span>
+        <span class="city-tag">Raleigh</span>
+        <span class="city-tag">Salt Lake City</span>
+        <span class="city-tag">San Antonio</span>
+        <span class="city-tag">San Diego</span>
+        <span class="city-tag">San Francisco</span>
+        <span class="city-tag">San Jose</span>
+        <span class="city-tag">Seattle</span>
+        <span class="city-tag">Toronto</span>
+        <span class="city-tag">Tucson</span>
+        <span class="city-tag">Vancouver</span>
+        <span class="city-tag">Washington D.C.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FAQ ════════════ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <p class="section-label">Questions?</p>
+        <h2 class="section-title">Frequently Asked</h2>
+      </div>
+      <div class="faq-grid">
+        <div>
+          <div class="faq-item">
+            <button class="faq-question">How do I exhibit my artwork?</button>
+            <div class="faq-answer"><p>Submit your application on our site — no fee required. Just give us some basic info and a link to your work. If you don't have a website, email photos to info@pancakesandbooze.com. We accept artists until space fills up, so earlier is better.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How much does it cost to exhibit?</button>
+            <div class="faq-answer"><p>Your first two pieces are free when fees are paid 7+ days before the show. Additional pieces are $20 each. There are absolutely zero commissions on anything you sell — you keep 100% of your sales.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">What's the difference between Artists and Vendors?</button>
+            <div class="faq-answer"><p>Artists display hangable work (canvas, prints, etc.) on gallery walls. Vendors sell non-hangable items like jewelry, clothing, or crafts from tables. You can apply as both if you've got both types of work.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How many pieces can I show?</button>
+            <div class="faq-answer"><p>Minimum 3, maximum 10. Each piece can't exceed 3x3 feet (36x36 inches). Wall panels are 8x4 feet and displayed salon-style from floor to ceiling.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Can I sell prints and small items?</button>
+            <div class="faq-answer"><p>Yes — place prints, stickers, pins, and small items in bins on the floor beneath your displayed work. No tables in the gallery area though — those are reserved for vendors.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="faq-item">
+            <button class="faq-question">What about vendor tables?</button>
+            <div class="faq-answer"><p>Vendor fees range from $75–$150 depending on the city. You bring your own table and chairs. Each space fits a 6-foot table in roughly an 8x5-foot area. Spaces sell fast — apply early.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Can I do live painting?</button>
+            <div class="faq-answer"><p>Yes — you just need to be an accepted, exhibiting artist. No extra fee. Bring an easel, a chair, and a drop cloth. Your body paint model gets in free.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">When do I set up and take down?</button>
+            <div class="faq-answer"><p>Installation is typically day-of between 1–5 PM. Artwork must be removed immediately after the show ends — no exceptions. Exact times come in your pre-event email.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Is lighting and hanging gear provided?</button>
+            <div class="faq-answer"><p>Yes to both. We provide professional lighting and hanging tools (screws, screw guns). Wire your pieces if you can, but stretched canvas works without it. No hammers or nails allowed.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Do exhibiting artists get free entry?</button>
+            <div class="faq-answer"><p>Yes — you're on the guest list. Everyone else (including assistants) pays the cover. We offer discounted pre-sale tickets up to a week before, so tell your crew to grab those.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ BIG CTA ════════════ -->
+  <section class="big-cta">
+    <div class="container">
+      <p class="section-label">Don't Miss Out</p>
+      <h2 class="section-title fade-up">The Art Party<br>You'll Never Forget</h2>
+      <p class="section-desc fade-up">
+        Grab your crew. Get your tickets. Eat free pancakes.
+        See incredible art. Have the best night out.
+      </p>
+      <div class="hero-buttons fade-up">
+        <a href="#shows" class="btn btn-primary">Get Tickets Now</a>
+        <a href="#exhibit" class="btn btn-outline">Submit Your Art</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Pancakes & Booze" style="height: 36px; filter: invert(1);">
+          <p>
+            The art show that broke every rule. Born in LA, now in 40+ cities
+            worldwide. Free pancakes. Real art. No pretense.
+          </p>
+          <div class="footer-social">
+            <a href="https://instagram.com/pancakesandbooze" target="_blank" aria-label="Instagram">IG</a>
+            <a href="https://facebook.com/pancakesandboozeartshow" target="_blank" aria-label="Facebook">FB</a>
+            <a href="https://twitter.com/pancakesbooze" target="_blank" aria-label="Twitter">X</a>
+            <a href="https://tiktok.com/@pancakesandbooze" target="_blank" aria-label="TikTok">TT</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#shows">Upcoming Shows</a></li>
+            <li><a href="#exhibit">Exhibit Your Art</a></li>
+            <li><a href="#cities">Cities</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For Artists</h4>
+          <ul>
+            <li><a href="#exhibit">Submit Your Work</a></li>
+            <li><a href="#faq">Artist FAQ</a></li>
+            <li><a href="#faq">Vendor Info</a></li>
+            <li><a href="#faq">Live Painting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a></li>
+            <li><a href="https://instagram.com/pancakesandbooze" target="_blank">@pancakesandbooze</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pancakes & Booze Art Show. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════ SCRIPTS ════════════ -->
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
+    }
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+
+        // Open clicked (if it wasn't already open)
+        if (!isActive) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
