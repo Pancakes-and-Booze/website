@@ -484,6 +484,7 @@
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
       border-radius: var(--radius);
+      cursor: pointer;
       margin-bottom: 12px;
       transition: all 0.3s;
     }
@@ -1544,11 +1545,16 @@
             // Drop the end time — "8p - Midnight" → "8p"
             const startTime = s.event_time ? s.event_time.split(/\s*[-–]\s*/)[0].trim() : null;
             const venueLine = [s.venue, startTime].filter(Boolean).join(' &middot; ');
-            const ticketBtn = s.ticket_link
+            // Click anywhere on the card body → city page (e.g. /seattle)
+            // Tickets button → ticket_link (new tab)
+            // Exhibit button → apply_link if populated, else /submit fallback
+            const cityUrl = s.slug ? `/${escapeAttr(s.slug)}` : '#';
+            const exhibitUrl = s.apply_link ? escapeAttr(s.apply_link) : '/submit';
+            const ticketsBtn = s.ticket_link
               ? `<a href="${escapeAttr(s.ticket_link)}" class="btn btn-primary" target="_blank" rel="noopener">Tickets</a>`
-              : `<a href="mailto:info@pancakesandbooze.com" class="btn btn-primary">Notify Me</a>`;
+              : '';
             return `
-              <div class="show-card fade-up visible">
+              <div class="show-card fade-up visible" data-slug="${escapeAttr(s.slug || '')}" role="link" tabindex="0">
                 <div class="show-date">
                   <div class="month">${escapeHtml(s.date_month_short || '')}</div>
                   <div class="day">${escapeHtml(s.date_day || '')}</div>
@@ -1557,9 +1563,28 @@
                   <h3>${escapeHtml(s.city || '')}</h3>
                   <p class="show-venue">${venueLine}</p>
                 </div>
-                <div class="show-ticket">${ticketBtn}</div>
+                <div class="show-ticket" style="display:flex;flex-direction:column;gap:8px;">
+                  ${ticketsBtn}
+                  <a href="${exhibitUrl}" class="btn btn-outline" target="_blank" rel="noopener">Exhibit</a>
+                </div>
               </div>`;
           }).join('');
+
+          // Click anywhere on card (except on an anchor/button) → go to /{slug}
+          // Also: Enter/Space on focused card for keyboard users
+          listEl.addEventListener('click', (e) => {
+            if (e.target.closest('a, button')) return; // let inner links handle themselves
+            const card = e.target.closest('.show-card');
+            if (!card || !card.dataset.slug) return;
+            window.location.href = '/' + card.dataset.slug;
+          });
+          listEl.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const card = e.target.closest('.show-card');
+            if (!card || !card.dataset.slug) return;
+            e.preventDefault();
+            window.location.href = '/' + card.dataset.slug;
+          });
         })
         .catch(err => {
           console.error('Failed to load shows.json:', err);
