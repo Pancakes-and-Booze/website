@@ -1541,7 +1541,9 @@
           }
 
           listEl.innerHTML = upcoming.map(s => {
-            const venueLine = [s.venue, s.event_time].filter(Boolean).join(' &middot; ');
+            // Drop the end time — "8p - Midnight" → "8p"
+            const startTime = s.event_time ? s.event_time.split(/\s*[-–]\s*/)[0].trim() : null;
+            const venueLine = [s.venue, startTime].filter(Boolean).join(' &middot; ');
             const ticketBtn = s.ticket_link
               ? `<a href="${escapeAttr(s.ticket_link)}" class="btn btn-primary" target="_blank" rel="noopener">Tickets</a>`
               : `<a href="mailto:info@pancakesandbooze.com" class="btn btn-primary">Notify Me</a>`;
