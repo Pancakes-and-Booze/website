@@ -147,57 +147,77 @@
     .live-venue {
       font-size: 1.1rem;
       color: var(--gray-light);
+      margin-bottom: 8px;
+    }
+    .live-address {
+      font-size: 0.95rem;
       margin-bottom: 32px;
     }
+    .live-address a {
+      color: var(--gray-light);
+      text-decoration: none;
+      border-bottom: 1px solid var(--dark-border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .live-address a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .live-address a::after {
+      content: ' →';
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .live-address a:hover::after { color: var(--accent); }
 
     .city-buttons {
       display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
       margin-top: 16px;
     }
 
-    /* EVENT DETAILS (live state) */
-    .details { padding: 80px 0; background: var(--dark); }
-    .details-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
+    /* Small meta line under the buttons: pricing + age + FB event link */
+    .live-meta {
+      margin-top: 28px;
+      font-size: 0.85rem;
+      color: var(--gray);
+      letter-spacing: 0.5px;
     }
-    .detail-list { list-style: none; }
-    .detail-list li {
-      padding: 20px 0;
+    .live-meta .meta-sep {
+      margin: 0 10px;
+      color: var(--dark-border);
+    }
+    .live-meta a {
+      color: var(--gray-light);
       border-bottom: 1px solid var(--dark-border);
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 24px;
-      align-items: baseline;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .detail-list li:last-child { border-bottom: none; }
-    .detail-label {
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    .live-meta a:hover {
       color: var(--accent);
-      font-weight: 700;
+      border-bottom-color: var(--accent);
     }
-    .detail-value { color: var(--white); font-size: 1rem; line-height: 1.5; }
-    .detail-value a { color: var(--accent); text-decoration: underline; }
+    .live-meta strong {
+      color: var(--yellow);
+      font-weight: 600;
+    }
 
+    /* FLYER (centered, its own moment below the hero) */
+    .flyer-section {
+      padding: 60px 0 80px;
+      background: var(--black);
+      text-align: center;
+    }
     .flyer-wrap {
+      max-width: 520px;
+      margin: 0 auto;
       border-radius: var(--radius-lg);
       overflow: hidden;
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     }
     .flyer-wrap img { width: 100%; height: auto; display: block; }
-    .flyer-placeholder {
-      aspect-ratio: 4 / 5;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gray);
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-    }
 
     /* DORMANT STATE */
     .dormant-sub {
@@ -362,15 +382,15 @@
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .details-grid { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .city-hero { padding: 60px 0 50px; }
-      .details { padding: 50px 0; }
-      .detail-list li { grid-template-columns: 100px 1fr; gap: 16px; }
+      .flyer-section { padding: 40px 0 60px; }
+      .live-meta { font-size: 0.8rem; }
+      .live-meta .meta-sep { margin: 0 6px; }
       .notify-card { padding: 28px 20px; }
       .notify-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -432,20 +452,17 @@
         <h1 class="city-name" id="liveCityName"></h1>
         <div class="live-date" id="liveDate"></div>
         <div class="live-venue" id="liveVenue"></div>
+        <div class="live-address" id="liveAddress"></div>
         <div class="city-buttons" id="liveButtons"></div>
+        <div class="live-meta" id="liveMeta"></div>
       </div>
     </section>
 
-    <section class="details">
+    <!-- Flyer renders here only if the show has a flyer_url. JS hides this
+         section entirely when there isn't one — no placeholder card. -->
+    <section class="flyer-section" id="flyerSection" hidden>
       <div class="container">
-        <div class="details-grid">
-          <div>
-            <ul class="detail-list" id="detailList"></ul>
-          </div>
-          <div class="flyer-wrap" id="flyerWrap">
-            <!-- filled by JS -->
-          </div>
-        </div>
+        <div class="flyer-wrap" id="flyerWrap"></div>
       </div>
     </section>
   </main>
@@ -542,7 +559,7 @@
     // CONFIG — paste your Apps Script Web App URL here after deploy
     // (The /exec URL that Apps Script gives you when you publish.)
     // ────────────────────────────────────────────────────────────
-    const LEADS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5KMIzkB1DtbncjgaEid0pO5QAY-22hLmy-sSJOjyWM33TNbE9L3K59aw-JHCfHGRa/exec';
+    const LEADS_ENDPOINT = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
 
     // ────────────────────────────────────────────────────────────
     // Utilities
@@ -600,6 +617,15 @@
         ? (show.venue + (show.event_time ? ' · ' + show.event_time : ''))
         : (show.event_time || '');
 
+      // Address — clickable Maps link directly under venue line
+      const addressEl = document.getElementById('liveAddress');
+      if (show.address) {
+        const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(show.address);
+        addressEl.innerHTML = `<a href="${escapeAttr(mapsUrl)}" target="_blank" rel="noopener">${escapeHtml(show.address)}</a>`;
+      } else {
+        addressEl.hidden = true;
+      }
+
       // Buttons: Tickets (if link) + Exhibit (if apply_link, else /submit)
       const btnContainer = document.getElementById('liveButtons');
       const buttons = [];
@@ -611,34 +637,36 @@
       buttons.push(`<a href="${escapeAttr(exhibitUrl)}" class="btn btn-outline"${exhibitTarget}>Exhibit Your Art</a>`);
       btnContainer.innerHTML = buttons.join('');
 
-      // Detail list — only include rows that have data
-      const rows = [];
-      if (show.date_display) rows.push(['Date', escapeHtml(show.date_display)]);
-      if (show.event_time)   rows.push(['Time', escapeHtml(show.event_time)]);
-      if (show.venue)        rows.push(['Venue', escapeHtml(show.venue)]);
-      if (show.address) {
-        const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(show.address);
-        rows.push(['Address', `<a href="${escapeAttr(mapsUrl)}" target="_blank" rel="noopener">${escapeHtml(show.address)}</a>`]);
+      // Meta line below buttons — pricing, age, FB event.
+      // Each item only renders if it has data; separators auto-hide.
+      const metaParts = [];
+      // Pricing: combine advance + day-of into one chunk like "$15 advance · $20 day of".
+      // If only one price is set, show just that one without the qualifier.
+      const adv = show.early_bird_price;
+      const dof = show.day_of_price;
+      if (adv && dof) {
+        metaParts.push(`<strong>${escapeHtml(adv)}</strong> advance, <strong>${escapeHtml(dof)}</strong> day of`);
+      } else if (adv) {
+        metaParts.push(`<strong>${escapeHtml(adv)}</strong>`);
+      } else if (dof) {
+        metaParts.push(`<strong>${escapeHtml(dof)}</strong>`);
       }
-      if (show.age)                rows.push(['Age', escapeHtml(show.age)]);
-      if (show.early_bird_price)   rows.push(['Early Bird', escapeHtml(show.early_bird_price) +
-        (show.early_bird_ends_display ? ` <span style="color:var(--gray);font-size:0.85rem;">(through ${escapeHtml(show.early_bird_ends_display)})</span>` : '')]);
-      if (show.day_of_price)       rows.push(['Day of Show', escapeHtml(show.day_of_price)]);
-      if (show.fb_link)            rows.push(['Facebook Event', `<a href="${escapeAttr(show.fb_link)}" target="_blank" rel="noopener">RSVP on Facebook</a>`]);
-
-      document.getElementById('detailList').innerHTML = rows.map(([label, value]) => `
-        <li>
-          <div class="detail-label">${label}</div>
-          <div class="detail-value">${value}</div>
-        </li>
-      `).join('');
-
-      // Flyer (or placeholder)
-      const flyerWrap = document.getElementById('flyerWrap');
-      if (show.flyer_url) {
-        flyerWrap.innerHTML = `<img src="${escapeAttr(show.flyer_url)}" alt="${escapeAttr(show.city || 'Event')} flyer">`;
+      if (show.age) metaParts.push(escapeHtml(show.age));
+      if (show.fb_link) {
+        metaParts.push(`<a href="${escapeAttr(show.fb_link)}" target="_blank" rel="noopener">RSVP on Facebook</a>`);
+      }
+      const metaEl = document.getElementById('liveMeta');
+      if (metaParts.length === 0) {
+        metaEl.hidden = true;
       } else {
-        flyerWrap.innerHTML = `<div class="flyer-placeholder">Flyer coming soon</div>`;
+        metaEl.innerHTML = metaParts.join('<span class="meta-sep">·</span>');
+      }
+
+      // Flyer — only show the section if a flyer_url exists. No placeholder.
+      if (show.flyer_url) {
+        document.getElementById('flyerWrap').innerHTML =
+          `<img src="${escapeAttr(show.flyer_url)}" alt="${escapeAttr(show.city || 'Event')} flyer">`;
+        document.getElementById('flyerSection').hidden = false;
       }
 
       // SEO: update title, description, OG tags
