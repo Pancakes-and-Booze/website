@@ -1,0 +1,30 @@
+# Pancakes & Booze — Netlify routing
+#
+# Netlify processes this file at deploy time. Rules are evaluated top-to-bottom;
+# the FIRST matching rule wins. Static files always take precedence over rewrite
+# rules, so /shows.json, /images/*, /logo.png etc. are served as-is.
+#
+# Status codes:
+#   200 = rewrite (URL stays in browser, server serves a different file)
+#   301 = permanent redirect (browser URL changes, search engines update)
+
+# ─── Legacy /tickets/<city> URLs from Squarespace days → city page ───
+# Old emails, ads, and DMs link to these. The "Get Tickets" button now lives
+# on the city page itself, so we permanently redirect.
+/tickets/*    /:splat    301
+
+# ─── Other legacy redirects from the migration plan ───
+# /tix was a Squarespace shorthand for /tickets — collapse it into the homepage shows section
+/tix          /#shows    301
+# venuedec was a typo of venuedeck
+/venuedec     /venuedeck 301
+
+# ─── Per-city page rewrite (the main event) ───
+# /chicago, /denver, /okc, etc. → city.html. URL stays /chicago in the browser.
+# city.html reads the slug from window.location.pathname and fetches shows.json.
+#
+# Caveat: this matches ANY single-segment path that doesn't have a real file
+# behind it. So if you typo /jellybean, you'll get the city.html "City not
+# found" state — not a hard 404. That's intentional (graceful fallback) but
+# worth knowing.
+/:slug        /city.html 200
