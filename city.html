@@ -204,6 +204,17 @@
     .flyer-wrap img { width: 100%; height: auto; display: block; }
 
     /* DORMANT STATE */
+    .coming-soon-wrap {
+      max-width: 520px;
+      margin: 0 auto 40px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    .coming-soon-wrap img { width: 100%; height: auto; display: block; }
+
     .dormant-sub {
       font-size: 1.15rem;
       color: var(--gray-light);
@@ -455,6 +466,14 @@
       <div class="container city-hero-inner">
         <div class="city-eyebrow">Next Show</div>
         <h1 class="city-name" id="dormantCityName"></h1>
+
+        <!-- "New date coming soon" image — drops into the same visual slot
+             that the live state's flyer occupies, so dormant cities don't
+             feel empty. Swap the file in /images/coming-soon.png to update. -->
+        <div class="coming-soon-wrap">
+          <img src="/images/coming-soon.png" alt="New date coming soon">
+        </div>
+
         <p class="dormant-sub">
           No show on the calendar right now &mdash; but we&rsquo;ll be back. Drop your email and
           we&rsquo;ll be the first to tell you when the next <span id="dormantCityInline"></span> show is announced.
@@ -566,12 +585,21 @@
         document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
     }
 
-    // Derive slug from URL path. /chicago → "chicago". /chicago/ → "chicago".
+    // Derive slug. Prefers ?slug=austin (used for local testing without
+    // _redirects, e.g. file:///.../city.html?slug=austin or
+    // http://localhost:8000/city.html?slug=austin). Falls back to the URL
+    // path: /chicago → "chicago", /chicago/ → "chicago",
+    // /tickets/chicago → "chicago" (last segment wins).
     function slugFromPath() {
+      const qp = new URLSearchParams(window.location.search).get('slug');
+      if (qp) return qp.trim().toLowerCase();
       const p = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
-      // If there are subsegments (e.g. /tickets/chicago), take the last one.
       const parts = p.split('/').filter(Boolean);
-      return parts[parts.length - 1] || '';
+      // If we landed on city.html itself with no slug, treat as empty (will
+      // show the "City not found" state — useful as a sanity signal).
+      const last = parts[parts.length - 1] || '';
+      if (last === 'city.html' || last === 'index.html') return '';
+      return last;
     }
 
     // Pick the best matching show row for a slug. Prefer live+dated rows in
