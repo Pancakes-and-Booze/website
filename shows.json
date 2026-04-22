@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T21:15:31Z",
+  "generated_at": "2026-04-22T21:30:31Z",
   "shows": [
     {
       "live": true,
@@ -457,7 +457,7 @@
       "early_bird_ends_display": null
     },
     {
-      "live": true,
+      "live": false,
       "slug": "baltimore",
       "city": "Baltimore",
       "venue": null,
@@ -632,7 +632,7 @@
       "early_bird_ends_display": null
     },
     {
-      "live": true,
+      "live": false,
       "slug": "calgary",
       "city": "Calgary",
       "venue": null,
@@ -1218,11 +1218,11 @@
       "vendor_payment_link": "https://www.eventbrite.com/e/the-minneapolis-pancakes-booze-art-show-tickets-1982862205233?aff=oddtdtcreator&discount=MinnplsVend_April2026",
       "live_painter_install_time": "7:30 PM",
       "body_painter_install_time": "7:30 PM",
-      "date_iso": null,
-      "date_display": null,
-      "date_month_short": null,
-      "date_day": null,
-      "date_weekday_short": null,
+      "date_iso": "2026-04-18",
+      "date_display": "Saturday, April 18, 2026",
+      "date_month_short": "APR",
+      "date_day": "18",
+      "date_weekday_short": "Sat",
       "early_bird_ends_iso": "2026-04-11",
       "early_bird_ends_display": "April 11"
     },
@@ -1682,7 +1682,7 @@
       "early_bird_ends_display": null
     },
     {
-      "live": true,
+      "live": false,
       "slug": "tucson",
       "city": "Tucson",
       "venue": null,
