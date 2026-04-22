@@ -176,30 +176,14 @@
       margin-top: 16px;
     }
 
-    /* Small meta line under the buttons: pricing + age + FB event link */
-    .live-meta {
-      margin-top: 28px;
-      font-size: 0.85rem;
-      color: var(--gray);
-      letter-spacing: 0.5px;
-    }
-    .live-meta .meta-sep {
-      margin: 0 10px;
-      color: var(--dark-border);
-    }
-    .live-meta a {
-      color: var(--gray-light);
-      border-bottom: 1px solid var(--dark-border);
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .live-meta a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-    .live-meta strong {
+    /* Pricing line — sits ABOVE the buttons, large + yellow so it pops */
+    .live-pricing {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      letter-spacing: 2px;
       color: var(--yellow);
-      font-weight: 600;
+      margin: 8px 0 24px;
+      text-transform: uppercase;
     }
 
     /* FLYER (centered, its own moment below the hero) */
@@ -389,8 +373,6 @@
       .nav-toggle { display: flex; }
       .city-hero { padding: 60px 0 50px; }
       .flyer-section { padding: 40px 0 60px; }
-      .live-meta { font-size: 0.8rem; }
-      .live-meta .meta-sep { margin: 0 6px; }
       .notify-card { padding: 28px 20px; }
       .notify-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -453,8 +435,8 @@
         <div class="live-date" id="liveDate"></div>
         <div class="live-venue" id="liveVenue"></div>
         <div class="live-address" id="liveAddress"></div>
+        <div class="live-pricing" id="livePricing"></div>
         <div class="city-buttons" id="liveButtons"></div>
-        <div class="live-meta" id="liveMeta"></div>
       </div>
     </section>
 
@@ -610,12 +592,29 @@
     // ────────────────────────────────────────────────────────────
     // Render LIVE state
     // ────────────────────────────────────────────────────────────
+    // Sheet stores prices as bare numbers ("15", "20"). Add the dollar sign
+    // defensively — but leave non-numeric values like "Free" or "TBD" alone,
+    // and don't double-prefix if someone already typed "$15".
+    function formatPrice(p) {
+      if (!p) return null;
+      const s = String(p).trim();
+      if (!s) return null;
+      if (/^[$€£]/.test(s)) return s;
+      if (/^\d+(\.\d+)?$/.test(s)) return '$' + s;
+      return s;
+    }
+
     function renderLive(show) {
       document.getElementById('liveCityName').textContent = show.city || '';
       document.getElementById('liveDate').textContent = show.date_display || '';
-      document.getElementById('liveVenue').textContent = show.venue
-        ? (show.venue + (show.event_time ? ' · ' + show.event_time : ''))
-        : (show.event_time || '');
+
+      // Venue line: "Far Out Lounge & Stage · 8p–Midnight · 18+"
+      // Each piece only joins if it exists.
+      const venueParts = [];
+      if (show.venue)      venueParts.push(show.venue);
+      if (show.event_time) venueParts.push(show.event_time);
+      if (show.age)        venueParts.push(show.age);
+      document.getElementById('liveVenue').textContent = venueParts.join(' · ');
 
       // Address — clickable Maps link directly under venue line
       const addressEl = document.getElementById('liveAddress');
@@ -624,6 +623,21 @@
         addressEl.innerHTML = `<a href="${escapeAttr(mapsUrl)}" target="_blank" rel="noopener">${escapeHtml(show.address)}</a>`;
       } else {
         addressEl.hidden = true;
+      }
+
+      // Pricing line above buttons — "$15 ADV / $20 Day of"
+      // (Note: CSS uppercases the line, so input casing doesn't matter.)
+      const adv = formatPrice(show.early_bird_price);
+      const dof = formatPrice(show.day_of_price);
+      const pricingEl = document.getElementById('livePricing');
+      let pricingText = '';
+      if (adv && dof)      pricingText = `${adv} ADV / ${dof} Day of`;
+      else if (adv)        pricingText = adv;
+      else if (dof)        pricingText = dof;
+      if (pricingText) {
+        pricingEl.textContent = pricingText;
+      } else {
+        pricingEl.hidden = true;
       }
 
       // Buttons: Tickets (if link) + Exhibit (if apply_link, else /submit)
@@ -636,31 +650,6 @@
       const exhibitTarget = show.apply_link ? ' target="_blank" rel="noopener"' : '';
       buttons.push(`<a href="${escapeAttr(exhibitUrl)}" class="btn btn-outline"${exhibitTarget}>Exhibit Your Art</a>`);
       btnContainer.innerHTML = buttons.join('');
-
-      // Meta line below buttons — pricing, age, FB event.
-      // Each item only renders if it has data; separators auto-hide.
-      const metaParts = [];
-      // Pricing: combine advance + day-of into one chunk like "$15 advance · $20 day of".
-      // If only one price is set, show just that one without the qualifier.
-      const adv = show.early_bird_price;
-      const dof = show.day_of_price;
-      if (adv && dof) {
-        metaParts.push(`<strong>${escapeHtml(adv)}</strong> advance, <strong>${escapeHtml(dof)}</strong> day of`);
-      } else if (adv) {
-        metaParts.push(`<strong>${escapeHtml(adv)}</strong>`);
-      } else if (dof) {
-        metaParts.push(`<strong>${escapeHtml(dof)}</strong>`);
-      }
-      if (show.age) metaParts.push(escapeHtml(show.age));
-      if (show.fb_link) {
-        metaParts.push(`<a href="${escapeAttr(show.fb_link)}" target="_blank" rel="noopener">RSVP on Facebook</a>`);
-      }
-      const metaEl = document.getElementById('liveMeta');
-      if (metaParts.length === 0) {
-        metaEl.hidden = true;
-      } else {
-        metaEl.innerHTML = metaParts.join('<span class="meta-sep">·</span>');
-      }
 
       // Flyer — only show the section if a flyer_url exists. No placeholder.
       if (show.flyer_url) {
