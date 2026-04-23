@@ -649,6 +649,18 @@
       line-height: 1;
     }
 
+    /* Rotator cross-fade — triggered by JS toggling .fading */
+    .test-card > .test-text,
+    .test-card > .test-author,
+    .test-card > .test-handle {
+      transition: opacity 0.35s ease;
+    }
+    .test-card.fading > .test-text,
+    .test-card.fading > .test-author,
+    .test-card.fading > .test-handle {
+      opacity: 0;
+    }
+
     .test-text {
       font-size: 1rem;
       color: var(--gray-light);
@@ -1365,40 +1377,31 @@
     </div>
   </section>
 
-  <!-- ════════════ TESTIMONIALS ════════════ -->
-  <section class="testimonials">
+  <!-- ════════════ TESTIMONIALS ════════════
+       Rotating testimonial rotator. Add quotes to the TESTIMONIALS array
+       near the bottom of this file — when there are more than 3, the cards
+       auto-rotate every 7 seconds with a cross-fade. -->
+  <section class="testimonials" id="testimonials">
     <div class="container">
       <div style="text-align: center;">
         <p class="section-label">From the Community</p>
         <h2 class="section-title">Artists Love This Show</h2>
       </div>
-      <div class="test-grid">
-        <div class="test-card fade-up">
-          <p class="test-text">
-            "I've been a full-time artist for over a decade. Pancakes and Booze
-            has been a massive part of my survival and success. The connections
-            you make here are career-changing."
-          </p>
-          <p class="test-author">Full-Time Artist</p>
-          <p class="test-handle">11 years exhibiting</p>
+      <div class="test-grid" id="testGrid">
+        <div class="test-card fade-up" data-test-slot="0">
+          <p class="test-text"></p>
+          <p class="test-author"></p>
+          <p class="test-handle"></p>
         </div>
-        <div class="test-card fade-up">
-          <p class="test-text">
-            "The number of people these events attract is insane. I sold four
-            pieces at my very first show and the networking alone was worth
-            showing up."
-          </p>
-          <p class="test-author">Pierrick Senelaer</p>
-          <p class="test-handle">pierrick-senelaer.com</p>
+        <div class="test-card fade-up" data-test-slot="1">
+          <p class="test-text"></p>
+          <p class="test-author"></p>
+          <p class="test-handle"></p>
         </div>
-        <div class="test-card fade-up">
-          <p class="test-text">
-            "This was my first art show ever and I've never felt so much warmth.
-            A gem in the art show circuit. The talent level is unreal and the
-            energy is electric."
-          </p>
-          <p class="test-author">Nailah Carew</p>
-          <p class="test-handle">@afrotheartbabe</p>
+        <div class="test-card fade-up" data-test-slot="2">
+          <p class="test-text"></p>
+          <p class="test-author"></p>
+          <p class="test-handle"></p>
         </div>
       </div>
     </div>
@@ -1542,7 +1545,7 @@
   </section>
 
   <!-- ════════════ FOOTER ════════════ -->
-  <footer>
+  <footer id="contact">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -1588,8 +1591,8 @@
       <div class="footer-bottom">
         <p>&copy; 2026 Pancakes & Booze Art Show. All rights reserved.</p>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms & Conditions</a>
         </div>
       </div>
     </div>
@@ -1634,6 +1637,80 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ════════════ TESTIMONIAL ROTATOR ════════════
+    // Add more testimonials to this array and the cards auto-rotate every 7s.
+    // Keep each `text` short enough to read in ~5 seconds.
+    //
+    //   text    — the quote (without quotation marks; CSS adds the stylized one)
+    //   author  — speaker's name or role
+    //   handle  — social handle, URL, or tagline shown in accent color
+    //
+    // With 3 entries = static display (no rotation). With 4+ entries = rotates.
+    const TESTIMONIALS = [
+      {
+        text: "I've been a full-time artist for over a decade. Pancakes and Booze has been a massive part of my survival and success. The connections you make here are career-changing.",
+        author: "Full-Time Artist",
+        handle: "11 years exhibiting"
+      },
+      {
+        text: "The number of people these events attract is insane. I sold four pieces at my very first show and the networking alone was worth showing up.",
+        author: "Pierrick Senelaer",
+        handle: "pierrick-senelaer.com"
+      },
+      {
+        text: "This was my first art show ever and I've never felt so much warmth. A gem in the art show circuit. The talent level is unreal and the energy is electric.",
+        author: "Nailah Carew",
+        handle: "@afrotheartbabe"
+      }
+      // Add more here — e.g. { text: "...", author: "...", handle: "..." },
+    ];
+
+    (function initTestimonialRotator() {
+      const slots = document.querySelectorAll('#testGrid .test-card');
+      if (!slots.length || !TESTIMONIALS.length) return;
+
+      const SLOT_COUNT = slots.length;
+      const ROTATE_MS = 7000;
+      const FADE_MS = 350;
+      let cursor = 0;
+      let paused = false;
+
+      function paint(offset) {
+        const n = TESTIMONIALS.length;
+        slots.forEach((slot, idx) => {
+          const t = TESTIMONIALS[(offset + idx) % n];
+          slot.querySelector('.test-text').textContent = '\u201C' + t.text + '\u201D';
+          slot.querySelector('.test-author').textContent = t.author;
+          slot.querySelector('.test-handle').textContent = t.handle;
+        });
+      }
+
+      // Initial render
+      paint(0);
+
+      // Only rotate if there are more quotes than slots
+      if (TESTIMONIALS.length <= SLOT_COUNT) return;
+
+      // Pause on hover so readers can finish a quote
+      const grid = document.getElementById('testGrid');
+      if (grid) {
+        grid.addEventListener('mouseenter', () => { paused = true; });
+        grid.addEventListener('mouseleave', () => { paused = false; });
+      }
+
+      setInterval(() => {
+        if (paused || document.hidden) return;
+        // Fade out
+        slots.forEach(s => s.classList.add('fading'));
+        setTimeout(() => {
+          cursor = (cursor + SLOT_COUNT) % TESTIMONIALS.length;
+          paint(cursor);
+          // Fade back in
+          slots.forEach(s => s.classList.remove('fading'));
+        }, FADE_MS);
+      }, ROTATE_MS);
+    })();
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(link => {

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Pancakes & Booze</title>
+  <meta name="description" content="Pancakes & Booze Privacy Policy — what we collect, why we collect it, and how we protect it. Written to meet strict US, GDPR, PIPEDA, and APAC standards.">
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Shared tokens — keep in sync with index.html */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --yellow: #e8ff21;
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement bar */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .announcement a { color: var(--black); text-decoration: underline; font-weight: 800; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 40px; filter: invert(1); }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* Legal document styling */
+    .legal { padding: 80px 0 100px; }
+    .legal-header {
+      text-align: center;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--dark-border);
+      margin-bottom: 48px;
+    }
+    .legal-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .legal h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 1px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .legal-updated {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    .legal-intro {
+      color: var(--gray-light);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+    .legal-body {
+      color: var(--gray-light);
+      font-size: 1rem;
+    }
+    .legal-body p { margin-bottom: 18px; }
+    .legal-body strong { color: var(--white); font-weight: 700; }
+    .legal-body h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin: 48px 0 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--dark-border);
+    }
+    .legal-body h2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+    .legal-body h3 {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 20px 0 8px;
+    }
+    .legal-body ul {
+      margin: 0 0 18px 24px;
+      padding-left: 4px;
+    }
+    .legal-body li { margin-bottom: 8px; }
+    .legal-body a { color: var(--accent); word-break: break-word; }
+    .legal-body em { color: var(--white); font-style: italic; }
+    .legal-body blockquote {
+      margin: 16px 0 24px;
+      padding: 16px 20px;
+      border-left: 3px solid var(--accent);
+      background: var(--dark-card);
+      color: var(--gray-light);
+      font-style: italic;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .legal-section-break {
+      margin: 64px 0 32px;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: var(--accent);
+    }
+
+    .legal-footer-note {
+      margin-top: 64px;
+      padding: 24px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .legal-footer-note strong { color: var(--accent); }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .legal { padding: 48px 0 72px; }
+      .legal-body h2 { font-size: 1.5rem; margin: 36px 0 16px; padding-top: 24px; }
+      .legal-header { padding-bottom: 32px; margin-bottom: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    Coming soon to your city &mdash; <a href="/#shows">See all upcoming shows</a>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes & Booze">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <div class="container">
+      <header class="legal-header">
+        <div class="legal-eyebrow">Privacy Policy</div>
+        <h1>Pancakes &amp; Booze Privacy Policy</h1>
+        <p class="legal-updated"><strong style="color:var(--white);">Effective Date:</strong> August 8, 2025</p>
+      </header>
+
+      <div class="legal-body">
+        <p class="legal-intro">We believe creativity should be shared &mdash; not your personal information. This Privacy Policy explains what we collect, why we collect it, and how we protect it &mdash; whether you're grabbing a ticket, signing up as an artist or vendor, visiting our website, or checking out our online marketplace.</p>
+
+        <p>We've written this to meet (and in some cases exceed) privacy laws in <strong>California and other U.S. states, the UK and Europe (GDPR), Canada (PIPEDA), Mexico, and key Asia-Pacific regions</strong>. That means you get the strictest standards, no matter where you live.</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>We collect personal information when you:</p>
+        <ul>
+          <li><strong>Attend our events</strong> &ndash; buying tickets, RSVPing, or checking in.</li>
+          <li><strong>Sign up or submit as an artist or vendor</strong> &ndash; completing online forms, submitting art, or joining our marketplace.</li>
+          <li><strong>Interact online</strong> &ndash; visiting pancakesandbooze.com, joining our mailing list, using our chatbot, or engaging with us on social media.</li>
+          <li><strong>Purchase from our marketplace</strong> &ndash; placing orders, creating accounts, or saving favorites.</li>
+        </ul>
+        <p>This can include:</p>
+        <ul>
+          <li>Name, email address, phone number, mailing/billing address</li>
+          <li>Payment information (processed securely via Eventbrite, Stripe, or PayPal &mdash; we never store your full card details)</li>
+          <li>Social media handles or usernames</li>
+          <li>Location data (if enabled on your device)</li>
+          <li>IP address, browser type, and usage patterns via analytics and cookies</li>
+        </ul>
+        <p>We do <strong>not</strong> knowingly collect information from anyone under <strong>16 years old</strong> without verified parental consent.</p>
+
+        <h2>2. How We Use Your Information</h2>
+        <p>We use your data to:</p>
+        <ul>
+          <li>Process ticket sales, vendor/artist sign-ups, and purchases</li>
+          <li>Send you event updates, announcements, and marketing (if you opt in)</li>
+          <li>Improve our website, events, and online marketplace</li>
+          <li>Measure and improve ad performance through analytics and pixels</li>
+          <li>Meet legal, tax, and regulatory requirements</li>
+        </ul>
+        <p>Our legal bases for processing include <strong>consent</strong>, <strong>contract performance</strong>, <strong>legitimate interest</strong>, and <strong>compliance with legal obligations</strong>.</p>
+
+        <h2>3. Cookies, Pixels, and Tracking</h2>
+        <p>We use:</p>
+        <ul>
+          <li><strong>Google Analytics</strong> to understand website traffic and improve content</li>
+          <li><strong>Meta (Facebook/Instagram) Pixel</strong> for targeted and retargeted advertising</li>
+          <li>Essential cookies to make the site function</li>
+        </ul>
+        <p>Where required by law (e.g., UK/EU), we'll ask for your cookie consent before setting non-essential cookies. You can adjust your browser settings to block cookies anytime.</p>
+
+        <h2>4. Third-Party Services</h2>
+        <p>We work with trusted third-party providers to help run our events, website, and marketplace. These include:</p>
+        <ul>
+          <li><strong>Eventbrite</strong> &ndash; ticket sales and attendee registration</li>
+          <li><strong>Stripe</strong> and <strong>PayPal</strong> &ndash; payment processing</li>
+          <li><strong>Google Analytics</strong> &ndash; website analytics</li>
+          <li><strong>Meta (Facebook/Instagram) Pixel</strong> &ndash; advertising and retargeting</li>
+          <li><strong>Mailgun/Sinch</strong> &ndash; sending event updates and marketing emails</li>
+          <li><strong>OpenPhone</strong> and <strong>Google Voice</strong> &ndash; phone/SMS communications</li>
+          <li><strong>ManyChat</strong> &ndash; automated chatbot messaging</li>
+          <li><strong>Squarespace</strong> &ndash; (primary hosting &amp; data storage)</li>
+          <li><strong>Cloudways</strong> &ndash; (partial site hosting &amp; form submissions)</li>
+        </ul>
+        <p>We may also use other service providers for hosting, customer support, marketing, and operational needs. These providers are only given the data necessary to perform their services and are contractually required to protect it.</p>
+
+        <h2>5. Your Privacy Rights</h2>
+        <p>Depending on where you live, you may have the right to:</p>
+        <ul>
+          <li>Request a copy of your personal data</li>
+          <li>Correct or update your data</li>
+          <li>Delete your data</li>
+          <li>Opt out of marketing communications</li>
+          <li>Opt out of targeted advertising or data "sales" (as defined by applicable laws)</li>
+          <li>Withdraw consent where we process your data based on consent</li>
+          <li>Request data portability (a copy in a portable format)</li>
+        </ul>
+        <p>To exercise your rights, email <a href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a>. We'll respond within the timeframe required by your local law.</p>
+
+        <h2>6. International Data Transfers</h2>
+        <p>If you live outside the US, your data may be transferred to and stored in the United States. When we do this, we follow legal safeguards like <strong>Standard Contractual Clauses (GDPR)</strong>, and where required (e.g., China, Mexico), obtain your consent for cross-border transfers.</p>
+
+        <h2>7. Security</h2>
+        <p>We use reasonable technical and organizational measures to protect your information. No method of transmission over the internet is 100% secure, so while we work hard to protect your data, we can't guarantee absolute security.</p>
+
+        <h2>8. Data Retention</h2>
+        <p>We keep your personal information only as long as necessary for the purposes outlined in this policy, unless a longer period is required by law.</p>
+
+        <h2>9. Governing Law</h2>
+        <p>This policy and any disputes related to it are governed by the laws of the State of California, USA.</p>
+
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. The "Effective Date" above will always show when it was last revised. Updates will be posted here on our website &mdash; we encourage you to check periodically.</p>
+
+        <div class="legal-section-break">Regional Addendums</div>
+
+        <h2>United States &ndash; State-Specific Privacy Notices</h2>
+        <p>In addition to the rights above, residents of <strong>California, Virginia, Colorado, Connecticut, Utah, Texas, and Nevada</strong> have specific rights under state law:</p>
+        <ul>
+          <li>Right to opt out of targeted advertising and the sale or sharing of personal data</li>
+          <li>Right to request corrections to inaccurate personal data</li>
+          <li>Right to limit use of sensitive personal information (California)</li>
+        </ul>
+        <p>We honor universal opt-out mechanisms where required.</p>
+
+        <h2>Canada</h2>
+        <p>We comply with <strong>PIPEDA</strong> and applicable provincial laws. You have the right to:</p>
+        <ul>
+          <li>Access and correct your personal information</li>
+          <li>Withdraw consent for marketing</li>
+          <li>Be informed if your information is involved in a security breach</li>
+        </ul>
+
+        <h2>Mexico</h2>
+        <p>In compliance with the <strong>Federal Law on the Protection of Personal Data Held by Private Parties (LFPDPPP)</strong>:</p>
+        <ul>
+          <li>You may access, rectify, cancel, or oppose (ARCO rights) the processing of your data by contacting <a href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a>.</li>
+          <li>Consent will be obtained before transferring your data to third parties, except where allowed by law.</li>
+        </ul>
+        <p><strong>Aviso de Privacidad en Español:</strong></p>
+        <blockquote>"Usted tiene derecho a acceder, rectificar y cancelar sus datos personales, oponerse al tratamiento de los mismos o revocar el consentimiento que nos haya otorgado. Para ejercer estos derechos, envíe un correo electrónico a privacy@pancakesandbooze.com."</blockquote>
+
+        <h2>UK &amp; European Economic Area</h2>
+        <p>We comply with the <strong>General Data Protection Regulation (GDPR)</strong>. Our legal bases for processing are: consent, contract performance, legitimate interest, and legal obligation. You have the right to lodge a complaint with your local supervisory authority.</p>
+
+        <h2>Asia-Pacific</h2>
+        <ul>
+          <li><strong>Singapore (PDPA)</strong>: We will obtain your consent before collecting, using, or disclosing your personal data.</li>
+          <li><strong>Japan (APPI)</strong>: We will notify you of the purpose of use at or before the time of collection.</li>
+          <li><strong>Australia Privacy Act</strong>: You may request access to or correction of your personal data at any time.</li>
+          <li><strong>China (PIPL)</strong>: Your consent is required for cross-border data transfers; we will store your data locally when required by law.</li>
+        </ul>
+
+        <div class="legal-footer-note">
+          <p><strong>Questions?</strong> Email <a href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a> and we'll help you out.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

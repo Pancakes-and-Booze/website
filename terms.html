@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions | Pancakes & Booze</title>
+  <meta name="description" content="Terms & Conditions for Pancakes & Booze — governing use of our website, events, artist and vendor participation, and the District.net marketplace.">
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Shared tokens — keep in sync with index.html */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --yellow: #e8ff21;
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement bar */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .announcement a { color: var(--black); text-decoration: underline; font-weight: 800; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 40px; filter: invert(1); }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* Legal document styling */
+    .legal {
+      padding: 80px 0 100px;
+    }
+    .legal-header {
+      text-align: center;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--dark-border);
+      margin-bottom: 48px;
+    }
+    .legal-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .legal h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 1px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .legal-updated {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    .legal-intro {
+      color: var(--gray-light);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+    .legal-body {
+      color: var(--gray-light);
+      font-size: 1rem;
+    }
+    .legal-body p { margin-bottom: 18px; }
+    .legal-body strong { color: var(--white); font-weight: 700; }
+    .legal-body h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin: 48px 0 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--dark-border);
+    }
+    .legal-body h2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+    .legal-body h3 {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 20px 0 8px;
+    }
+    .legal-body ul {
+      margin: 0 0 18px 24px;
+      padding-left: 4px;
+    }
+    .legal-body li { margin-bottom: 8px; }
+    .legal-body a { color: var(--accent); word-break: break-word; }
+    .legal-body em { color: var(--white); font-style: italic; }
+
+    .legal-footer-note {
+      margin-top: 64px;
+      padding: 24px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .legal-footer-note strong { color: var(--accent); }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .legal { padding: 48px 0 72px; }
+      .legal-body h2 { font-size: 1.5rem; margin: 36px 0 16px; padding-top: 24px; }
+      .legal-header { padding-bottom: 32px; margin-bottom: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    Coming soon to your city &mdash; <a href="/#shows">See all upcoming shows</a>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes & Booze">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <div class="container">
+      <header class="legal-header">
+        <div class="legal-eyebrow">T&amp;Cs</div>
+        <h1>Terms &amp; Conditions</h1>
+        <p class="legal-updated"><strong style="color:var(--white);">Last Updated:</strong> August 8, 2025</p>
+      </header>
+
+      <div class="legal-body">
+        <p class="legal-intro">Welcome to Pancakes &amp; Booze! These Terms &amp; Conditions ("Terms") apply to your use of our website (<strong>pancakesandbooze.com</strong>), our online marketplace hosted on District.net, our social media pages, and participation in any in-person Pancakes &amp; Booze events (collectively, the "Services").</p>
+
+        <p>By using our Services, purchasing a ticket, signing up as an artist or vendor, submitting artwork, listing items on District.net, tagging us on social media, or attending our events, you agree to these Terms.</p>
+
+        <p>If you do not agree, please do not use our Services.</p>
+
+        <h2>1. Who We Are</h2>
+        <p>Pancakes &amp; Booze is an underground art show and online marketplace platform. We bring together artists, vendors, and art lovers through in-person events and digital channels.</p>
+
+        <h2>2. Eligibility</h2>
+        <ul>
+          <li>Most U.S. events are <strong>21+</strong> (18+ in Canada), unless otherwise stated in event materials.</li>
+          <li>Age restrictions vary by venue and city; check the specific event listing before purchasing a ticket or registering as an artist/vendor.</li>
+        </ul>
+
+        <h2>3. Artists &amp; Vendors</h2>
+        <p>By registering for an event or listing on our District.net marketplace, you agree to:</p>
+        <ul>
+          <li>Provide accurate information in your application.</li>
+          <li>Manage your own sales at in-person events.</li>
+          <li>Abide by any posted size, setup, and conduct rules.</li>
+          <li>Understand that <strong>in-person sales are commission-free</strong>, but <strong>District.net sales include a 5% commission for Pancakes &amp; Booze and 5% for District.net</strong>.</li>
+          <li>Transport your artwork or products at your own risk; we are <strong>not responsible for loss, theft, or damage</strong> at any point.</li>
+        </ul>
+
+        <h2>4. Attendees</h2>
+        <p>By attending a Pancakes &amp; Booze event, you agree to follow venue rules and respect artists, vendors, staff, and other guests. Disruptive or unsafe behavior may result in removal without refund.</p>
+
+        <h2>5. Content &amp; Media Release (Artists, Vendors &amp; Attendees)</h2>
+        <p>By submitting artwork to us, tagging us on social media, using hashtags related to our events, or listing your work on District.net, you grant Pancakes &amp; Booze a <strong>non-exclusive, royalty-free, perpetual, worldwide license</strong> to use, reproduce, display, distribute, and create derivative works from that content in any media for marketing, promotional, and commercial purposes.</p>
+        <p>This includes:</p>
+        <ul>
+          <li>Artwork submitted through our website or email.</li>
+          <li>Artwork listed on District.net.</li>
+          <li>Artwork or content posted publicly on your website or social media accounts.</li>
+          <li>Content where you tag us or use hashtags such as: <strong>#pancakesandbooze, #pancakesbooze, #pnb, #p&amp;B, #pb, #pancakesandboozeartshow</strong>, and any similar variations, including those with city names before or after (e.g., #lapancakesandbooze, #pancakesandboozela).</li>
+          <li><em>Note:</em> This list is <strong>not exhaustive</strong>; any hashtag or tag reasonably connected to Pancakes &amp; Booze counts.</li>
+        </ul>
+        <p><strong>Ownership:</strong> You keep full ownership of your content and artwork. We are not claiming copyright; you are simply granting us permission to use it as described above.</p>
+
+        <h2>6. Photography &amp; Video at Events</h2>
+        <p>By attending any Pancakes &amp; Booze event (as an artist, vendor, or attendee), you consent to being photographed, filmed, or recorded. These images and recordings may be used for promotional, marketing, and commercial purposes in any media without compensation.</p>
+
+        <h2>7. Ticket Sales &amp; Refund Policy</h2>
+        <ul>
+          <li>All ticket, booth, and listing sales are <strong>final</strong>.</li>
+          <li>Refunds may be granted <strong>at our sole discretion</strong> in special circumstances (e.g., event cancellation, major event changes, extreme hardship).</li>
+          <li>No refunds will be issued for removal due to violation of these Terms.</li>
+        </ul>
+
+        <h2>8. Liability Disclaimer</h2>
+        <ul>
+          <li>Pancakes &amp; Booze is <strong>not responsible</strong> for any personal injury, loss, theft, or damage to personal property at events, including during transport to or from the event.</li>
+          <li>We do not guarantee uninterrupted or error-free website operation.</li>
+          <li>We are not liable for any issues caused by third-party services (including District.net).</li>
+        </ul>
+
+        <h2>9. District.net Marketplace</h2>
+        <ul>
+          <li>Our online marketplace is hosted by <strong>District.net</strong>, which has its own Terms &amp; Conditions and Privacy Policy.</li>
+          <li>Any purchases, disputes, or technical issues on District.net are subject to their policies.</li>
+        </ul>
+
+        <h2>10. Privacy &amp; Communications</h2>
+        <p>By using our Services, you consent to our <a href="/privacy">Privacy Policy</a> and agree that we may contact you via email, text, or other communication methods you provide for marketing, transactional, or informational purposes.</p>
+
+        <h2>11. Governing Law</h2>
+        <p>These Terms are governed by the laws of the <strong>State of California</strong>, without regard to conflict of law principles.</p>
+
+        <h2>12. Changes to These Terms</h2>
+        <p>We may update these Terms at any time. Updates will be posted on <strong>pancakesandbooze.com</strong> with a revised "Last Updated" date. Your continued participation or use of our Services after changes are posted constitutes acceptance of the new Terms.</p>
+
+        <div class="legal-footer-note">
+          <p><strong>Questions?</strong> Contact us at <a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 # Pancakes & Booze — host routing (Cloudflare Pages syntax)
 #
 # Host processes this file at deploy time. Rules evaluate top-to-bottom; the
-# FIRST matching rule wins.
+# FIRST matching rule wins. Put specific rules BEFORE catchalls.
 #
 # Status codes:
 #   200 = rewrite (URL stays in browser, server serves a different file)
@@ -17,10 +17,7 @@
 #    browser was getting HTML when it asked for those binary/JSON files.
 #
 #    Fix: list every city slug EXPLICITLY below instead of using `/:slug`.
-#    When a new city launches, add its slug here (and to shows.json).
-#
-#    Tradeoff: a user typo like /jellybean now hits Cloudflare's default 404
-#    page instead of our custom "CITY NOT FOUND" state in city.html. Fine.
+#    When a new city launches, add its slug here (and to the Shows sheet).
 #
 # 2. Cloudflare Pages auto-301-redirects `.html` URL paths to the extensionless
 #    version ("pretty URLs", not disableable on the free tier). If we rewrite
@@ -29,28 +26,113 @@
 #    (just `/city`) sidesteps this — Pages still finds city.html via the
 #    pretty-URL resolution in the OTHER direction.
 
-# ─── Legacy /tickets/<city> URLs from Squarespace days → city page ───
-# Old emails, ads, and DMs link to these. The "Get Tickets" button now lives
-# on the city page itself, so we permanently redirect.
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 1 — Specific /tickets/<slug> overrides (MUST come before catchall)
+# Old Squarespace URLs with slugs that don't map 1:1 to our new city pages.
+# ════════════════════════════════════════════════════════════════════════
+/tickets/atlanta-ga                   /atlanta       301
+/tickets/atlanta-apxs3                /atlanta       301
+/tickets/chicago-il                   /chicago       301
+/tickets/sanfrancisco-ca              /sanfrancisco  301
+/tickets/philadelphiaholidaymarket    /philadelphia  301
+/tickets/bangkok-01-17-2026           /bangkok       301
+/tickets/mexicocity                   /mexicocity    301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 2 — /tickets/* catch-all (all other old ticket URLs)
+# Old emails, ads, and DMs link to /tickets/<city>. The "Get Tickets" button
+# now lives on the city page itself, so we permanently redirect to /<city>.
+# ════════════════════════════════════════════════════════════════════════
 /tickets/*    /:splat    301
 
-# ─── Other legacy redirects from the migration plan ───
-# /tix was a Squarespace shorthand for /tickets — collapse it into homepage shows section
-/tix          /#shows    301
-# venuedec was a typo of venuedeck
-/venuedec     /venuedeck 301
+# Parent /tickets page (no slug) — drop into the homepage shows section
+/tickets      /#shows    301
 
-# ─── Per-city page rewrites ────────────────────────────────────────────
-# Each rewrites to /city (extensionless — see gotcha #2 above). city.html
-# reads the slug from window.location.pathname and fetches shows.json.
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 3 — Other legacy redirects from Squarespace
+# ════════════════════════════════════════════════════════════════════════
+/tix                /#shows   301
+/venuedec           /         301
+/venuedeck          /         301
+/home               /         301
+/bangkok-tickets    /bangkok  301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 4 — Parking & load-in pages → respective city page
+# Per-venue logistics pages on Squarespace. Roll them into the city page —
+# dormant cities show the "Notify me" form, live shows show current info.
+# ════════════════════════════════════════════════════════════════════════
+/austin-parking        /austin     301
+/atl-parking           /atlanta    301
+/atl-parking-event     /atlanta    301
+/atlanta-load-in       /atlanta    301
+/brooklyn-parking      /nyc        301
+/chicago-parking       /chicago    301
+/dallas-parking        /dallas     301
+/denver-parking        /denver     301
+/denver-load-in        /denver     301
+/raleigh-parking       /raleigh    301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 5 — Mexico City bilingual subpaths
+# /mexicocity/tickets, /mexicocity/boletos, /mexicocity/faq, etc.
+# All collapse to /mexicocity (which rewrites to /city below) until the
+# proper bilingual page is built (launch-blocker #4).
+# ════════════════════════════════════════════════════════════════════════
+/mexicocity/*   /mexicocity   301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 6 — Core marketing pages → homepage anchors
+# Squarespace had standalone pages for these. On the new site, they live
+# as sections on the homepage; redirect into the anchor.
+# ════════════════════════════════════════════════════════════════════════
+/about        /#about           301
+/contact      /#contact         301
+/reviews      /#testimonials    301
+/faq          /#faq             301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 7 — Artist/vendor & pricing pages (launch-blocker placeholders)
+# These Squarespace pages haven't been rebuilt yet. Interim redirects keep
+# old inbound links from 404ing. Update these when the new pages ship.
+# ════════════════════════════════════════════════════════════════════════
+/submit        /#exhibit    301
+/price-chart   /#faq        301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 8 — Store / commerce pages
+# /store was the Squarespace commerce shim — roll into shows section.
+# ════════════════════════════════════════════════════════════════════════
+/store          /#shows   301
+/store/tickets  /#shows   301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 9 — Legacy / dead pages
+# Old marketing experiments, COVID era, internal test pages, etc.
+# Collapse to homepage — no direct equivalent on the new site.
+# ════════════════════════════════════════════════════════════════════════
+/zombiefashionshow  /   301
+/howtovideos        /   301
+/covid-19           /   301
+/install            /   301
+/install-1          /   301
+/payment-example    /   301
+/voxxy-test         /   301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 10 — Per-city page rewrites (rewrites to /city, which reads the
+# slug from window.location.pathname and fetches shows.json).
 #
-# ADDING A NEW CITY: append a line here matching the slug in shows.json.
+# ADDING A NEW CITY: add a line here AND a row to the Shows sheet.
+# ════════════════════════════════════════════════════════════════════════
 /albuquerque    /city  200
 /atlanta        /city  200
 /austin         /city  200
+/baltimore      /city  200
 /bangkok        /city  200
 /berlin         /city  200
 /boston         /city  200
+/calgary        /city  200
 /charlotte      /city  200
 /chicago        /city  200
 /cincinnati     /city  200
@@ -66,6 +148,7 @@
 /london         /city  200
 /losangeles     /city  200
 /memphis        /city  200
+/mexicocity     /city  200
 /miami          /city  200
 /milwaukee      /city  200
 /minneapolis    /city  200
