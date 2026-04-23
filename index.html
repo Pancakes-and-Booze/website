@@ -968,6 +968,134 @@
       0%, 100% { transform: translateY(0) rotate(-5deg); }
       50% { transform: translateY(-20px) rotate(5deg); }
     }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       BRING P&B TO YOUR CITY — modal lead-capture popup
+       ═══════════════════════════════════════════════════════════════════
+       Triggered by the "Bring P&B To Your City" button in the Upcoming
+       Shows header AND the "Bring P&B to your city" link in the empty
+       state. Submits to LEADS_ENDPOINT (same Apps Script as city-page
+       RSVP form) with lead_type="city_request" so leads are filterable. */
+    .city-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 9000;
+    }
+    .city-modal-overlay[aria-hidden="false"] { display: flex; }
+    .city-modal {
+      background: var(--dark-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--yellow-glow);
+    }
+    .city-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--white, #fff);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .city-modal-close:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .city-modal h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 1.5px;
+      margin: 0 0 6px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .city-modal p.city-modal-sub {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.65);
+      text-align: center;
+      margin: 0 0 24px;
+      line-height: 1.5;
+    }
+    .city-modal-form { display: grid; gap: 12px; }
+    .city-modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .city-modal-form input,
+    .city-modal-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--black);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius, 12px);
+      color: #fff;
+      font: inherit;
+      font-size: 0.95rem;
+    }
+    .city-modal-form textarea {
+      min-height: 100px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .city-modal-form input:focus,
+    .city-modal-form textarea:focus {
+      outline: none;
+      border-color: var(--yellow);
+      box-shadow: 0 0 0 3px var(--yellow-glow);
+    }
+    .city-modal-form button[type="submit"] {
+      margin-top: 4px;
+      padding: 14px;
+      background: var(--pink, #ff2d7b);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      border: none;
+      border-radius: var(--radius, 12px);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .city-modal-form button[type="submit"]:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(255, 45, 123, 0.35);
+    }
+    .city-modal-form button[type="submit"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .city-modal-msg {
+      min-height: 1.2em;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 4px;
+    }
+    .city-modal-msg.error   { color: #ff6b6b; }
+    .city-modal-msg.success { color: var(--yellow); }
+    @media (max-width: 520px) {
+      .city-modal { padding: 28px 20px; }
+      .city-modal-row { grid-template-columns: 1fr; }
+      .city-modal h3 { font-size: 1.6rem; }
+    }
   </style>
 </head>
 <body>
@@ -1157,7 +1285,7 @@
           <p class="section-label">On Tour Now</p>
           <h2 class="section-title">Upcoming Shows</h2>
         </div>
-        <a href="mailto:info@pancakesandbooze.com" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.8rem;">Bring P&B To Your City</a>
+        <button type="button" data-open-city-modal class="btn btn-outline" style="padding: 12px 24px; font-size: 0.8rem;">Bring P&B To Your City</button>
       </div>
 
       <!-- Shows rendered dynamically from /shows.json by JS at bottom of page -->
@@ -1165,7 +1293,7 @@
         <div class="shows-loading" style="text-align:center;padding:40px 0;opacity:0.6;">Loading upcoming shows&hellip;</div>
       </div>
       <div id="shows-empty" style="display:none;text-align:center;padding:40px 0;opacity:0.7;">
-        No shows announced yet. <a href="mailto:info@pancakesandbooze.com" style="color:var(--pink);">Bring P&amp;B to your city</a>.
+        No shows announced yet. <a href="#" data-open-city-modal style="color:var(--pink);">Bring P&amp;B to your city</a>.
       </div>
     </div>
   </section>
@@ -1603,6 +1731,132 @@
         })[c]);
       }
       function escapeAttr(s) { return escapeHtml(s); }
+    })();
+  </script>
+
+  <!-- ════════════ BRING P&B TO YOUR CITY — MODAL ════════════
+       Triggered by any element with data-open-city-modal. Submits to
+       LEADS_ENDPOINT with lead_type="city_request". Keep the markup
+       outside the shows section so z-index / overlay behavior stays clean. -->
+  <div class="city-modal-overlay" id="cityModal" aria-hidden="true" role="dialog" aria-labelledby="cityModalTitle" aria-modal="true">
+    <div class="city-modal">
+      <button type="button" class="city-modal-close" aria-label="Close" data-close-city-modal>&times;</button>
+      <h3 id="cityModalTitle">Bring P&amp;B To Your City</h3>
+      <p class="city-modal-sub">
+        We love discovering new cities. Tell us where you want us and why &mdash;
+        a venue rec is gold.
+      </p>
+      <form class="city-modal-form" id="cityModalForm" novalidate>
+        <div class="city-modal-row">
+          <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required>
+          <input type="text" name="last_name"  placeholder="Last name"  autocomplete="family-name" required>
+        </div>
+        <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+        <input type="text" name="city" placeholder="Which city?" autocomplete="address-level2" required>
+        <textarea name="message" placeholder="Venue recommendations or why we should come to your city" rows="4"></textarea>
+        <button type="submit" id="cityModalSubmit">Send It</button>
+        <div class="city-modal-msg" id="cityModalMsg" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Self-contained city-request modal controller. Uses the same LEADS_ENDPOINT
+    // + fetch pattern as city.html's RSVP form so there's one place to rotate
+    // the Apps Script URL when Foxy replaces this.
+    (function () {
+      const LEADS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzTnnoYTfxBtNKgwftFKq9m153UQeg1xwTviqfSMpzwMG2870vlm9hJeiBn0yo7CPb8/exec';
+
+      const modal  = document.getElementById('cityModal');
+      const form   = document.getElementById('cityModalForm');
+      const btn    = document.getElementById('cityModalSubmit');
+      const msg    = document.getElementById('cityModalMsg');
+      let previouslyFocused = null;
+
+      function openModal() {
+        previouslyFocused = document.activeElement;
+        modal.setAttribute('aria-hidden', 'false');
+        // Focus the first input for keyboard users
+        setTimeout(() => {
+          const first = form.querySelector('input, textarea');
+          if (first) first.focus();
+        }, 50);
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        msg.className = 'city-modal-msg';
+        msg.textContent = '';
+        if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
+      }
+
+      // Open triggers — any element with data-open-city-modal
+      document.querySelectorAll('[data-open-city-modal]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          openModal();
+        });
+      });
+
+      // Close triggers — X button, clicking overlay outside the card, Esc key
+      document.querySelectorAll('[data-close-city-modal]').forEach(el => {
+        el.addEventListener('click', closeModal);
+      });
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+      });
+
+      // Submit
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.className = 'city-modal-msg';
+        msg.textContent = '';
+
+        const payload = {
+          first_name: form.first_name.value.trim(),
+          last_name:  form.last_name.value.trim(),
+          email:      form.email.value.trim(),
+          city:       form.city.value.trim(),
+          message:    form.message.value.trim(),
+          source_url: window.location.href,
+          lead_type:  'city_request'
+        };
+
+        if (!payload.first_name || !payload.last_name || !payload.email || !payload.city) {
+          msg.className = 'city-modal-msg error';
+          msg.textContent = 'Name, email, and city are required.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        try {
+          // Same no-cors + text/plain trick as city.html — avoids the CORS
+          // preflight that Apps Script Web Apps can't respond to.
+          await fetch(LEADS_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          });
+          msg.className = 'city-modal-msg success';
+          msg.textContent = `Thanks ${payload.first_name} — we'll be in touch about ${payload.city}.`;
+          form.reset();
+          setTimeout(closeModal, 2500);
+        } catch (err) {
+          msg.className = 'city-modal-msg error';
+          msg.textContent = 'Something went wrong. Please try again, or email info@pancakesandbooze.com.';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Send It';
+        }
+      });
     })();
   </script>
 </body>

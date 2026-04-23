@@ -115,6 +115,9 @@
       overflow: hidden;
       background: var(--black);
     }
+    /* Tighten the gap between CTA buttons and the flyer in the LIVE state only.
+       Dormant state keeps the full 80px so the notify card has breathing room. */
+    #stateLive .city-hero { padding-bottom: 20px; }
     .city-hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -188,7 +191,7 @@
 
     /* FLYER (centered, its own moment below the hero) */
     .flyer-section {
-      padding: 60px 0 80px;
+      padding: 16px 0 80px;
       background: var(--black);
       text-align: center;
     }
@@ -202,6 +205,11 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     }
     .flyer-wrap img { width: 100%; height: auto; display: block; }
+    /* Click-to-enlarge affordance — the anchor fills the wrap and the image
+       lifts slightly on hover so users know it's clickable. */
+    .flyer-wrap a { display: block; cursor: zoom-in; }
+    .flyer-wrap a img { transition: opacity 0.2s ease, transform 0.2s ease; }
+    .flyer-wrap a:hover img { opacity: 0.92; transform: scale(1.01); }
 
     /* DORMANT STATE */
     .coming-soon-wrap {
@@ -383,7 +391,8 @@
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .city-hero { padding: 60px 0 50px; }
-      .flyer-section { padding: 40px 0 60px; }
+      #stateLive .city-hero { padding-bottom: 14px; }
+      .flyer-section { padding: 10px 0 60px; }
       .notify-card { padding: 28px 20px; }
       .notify-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -560,7 +569,7 @@
     // CONFIG — paste your Apps Script Web App URL here after deploy
     // (The /exec URL that Apps Script gives you when you publish.)
     // ────────────────────────────────────────────────────────────
-    const LEADS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxWAOPEONSLpeNTaKg2n2e1pPqB_ZK911NTUWf1TNmbUlXErBi_EyiqOPyNdCdgzzkm/exec';
+    const LEADS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzTnnoYTfxBtNKgwftFKq9m153UQeg1xwTviqfSMpzwMG2870vlm9hJeiBn0yo7CPb8/exec';
 
     // ────────────────────────────────────────────────────────────
     // Utilities
@@ -680,9 +689,16 @@
       btnContainer.innerHTML = buttons.join('');
 
       // Flyer — only show the section if a flyer_url exists. No placeholder.
+      // Wrapping in an <a target="_blank"> gives users click-to-enlarge
+      // (full-size in a new tab) AND enables right-click → Save Image As
+      // on the enlarged view. One line of markup, covers both use cases.
       if (show.flyer_url) {
+        const flyerSrc = escapeAttr(show.flyer_url);
+        const flyerAlt = escapeAttr(show.city || 'Event');
         document.getElementById('flyerWrap').innerHTML =
-          `<img src="${escapeAttr(show.flyer_url)}" alt="${escapeAttr(show.city || 'Event')} flyer">`;
+          `<a href="${flyerSrc}" target="_blank" rel="noopener" title="Click to view full size">
+             <img src="${flyerSrc}" alt="${flyerAlt} flyer">
+           </a>`;
         document.getElementById('flyerSection').hidden = false;
       }
 
@@ -723,7 +739,8 @@
           last_name: form.last_name.value.trim(),
           email: form.email.value.trim(),
           source_url: window.location.href,
-          city: cityName
+          city: cityName,
+          lead_type: 'rsvp'
         };
 
         if (!payload.first_name || !payload.last_name || !payload.email) {
