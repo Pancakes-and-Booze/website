@@ -27,4 +27,4 @@
 # behind it. So if you typo /jellybean, you'll get the city.html "City not
 # found" state — not a hard 404. That's intentional (graceful fallback) but
 # worth knowing.
-/:slug        /city.html 200
+/:slug        /city 200
