@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pancakes & Booze Art Show | The Wildest Art Party in North America</title>
-  <meta name="description" content="Free pancakes. Flowing drinks. 100+ artists. Live DJs. Body painting. The art show that broke every rule — now in 40+ cities.">
+  <meta name="description" content="Free pancakes, real artists, live DJs, body paint, vendors — every show is a little different. The art show that broke every rule, now in 40+ cities.">
   <meta name="theme-color" content="#ff2d7b">
 
   <!-- Favicons -->
@@ -21,7 +21,7 @@
   <meta property="og:site_name" content="Pancakes & Booze Art Show">
   <meta property="og:url" content="https://www.pancakesandbooze.com/">
   <meta property="og:title" content="Pancakes & Booze Art Show | The Wildest Art Party in North America">
-  <meta property="og:description" content="Free pancakes. Flowing drinks. 100+ artists. Live DJs. Body painting. The art show that broke every rule — now in 40+ cities.">
+  <meta property="og:description" content="Free pancakes, real artists, live DJs, body paint, vendors — every show is a little different. The art show that broke every rule, now in 40+ cities.">
   <meta property="og:image" content="https://www.pancakesandbooze.com/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -30,7 +30,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pancakes & Booze Art Show | The Wildest Art Party in North America">
-  <meta name="twitter:description" content="Free pancakes. Flowing drinks. 100+ artists. Live DJs. Body painting. The art show that broke every rule — now in 40+ cities.">
+  <meta name="twitter:description" content="Free pancakes, real artists, live DJs, body paint, vendors — every show is a little different. The art show that broke every rule, now in 40+ cities.">
   <meta name="twitter:image" content="https://www.pancakesandbooze.com/images/og-image.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,6 +62,11 @@
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
+
+    /* Sticky nav is 72px tall — offset every anchored section/footer by a
+       bit more so #about, #shows, #faq, #contact (on the footer), etc.
+       don't land with their top row hidden behind the nav. */
+    section[id], footer[id] { scroll-margin-top: 88px; }
 
     body {
       font-family: var(--font-body);
@@ -1156,9 +1161,16 @@
     <div class="hero-content">
       <img src="hero-logo.png" alt="Pancakes & Booze" class="hero-logo">
       <p class="hero-tagline">Art Show & Party</p>
+      <!-- Hero sub copy: keeps the punchy list format, but drops the two
+           promises we can't make every time — "open bar vibes" (most venues
+           have a paid bar) and "100+ artists" (count varies by city). The
+           closing line sets the expectation that each show is different, so
+           features like body paint and live performers are possibilities,
+           not guarantees. -->
       <p class="hero-sub">
-        The art show that threw out the rulebook. Free pancakes. Open bar vibes.
-        100+ artists. Live DJs. Body painting. One unforgettable night.
+        The art show that threw out the rulebook. Free pancakes, real artists,
+        live DJs, body paint, vendors, live music &mdash; every show is a
+        little different. You never know what you&rsquo;re going to find.
       </p>
       <div class="hero-buttons">
         <a href="#cities" class="btn btn-primary">Find Your City</a>
@@ -1235,26 +1247,26 @@
             is pure — real artists, real crowds, real connections, and a stack of
             free pancakes that never stops.
           </p>
+          <!-- Four-card grid. Emojis were pulled (they date the design and
+               Justin prefers a cleaner look). Card 2 no longer promises a
+               specific artist count, and card 4 is now a "surprises" card so
+               body paint is treated as a possibility rather than a guarantee. -->
           <div class="about-features">
             <div class="feature">
-              <div class="feature-icon">&#x1F95E;</div>
               <h4>Free Pancakes</h4>
               <p>All night. Unlimited. No catch. Just pancakes.</p>
             </div>
             <div class="feature">
-              <div class="feature-icon">&#x1F3A8;</div>
-              <h4>100+ Artists</h4>
-              <p>Emerging to established. Every medium. Every style.</p>
+              <h4>Real Artists</h4>
+              <p>Emerging to established. Every medium, every style.</p>
             </div>
             <div class="feature">
-              <div class="feature-icon">&#x1F3B6;</div>
               <h4>Live DJs</h4>
-              <p>The soundtrack that turns a gallery into a party.</p>
+              <p>The soundtrack that turns a gallery into a scene.</p>
             </div>
             <div class="feature">
-              <div class="feature-icon">&#x1F3AD;</div>
-              <h4>Body Painting</h4>
-              <p>Live body art that blurs the line between artist and canvas.</p>
+              <h4>Every Show Is Different</h4>
+              <p>Body paint, live performers, vendors, surprises. No two nights are alike.</p>
             </div>
           </div>
         </div>
@@ -1317,18 +1329,27 @@
         <div class="fade-up">
           <p class="section-label">For Artists</p>
           <h2 class="section-title">Show Your Work to Thousands</h2>
+          <!-- Exhibit blurb: dropped the "you bring the work, we bring the
+               audience" closer (Justin doesn't love it). The remaining lines
+               still cover the core pitch — no gatekeepers, no commissions,
+               walls + lighting provided, a real crowd that came for art. -->
           <p class="section-desc">
             No gatekeepers. No commissions. No pretense. We give you walls,
-            lighting, and a packed house of people who actually came to see art.
-            You bring the work. We bring the audience.
+            lighting, and a packed house of people who actually came to see
+            art &mdash; not just to be seen.
           </p>
+          <!-- Perks list: "Free to exhibit first two pieces" was factually
+               wrong (artist fee covers up to 2 pieces), so it's been replaced
+               with the real pricing shape. "Professional lighting" softened
+               per Justin — "gallery walls + lighting" sets the right bar. -->
           <ul class="exhibit-perks">
-            <li><span class="check">&#10003;</span> Free to exhibit your first two pieces</li>
-            <li><span class="check">&#10003;</span> Zero commission on sales — keep every dollar</li>
-            <li><span class="check">&#10003;</span> Professional lighting and gallery walls provided</li>
-            <li><span class="check">&#10003;</span> Sell directly to buyers — no middleman</li>
+            <li><span class="check">&#10003;</span> One flat fee covers up to two pieces &mdash; no hidden costs</li>
+            <li><span class="check">&#10003;</span> Zero commission on sales &mdash; keep every dollar</li>
+            <li><span class="check">&#10003;</span> Gallery walls and lighting provided</li>
+            <li><span class="check">&#10003;</span> Sell directly to buyers &mdash; no middleman</li>
             <li><span class="check">&#10003;</span> Hundreds of attendees at every show</li>
             <li><span class="check">&#10003;</span> Live painting spots available</li>
+            <li><span class="check">&#10003;</span> Table vendors welcome &mdash; jewelry, prints, stickers, oddities</li>
           </ul>
           <a href="#shows" class="btn btn-primary">Apply to Exhibit</a>
         </div>
@@ -1487,11 +1508,11 @@
           </div>
           <div class="faq-item">
             <button class="faq-question">How much does it cost to exhibit?</button>
-            <div class="faq-answer"><p>Your first two pieces are free when fees are paid 7+ days before the show. Additional pieces are $20 each. There are absolutely zero commissions on anything you sell — you keep 100% of your sales.</p></div>
+            <div class="faq-answer"><p>One flat fee (typically $20, paid at registration) covers up to two pieces. Additional pieces are $20 each. Zero commissions on anything you sell &mdash; you keep 100% of every sale.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">What's the difference between Artists and Vendors?</button>
-            <div class="faq-answer"><p>Artists display hangable work (canvas, prints, etc.) on gallery walls. Vendors sell non-hangable items like jewelry, clothing, or crafts from tables. You can apply as both if you've got both types of work.</p></div>
+            <div class="faq-answer"><p>Artists display hangable work (canvas, prints, etc.) on gallery walls. Vendors sell from tables &mdash; think jewelry, trinkets, stickers, zines, apparel, prints, and all kinds of underground, vibey stuff. You can apply as both if you've got both types of work.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">How many pieces can I show?</button>
@@ -1517,7 +1538,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-question">Is lighting and hanging gear provided?</button>
-            <div class="faq-answer"><p>Yes to both. We provide professional lighting and hanging tools (screws, screw guns). Wire your pieces if you can, but stretched canvas works without it. No hammers or nails allowed.</p></div>
+            <div class="faq-answer"><p>Yes to both. Gallery walls and lighting are provided, along with hanging tools (screws, screw guns). Wire your pieces if you can, but stretched canvas works without it. No hammers or nails allowed.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">Do exhibiting artists get free entry?</button>
@@ -1605,6 +1626,41 @@
       document.getElementById('mobileMenu').classList.toggle('active');
       document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
     }
+
+    // #contact special-case scroll.
+    //
+    // The footer carries id="contact" (legacy /contact redirects land on
+    // /#contact). Native hash scrolling tries to bring the footer's TOP to
+    // the top of the viewport — but on tall viewports the footer isn't
+    // tall enough for that to be reachable, so the browser stops at the
+    // bottom of the document and the user sees the FAQ section with a
+    // sliver of footer below it. This handler skips that heuristic and
+    // just scrolls to the end of the document so the Contact column is
+    // actually visible.
+    function scrollToContact() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+    // Intercept on-page clicks to #contact (currently none in the nav, but
+    // any future "Contact" link will benefit).
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href="#contact"], a[href="/#contact"]');
+      if (!a) return;
+      e.preventDefault();
+      history.replaceState(null, '', '#contact');
+      // Close mobile menu if it's open before scrolling.
+      const mm = document.getElementById('mobileMenu');
+      if (mm && mm.classList.contains('active')) toggleMenu();
+      scrollToContact();
+    });
+    // Handle direct landings via /contact → /#contact (Cloudflare redirect).
+    function handleContactHash() {
+      if (window.location.hash === '#contact') {
+        // Defer one frame so layout has settled (fonts, lazy images).
+        requestAnimationFrame(scrollToContact);
+      }
+    }
+    window.addEventListener('hashchange', handleContactHash);
+    window.addEventListener('load', handleContactHash);
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {

@@ -626,6 +626,32 @@
       return live || matches[0];
     }
 
+    // Fallback display names for slugs that are in _redirects but don't
+    // (yet) have a row in the Shows sheet. Prevents "City not found"
+    // on brand-new cities while they wait for a first show to be booked.
+    // When a city DOES have a sheet row, that row wins — this is only a
+    // safety net for the dormant state.
+    const CITY_FALLBACKS = {
+      albuquerque: 'Albuquerque', atlanta: 'Atlanta', austin: 'Austin',
+      baltimore: 'Baltimore', bangkok: 'Bangkok', berlin: 'Berlin',
+      boston: 'Boston', calgary: 'Calgary', charlotte: 'Charlotte',
+      chicago: 'Chicago', cincinnati: 'Cincinnati', cleveland: 'Cleveland',
+      columbus: 'Columbus', dallas: 'Dallas', denver: 'Denver',
+      detroit: 'Detroit', honolulu: 'Honolulu', houston: 'Houston',
+      kansascity: 'Kansas City', lasvegas: 'Las Vegas', london: 'London',
+      losangeles: 'Los Angeles', memphis: 'Memphis', mexicocity: 'Mexico City',
+      miami: 'Miami', milwaukee: 'Milwaukee', minneapolis: 'Minneapolis',
+      montreal: 'Montreal', nashville: 'Nashville', neworleans: 'New Orleans',
+      nyc: 'New York', oakland: 'Oakland', okc: 'Oklahoma City',
+      orlando: 'Orlando', paris: 'Paris', philadelphia: 'Philadelphia',
+      phoenix: 'Phoenix', pittsburgh: 'Pittsburgh', portland: 'Portland',
+      raleigh: 'Raleigh', saltlakecity: 'Salt Lake City',
+      sanantonio: 'San Antonio', sandiego: 'San Diego',
+      sanfrancisco: 'San Francisco', sanjose: 'San Jose',
+      seattle: 'Seattle', toronto: 'Toronto', tucson: 'Tucson',
+      vancouver: 'Vancouver', washingtondc: 'Washington DC'
+    };
+
     // ────────────────────────────────────────────────────────────
     // Render LIVE state
     // ────────────────────────────────────────────────────────────
@@ -828,7 +854,19 @@
         const show = pickShow(shows, slug);
         loading.hidden = true;
 
-        if (!show) { showError(); return; }
+        // No row in shows.json? Fall back to dormant if the slug matches a
+        // known city (i.e. it's in _redirects). This covers cities like
+        // Baltimore / Calgary / Mexico City that are routable but don't
+        // have a show booked yet. Truly unknown slugs still error.
+        if (!show) {
+          const fallbackName = CITY_FALLBACKS[slug];
+          if (fallbackName) {
+            renderDormant({ city: fallbackName });
+            return;
+          }
+          showError();
+          return;
+        }
 
         const isUpcoming = show.live && show.date_iso && (() => {
           const today = new Date();
