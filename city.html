@@ -6,7 +6,7 @@
 
   <!-- These are rewritten by JS once shows.json loads. Defaults are generic fallbacks. -->
   <title>Pancakes & Booze Art Show</title>
-  <meta name="description" content="The wildest art party in North America. Free pancakes, 100+ artists, live DJs, body painting. Now in 40+ cities.">
+  <meta name="description" content="Where culture gets fed. The underground art show — free pancakes, real artists, vendors, live DJs, body paint. Support local artists while they're still alive. 500+ shows across 40+ cities.">
   <meta name="theme-color" content="#ff2d7b">
 
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Pancakes & Booze Art Show">
   <meta property="og:url" id="ogUrl" content="https://www.pancakesandbooze.com/">
   <meta property="og:title" id="ogTitle" content="Pancakes & Booze Art Show">
-  <meta property="og:description" id="ogDesc" content="The wildest art party in North America. Free pancakes, 100+ artists.">
+  <meta property="og:description" id="ogDesc" content="Where culture gets fed. Free pancakes, real artists, vendors, live DJs, body paint. Support local artists while they're still alive.">
   <meta property="og:image" id="ogImage" content="https://www.pancakesandbooze.com/images/og-image.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -442,7 +442,7 @@
   <!-- CITY NOT FOUND STATE -->
   <main id="stateError" class="state-error" hidden>
     <h2>City not found</h2>
-    <p>We couldn&rsquo;t find a show for that city. It may have been renamed or removed.</p>
+    <p>Nothing here for that one. It may have been renamed or moved.</p>
     <a href="/" class="btn btn-outline">Back to All Shows</a>
   </main>
 
@@ -450,7 +450,7 @@
   <main id="stateLive" hidden>
     <section class="city-hero">
       <div class="container city-hero-inner">
-        <div class="city-eyebrow" id="liveEyebrow">Pancakes &amp; Booze Presents</div>
+        <div class="city-eyebrow" id="liveEyebrow">Pancakes &amp; Booze</div>
         <h1 class="city-name" id="liveCityName"></h1>
         <div class="live-date" id="liveDate"></div>
         <div class="live-venue" id="liveVenue"></div>
@@ -473,7 +473,7 @@
   <main id="stateDormant" hidden>
     <section class="city-hero">
       <div class="container city-hero-inner">
-        <div class="city-eyebrow">Next Show</div>
+        <div class="city-eyebrow">Pancakes &amp; Booze</div>
         <h1 class="city-name" id="dormantCityName"></h1>
 
         <!-- "New date coming soon" image — drops into the same visual slot
@@ -484,8 +484,8 @@
         </div>
 
         <p class="dormant-sub">
-          No show on the calendar right now &mdash; but we&rsquo;ll be back. Drop your email and
-          we&rsquo;ll be the first to tell you when the next <span id="dormantCityInline"></span> show is announced.
+          Nothing on the calendar &mdash; yet. Drop your email and we&rsquo;ll be the
+          first to tell you when <span id="dormantCityInline"></span> gets back on the schedule.
         </p>
 
         <div class="notify-card">
@@ -540,7 +540,7 @@
         <div class="footer-col">
           <h4>For Artists</h4>
           <ul>
-            <li><a href="/#shows">Submit Your Work</a></li>
+            <li><a href="/#shows">Claim Your Space</a></li>
             <li><a href="/#faq">Artist FAQ</a></li>
             <li><a href="/#faq">Vendor Info</a></li>
             <li><a href="/#faq">Live Painting</a></li>
@@ -729,8 +729,8 @@
       }
 
       // SEO: update title, description, OG tags
-      const title = `Pancakes & Booze ${show.city || ''} — ${show.date_display || 'Upcoming Show'} | Art Show & Party`;
-      const desc = `${show.city || ''} — ${show.date_display || ''}${show.venue ? ' at ' + show.venue : ''}. Free pancakes, 100+ artists, live DJs, body painting.`;
+      const title = `Pancakes & Booze ${show.city || ''} — ${show.date_display || 'Upcoming Show'} | Art Show`;
+      const desc = `${show.city || ''} — ${show.date_display || ''}${show.venue ? ' at ' + show.venue : ''}. Where culture gets fed. Free pancakes, real artists, vendors, live DJs, body paint.`;
       document.title = title;
       setMeta('description', desc);
       setProp('og:title', title);
