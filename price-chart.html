@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Pricing | Pancakes &amp; Booze</title>
+  <meta name="description" content="Artist pricing for Pancakes & Booze. 2 to 10 pieces. Early Bird and Regular tiers. Zero commission — keep 100% of every sale.">
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Shared tokens — keep in sync with index.html */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --yellow: #e8ff21;
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement bar */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .announcement a { color: var(--black); text-decoration: underline; font-weight: 800; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 40px; filter: invert(1); }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* Page header */
+    .page { padding: 80px 0 100px; }
+    .page-header {
+      text-align: center;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--dark-border);
+      margin-bottom: 48px;
+    }
+    .page-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .page h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      letter-spacing: 1px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .page-lede {
+      color: var(--gray-light);
+      font-size: 1.15rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .page-lede strong { color: var(--white); }
+
+    /* Pricing table */
+    .pricing-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .pricing-card table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .pricing-card thead th {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 18px 16px;
+      text-align: left;
+      background: rgba(255, 45, 123, 0.08);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .pricing-card thead th:nth-child(1) { width: 36%; }
+    .pricing-card thead th:nth-child(2),
+    .pricing-card thead th:nth-child(3) { width: 32%; text-align: right; }
+    .pricing-card tbody td {
+      padding: 16px;
+      border-bottom: 1px solid var(--dark-border);
+      color: var(--gray-light);
+      font-size: 1rem;
+    }
+    .pricing-card tbody tr:last-child td { border-bottom: none; }
+    .pricing-card tbody tr:hover td { background: rgba(255, 45, 123, 0.04); }
+    .pricing-card td.pieces { color: var(--white); font-weight: 600; }
+    .pricing-card td.price { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+    .pricing-card td.eb { color: var(--yellow); }
+
+    .pricing-meta {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .meta-tile {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .meta-tile h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .meta-tile p { color: var(--gray-light); font-size: 0.95rem; }
+    .meta-tile p strong { color: var(--white); }
+
+    /* CTA block */
+    .cta-block {
+      margin-top: 56px;
+      padding: 40px 24px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .cta-block h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: 1px;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+    .cta-block p {
+      color: var(--gray-light);
+      max-width: 520px;
+      margin: 0 auto 24px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--gradient);
+      color: var(--black);
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: transform 0.15s ease;
+    }
+    .cta-button:hover { transform: translateY(-2px); text-decoration: none; }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .page { padding: 48px 0 72px; }
+      .pricing-card thead th { font-size: 0.9rem; padding: 14px 12px; letter-spacing: 1.5px; }
+      .pricing-card tbody td { padding: 14px 12px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    Coming soon to your city &mdash; <a href="/#shows">See all upcoming shows</a>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes &amp; Booze">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="container">
+
+      <header class="page-header">
+        <div class="page-eyebrow">Pancakes &amp; Booze</div>
+        <h1>ARTIST PRICING</h1>
+        <p class="page-lede">
+          Hang up to <strong>10 pieces</strong>. Keep <strong>100% of every sale</strong>.
+          No commissions&hellip;EVER!
+        </p>
+      </header>
+
+      <!--
+        Pricing table — source of truth: Pricing tab in the Event Details Master sheet
+        (https://docs.google.com/spreadsheets/d/17GAA2zrD5kT_esAeOCrXGuaM3kGpatT0f88zraxMgxk/edit?gid=1499746647).
+        When the Pricing tab is wired into the n8n workflow as pricing.json, replace
+        this table with a fetch + render pattern (see shows.json on the homepage).
+        Until then, edit the rows below by hand if Justin updates the sheet.
+      -->
+      <div class="pricing-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Pieces</th>
+              <th>Early Bird</th>
+              <th>Regular</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="pieces">2 pieces</td>  <td class="price eb">$20</td>  <td class="price">$25</td></tr>
+            <tr><td class="pieces">3 pieces</td>  <td class="price eb">$40</td>  <td class="price">$40</td></tr>
+            <tr><td class="pieces">4 pieces</td>  <td class="price eb">$60</td>  <td class="price">$75</td></tr>
+            <tr><td class="pieces">5 pieces</td>  <td class="price eb">$80</td>  <td class="price">$100</td></tr>
+            <tr><td class="pieces">6 pieces</td>  <td class="price eb">$100</td> <td class="price">$125</td></tr>
+            <tr><td class="pieces">7 pieces</td>  <td class="price eb">$120</td> <td class="price">$150</td></tr>
+            <tr><td class="pieces">8 pieces</td>  <td class="price eb">$140</td> <td class="price">$175</td></tr>
+            <tr><td class="pieces">9 pieces</td>  <td class="price eb">$160</td> <td class="price">$200</td></tr>
+            <tr><td class="pieces">10 pieces</td> <td class="price eb">$180</td> <td class="price">$225</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pricing-meta">
+        <div class="meta-tile">
+          <h3>2 piece minimum</h3>
+          <p>Show up with at least <strong>two pieces</strong>. Up to ten max — the wall fits what the wall fits.</p>
+        </div>
+        <div class="meta-tile">
+          <h3>Early Bird ends 1 week out</h3>
+          <p>Early Bird pricing ends 7 days before the event.</p>
+        </div>
+        <div class="meta-tile">
+          <h3>Zero commission</h3>
+          <p>Sell anything &mdash; keep it all! You keep 100%. No house cut, no splits, no fine print.</p>
+        </div>
+      </div>
+
+      <section class="cta-block">
+        <h2>Get Your Work on the Wall.</h2>
+        <p>Pick your city. Lock Early Bird before it closes.</p>
+        <a href="/#exhibit" class="cta-button">Claim Your Space</a>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
