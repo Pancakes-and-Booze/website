@@ -532,6 +532,78 @@
     }
 
     /* ═══════════════════════════════════════════
+       SUPPORT LOCAL ART — scrolling marquee banner
+       Sits between Upcoming Shows and Get Your Work on the Wall.
+       Pure CSS animation — no JS. The track holds two identical copies
+       of the content so the loop is seamless (when the first copy has
+       fully translated off-screen, the second is exactly where the first
+       was, and the keyframes restart from 0 → no visible jump).
+       Pauses on hover so it doesn't fight the reader.
+    ═══════════════════════════════════════════ */
+    .marquee {
+      position: relative;
+      overflow: hidden;
+      background: var(--gradient);
+      padding: 22px 0;
+      border-top: 1px solid rgba(0,0,0,0.15);
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+    .marquee::before,
+    .marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .marquee::before {
+      left: 0;
+      background: linear-gradient(to right, var(--black), transparent);
+      opacity: 0.35;
+    }
+    .marquee::after {
+      right: 0;
+      background: linear-gradient(to left, var(--black), transparent);
+      opacity: 0.35;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 28s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      padding-right: 48px; /* gap between repeats */
+    }
+    .marquee-text {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: 4px;
+      color: var(--black);
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .marquee-star {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: var(--black);
+      margin: 0 32px;
+      transform: translateY(-2px);
+    }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
+    /* ═══════════════════════════════════════════
        EXHIBIT YOUR ART (CTA)
     ═══════════════════════════════════════════ */
     .exhibit {
@@ -1291,7 +1363,7 @@
           <div class="about-features">
             <div class="feature">
               <h4>Free Pancakes</h4>
-              <p>All night. No catch. Just sticky fingers &amp; a full belly.</p>
+              <p>Hot Griddles. Sticky Fingers. All night. No catch!</p>
             </div>
             <div class="feature">
               <h4>Real Artists</h4>
@@ -1358,6 +1430,36 @@
       </div>
     </div>
   </section>
+
+  <!-- ════════════ SUPPORT LOCAL ART — marquee ════════════
+       Scrolling banner that bridges Upcoming Shows → Exhibit CTA. The track
+       holds TWO identical groups so the keyframe (-50% translate) loops
+       seamlessly. If you add/remove a star or word, both groups must match.
+  ════════════ -->
+  <div class="marquee" aria-label="Support Local Art">
+    <div class="marquee-track">
+      <div class="marquee-group" aria-hidden="false">
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+        <span class="marquee-text">Support Local Art</span>
+        <span class="marquee-star">&#9733;</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ════════════ EXHIBIT YOUR ART ════════════ -->
   <section class="exhibit" id="exhibit">
