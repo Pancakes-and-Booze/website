@@ -74,12 +74,14 @@
 /raleigh-parking       /raleigh    301
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 5 — Mexico City bilingual subpaths
-# /mexicocity/tickets, /mexicocity/boletos, /mexicocity/faq, etc.
-# All collapse to /mexicocity (which rewrites to /city below) until the
-# proper bilingual page is built (launch-blocker #4).
+# SECTION 5 — Mexico City bilingual routing
+# /mexicocity        → mexicocity.html (Spanish default, served by Pages clean URL)
+# /mexicocity/en     → mexicocity-en.html (English mirror, rewrite — URL stays clean)
+# /mexicocity/*      → catch-all back to /mexicocity (legacy Squarespace subpaths)
+# Order matters: /en rule MUST sit above the catch-all.
 # ════════════════════════════════════════════════════════════════════════
-/mexicocity/*   /mexicocity   301
+/mexicocity/en  /mexicocity-en.html  200
+/mexicocity/*   /mexicocity          301
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 6 — Core marketing pages → homepage anchors
@@ -97,7 +99,7 @@
 # old inbound links from 404ing. Update these when the new pages ship.
 # ════════════════════════════════════════════════════════════════════════
 /submit        /#exhibit    301
-/price-chart   /#faq        301
+# /price-chart now ships as a real page (price-chart.html) — redirect removed 2026-04-25
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 8 — Store / commerce pages
@@ -110,14 +112,20 @@
 # SECTION 9 — Legacy / dead pages
 # Old marketing experiments, COVID era, internal test pages, etc.
 # Collapse to homepage — no direct equivalent on the new site.
+#
+# Removed 2026-04-24 (will return 404 from Cloudflare):
+#   /howtovideos   — being rebuilt as the Artist Hub; do NOT redirect
+#   /install-1     — duplicate of /install, never should have existed
+#   /voxxy-test    — internal test page
+#   /covid-19      — pandemic-era notice, no longer relevant
+#
+# Kept:
+#   /install       — old install/load-in page; URL stays alive on /
+#   /zombiefashionshow, /payment-example — leftover marketing surfaces
 # ════════════════════════════════════════════════════════════════════════
 /zombiefashionshow  /   301
-/howtovideos        /   301
-/covid-19           /   301
 /install            /   301
-/install-1          /   301
 /payment-example    /   301
-/voxxy-test         /   301
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 10 — Per-city page rewrites (rewrites to /city, which reads the
@@ -148,7 +156,8 @@
 /london         /city  200
 /losangeles     /city  200
 /memphis        /city  200
-/mexicocity     /city  200
+# /mexicocity served directly by Cloudflare Pages clean URL (mexicocity.html).
+# Do NOT route to /city — MX has its own dedicated bilingual page.
 /miami          /city  200
 /milwaukee      /city  200
 /minneapolis    /city  200

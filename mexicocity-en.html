@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pancakes &amp; Booze Mexico City &mdash; September 5, 2026</title>
+  <meta name="description" content="The underground art show hits Mexico City on September 5 at Pinche Bar. Free pancakes, real artists, live DJs. Support local artists while they're still alive.">
+
+  <!-- Bilingual SEO -->
+  <link rel="alternate" hreflang="es-MX" href="https://pancakesandbooze.pages.dev/mexicocity">
+  <link rel="alternate" hreflang="en" href="https://pancakesandbooze.pages.dev/mexicocity/en">
+  <link rel="alternate" hreflang="x-default" href="https://pancakesandbooze.pages.dev/mexicocity">
+
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════
+       Tokens — keep in sync with index.html / city.html / mexicocity.html
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --yellow: #e8ff21;
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container-narrow { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .announcement a { color: var(--black); text-decoration: underline; font-weight: 800; }
+
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 40px; filter: invert(1); }
+    .nav-links { list-style: none; display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--gray-light); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.3px; }
+    .nav-links a:hover { color: var(--white); text-decoration: none; }
+    .lang-toggle {
+      background: transparent;
+      border: 1px solid var(--dark-border);
+      color: var(--gray-light);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--white); text-decoration: none; }
+
+    .hero {
+      position: relative;
+      padding: 80px 0 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 45, 123, 0.15), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      letter-spacing: 4px;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--gray-light);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .hero-sub strong { color: var(--white); }
+
+    .live-date {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .live-venue { font-size: 1.1rem; color: var(--gray-light); margin-bottom: 8px; }
+    .live-address { font-size: 0.95rem; margin-bottom: 8px; }
+    .live-address a {
+      color: var(--gray-light);
+      text-decoration: none;
+      border-bottom: 1px solid var(--dark-border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .live-address a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .live-address a::after { content: ' →'; color: var(--gray); transition: color 0.2s; }
+    .live-address a:hover::after { color: var(--accent); }
+    .live-time {
+      font-size: 0.85rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .show-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: transform 0.15s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); text-decoration: none; }
+    .btn-primary { background: var(--gradient); color: var(--black); }
+    .btn-secondary { background: transparent; border: 1px solid var(--dark-border); color: var(--white); }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    /* Flyer */
+    .flyer-section { padding: 0 0 60px; }
+    .flyer-wrap {
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+    .flyer-wrap a { display: block; cursor: zoom-in; }
+    .flyer-wrap img { width: 100%; height: auto; display: block; transition: opacity 0.2s ease, transform 0.2s ease; }
+    .flyer-wrap a:hover img { opacity: 0.92; transform: scale(1.01); }
+
+    .section { padding: 100px 0; border-top: 1px solid var(--dark-border); }
+    .section-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      letter-spacing: 1px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .section-desc {
+      color: var(--gray-light);
+      font-size: 1.05rem;
+      max-width: 680px;
+      line-height: 1.7;
+    }
+    .section-desc + .section-desc { margin-top: 16px; }
+    .section-desc strong { color: var(--white); }
+
+    .about p {
+      color: var(--gray-light);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .about p strong { color: var(--white); font-weight: 700; }
+
+    /* FAQ */
+    .faq-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .faq-tab {
+      background: transparent;
+      border: 1px solid var(--dark-border);
+      color: var(--gray-light);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .faq-tab.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
+    .faq-tab:hover:not(.active) { color: var(--white); border-color: var(--gray); }
+
+    .faq-group { display: none; }
+    .faq-group.active { display: block; }
+
+    .faq-item { border-bottom: 1px solid var(--dark-border); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      text-align: left;
+      padding: 22px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      font-family: var(--font-body);
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-question::after { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer-inner {
+      padding: 0 0 22px;
+      color: var(--gray-light);
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+    .faq-answer-inner p { margin-bottom: 12px; }
+    .faq-answer-inner p:last-child { margin-bottom: 0; }
+    .faq-answer-inner strong { color: var(--white); font-weight: 700; }
+    .faq-answer-inner ul { margin: 8px 0 12px 22px; }
+    .faq-answer-inner li { margin-bottom: 6px; }
+
+    /* Testimonials */
+    .testimonial {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin-bottom: 18px;
+    }
+    .testimonial-quote {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      line-height: 1.25;
+      color: var(--white);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .testimonial-body { color: var(--gray-light); font-size: 0.97rem; line-height: 1.7; }
+    .testimonial-body p { margin-bottom: 10px; }
+    .testimonial-name {
+      margin-top: 14px;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .big-cta {
+      padding: 100px 0;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(255, 45, 123, 0.18), transparent 60%),
+        var(--black);
+    }
+    .big-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      letter-spacing: 1px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .big-cta p { color: var(--gray-light); max-width: 560px; margin: 0 auto 32px; font-size: 1.05rem; }
+
+    .contact-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .contact-card .email {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      word-break: break-all;
+    }
+    .contact-card .email:hover { color: var(--accent); text-decoration: none; }
+    .contact-card p { color: var(--gray-light); margin-top: 12px; }
+
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .nav-links li:not(.lang-toggle-li) { display: none; }
+      .section { padding: 64px 0; }
+      .hero { padding: 56px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    Pinche Bar &middot; Saturday September 5, 2026 &mdash; <a href="#tickets">Get Tickets</a>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes &amp; Booze">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#exhibit">Exhibit</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li class="lang-toggle-li"><a href="/mexicocity" class="lang-toggle">ES</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Pancakes &amp; Booze</div>
+      <h1>MEXICO CITY</h1>
+      <p class="hero-tagline">UNDERGROUND ART SHOW</p>
+      <p class="hero-sub">
+        A late-night takeover by the <strong>local creators</strong> building what's next.
+        Bring your people for <strong>free pancakes</strong> and art that hits.<br>
+        Support local artists while they're still alive.
+      </p>
+
+      <div id="tickets">
+        <div class="live-date">SATURDAY SEPTEMBER 5</div>
+        <div class="live-venue">Pinche Bar</div>
+        <div class="live-address">
+          <a href="https://maps.google.com/?q=Pinche+Bar+Lago+Iseo+296+Anahuac+Miguel+Hidalgo+CDMX" target="_blank" rel="noopener">
+            Lago Iseo 296, Anáhuac I Secc &middot; Miguel Hidalgo, 11320, CDMX
+          </a>
+        </div>
+        <div class="live-time">8:00 PM &mdash; Midnight &middot; 18+</div>
+
+        <div class="show-actions">
+          <a href="https://shows.pancakesandbooze.com/shows/mexicocity-05-sep-2026" target="_blank" rel="noopener" class="btn btn-primary" id="ticketsBtn">Get Tickets</a>
+          <a href="#exhibit" class="btn btn-secondary">Exhibit Your Art</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flyer renders here only if shows.json has flyer_url for MX -->
+  <section class="flyer-section" id="flyerSection" hidden>
+    <div class="container">
+      <div class="flyer-wrap" id="flyerWrap"></div>
+    </div>
+  </section>
+
+  <!-- ════════════ ABOUT ════════════ -->
+  <section class="section about" id="about">
+    <div class="container-narrow">
+      <div class="section-eyebrow">About</div>
+      <h2>It all started at breakfast&hellip;</h2>
+      <p>Picture this: pancakes sizzling on the griddle, beer flowing, and art covering the walls like the Sistine Chapel itself. Hundreds &mdash; sometimes thousands &mdash; of free spirits crushing unlimited pancakes and losing their minds to live DJs and live body painting.</p>
+      <p>This isn't another stuffy art exhibition for the elite. It's a fully unfiltered take on what an art experience can be. A <strong>safe space where new artists and DJs</strong> can let it all out in a free-rein, no-rules, high-energy room.</p>
+      <p>Join the biggest, wildest emerging-art show that's hit North America in the last decade. We've been serving <strong>FREE PANCAKES for over 15 years</strong> while putting the freshest talent on the wall.</p>
+      <p>Born in Los Angeles in 2009, the show has carried its energy to over <strong>40 cities</strong> across Europe and North America. Now things just got hotter: we're launching editions in <strong>Mexico City</strong> and Bangkok, crossing over <strong>500 editions</strong> in the process.</p>
+    </div>
+  </section>
+
+  <!-- ════════════ EXHIBIT ════════════ -->
+  <section class="section" id="exhibit">
+    <div class="container-narrow">
+      <div class="section-eyebrow">Exhibit Your Art</div>
+      <h2>Claim Your Space.</h2>
+      <p class="section-desc">
+        Hang up to <strong>10 pieces</strong>. Keep <strong>100% of every sale</strong>.
+        No commissions, no filters, no gatekeepers. <strong>The first piece is FREE.</strong>
+      </p>
+      <p class="section-desc">
+        This isn't a gallery. It's a <strong>night</strong> &mdash; hundreds of real people, drink in hand,
+        seeing your work up close. If it lands, it lands. And everything you sell stays with you.
+      </p>
+
+      <div class="show-actions" style="margin-top: 36px;">
+        <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Submission%20%E2%80%94%20CDMX%205%20Sep%202026&amp;body=Hi%20Pancakes%20%26%20Booze%2C%0A%0AI%27d%20like%20to%20exhibit%20my%20work%20at%20the%20Mexico%20City%20edition%20on%20September%205.%0A%0AName%3A%20%0AInstagram%20%2F%20portfolio%3A%20%0AHow%20many%20pieces%20I%27d%20like%20to%20exhibit%20(2%E2%80%9310)%3A%20%0AApproximate%20size%20of%20pieces%3A%20%0AQuestions%20or%20notes%3A%20%0A%0AThanks!" class="btn btn-primary">Apply Now</a>
+        <a href="#faq" class="btn btn-secondary">See FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FAQ ════════════ -->
+  <section class="section" id="faq">
+    <div class="container-narrow">
+      <div class="section-eyebrow">FAQ</div>
+      <h2>What You Need To Know.</h2>
+
+      <div class="faq-tabs" role="tablist">
+        <button class="faq-tab active" data-tab="artists">Artists</button>
+        <button class="faq-tab" data-tab="vendors">Vendors</button>
+        <button class="faq-tab" data-tab="livepaint">Live Painting</button>
+      </div>
+
+      <!-- ARTISTS -->
+      <div class="faq-group active" data-group="artists">
+
+        <div class="faq-item">
+          <button class="faq-question">How do I exhibit my art?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>First decide whether your work fits the <strong>Artist</strong> (wall pieces) or <strong>Vendor</strong> (table) category. Then submit the application.</p>
+            <p>There's no cost to apply. We just need basic info and a link where we can see examples of your work &mdash; site, Instagram, TikTok, Google Drive, whatever you've got.</p>
+            <p>No link? Email photos to <a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a>.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What's the difference between Artist and Vendor?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Two ways to participate:</p>
+            <ul>
+              <li><strong>Artists:</strong> wall-hung pieces (canvases, prints, photography).</li>
+              <li><strong>Vendors:</strong> goods that need a table (jewelry, clothing, sculpture).</li>
+            </ul>
+            <p><strong>Not allowed:</strong> selling prints from tables if they exceed 8 × 11 in (20 × 28 cm). Anything bigger goes on the wall (as an artist) or in a small box on the floor under your work.</p>
+            <p>Got both kinds of work? Submit both applications &mdash; each has its own fee and load-in schedule.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How much does it cost to exhibit as an artist?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p><strong>The first piece is FREE.</strong></p>
+            <p>There's a hanging fee of <strong>$200 MXN per additional piece</strong>. Minimum 2 pieces, maximum 10.</p>
+            <p><strong>WE TAKE NO COMMISSION.</strong> Once you pay your hanging fees, you don't owe us a cent on what you sell.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I pay / reserve my space?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>We'll send a payment link in your acceptance email. Pick how many pieces you want to hang and pay for them.</p>
+            <p><strong>No cash.</strong> Payment details come by email.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">When's the application deadline?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>No fixed deadline. <strong>We accept applications until the room fills.</strong> The earlier you lock your space, the better.</p>
+            <p>The application only needs basic info and prior examples of your work. You can decide which pieces to bring later, when you're ready to pay the hanging fees.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How many pieces can I hang?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Minimum 2, maximum 10.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How much wall space do I get?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Your work hangs salon-style on 8 ft × 4 ft (2.4 m × 1.2 m) panels built for the show. Salon-style means we use every inch of wall from floor to ceiling. Check our Instagram Reels to see the install.</p>
+            <p>Space depends on the size of your pieces and how many you hang. In some cases you'll share the wall with another artist.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What are the size restrictions?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Each piece <strong>must not exceed 36 × 36 in (90 × 90 cm)</strong>.</p>
+            <p>Wall panels are 8 ft × 4 ft. To leave room for title cards, lighting, and cabling, the max size the wall can fit is 36 × 36 in.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Is lighting provided?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes, your work will be lit. Check our Instagram Reels to see how the install looks.</p>
+          </div></div>
+        </div>
+
+      </div>
+
+      <!-- VENDORS -->
+      <div class="faq-group" data-group="vendors">
+
+        <div class="faq-item">
+          <button class="faq-question">How do I apply as a vendor?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>If you sell goods from a table (jewelry, clothing, sculpture, candles, etc.), submit the application and select "Vendor."</p>
+            <p>No cost to apply. Just basic info and a link to what you plan to sell.</p>
+            <p>If you're hanging on the wall (canvases, photography, prints), <strong>this isn't for you</strong> &mdash; check the Artists section.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How much does it cost to vendor?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Vendor fees in CDMX are <strong>$800 MXN</strong>.</p>
+            <p>Submit your application and we'll send the full info.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I pay to reserve my space?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Once accepted, we send you a payment link. <strong>Payment is due as soon as the link arrives</strong> &mdash; wait too long and you risk losing your spot.</p>
+            <p>Vendor spots are limited and in demand, so <strong>WE DO NOT HOLD SPACES until payment is received</strong>.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Are tables and lighting provided?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p><strong>Bring your own table and chairs.</strong> We provide the floor space.</p>
+            <p>Ambient light is on at the venue, but bring your own lighting and extension cords.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How big is my space?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Each Vendor space fits <strong>ONE 6 ft (1.8 m) table</strong>. Allotted space is roughly <strong>8 ft × 5 ft (2.4 m × 1.5 m)</strong>.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What's allowed and what isn't?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p><strong>Allowed:</strong> art, sculpture, crafts, jewelry, clothing, candles, accessories, small prints.</p>
+            <p><strong>Not allowed:</strong> beverages, cigarettes, cannabis products, smoking accessories, food that requires on-site cooking, weapons, or non-art products / advertising.</p>
+            <p>Prints, photos, or original paintings are only allowed at vendor tables if they're under <strong>8 × 11 in (20 × 28 cm)</strong> each.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">When's the deadline?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>No fixed deadline. <strong>We accept applications until vendor spots are gone.</strong></p>
+            <p>Vendor spots fill fast &mdash; they're limited and in demand. Sooner is better.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">When do I show up to set up my table?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Once accepted and paid, you'll get the load-in schedule. Setup is usually <strong>2 hours before the show starts</strong>, but we'll confirm closer to the date.</p>
+            <p>Spaces are first-come, first-served. Be on time.</p>
+          </div></div>
+        </div>
+
+      </div>
+
+      <!-- LIVE PAINTING -->
+      <div class="faq-group" data-group="livepaint">
+
+        <div class="faq-item">
+          <button class="faq-question">How do I become a live painter or body painter?</button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>We welcome any exhibiting artist to live-paint during the show. It's a great way to draw attention to your work and network during the night.</p>
+            <p><strong>No cost to live paint</strong>, but you must be an exhibiting artist who's already been accepted.</p>
+            <p>For body painting, reach out directly at <a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a> with your portfolio.</p>
+          </div></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ TESTIMONIALS ════════════ -->
+  <section class="section" id="testimonials">
+    <div class="container-narrow">
+      <div class="section-eyebrow">Testimonials</div>
+      <h2>The Show Speaks For Itself.</h2>
+      <p class="section-desc">From the artists who've been on the wall.</p>
+
+      <div style="margin-top: 40px;">
+
+        <div class="testimonial">
+          <div class="testimonial-quote">"I've been a full-time artist for 11 years, and Pancakes and Booze has been a huge part of my survival and success."</div>
+          <div class="testimonial-body">
+            <p>Pancakes and Booze was my first big show when I started my art career. I'd never shown my work in front of a crowd that size or stood next to that many talented creatives. The energy was addictive.</p>
+            <p>The show gave me the chance to break into different metro markets, in top-tier venues, and meet artists from across the country. A huge part of my professional network, my following, and my friendships came out of the show.</p>
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-quote">"I've been blown away by the number of people these events bring out."</div>
+          <div class="testimonial-body">
+            <p>I'm so glad I crossed paths with Pancakes &amp; Booze. I've done several editions and every time the turnout has floored me &mdash; which usually translates to real art sales and valuable networking.</p>
+          </div>
+          <div class="testimonial-name">Eddy Lee</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-quote">"The atmosphere is alive and full of energy, with people enjoying incredible art&hellip;"</div>
+          <div class="testimonial-body">
+            <p>Pancakes &amp; Booze holds a special spot for me: it was the first show where I sold not one, but four pieces. Since my first one, I always block off the date to come back whenever they hit Los Angeles.</p>
+            <p>It's the perfect show for new artists testing the waters for the first time. If you're an artist looking for your first showing, this is one you should absolutely do.</p>
+          </div>
+          <div class="testimonial-name">Pierrick Senelaer</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-quote">"Pancakes and Booze is a gem in the art-show circuit."</div>
+          <div class="testimonial-body">
+            <p>Not only does it offer a vibe and a space to show your work, but the networking opportunities and unique experiences it brings are unmatched.</p>
+            <p>PnB stretches like a nervous system across the country. By running shows in major cities, it gives a one-of-a-kind look at what's happening in modern art and culture &mdash; across every age group, ethnicity, and class.</p>
+          </div>
+          <div class="testimonial-name">JesseJFR</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-quote">"This was my first art show and I've never felt more love!"</div>
+          <div class="testimonial-body">
+            <p>Everyone there was so talented! I learned so much about myself and how I see my own art across the whole experience. If you've never been to a Pancakes &amp; Booze show, trust me when I say you won't regret it.</p>
+          </div>
+          <div class="testimonial-name">Nailah Carew &middot; Afro The Art Babe</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ BIG CTA ════════════ -->
+  <section class="big-cta">
+    <div class="container-narrow">
+      <h2>September 5 &middot; CDMX.</h2>
+      <p>Lock your ticket. Lock your space. <strong>Where culture gets fed.</strong></p>
+      <div class="show-actions" style="justify-content: center;">
+        <a href="https://shows.pancakesandbooze.com/shows/mexicocity-05-sep-2026" target="_blank" rel="noopener" class="btn btn-primary" id="ticketsBtn2">Get Tickets</a>
+        <a href="#exhibit" class="btn btn-secondary">Exhibit Your Art</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTACT ════════════ -->
+  <section class="section" id="contact">
+    <div class="container-narrow">
+      <div class="section-eyebrow">Contact</div>
+      <h2>Questions?</h2>
+      <p class="section-desc">Drop us a line. We answer fast.</p>
+
+      <div class="contact-card">
+        <a href="mailto:info@pancakesandbooze.com" class="email">info@pancakesandbooze.com</a>
+        <p>Instagram: <a href="https://instagram.com/pancakesandbooze" target="_blank" rel="noopener">@pancakesandbooze</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/mexicocity">Español</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ tab + accordion (mirrors mexicocity.html)
+    document.querySelectorAll('.faq-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        document.querySelectorAll('.faq-tab').forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.faq-group').forEach(g => {
+          g.classList.toggle('active', g.dataset.group === target);
+        });
+        document.querySelectorAll('.faq-item.active').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+      });
+    });
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isActive = item.classList.contains('active');
+
+        document.querySelectorAll('.faq-item.active').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Hydrate ticket buttons + flyer from shows.json (when MX row is added)
+    (async () => {
+      try {
+        const r = await fetch('/shows.json', { cache: 'no-store' });
+        if (!r.ok) return;
+        const data = await r.json();
+        const mx = (data.shows || []).find(s => s.slug === 'mexicocity');
+        if (mx && mx.ticket_link) {
+          document.querySelectorAll('#ticketsBtn, #ticketsBtn2').forEach(b => {
+            b.href = mx.ticket_link;
+            b.target = '_blank';
+            b.rel = 'noopener';
+          });
+        }
+        if (mx && mx.flyer_url) {
+          const wrap = document.getElementById('flyerWrap');
+          const sec = document.getElementById('flyerSection');
+          if (wrap && sec) {
+            wrap.innerHTML =
+              '<a href="' + mx.flyer_url + '" target="_blank" rel="noopener" title="View full size">' +
+              '<img src="' + mx.flyer_url + '" alt="Pancakes & Booze Mexico City — flyer">' +
+              '</a>';
+            sec.hidden = false;
+          }
+        }
+      } catch (e) { /* offline / shows.json missing — leave fallback href */ }
+    })();
+  </script>
+
+</body>
+</html>

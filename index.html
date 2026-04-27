@@ -719,16 +719,52 @@
     }
 
     /* ═══════════════════════════════════════════
-       FAQ ACCORDION
+       FAQ ACCORDION (tabbed)
+       Three pill tabs (Artists / Vendors / Live Painting). Each tab swaps
+       which .faq-group is visible. Inside a group, FAQ items are a stacked
+       single-column accordion (no more two-column .faq-grid).
+       Content can be hardcoded (current state) or fetched from /faq.json
+       (when n8n publishes the Bible's FAQ tab — see script at bottom).
     ═══════════════════════════════════════════ */
     .faq { background: var(--black); }
 
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 48px;
+    .faq-inner {
+      max-width: 820px;
+      margin: 48px auto 0;
     }
+
+    .faq-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .faq-tab {
+      background: transparent;
+      border: 1px solid var(--dark-border);
+      color: var(--gray-light);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .faq-tab.active {
+      background: var(--accent);
+      color: var(--black);
+      border-color: var(--accent);
+    }
+    .faq-tab:hover:not(.active) {
+      color: var(--white);
+      border-color: var(--gray);
+    }
+
+    .faq-group { display: none; }
+    .faq-group.active { display: block; }
 
     .faq-item {
       border-bottom: 1px solid var(--dark-border);
@@ -739,13 +775,14 @@
       background: none;
       color: var(--white);
       text-align: left;
-      padding: 20px 0;
+      padding: 22px 0;
       font-size: 1rem;
       font-weight: 600;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
+      cursor: pointer;
     }
     .faq-question::after {
       content: '+';
@@ -761,14 +798,23 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.35s ease;
     }
-    .faq-answer p {
-      padding: 0 0 20px;
+    .faq-answer-inner {
+      padding: 0 0 22px;
       color: var(--gray-light);
       line-height: 1.7;
       font-size: 0.95rem;
     }
+    .faq-answer-inner p { margin-bottom: 12px; }
+    .faq-answer-inner p:last-child { margin-bottom: 0; }
+    .faq-answer-inner ul {
+      margin: 8px 0 12px 20px;
+      color: var(--gray-light);
+    }
+    .faq-answer-inner li { margin-bottom: 6px; }
+    .faq-answer-inner strong { color: var(--white); font-weight: 700; }
+    .faq-answer-inner a { color: var(--accent); }
 
     /* ═══════════════════════════════════════════
        BIG CTA BANNER
@@ -929,7 +975,6 @@
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-image img { height: 350px; }
       .exhibit-inner { grid-template-columns: 1fr; }
-      .faq-grid { grid-template-columns: 1fr; gap: 0; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -1480,57 +1525,212 @@
     </div>
   </section>
 
-  <!-- ════════════ FAQ ════════════ -->
+  <!-- ════════════ FAQ ════════════
+       Tabbed (Artists / Vendors / Live Painting), stacked accordion within
+       each tab. Hardcoded content acts as the FALLBACK; if /faq.json exists
+       at request time, the script at the bottom of this file overrides every
+       group with the data from the Bible's FAQ tab (Live / Section / Question
+       / Answer). The two stay in shape so n8n can swap content without code
+       changes — just toggle Live, edit text in the sheet, and re-publish.
+  ════════════ -->
   <section class="faq" id="faq">
     <div class="container">
       <div style="text-align: center; margin-bottom: 20px;">
         <p class="section-label">Questions?</p>
         <h2 class="section-title">Frequently Asked</h2>
       </div>
-      <div class="faq-grid">
-        <div>
+
+      <div class="faq-inner">
+        <div class="faq-tabs" role="tablist">
+          <button class="faq-tab active" data-tab="artists">Artists</button>
+          <button class="faq-tab" data-tab="vendors">Vendors</button>
+          <button class="faq-tab" data-tab="livepaint">Live Painting</button>
+        </div>
+
+        <!-- ARTISTS -->
+        <div class="faq-group active" data-group="artists">
+
           <div class="faq-item">
-            <button class="faq-question">How do I exhibit my artwork?</button>
-            <div class="faq-answer"><p>Submit your application on our site — no fee required. Just give us some basic info and a link to your work. If you don't have a website, email photos to info@pancakesandbooze.com. We accept artists until space fills up, so earlier is better.</p></div>
+            <button class="faq-question">How do I exhibit my art?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>First decide whether your work fits the <strong>Artist</strong> (wall pieces) or <strong>Vendor</strong> (table) category. Then submit the application.</p>
+              <p>There's no cost to apply. We just need basic info and a link where we can see examples of your work &mdash; site, Instagram, TikTok, Google Drive, whatever you've got.</p>
+              <p>No link? Email photos to <a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a>.</p>
+            </div></div>
           </div>
+
           <div class="faq-item">
-            <button class="faq-question">How much does it cost to exhibit?</button>
-            <div class="faq-answer"><p>One flat fee (typically $20, paid at registration) covers up to two pieces. Additional pieces are $20 each. Zero commissions on anything you sell &mdash; you keep 100% of every sale.</p></div>
+            <button class="faq-question">What's the difference between Artist and Vendor?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Two ways to participate:</p>
+              <ul>
+                <li><strong>Artists:</strong> wall-hung pieces (canvases, prints, photography).</li>
+                <li><strong>Vendors:</strong> goods that need a table (jewelry, clothing, sculpture).</li>
+              </ul>
+              <p><strong>Not allowed:</strong> selling prints from tables if they exceed 8&times;11 in. Anything bigger goes on the wall (as an artist) or in a small box on the floor under your work.</p>
+              <p>Got both kinds of work? Submit both applications &mdash; each has its own fee and load-in schedule.</p>
+            </div></div>
           </div>
+
           <div class="faq-item">
-            <button class="faq-question">What's the difference between Artists and Vendors?</button>
-            <div class="faq-answer"><p>Artists display hangable work (canvas, prints, etc.) on gallery walls. Vendors sell from tables &mdash; think jewelry, trinkets, stickers, zines, apparel, prints, and all kinds of underground, vibey stuff. You can apply as both if you've got both types of work.</p></div>
+            <button class="faq-question">How much does it cost to exhibit as an artist?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>One flat hanging fee per piece, paid at registration. Pricing varies by city &mdash; see the <a href="/price-chart">full price chart</a>.</p>
+              <p><strong>WE TAKE NO COMMISSION.</strong> Once you've covered your hanging fees, you keep <strong>100% of every sale</strong>.</p>
+            </div></div>
           </div>
+
           <div class="faq-item">
-            <button class="faq-question">How many pieces can I show?</button>
-            <div class="faq-answer"><p>Minimum 3, maximum 10. Each piece can't exceed 3x3 feet (36x36 inches). Wall panels are 8x4 feet and displayed salon-style from floor to ceiling.</p></div>
+            <button class="faq-question">When's the application deadline?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>No fixed deadline. <strong>We accept applications until the room fills.</strong> The earlier you lock your space, the better.</p>
+              <p>The application only needs basic info and prior examples of your work. You can decide which pieces to bring later, when you're ready to pay the hanging fees.</p>
+            </div></div>
           </div>
+
+          <div class="faq-item">
+            <button class="faq-question">How many pieces can I hang?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Minimum 2, maximum 10.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">How much wall space do I get?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Your work hangs salon-style on 8&times;4 ft panels built for the show. Salon-style means we use every inch of wall from floor to ceiling. Check our Instagram Reels to see the install.</p>
+              <p>Space depends on the size of your pieces and how many you hang. In some cases you'll share the wall with another artist.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">What are the size restrictions?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Each piece <strong>must not exceed 36&times;36 in (3&times;3 ft)</strong>.</p>
+              <p>Wall panels are 8&times;4 ft. To leave room for title cards, lighting, and cabling, the max size the wall can fit is 36&times;36 in.</p>
+            </div></div>
+          </div>
+
           <div class="faq-item">
             <button class="faq-question">Can I sell prints and small items?</button>
-            <div class="faq-answer"><p>Yes — place prints, stickers, pins, and small items in bins on the floor beneath your displayed work. No tables in the gallery area though — those are reserved for vendors.</p></div>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes &mdash; place prints, stickers, pins, and small items in bins on the floor beneath your displayed work. No tables in the gallery area though &mdash; those are reserved for vendors.</p>
+            </div></div>
           </div>
-        </div>
-        <div>
-          <div class="faq-item">
-            <button class="faq-question">What about vendor tables?</button>
-            <div class="faq-answer"><p>Vendor fees range from $75–$150 depending on the city. You bring your own table and chairs. Each space fits a 6-foot table in roughly an 8x5-foot area. Spaces sell fast — apply early.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">Can I do live painting?</button>
-            <div class="faq-answer"><p>Yes — you just need to be an accepted, exhibiting artist. No extra fee. Bring an easel, a chair, and a drop cloth. Your body paint model gets in free.</p></div>
-          </div>
+
           <div class="faq-item">
             <button class="faq-question">When do I set up and take down?</button>
-            <div class="faq-answer"><p>Installation is typically day-of between 1–5 PM. Artwork must be removed immediately after the show ends — no exceptions. Exact times come in your pre-event email.</p></div>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Installation is typically day-of between 1&ndash;5 PM. Artwork must be removed immediately after the show ends &mdash; no exceptions. Exact times come in your pre-event email.</p>
+            </div></div>
           </div>
+
           <div class="faq-item">
             <button class="faq-question">Is lighting and hanging gear provided?</button>
-            <div class="faq-answer"><p>Yes to both. Gallery walls and lighting are provided, along with hanging tools (screws, screw guns). Wire your pieces if you can, but stretched canvas works without it. No hammers or nails allowed.</p></div>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes to both. Gallery walls and lighting are provided, along with hanging tools (screws, screw guns). Wire your pieces if you can, but stretched canvas works without it. No hammers or nails allowed.</p>
+            </div></div>
           </div>
+
           <div class="faq-item">
             <button class="faq-question">Do exhibiting artists get free entry?</button>
-            <div class="faq-answer"><p>Yes — you're on the guest list. Everyone else (including assistants) pays the cover. We offer discounted pre-sale tickets up to a week before, so tell your crew to grab those.</p></div>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes &mdash; you're on the guest list. Everyone else (including assistants) pays the cover. We offer discounted pre-sale tickets up to a week before, so tell your crew to grab those.</p>
+            </div></div>
           </div>
+
+        </div>
+
+        <!-- VENDORS -->
+        <div class="faq-group" data-group="vendors">
+
+          <div class="faq-item">
+            <button class="faq-question">How do I apply as a vendor?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>If you sell goods from a table (jewelry, clothing, sculpture, candles, etc.), submit the application and select "Vendor."</p>
+              <p>No cost to apply. Just basic info and a link to what you plan to sell.</p>
+              <p>If you're hanging on the wall (canvases, photography, prints), <strong>this isn't for you</strong> &mdash; check the Artists tab.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">How much does it cost to vendor?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Vendor fees vary by city &mdash; typically <strong>$75&ndash;$150</strong>. See the <a href="/price-chart">full price chart</a> for your market.</p>
+              <p>Submit your application and we'll send the full info.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">How do I pay to reserve my space?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Once accepted, we send you a payment link. <strong>Payment is due as soon as the link arrives</strong> &mdash; wait too long and you risk losing your spot.</p>
+              <p>Vendor spots are limited and in demand, so <strong>WE DO NOT HOLD SPACES until payment is received</strong>.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">Are tables and lighting provided?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p><strong>Bring your own table and chairs.</strong> We provide the floor space.</p>
+              <p>Ambient light is on at the venue, but bring your own lighting and extension cords.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">How big is my space?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Each Vendor space fits <strong>ONE 6 ft table</strong>. Allotted space is roughly <strong>8&times;5 ft</strong>.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">What's allowed and what isn't?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p><strong>Allowed:</strong> art, sculpture, crafts, jewelry, clothing, candles, accessories, small prints.</p>
+              <p><strong>Not allowed:</strong> beverages, cigarettes, cannabis products, smoking accessories, food that requires on-site cooking, weapons, or non-art products / advertising.</p>
+              <p>Prints, photos, or original paintings are only allowed at vendor tables if they're under <strong>8&times;11 in</strong> each.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">When's the deadline?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>No fixed deadline. <strong>We accept applications until vendor spots are gone.</strong></p>
+              <p>Vendor spots fill fast &mdash; they're limited and in demand. Sooner is better.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">When do I show up to set up my table?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Once accepted and paid, you'll get the load-in schedule. Setup is usually <strong>2 hours before the show starts</strong>, but we'll confirm closer to the date.</p>
+              <p>Spaces are first-come, first-served. Be on time.</p>
+            </div></div>
+          </div>
+
+        </div>
+
+        <!-- LIVE PAINTING -->
+        <div class="faq-group" data-group="livepaint">
+
+          <div class="faq-item">
+            <button class="faq-question">How do I become a live painter or body painter?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>We welcome any exhibiting artist to live-paint during the show. It's a great way to draw attention to your work and network during the night.</p>
+              <p><strong>No cost to live paint</strong>, but you must be an exhibiting artist who's already been accepted.</p>
+              <p>For body painting, reach out directly at <a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a> with your portfolio.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">Do I need to bring my own gear?</button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes &mdash; bring an <strong>easel, a chair, and a drop cloth</strong>. We'll give you a corner of the gallery to work from.</p>
+              <p>If you're body painting, your model gets in free.</p>
+            </div></div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1652,26 +1852,124 @@
     window.addEventListener('hashchange', handleContactHash);
     window.addEventListener('load', handleContactHash);
 
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const answer = item.querySelector('.faq-answer');
-        const isActive = item.classList.contains('active');
+    // ════════════ FAQ ════════════
+    // Two layers:
+    //   1. Tab switching (Artists / Vendors / Live Painting) — swap which
+    //      .faq-group is .active, close any open accordion item.
+    //   2. Accordion within a tab — single-open behavior, smooth max-height.
+    // The bindFaqInteractions() function is called once at page load (for
+    // the hardcoded fallback content) and again after /faq.json hydration
+    // re-renders the groups, so events stay attached to the new buttons.
+    function bindFaqInteractions() {
+      document.querySelectorAll('.faq-tab').forEach(btn => {
+        btn.onclick = () => {
+          const target = btn.dataset.tab;
+          document.querySelectorAll('.faq-tab').forEach(b => b.classList.toggle('active', b === btn));
+          document.querySelectorAll('.faq-group').forEach(g => {
+            g.classList.toggle('active', g.dataset.group === target);
+          });
+          // Close any open accordion items when switching tabs so the
+          // new tab opens clean (otherwise an offscreen open item leaves
+          // a phantom maxHeight on its panel).
+          document.querySelectorAll('.faq-item.active').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-answer').style.maxHeight = null;
+          });
+        };
+      });
 
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(i => {
-          i.classList.remove('active');
-          i.querySelector('.faq-answer').style.maxHeight = null;
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.onclick = () => {
+          const item = btn.parentElement;
+          const answer = item.querySelector('.faq-answer');
+          const isActive = item.classList.contains('active');
+
+          // Close all (single-open behavior across all groups)
+          document.querySelectorAll('.faq-item.active').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-answer').style.maxHeight = null;
+          });
+
+          if (!isActive) {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        };
+      });
+    }
+    bindFaqInteractions();
+
+    // ════════════ FAQ DATA HYDRATION ════════════
+    // If /faq.json exists, replace the hardcoded fallback with content from
+    // the Bible's FAQ tab. n8n is expected to publish a JSON shaped like:
+    //   { "items": [
+    //       { "live": true, "section": "Artists",       "question": "...", "answer": "<p>...</p>" },
+    //       { "live": true, "section": "Vendors",       "question": "...", "answer": "<p>...</p>" },
+    //       { "live": true, "section": "Live Painting", "question": "...", "answer": "<p>...</p>" }
+    //   ] }
+    // Section maps:  Artists → artists, Vendors → vendors, Live Painting → livepaint.
+    // Order in the sheet drives display order. Rows with live=false are skipped.
+    // If the fetch fails (404, offline, JSON malformed), the hardcoded HTML
+    // above remains visible — failsafe.
+    (async () => {
+      try {
+        const r = await fetch('/faq.json', { cache: 'no-store' });
+        if (!r.ok) return;
+        const data = await r.json();
+        const items = (data.items || []).filter(it => it && it.live !== false && it.question && it.answer);
+        if (!items.length) return;
+
+        const sectionToGroup = {
+          'artists': 'artists',
+          'artist': 'artists',
+          'vendors': 'vendors',
+          'vendor': 'vendors',
+          'live painting': 'livepaint',
+          'livepaint': 'livepaint',
+          'live painters': 'livepaint',
+          'live performance': 'livepaint'
+        };
+
+        // Build per-group HTML
+        const buckets = { artists: [], vendors: [], livepaint: [] };
+        items.forEach(it => {
+          const key = sectionToGroup[String(it.section || '').trim().toLowerCase()];
+          if (!key) return;
+          // Answer comes from the sheet — wrap in <p> only if it doesn't
+          // already start with a block-level tag (so writers can paste
+          // either plain text or HTML and have both render correctly).
+          const ans = /^<(p|ul|ol|div|h\d)/i.test(String(it.answer).trim())
+            ? it.answer
+            : '<p>' + it.answer + '</p>';
+          buckets[key].push(
+            '<div class="faq-item">' +
+              '<button class="faq-question">' + escapeHtml(it.question) + '</button>' +
+              '<div class="faq-answer"><div class="faq-answer-inner">' + ans + '</div></div>' +
+            '</div>'
+          );
         });
 
-        // Open clicked (if it wasn't already open)
-        if (!isActive) {
-          item.classList.add('active');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
-      });
-    });
+        // Replace innerHTML of each group only if the sheet has rows for it
+        // (otherwise leave the hardcoded fallback so we never end up with
+        // an empty tab from a half-populated sheet).
+        Object.keys(buckets).forEach(k => {
+          if (!buckets[k].length) return;
+          const group = document.querySelector('.faq-group[data-group="' + k + '"]');
+          if (group) group.innerHTML = buckets[k].join('\n');
+        });
+
+        // Re-bind because we replaced the DOM nodes
+        bindFaqInteractions();
+      } catch (e) {
+        // /faq.json not deployed yet, or network blocked — fallback stays.
+      }
+    })();
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+    }
 
     // Scroll animations
     const observer = new IntersectionObserver((entries) => {
