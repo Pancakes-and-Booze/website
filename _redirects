@@ -76,12 +76,21 @@
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 5 — Mexico City bilingual routing
 # /mexicocity        → mexicocity.html (Spanish default, served by Pages clean URL)
-# /mexicocity/en     → mexicocity-en.html (English mirror, rewrite — URL stays clean)
+# /mexicocity/en     → mexicocity-en (English mirror, rewrite — URL stays clean)
 # /mexicocity/*      → catch-all back to /mexicocity (legacy Squarespace subpaths)
+#
+# IMPORTANT: destination is /mexicocity-en (NO .html extension) per the
+# Cloudflare Pages gotcha at the top of this file — including .html in the
+# destination triggers Pages' auto-301 to the extensionless version, which
+# bounces the user out of the rewrite (URL flips from /mexicocity/en to
+# /mexicocity-en, EN nav button appears broken). Pages still resolves
+# /mexicocity-en → mexicocity-en.html via pretty-URL lookup, so the actual
+# file is served either way.
+#
 # Order matters: /en rule MUST sit above the catch-all.
 # ════════════════════════════════════════════════════════════════════════
-/mexicocity/en  /mexicocity-en.html  200
-/mexicocity/*   /mexicocity          301
+/mexicocity/en  /mexicocity-en  200
+/mexicocity/*   /mexicocity     301
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 6 — Core marketing pages → homepage anchors
