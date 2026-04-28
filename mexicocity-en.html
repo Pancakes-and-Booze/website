@@ -807,6 +807,39 @@
         }
       } catch (e) { /* offline / shows.json missing — leave fallback href */ }
     })();
+
+    // ═══════════════════════════════════════════
+    // SOFT LANGUAGE NUDGE — DESIGN NOTE (mirrors mexicocity.html)
+    // ───────────────────────────────────────────
+    // English at /mexicocity/en is opt-in (user clicked EN, or geo/marketing
+    // sent them here). If the browser actually skews Spanish — e.g. they
+    // landed via a translated link or social share — we surface a small
+    // dismissable nudge offering /mexicocity instead. No hard auto-redirect:
+    // same UX/SEO reasoning as the Spanish page.
+    // ═══════════════════════════════════════════
+    (() => {
+      try {
+        if (sessionStorage.getItem('mx-es-nudge-dismissed') === '1') return;
+      } catch (e) { /* private browsing or storage disabled — show nudge */ }
+
+      const langs = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || ''];
+      const looksSpanish = langs.some(l => String(l).toLowerCase().startsWith('es'));
+      if (!looksSpanish) return;
+
+      const note = document.createElement('div');
+      note.style.cssText = 'position:fixed;bottom:18px;right:18px;background:var(--dark-card);border:1px solid var(--accent);border-radius:12px;padding:14px 18px 14px 16px;font-size:0.9rem;color:var(--white);z-index:2000;max-width:300px;box-shadow:0 8px 24px rgba(0,0,0,0.4);font-family:var(--font-body);';
+      note.innerHTML =
+        '<button aria-label="Cerrar" style="background:none;border:none;color:var(--gray);font-size:1.4rem;cursor:pointer;position:absolute;top:6px;right:10px;line-height:1;padding:0;">&times;</button>' +
+        '<strong style="display:block;margin-bottom:6px;color:var(--white);padding-right:18px;">&iquest;Prefieres espa&ntilde;ol?</strong>' +
+        '<a href="/mexicocity" style="color:var(--accent);font-weight:700;text-decoration:none;">Ver esta p&aacute;gina en espa&ntilde;ol &rarr;</a>';
+      note.querySelector('button').addEventListener('click', () => {
+        try { sessionStorage.setItem('mx-es-nudge-dismissed', '1'); } catch (e) {}
+        note.remove();
+      });
+      document.body.appendChild(note);
+    })();
   </script>
 
 </body>

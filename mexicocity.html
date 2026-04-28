@@ -6,9 +6,9 @@
   <title>Pancakes &amp; Booze Ciudad de México &mdash; 5 de Septiembre 2026</title>
   <meta name="description" content="El show de arte underground llega a la Ciudad de México el 5 de septiembre en Pinche Bar. Pancakes gratis, artistas reales, DJs en vivo. Apoya a los artistas locales con vida.">
 
-  <!-- Bilingual SEO — EN alternate commented out until /mexicocity/en is built -->
+  <!-- Bilingual SEO — Spanish is the canonical default for /mexicocity. -->
   <link rel="alternate" hreflang="es-MX" href="https://pancakesandbooze.pages.dev/mexicocity">
-  <!-- <link rel="alternate" hreflang="en" href="https://pancakesandbooze.pages.dev/mexicocity/en"> -->
+  <link rel="alternate" hreflang="en" href="https://pancakesandbooze.pages.dev/mexicocity/en">
   <link rel="alternate" hreflang="x-default" href="https://pancakesandbooze.pages.dev/mexicocity">
 
   <link rel="icon" type="image/png" href="/logo.png">
@@ -506,8 +506,7 @@
         <li><a href="#exhibir">Exhibir</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#testimonios">Testimonios</a></li>
-        <!-- EN toggle hidden until /mexicocity/en page is built. Uncomment when ready. -->
-        <!-- <li class="lang-toggle-li"><a href="/mexicocity/en" class="lang-toggle">EN</a></li> -->
+        <li class="lang-toggle-li"><a href="/mexicocity/en" class="lang-toggle">EN</a></li>
       </ul>
     </div>
   </nav>
@@ -852,8 +851,7 @@
       <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. Todos los derechos reservados.</p>
       <div class="footer-links">
         <a href="/">Inicio</a>
-        <!-- English link hidden until /mexicocity/en is built -->
-        <!-- <a href="/mexicocity/en">English</a> -->
+        <a href="/mexicocity/en">English</a>
         <a href="/privacy">Privacidad</a>
         <a href="/terms">Términos</a>
       </div>
@@ -930,23 +928,52 @@
     })();
 
     // ═══════════════════════════════════════════
-    // Soft language nudge: if browser is clearly NOT Spanish, surface a small
-    // "View in English" notice. We DO NOT auto-redirect — Spanish stays the
-    // default landing per Justin's call.
+    // SOFT LANGUAGE NUDGE — DESIGN NOTE
+    // ───────────────────────────────────────────
+    // Spanish is the canonical default at /mexicocity (per Justin: most MX
+    // traffic is Spanish-speaking). We DO NOT hard-redirect English browsers.
+    // Reasons:
+    //   1. Hostile UX — bounces users who explicitly chose Spanish (e.g.,
+    //      shared link, Google search hit on the Spanish page).
+    //   2. Breaks the back button on first visit.
+    //   3. Bad for SEO if user-agent sniffing is sloppy.
+    //   4. The EN/ES nav toggle + footer links handle conscious switching.
+    //
+    // Instead, if navigator.languages clearly skews English, we show a small
+    // dismissable nudge in the bottom-right pointing to /mexicocity/en. The
+    // dismissal is remembered for the session (sessionStorage), so a reader
+    // who rejects it once doesn't get pestered while they browse.
+    //
+    // Cloudflare Pages Functions could do server-side geo routing on
+    // request.cf.country, but that's overkill here and trades flexibility
+    // for marginal benefit. Revisit only if EN traffic on /mexicocity is
+    // measurably high in analytics.
     // ═══════════════════════════════════════════
-    /* Language nudge disabled until /mexicocity/en is built — uncomment when ready.
     (() => {
-      const lang = (navigator.language || '').toLowerCase();
-      // If the browser clearly isn't Spanish-speaking, gently surface English
-      if (lang && !lang.startsWith('es')) {
-        const note = document.createElement('div');
-        note.style.cssText = 'position:fixed;bottom:18px;right:18px;background:var(--dark-card);border:1px solid var(--accent);border-radius:12px;padding:14px 18px;font-size:0.9rem;color:var(--white);z-index:2000;max-width:280px;box-shadow:0 8px 24px rgba(0,0,0,0.4)';
-        note.innerHTML = '<strong style="display:block;margin-bottom:4px;">Looks like you prefer English?</strong><a href="/mexicocity/en" style="color:var(--accent);font-weight:700;">View this page in English &rarr;</a> <button aria-label="Dismiss" style="background:none;border:none;color:var(--gray);font-size:1.2rem;cursor:pointer;float:right;margin-top:-2px;">&times;</button>';
-        note.querySelector('button').addEventListener('click', () => note.remove());
-        document.body.appendChild(note);
-      }
+      try {
+        if (sessionStorage.getItem('mx-en-nudge-dismissed') === '1') return;
+      } catch (e) { /* private browsing or storage disabled — show nudge */ }
+
+      // Check both navigator.language and navigator.languages (more reliable
+      // for users with multiple preferred languages set).
+      const langs = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || ''];
+      const looksSpanish = langs.some(l => String(l).toLowerCase().startsWith('es'));
+      if (looksSpanish) return;
+
+      const note = document.createElement('div');
+      note.style.cssText = 'position:fixed;bottom:18px;right:18px;background:var(--dark-card);border:1px solid var(--accent);border-radius:12px;padding:14px 18px 14px 16px;font-size:0.9rem;color:var(--white);z-index:2000;max-width:300px;box-shadow:0 8px 24px rgba(0,0,0,0.4);font-family:var(--font-body);';
+      note.innerHTML =
+        '<button aria-label="Dismiss" style="background:none;border:none;color:var(--gray);font-size:1.4rem;cursor:pointer;position:absolute;top:6px;right:10px;line-height:1;padding:0;">&times;</button>' +
+        '<strong style="display:block;margin-bottom:6px;color:var(--white);padding-right:18px;">Prefer English?</strong>' +
+        '<a href="/mexicocity/en" style="color:var(--accent);font-weight:700;text-decoration:none;">View this page in English &rarr;</a>';
+      note.querySelector('button').addEventListener('click', () => {
+        try { sessionStorage.setItem('mx-en-nudge-dismissed', '1'); } catch (e) {}
+        note.remove();
+      });
+      document.body.appendChild(note);
     })();
-    */
   </script>
 
 </body>
