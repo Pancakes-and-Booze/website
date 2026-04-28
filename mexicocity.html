@@ -103,20 +103,37 @@
       letter-spacing: 0.5px;
     }
     .nav-cta:hover { transform: translateY(-1px); }
-    .lang-toggle {
-      background: transparent;
+    /* Language switcher — segmented two-state pill (ES | EN). Both languages
+       always visible. Current language is filled (accent), the other is the
+       link. Pattern is unambiguous as a language picker — not just a stray
+       pill — so users never lose the way back. */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
       border: 1px solid var(--dark-border);
-      color: var(--gray-light);
-      padding: 7px 14px;
       border-radius: 999px;
+      padding: 3px;
+      gap: 0;
+    }
+    .lang-switch a,
+    .lang-switch span {
+      padding: 5px 12px;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
+      border-radius: 999px;
+      color: var(--gray-light);
+      text-decoration: none;
+      line-height: 1;
+      transition: color 0.2s, background 0.2s;
     }
-    .lang-toggle:hover { border-color: var(--accent); color: var(--white); text-decoration: none; }
+    .lang-switch a:hover { color: var(--white); text-decoration: none; }
+    .lang-switch .lang-active {
+      background: var(--accent);
+      color: var(--black);
+      cursor: default;
+    }
 
     /* Hero */
     .hero {
@@ -506,7 +523,12 @@
         <li><a href="#exhibir">Exhibir</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#testimonios">Testimonios</a></li>
-        <li class="lang-toggle-li"><a href="/mexicocity/en" class="lang-toggle">EN</a></li>
+        <li class="lang-toggle-li">
+          <div class="lang-switch" role="group" aria-label="Idioma / Language">
+            <span class="lang-active" aria-current="true">ES</span>
+            <a href="/mexicocity/en" hreflang="en" aria-label="View in English">EN</a>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>
