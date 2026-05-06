@@ -755,6 +755,16 @@
       color: var(--accent);
       font-size: 0.8rem;
     }
+    .test-handle a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .test-handle a:hover {
+      border-bottom-color: var(--accent);
+      text-decoration: none;
+    }
 
     /* ═══════════════════════════════════════════
        CITIES GRID
@@ -2097,30 +2107,46 @@
 
     // ════════════ TESTIMONIAL ROTATOR ════════════
     // Add more testimonials to this array and the cards auto-rotate every 7s.
-    // Keep each `text` short enough to read in ~5 seconds.
+    // Keep each `text` short enough to read in ~5 seconds (~40 words max).
     //
-    //   text    — the quote (without quotation marks; CSS adds the stylized one)
-    //   author  — speaker's name or role
-    //   handle  — social handle, URL, or tagline shown in accent color
+    //   text    — the quote (no quotation marks — CSS adds the stylized one)
+    //   author  — speaker's full name (real attribution required, no fakes)
+    //   handle  — social handle / URL display text shown under the name
+    //   url     — optional link target for the handle. If present, handle
+    //             renders as a clickable link opening in a new tab.
     //
     // With 3 entries = static display (no rotation). With 4+ entries = rotates.
     const TESTIMONIALS = [
       {
-        text: "I've been a full-time artist for over a decade. Pancakes and Booze has been a massive part of my survival and success. The connections you make here are career-changing.",
-        author: "Full-Time Artist",
-        handle: "11 years exhibiting"
+        text: "Pancakes and Booze was my first big show when I began my art career. I've been a full-time artist for 11 years now, and Pancakes and Booze has been a huge part of my survival and success.",
+        author: "Eddy Lee",
+        handle: "@eddyleeart",
+        url: "https://www.instagram.com/eddyleeart/"
       },
       {
-        text: "The number of people these events attract is insane. I sold four pieces at my very first show and the networking alone was worth showing up.",
+        text: "I'm so glad I came across Pancakes & Booze. Each time I'm impressed with how many people these events attract — it often leads to artwork sales and incredible, meaningful networking.",
         author: "Pierrick Senelaer",
-        handle: "pierrick-senelaer.com"
+        handle: "pierrick-senelaer.com",
+        url: "https://www.pierrick-senelaer.com/"
       },
       {
-        text: "This was my first art show ever and I've never felt so much warmth. A gem in the art show circuit. The talent level is unreal and the energy is electric.",
+        text: "Pancakes & Booze holds a special place for me — it was the first event where I sold not just one, but four pieces. Perfect for new artists testing the waters.",
+        author: "Paul Michale Montelongo",
+        handle: "@urksdesign",
+        url: "https://www.instagram.com/urksdesign/"
+      },
+      {
+        text: "PnB is a gem amongst the art show circuit. It spreads like a nervous system through this country, giving a unique sampling of what's going on in arts and culture across every age group, ethnicity and class.",
+        author: "JesseJFR",
+        handle: "@jessejfr",
+        url: "https://www.instagram.com/jessejfr/"
+      },
+      {
+        text: "Everyone there was so talented! I learned so much about myself and my view on my craft. If you've never gone to a Pancakes & Booze Art Show, trust me — you won't regret it.",
         author: "Nailah Carew",
-        handle: "@afrotheartbabe"
+        handle: "@afrotheartbabe",
+        url: "https://www.instagram.com/afrotheartbabe/"
       }
-      // Add more here — e.g. { text: "...", author: "...", handle: "..." },
     ];
 
     (function initTestimonialRotator() {
@@ -2139,7 +2165,23 @@
           const t = TESTIMONIALS[(offset + idx) % n];
           slot.querySelector('.test-text').textContent = '\u201C' + t.text + '\u201D';
           slot.querySelector('.test-author').textContent = t.author;
-          slot.querySelector('.test-handle').textContent = t.handle;
+
+          // Render handle as a clickable link when a url is provided.
+          // Build via DOM (createElement + textContent) instead of innerHTML
+          // so untrusted text in handle/url could never inject markup \u2014
+          // overkill for our hardcoded data, but cheap insurance.
+          const handleEl = slot.querySelector('.test-handle');
+          handleEl.innerHTML = '';
+          if (t.handle && t.url) {
+            const a = document.createElement('a');
+            a.href = t.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = t.handle;
+            handleEl.appendChild(a);
+          } else if (t.handle) {
+            handleEl.textContent = t.handle;
+          }
         });
       }
 
