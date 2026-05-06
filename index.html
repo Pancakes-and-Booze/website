@@ -197,6 +197,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      /* Default crop = center. Per-image overrides happen in the
+         responsive section below — we bias the mobile crop on the
+         current hero image (crowd-energy.jpg) toward the left so the
+         painter stays in frame instead of getting cropped out, leaving
+         only the brush hand visible. */
+      object-position: center;
     }
     .hero-bg::after {
       content: '';
@@ -219,7 +225,13 @@
 
     .hero-logo {
       max-width: 600px;
-      margin: 0 auto 24px;
+      /* Negative bottom margin pulls .hero-tagline up over the
+         invisible transparent padding baked into logos2.png (the file
+         is 1200x1200 but the actual letters fill only the middle ~70%,
+         so ~50-75px of empty space shows below the visible logo).
+         When the logo file is trimmed/recropped this can revert to
+         a small positive value like 8px. */
+      margin: 0 auto -40px;
     }
 
     .hero-tagline {
@@ -1108,6 +1120,14 @@
       .hero { min-height: 90vh; }
       .hero-logo { max-width: 320px; }
       .hero-stats { gap: 24px; }
+
+      /* Mobile hero crop bias — show the painting (right side of
+         crowd-energy.jpg) instead of the painter's face. The default
+         center crop on a narrow viewport lands on the brush hand,
+         which reads as a random body part. Biasing right keeps the
+         actual artwork in frame. If/when the hero image is swapped to
+         a landscape-friendly shot, this override can come out. */
+      .hero-bg img { object-position: 75% center; }
 
       .exp-grid { grid-template-columns: 1fr; }
       .test-grid { grid-template-columns: 1fr; }
