@@ -713,6 +713,15 @@
       border: 1px solid var(--dark-border);
       border-radius: var(--radius);
       position: relative;
+      /* Pin all cards to the height of the longest quote (JesseJFR's,
+         ~7 lines on a 3-col grid). Flex layout pushes author/handle to
+         the bottom of the card so shorter quotes don't float in space. */
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+    }
+    .test-card .test-author {
+      margin-top: auto;
     }
     .test-card::before {
       content: '\201C';
@@ -764,6 +773,40 @@
     .test-handle a:hover {
       border-bottom-color: var(--accent);
       text-decoration: none;
+    }
+
+    /* Testimonial nav arrows — static (no auto-rotate). Each click advances
+       the cursor by 1, so users can step through every testimonial.
+       Hidden via JS when there are fewer testimonials than visible slots. */
+    .test-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .test-arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid var(--dark-border);
+      color: var(--white);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+    }
+    .test-arrow:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .test-arrow:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     /* ═══════════════════════════════════════════
@@ -1499,7 +1542,6 @@
             <li><span class="check">&#10003;</span> Transparent Pricing &mdash; No Hidden Fees.</li>
             <li><span class="check">&#10003;</span> Zero Commissions &mdash; Keep Every Cent You Make.</li>
             <li><span class="check">&#10003;</span> Direct Sales &mdash; No Middlemen, Just You and Your Buyer.</li>
-            <li><span class="check">&#10003;</span> A Built-In Crowd at Every Show.</li>
             <li><span class="check">&#10003;</span> Makers Welcome &mdash; Jewelry, Prints, Ceramics, Oddities, Etc.</li>
             <li><span class="check">&#10003;</span> Live Painting Spots Available.</li>
           </ul>
@@ -1554,9 +1596,10 @@
   </section>
 
   <!-- ════════════ TESTIMONIALS ════════════
-       Rotating testimonial rotator. Add quotes to the TESTIMONIALS array
-       near the bottom of this file — when there are more than 3, the cards
-       auto-rotate every 7 seconds with a cross-fade. -->
+       Static three-card display with prev/next arrows for manual navigation.
+       The TESTIMONIALS array near the bottom of this file drives content.
+       When the array has more entries than the 3 visible slots, the arrows
+       appear and let users step through; otherwise they're hidden by JS. -->
   <section class="testimonials" id="testimonials">
     <div class="container">
       <div style="text-align: center;">
@@ -1580,6 +1623,10 @@
           <p class="test-handle"></p>
         </div>
       </div>
+      <div class="test-controls">
+        <button type="button" class="test-arrow" id="testPrev" aria-label="Previous testimonials">&lsaquo;</button>
+        <button type="button" class="test-arrow" id="testNext" aria-label="Next testimonials">&rsaquo;</button>
+      </div>
     </div>
   </section>
 
@@ -1588,7 +1635,7 @@
     <div class="container">
       <div style="text-align: center;">
         <p class="section-label">Nationwide & Growing</p>
-        <h2 class="section-title">Find Your Scene.</h2>
+        <h2 class="section-title">Find Your City.</h2>
         <p class="section-desc" style="margin: 0 auto 0;">
           40+ Cities. 4 Continents. One Scene. Find your city or tell us where to hit next.
         </p>
@@ -2149,15 +2196,13 @@
       }
     ];
 
-    (function initTestimonialRotator() {
+    (function initTestimonials() {
       const slots = document.querySelectorAll('#testGrid .test-card');
       if (!slots.length || !TESTIMONIALS.length) return;
 
       const SLOT_COUNT = slots.length;
-      const ROTATE_MS = 7000;
       const FADE_MS = 350;
       let cursor = 0;
-      let paused = false;
 
       function paint(offset) {
         const n = TESTIMONIALS.length;
@@ -2188,27 +2233,32 @@
       // Initial render
       paint(0);
 
-      // Only rotate if there are more quotes than slots
-      if (TESTIMONIALS.length <= SLOT_COUNT) return;
-
-      // Pause on hover so readers can finish a quote
-      const grid = document.getElementById('testGrid');
-      if (grid) {
-        grid.addEventListener('mouseenter', () => { paused = true; });
-        grid.addEventListener('mouseleave', () => { paused = false; });
+      // Hide arrows entirely when there's nothing to navigate to
+      // (i.e., #testimonials \u2264 visible slot count).
+      const prevBtn = document.getElementById('testPrev');
+      const nextBtn = document.getElementById('testNext');
+      const controls = document.querySelector('.test-controls');
+      if (TESTIMONIALS.length <= SLOT_COUNT) {
+        if (controls) controls.style.display = 'none';
+        return;
       }
 
-      setInterval(() => {
-        if (paused || document.hidden) return;
-        // Fade out
+      // Carousel-style step: each click advances/retreats the cursor by 1
+      // (not by SLOT_COUNT) so a user clicking "next" sees ONE new quote
+      // appear on the right, with the others sliding over conceptually.
+      // With 5 testimonials and 3 slots, that means 5 distinct cursor
+      // positions: 0,1,2 \u2192 1,2,3 \u2192 2,3,4 \u2192 3,4,0 \u2192 4,0,1 \u2192 loops back.
+      function advance(direction) {
         slots.forEach(s => s.classList.add('fading'));
         setTimeout(() => {
-          cursor = (cursor + SLOT_COUNT) % TESTIMONIALS.length;
+          cursor = (cursor + direction + TESTIMONIALS.length) % TESTIMONIALS.length;
           paint(cursor);
-          // Fade back in
           slots.forEach(s => s.classList.remove('fading'));
         }, FADE_MS);
-      }, ROTATE_MS);
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', () => advance(-1));
+      if (nextBtn) nextBtn.addEventListener('click', () => advance(1));
     })();
 
     // Smooth scroll for anchor links
