@@ -1348,22 +1348,13 @@
   </style>
 
   <!-- ════════════ TRACKING ════════════
-       GA4 + Meta Pixel base install. Both fire PageView automatically on
+       Meta Pixel base install. Fire PageView automatically on
        every page load. Meta's "Automatic Advanced Matching" is ON in
        Events Manager — the pixel detects and hashes form fields
        client-side as users interact, so no manual data passing is
        required for the base case. Manual Advanced Matching for
        high-quality lead events (e.g., city-request form submissions)
        is wired in the relevant page-level form handlers. -->
-
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB6BSHXFKP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VB6BSHXFKP');
-  </script>
 
   <!-- Meta Pixel -->
   <script>
