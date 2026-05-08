@@ -1346,6 +1346,39 @@
       .city-modal h3 { font-size: 1.6rem; }
     }
   </style>
+
+  <!-- ════════════ TRACKING ════════════
+       GA4 + Meta Pixel base install. Both fire PageView automatically on
+       every page load. Meta's "Automatic Advanced Matching" is ON in
+       Events Manager — the pixel detects and hashes form fields
+       client-side as users interact, so no manual data passing is
+       required for the base case. Manual Advanced Matching for
+       high-quality lead events (e.g., city-request form submissions)
+       is wired in the relevant page-level form handlers. -->
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB6BSHXFKP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VB6BSHXFKP');
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '785234971632299');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=785234971632299&ev=PageView&noscript=1" /></noscript>
 </head>
 <body>
 
@@ -2599,6 +2632,33 @@
           });
           msg.className = 'city-modal-msg success';
           msg.textContent = `Thanks ${payload.first_name} — we'll be in touch about ${payload.city}.`;
+
+          // Fire Lead conversions to Meta + GA with Manual Advanced
+          // Matching so the lead is attributed to this user. Pixel
+          // hashes em/fn/ln client-side before sending. Wrapped in
+          // try/catch — a tracking failure must never break the form
+          // success UX.
+          try {
+            if (typeof fbq === 'function') {
+              fbq('init', '785234971632299', {
+                em: payload.email,
+                fn: payload.first_name,
+                ln: payload.last_name
+              });
+              fbq('track', 'Lead', {
+                content_name: 'City Request',
+                content_category: payload.city
+              });
+            }
+            if (typeof gtag === 'function') {
+              gtag('event', 'generate_lead', {
+                event_category: 'forms',
+                event_label: 'city_request',
+                requested_city: payload.city
+              });
+            }
+          } catch (trackErr) { /* swallow tracking errors */ }
+
           form.reset();
           setTimeout(closeModal, 2500);
         } catch (err) {
