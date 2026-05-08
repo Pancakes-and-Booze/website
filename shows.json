@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-07T23:17:41Z",
+  "generated_at": "2026-05-08T01:13:03Z",
   "shows": [
     {
       "live": true,
@@ -221,7 +221,7 @@
       "age": "21",
       "ticket_link": "https://kyd.to/fRuYlxP9",
       "apply_link": "https://www.voxxypresents.com/events/pancakes-and-booze-4/pancakes-booze-brooklyn-260",
-      "flyer_url": "https://github.com/Pancakes-and-Booze/website/blob/main/images/flyers/brooklyn-july-25-2026.png",
+      "flyer_url": "/images/flyers/brooklyn-july-25-2026.png",
       "fb_link": "https://www.facebook.com/events/1032419425776412",
       "early_bird_price": "15",
       "day_of_price": "20",
@@ -256,7 +256,7 @@
       "age": "21",
       "ticket_link": null,
       "apply_link": "https://shows.pancakesandbooze.com/shows/san-antonio-11-jul-2026",
-      "flyer_url": "https://github.com/Pancakes-and-Booze/website/blob/main/images/flyers/san-antonio-july-11-2026.png",
+      "flyer_url": "/images/flyers/san-antonio-july-11-2026.png",
       "fb_link": "https://www.facebook.com/events/887560143639748",
       "early_bird_price": "15",
       "day_of_price": "20",
