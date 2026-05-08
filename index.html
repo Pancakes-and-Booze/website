@@ -87,21 +87,65 @@
     }
 
     /* ═══════════════════════════════════════════
-       ANNOUNCEMENT BAR
+       ANNOUNCEMENT BAR (top marquee)
+       Scrolling ticker of active show dates pulled from shows.json.
+       If zero live shows or fetch fails, the static fallback content
+       inside #announcementFallback stays visible centered.
     ═══════════════════════════════════════════ */
     .announcement {
       background: var(--gradient);
       color: var(--black);
-      text-align: center;
-      padding: 10px 24px;
+      padding: 10px 0;
       font-weight: 700;
       font-size: 0.85rem;
       letter-spacing: 0.5px;
       text-transform: uppercase;
+      overflow: hidden;
+      position: relative;
+    }
+    .announcement-track {
+      display: flex;
+      white-space: nowrap;
+      width: max-content;
+      animation: announce-scroll 40s linear infinite;
+    }
+    .announcement:hover .announcement-track {
+      animation-play-state: paused;
     }
     .announcement a {
+      color: var(--black);
+      text-decoration: none;
+      padding: 0 22px;
+      display: inline-block;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .announcement a:hover {
+      border-bottom-color: var(--black);
+      text-decoration: none;
+    }
+    .announcement-sep {
+      color: var(--black);
+      opacity: 0.4;
+      display: inline-block;
+    }
+    .announcement-fallback {
+      text-align: center;
+      padding: 0 24px;
+    }
+    .announcement-fallback a {
       text-decoration: underline;
       font-weight: 800;
+      display: inline;
+      padding: 0;
+      border-bottom: none;
+    }
+    @keyframes announce-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .announcement-track { animation: none; }
     }
 
     /* ═══════════════════════════════════════════
@@ -1305,9 +1349,16 @@
 </head>
 <body>
 
-  <!-- ════════════ ANNOUNCEMENT BAR ════════════ -->
-  <div class="announcement">
-    Coming soon to your city &mdash; <a href="#shows">See all upcoming shows</a>
+  <!-- ════════════ ANNOUNCEMENT BAR ════════════
+       Top marquee of active show dates. JS at the bottom of the page reads
+       shows.json, filters live=true + future, replaces the fallback below
+       with a scrolling marquee of "City — Mon DD" links. If shows.json
+       returns zero live shows OR the fetch fails, the static fallback
+       remains visible. -->
+  <div class="announcement" id="announcement">
+    <div class="announcement-fallback" id="announcementFallback">
+      Coming soon to your city &mdash; <a href="#shows">See all upcoming shows</a>
+    </div>
   </div>
 
   <!-- ════════════ NAVIGATION ════════════ -->
@@ -1318,7 +1369,6 @@
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#shows">Shows</a></li>
         <li><a href="#shows">Exhibit</a></li>
         <li><a href="#cities">Cities</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -1334,7 +1384,6 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" onclick="toggleMenu()">&times;</button>
     <a href="#about" onclick="toggleMenu()">About</a>
-    <a href="#shows" onclick="toggleMenu()">Shows</a>
     <a href="#shows" onclick="toggleMenu()">Exhibit Your Art</a>
     <a href="#cities" onclick="toggleMenu()">Cities</a>
     <a href="#faq" onclick="toggleMenu()">FAQ</a>
@@ -2375,6 +2424,66 @@
         })[c]);
       }
       function escapeAttr(s) { return escapeHtml(s); }
+    })();
+
+    // ════════════ TOP MARQUEE — active show dates ════════════
+    // Reads shows.json, filters live + future, renders as a scrolling
+    // marquee of "City — Mon DD" where each entry links to /city. If zero
+    // live shows OR fetch fails, the static fallback ("Coming soon to
+    // your city") inside #announcementFallback stays visible.
+    //
+    // The marquee track contains the same item-list duplicated, so the CSS
+    // animation can translate -50% and snap back invisibly (the visible
+    // portion at the snap point matches the start frame). When swapping
+    // items in/out via shows.json, both halves stay in sync automatically
+    // because both halves are the same list rendered once.
+    (function renderTopMarquee() {
+      const ann = document.getElementById('announcement');
+      const fallback = document.getElementById('announcementFallback');
+      if (!ann || !fallback) return;
+
+      const today = new Date();
+      const todayIso = today.getFullYear() + '-' +
+        String(today.getMonth() + 1).padStart(2, '0') + '-' +
+        String(today.getDate()).padStart(2, '0');
+
+      fetch('/shows.json', { cache: 'no-cache' })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (!data) return;
+          const upcoming = (data.shows || [])
+            .filter(s => s.live && s.date_iso && s.date_iso >= todayIso)
+            .sort((a, b) => a.date_iso.localeCompare(b.date_iso));
+
+          if (upcoming.length === 0) return; // keep static fallback
+
+          const esc = s => String(s).replace(/[&<>"']/g, c => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;',
+            '"': '&quot;', "'": '&#39;'
+          })[c]);
+
+          const sep = '<span class="announcement-sep">&middot;</span>';
+
+          // "Atlanta — Jan 25" linked to /atlanta
+          const itemsWithSep = upcoming.map(s => {
+            const city = esc(s.city || '');
+            const monthShort = esc(s.date_month_short || '');
+            const day = esc(s.date_day || '');
+            const dateText = (monthShort && day)
+              ? monthShort + ' ' + day
+              : '';
+            const slug = esc(s.slug || '');
+            const href = slug ? '/' + slug : '#shows';
+            const label = city + (dateText ? ' &mdash; ' + dateText : '');
+            return '<a href="' + href + '">' + label + '</a>' + sep;
+          }).join('');
+
+          // Duplicate the item list so the -50% animation loops seamlessly.
+          ann.innerHTML = '<div class="announcement-track">' +
+                          itemsWithSep + itemsWithSep +
+                          '</div>';
+        })
+        .catch(() => { /* keep fallback visible */ });
     })();
   </script>
 
