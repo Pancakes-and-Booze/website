@@ -1097,21 +1097,51 @@
       padding-top: 24px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
     }
     .footer-bottom p {
       color: var(--gray);
       font-size: 0.8rem;
+      flex-shrink: 0;
+      padding-top: 4px;
+    }
+    /* Right-aligned column that holds BOTH legal-link rows. Wrapping
+       both rows in this single end-aligned container keeps the flex
+       parent at "copyright left / legal right" no matter how many
+       link rows exist. Add more <div class="footer-bottom-links">
+       blocks inside here freely. */
+    .footer-bottom-end {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      max-width: 720px;
     }
     .footer-bottom-links {
       display: flex;
-      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px 20px;
     }
     .footer-bottom-links a {
       color: var(--gray);
       font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .footer-bottom-links a:hover {
+      color: var(--accent);
+    }
+    @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+      }
+      .footer-bottom p { text-align: center; padding-top: 0; }
+      .footer-bottom-end { align-items: center; max-width: none; }
+      .footer-bottom-links { justify-content: center; }
     }
 
     /* ═══════════════════════════════════════════
@@ -2061,18 +2091,19 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Pancakes & Booze Art Show. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms & Conditions</a>
-          <a href="#" class="termly-display-preferences">Consent Preferences</a>
-          <a href="/cookies">Cookie Policy</a>
-          <a href="https://app.termly.io/dsar/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc">DSAR</a>
-        </div>
-        <div class="footer-bottom-links">
-          <a href="https://app.termly.io/notify/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc">Do Not Sell or Share My Personal information</a>
-          <a href="https://app.termly.io/notify/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc">Limit the Use Of My Sensitive Personal Information</a>
-          
+        <p>&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+        <div class="footer-bottom-end">
+          <div class="footer-bottom-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms &amp; Conditions</a>
+            <a href="/cookies">Cookie Policy</a>
+            <a href="#" class="termly-display-preferences">Consent Preferences</a>
+            <a href="https://app.termly.io/dsar/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc" target="_blank" rel="noopener">DSAR</a>
+          </div>
+          <div class="footer-bottom-links">
+            <a href="https://app.termly.io/notify/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc" target="_blank" rel="noopener">Do Not Sell or Share My Personal Information</a>
+            <a href="https://app.termly.io/notify/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc" target="_blank" rel="noopener">Limit the Use of My Sensitive Personal Information</a>
+          </div>
         </div>
       </div>
     </div>
