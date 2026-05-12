@@ -33,6 +33,10 @@
   <meta name="twitter:description" content="Where culture gets fed. The underground art show — free pancakes, real artists, vendors, live DJs, body paint. Support local artists while they're still alive. 500+ shows across 40+ cities.">
   <meta name="twitter:image" content="https://www.pancakesandbooze.com/images/og-image.jpg">
 
+  <!-- Preload the hero image (LCP element) so it starts downloading
+       immediately, ahead of fonts and other assets. -->
+  <link rel="preload" as="image" href="images/crowd-energy.jpg" fetchpriority="high">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1375,7 +1379,86 @@
       .city-modal-row { grid-template-columns: 1fr; }
       .city-modal h3 { font-size: 1.6rem; }
     }
+  
+    /* ═════════════ A11Y BASE (auto-injected) ═════════════ */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 8px;
+      background: var(--yellow, #e8ff21);
+      color: var(--black, #0a0a0a);
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-family: var(--font-display, 'Bebas Neue', sans-serif);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus {
+      top: 8px;
+      outline: 3px solid var(--accent, #ff2d7b);
+      outline-offset: 2px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    /* Keyboard focus indicator for every interactive element. Uses
+       :focus-visible so mouse clicks don't show an outline, only keyboard
+       navigation does. */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--accent, #ff2d7b);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+
   </style>
+
+  <!-- ════════════ TERMLY CMP ════════════
+       Termly Resource Blocker — MUST be the first <script> tag on the
+       page. autoBlock=on auto-blocks known trackers (Meta Pixel, GA via
+       Zaraz, etc.) until the visitor grants consent via Termly's banner.
+       Cloudflare Zaraz's built-in consent modal must be DISABLED in the
+       Zaraz dashboard — Zaraz fires tags only when this script signals
+       consent via Google Consent Mode v2.
+  ════════════ -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
+
+  <!-- Google Consent Mode bridge — Termly → Zaraz/GA.
+       Sets default consent to "denied" per GDPR/CCPA, listens for the
+       Termly consent change event, and pushes the result into gtag's
+       dataLayer. Cloudflare Zaraz reads Google Consent Mode v2 state
+       and fires GA only when analytics_storage is granted. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
+  </script>
+
 
   <!-- ════════════ TRACKING ════════════
        Meta Pixel base install. Fire PageView automatically on
@@ -1402,6 +1485,9 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=785234971632299&ev=PageView&noscript=1" /></noscript>
 </head>
 <body>
+  <!-- Skip-to-content link for keyboard users (visible on focus). -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
 
   <!-- ════════════ ANNOUNCEMENT BAR ════════════
        Top marquee of active show dates. JS at the bottom of the page reads
@@ -1418,7 +1504,7 @@
   <!-- ════════════ NAVIGATION ════════════ -->
   <nav>
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
+      <a href="/" class="nav-logo" aria-label="Pancakes and Booze — Home">
         <img src="logo.png" alt="Pancakes & Booze">
       </a>
       <ul class="nav-links">
@@ -1436,7 +1522,7 @@
 
   <!-- ════════════ MOBILE MENU ════════════ -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
     <a href="#about" onclick="toggleMenu()">About</a>
     <a href="#shows" onclick="toggleMenu()">Exhibit Your Art</a>
     <a href="#cities" onclick="toggleMenu()">Cities</a>
@@ -1445,9 +1531,10 @@
   </div>
 
   <!-- ════════════ HERO ════════════ -->
+  <main id="main">
   <section class="hero">
     <div class="hero-bg">
-      <img src="images/crowd-energy.jpg" alt="Pancakes & Booze crowd">
+      <img src="images/crowd-energy.jpg" alt="Pancakes & Booze crowd" width="1920" height="1558" decoding="async" fetchpriority="high">
     </div>
     <div class="hero-content">
       <img src="hero-logo.png" alt="Pancakes & Booze" class="hero-logo">
@@ -1523,7 +1610,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image fade-up">
-          <img src="images/gallery-art.jpg" alt="Art on display at Pancakes & Booze">
+          <img src="images/gallery-art.jpg" alt="Art on display at Pancakes & Booze" width="1200" height="800" decoding="async" loading="lazy">
         </div>
         <div class="fade-up">
           <p class="section-label">Where culture gets fed</p>
@@ -1567,31 +1654,31 @@
          When swapping images: keep the same filename to avoid editing here,
          OR edit BOTH halves identically. -->
     <div class="gallery-row">
-      <img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze">
-      <img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above">
-      <img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze">
-      <img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze">
-      <img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze">
-      <img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls">
-      <img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze">
-      <img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze">
+      <img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above" width="1200" height="800" decoding="async" loading="lazy">
+      <img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
+      <img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze" width="720" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze" width="1200" height="800" decoding="async" loading="lazy">
+      <img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
+      <img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze" width="1280" height="853" decoding="async" loading="lazy">
+      <img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls" width="1280" height="832" decoding="async" loading="lazy">
+      <img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze" width="667" height="1000" decoding="async" loading="lazy">
+      <img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze" width="960" height="1280" decoding="async" loading="lazy">
       <!-- duplicate for loop -->
-      <img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze">
-      <img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above">
-      <img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze">
-      <img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze">
-      <img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze">
-      <img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze">
-      <img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls">
-      <img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze">
-      <img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze">
+      <img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above" width="1200" height="800" decoding="async" loading="lazy">
+      <img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
+      <img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze" width="720" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze" width="1200" height="800" decoding="async" loading="lazy">
+      <img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
+      <img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
+      <img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze" width="1280" height="853" decoding="async" loading="lazy">
+      <img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls" width="1280" height="832" decoding="async" loading="lazy">
+      <img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze" width="667" height="1000" decoding="async" loading="lazy">
+      <img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze" width="960" height="1280" decoding="async" loading="lazy">
     </div>
   </section>
 
@@ -1669,11 +1756,11 @@
           <a href="#shows" class="btn btn-primary">Claim Your Space</a>
         </div>
         <div class="exhibit-image fade-up">
-          <img src="images/art-display.jpg" alt="Artist displaying work at P&B">
+          <img src="images/art-display.jpg" alt="Artist displaying work at P&B" width="1200" height="800" decoding="async" loading="lazy">
         </div>
       </div>
     </div>
-    <img src="images/bunny-mascot.png" class="bunny-float" alt="">
+    <img src="images/bunny-mascot.png" class="bunny-float" alt="" width="500" height="267" decoding="async" loading="lazy">
   </section>
 
   <!-- ════════════ EXPERIENCE ════════════ -->
@@ -1692,21 +1779,21 @@
       </div>
       <div class="exp-grid">
         <div class="exp-card fade-up">
-          <img src="images/walls-overhead.jpg" alt="Overhead view of the Pancakes &amp; Booze show floor packed with salon-style art walls and crowd">
+          <img src="images/walls-overhead.jpg" alt="Overhead view of the Pancakes &amp; Booze show floor packed with salon-style art walls and crowd" width="640" height="427" decoding="async" loading="lazy">
           <div class="exp-card-overlay">
             <h3>The Walls</h3>
             <p>Salon-style walls packed floor-to-ceiling with local work. No white-cube pretense, just pure creativity.</p>
           </div>
         </div>
         <div class="exp-card fade-up">
-          <img src="images/body-paint.jpg" alt="Body-paint artist mid-spray on a model at a Pancakes &amp; Booze show">
+          <img src="images/body-paint.jpg" alt="Body-paint artist mid-spray on a model at a Pancakes &amp; Booze show" width="1200" height="800" decoding="async" loading="lazy">
           <div class="exp-card-overlay">
             <h3>Moving Canvases</h3>
             <p>Live artists turning skin into story. Watch the art walk off the wall and into the crowd.</p>
           </div>
         </div>
         <div class="exp-card fade-up">
-          <img src="images/handoff-pancakes.jpeg" alt="Volunteer handing off a paper plate of free pancakes at the Pancakes &amp; Booze show">
+          <img src="images/handoff-pancakes.jpeg" alt="Volunteer handing off a paper plate of free pancakes at the Pancakes &amp; Booze show" width="852" height="1280" decoding="async" loading="lazy">
           <div class="exp-card-overlay">
             <h3>The Griddle</h3>
             <p>Free pancakes, hot griddles, and sticky fingers, in the heart of the underground.</p>
@@ -2047,6 +2134,8 @@
   </section>
 
   <!-- ════════════ FOOTER ════════════ -->
+  </main>
+
   <footer id="contact">
     <div class="container">
       <div class="footer-grid">
@@ -2563,12 +2652,12 @@
       </p>
       <form class="city-modal-form" id="cityModalForm" novalidate>
         <div class="city-modal-row">
-          <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required>
-          <input type="text" name="last_name"  placeholder="Last name"  autocomplete="family-name" required>
+          <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" aria-label="First name" required>
+          <input type="text" name="last_name"  placeholder="Last name"  autocomplete="family-name" aria-label="Last name" required>
         </div>
-        <input type="email" name="email" placeholder="Email" autocomplete="email" required>
-        <input type="text" name="city" placeholder="Which city?" autocomplete="address-level2" required>
-        <textarea name="message" placeholder="Venue recommendations or why we should come to your city" rows="4"></textarea>
+        <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email address" required>
+        <input type="text" name="city" placeholder="Which city?" autocomplete="address-level2" aria-label="City" required>
+        <textarea name="message" placeholder="Venue recommendations or why we should come to your city" rows="4" aria-label="Venue recommendations or other notes"></textarea>
         <button type="submit" id="cityModalSubmit">Send It</button>
         <div class="city-modal-msg" id="cityModalMsg" aria-live="polite"></div>
       </form>

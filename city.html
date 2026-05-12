@@ -399,7 +399,86 @@
     }
 
     [hidden] { display: none !important; }
+  
+    /* ═════════════ A11Y BASE (auto-injected) ═════════════ */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 8px;
+      background: var(--yellow, #e8ff21);
+      color: var(--black, #0a0a0a);
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-family: var(--font-display, 'Bebas Neue', sans-serif);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus {
+      top: 8px;
+      outline: 3px solid var(--accent, #ff2d7b);
+      outline-offset: 2px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    /* Keyboard focus indicator for every interactive element. Uses
+       :focus-visible so mouse clicks don't show an outline, only keyboard
+       navigation does. */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--accent, #ff2d7b);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+
   </style>
+
+  <!-- ════════════ TERMLY CMP ════════════
+       Termly Resource Blocker — MUST be the first <script> tag on the
+       page. autoBlock=on auto-blocks known trackers (Meta Pixel, GA via
+       Zaraz, etc.) until the visitor grants consent via Termly's banner.
+       Cloudflare Zaraz's built-in consent modal must be DISABLED in the
+       Zaraz dashboard — Zaraz fires tags only when this script signals
+       consent via Google Consent Mode v2.
+  ════════════ -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
+
+  <!-- Google Consent Mode bridge — Termly → Zaraz/GA.
+       Sets default consent to "denied" per GDPR/CCPA, listens for the
+       Termly consent change event, and pushes the result into gtag's
+       dataLayer. Cloudflare Zaraz reads Google Consent Mode v2 state
+       and fires GA only when analytics_storage is granted. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
+  </script>
+
 
   <!-- ════════════ TRACKING ════════════
        Meta Pixel base install. PageView fires automatically.
@@ -421,6 +500,9 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=785234971632299&ev=PageView&noscript=1" /></noscript>
 </head>
 <body>
+  <!-- Skip-to-content link for keyboard users (visible on focus). -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
@@ -452,21 +534,22 @@
     <a href="/#shows" onclick="toggleMenu()">Get Tickets</a>
   </div>
 
+  <main id="main">
   <!-- LOADING STATE (shown while shows.json fetches) -->
-  <main id="stateLoading" class="state-loading">
+  <section id="stateLoading" class="state-loading">
     <div class="spinner"></div>
     <p style="color: var(--gray);">Loading&hellip;</p>
-  </main>
+  </section>
 
   <!-- CITY NOT FOUND STATE -->
-  <main id="stateError" class="state-error" hidden>
+  <section id="stateError" class="state-error" hidden>
     <h2>City not found</h2>
     <p>Nothing here for that one. It may have been renamed or moved.</p>
     <a href="/" class="btn btn-outline">Back to All Shows</a>
-  </main>
+  </section>
 
   <!-- LIVE STATE -->
-  <main id="stateLive" hidden>
+  <section id="stateLive" hidden>
     <section class="city-hero">
       <div class="container city-hero-inner">
         <div class="city-eyebrow" id="liveEyebrow">Pancakes &amp; Booze</div>
@@ -486,10 +569,10 @@
         <div class="flyer-wrap" id="flyerWrap"></div>
       </div>
     </section>
-  </main>
+  </section>
 
   <!-- DORMANT STATE -->
-  <main id="stateDormant" hidden>
+  <section id="stateDormant" hidden>
     <section class="city-hero">
       <div class="container city-hero-inner">
         <div class="city-eyebrow">Pancakes &amp; Booze</div>
@@ -499,7 +582,7 @@
              that the live state's flyer occupies, so dormant cities don't
              feel empty. Swap the file in /images/coming-soon.png to update. -->
         <div class="coming-soon-wrap">
-          <img src="/images/coming-soon.png" alt="New date coming soon">
+          <img src="/images/coming-soon.png" alt="New date coming soon" width="1040" height="650" decoding="async" loading="lazy">
         </div>
 
         <p class="dormant-sub">
@@ -512,16 +595,17 @@
           <p class="notify-sub">No spam. Just a ping when tickets go live.</p>
           <form class="notify-form" id="notifyForm">
             <div class="notify-row">
-              <input type="text" name="first_name" placeholder="First name" required autocomplete="given-name">
-              <input type="text" name="last_name" placeholder="Last name" required autocomplete="family-name">
+              <input type="text" name="first_name" placeholder="First name" required autocomplete="given-name" aria-label="First name">
+              <input type="text" name="last_name" placeholder="Last name" required autocomplete="family-name" aria-label="Last name">
             </div>
-            <input type="email" name="email" placeholder="Email address" required autocomplete="email">
+            <input type="email" name="email" placeholder="Email address" required autocomplete="email" aria-label="Email address">
             <button type="submit" id="notifySubmit">Notify Me</button>
           </form>
           <div class="notify-msg" id="notifyMsg"></div>
         </div>
       </div>
     </section>
+  </section>
   </main>
 
   <!-- BACK LINK (always visible under content) -->

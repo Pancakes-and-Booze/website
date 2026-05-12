@@ -261,18 +261,42 @@
     }
   </style>
 
-  <!-- ════════════ TRACKING ════════════
-       GA4 + Meta Pixel base install. PageView fires automatically.
-       Automatic Advanced Matching is enabled at Meta's end. -->
+  <!-- ════════════ TERMLY CMP ════════════
+       Termly Resource Blocker — MUST be the first <script> tag on the
+       page. autoBlock=on auto-blocks known trackers (Meta Pixel, GA via
+       Zaraz, etc.) until the visitor grants consent via Termly's banner.
+       Cloudflare Zaraz's built-in consent modal must be DISABLED in the
+       Zaraz dashboard — Zaraz fires tags only when this script signals
+       consent via Google Consent Mode v2.
+  ════════════ -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB6BSHXFKP"></script>
+  <!-- Google Consent Mode bridge — Termly → Zaraz/GA.
+       Sets default consent to "denied" per GDPR/CCPA, listens for the
+       Termly consent change event, and pushes the result into gtag's
+       dataLayer. Cloudflare Zaraz reads Google Consent Mode v2 state
+       and fires GA only when analytics_storage is granted. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VB6BSHXFKP');
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
   </script>
+
+
+  <!-- ════════════ TRACKING ════════════
+       GA4 + Meta Pixel base install. PageView fires automatically.
+       Automatic Advanced Matching is enabled at Meta's end. -->
 
   <!-- Meta Pixel -->
   <script>
@@ -290,6 +314,9 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=785234971632299&ev=PageView&noscript=1" /></noscript>
 </head>
 <body>
+  <!-- Skip-to-content link for keyboard users (visible on focus). -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
 
   <div class="announcement">
     Coming soon to your city &mdash; <a href="/#shows">See all upcoming shows</a>
@@ -304,7 +331,7 @@
     </div>
   </nav>
 
-  <main class="page">
+  <main id="main" class="page">
     <div class="container">
       <!-- Termly-generated content. To regenerate: edit policy in Termly,
            copy the full HTML output, replace everything inside the
@@ -327,7 +354,53 @@
             ol li {
               font-family: Arial ;
             }
-          </style>
+          
+    /* ═════════════ A11Y BASE (auto-injected) ═════════════ */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 8px;
+      background: var(--yellow, #e8ff21);
+      color: var(--black, #0a0a0a);
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-family: var(--font-display, 'Bebas Neue', sans-serif);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus {
+      top: 8px;
+      outline: 3px solid var(--accent, #ff2d7b);
+      outline-offset: 2px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    /* Keyboard focus indicator for every interactive element. Uses
+       :focus-visible so mouse clicks don't show an outline, only keyboard
+       navigation does. */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--accent, #ff2d7b);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+
+  </style>
             </div>
       </div>
     </div>
