@@ -484,7 +484,7 @@
       font-size: 1.8rem;
       margin-bottom: 8px;
     }
-    .feature h4 {
+    .feature h3 {
       font-family: var(--font-display);
       font-size: 1.2rem;
       letter-spacing: 1px;
@@ -1056,7 +1056,7 @@
       max-width: 300px;
     }
 
-    .footer-col h4 {
+    .footer-col h3 {
       font-family: var(--font-display);
       font-size: 1.1rem;
       letter-spacing: 2px;
@@ -1505,7 +1505,7 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="Pancakes and Booze — Home">
-        <img src="logo.png" alt="Pancakes & Booze">
+        <img src="logo.png" alt="Pancakes & Booze" width="40" height="40">
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -1537,7 +1537,7 @@
       <img src="images/crowd-energy.jpg" alt="Pancakes & Booze crowd" width="1920" height="1558" decoding="async" fetchpriority="high">
     </div>
     <div class="hero-content">
-      <img src="hero-logo.png" alt="Pancakes & Booze" class="hero-logo">
+      <img src="hero-logo.png" alt="Pancakes & Booze" class="hero-logo" width="600" height="600">
       <p class="hero-tagline">UNDERGROUND ART SHOW</p>
       <!-- Hero sub: direct copy from Justin (2026-04-24 v2.2 pass). Do not
            paraphrase. The "Still Alive" mission now closes the hero — it's
@@ -1623,19 +1623,19 @@
                Do not paraphrase. -->
           <div class="about-features">
             <div class="feature">
-              <h4>Free Pancakes</h4>
+              <h3>Free Pancakes</h3>
               <p>Hot Griddles. Sticky Fingers. All night. No catch!</p>
             </div>
             <div class="feature">
-              <h4>Real Artists</h4>
+              <h3>Real Artists</h3>
               <p>Emerging to established. Every medium, every style.</p>
             </div>
             <div class="feature">
-              <h4>Always Fresh.</h4>
+              <h3>Always Fresh.</h3>
               <p>Live performers. One-of-one creators. Canvases that move.</p>
             </div>
             <div class="feature">
-              <h4>Live DJs</h4>
+              <h3>Live DJs</h3>
               <p>The soundtrack that turns a room into a scene.</p>
             </div>
           </div>
@@ -1920,13 +1920,13 @@
 
       <div class="faq-inner">
         <div class="faq-tabs" role="tablist">
-          <button class="faq-tab active" data-tab="artists">Artists</button>
-          <button class="faq-tab" data-tab="vendors">Vendors</button>
-          <button class="faq-tab" data-tab="livepaint">Live Painting</button>
+          <button class="faq-tab active" data-tab="artists" role="tab" aria-selected="true" aria-controls="faq-panel-artists" id="faq-tab-artists">Artists</button>
+          <button class="faq-tab" data-tab="vendors" role="tab" aria-selected="false" aria-controls="faq-panel-vendors" id="faq-tab-vendors">Vendors</button>
+          <button class="faq-tab" data-tab="livepaint" role="tab" aria-selected="false" aria-controls="faq-panel-livepaint" id="faq-tab-livepaint">Live Painting</button>
         </div>
 
         <!-- ARTISTS -->
-        <div class="faq-group active" data-group="artists">
+        <div class="faq-group active" data-group="artists" role="tabpanel" id="faq-panel-artists" aria-labelledby="faq-tab-artists">
 
           <div class="faq-item">
             <button class="faq-question">How do I exhibit my art?</button>
@@ -2020,7 +2020,7 @@
         </div>
 
         <!-- VENDORS -->
-        <div class="faq-group" data-group="vendors">
+        <div class="faq-group" data-group="vendors" role="tabpanel" id="faq-panel-vendors" aria-labelledby="faq-tab-vendors">
 
           <div class="faq-item">
             <button class="faq-question">How do I apply as a vendor?</button>
@@ -2090,7 +2090,7 @@
         </div>
 
         <!-- LIVE PAINTING -->
-        <div class="faq-group" data-group="livepaint">
+        <div class="faq-group" data-group="livepaint" role="tabpanel" id="faq-panel-livepaint" aria-labelledby="faq-tab-livepaint">
 
           <div class="faq-item">
             <button class="faq-question">How do I become a live painter or body painter?</button>
@@ -2140,7 +2140,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="logo.png" alt="Pancakes & Booze" style="height: 36px;">
+          <img src="logo.png" alt="Pancakes & Booze" style="height: 36px;" width="36" height="36">
           <p>
             Born in L.A. Raised by the underground. 15 years. 500+ exhibitions.
             Free pancakes, real art, no pretense.
@@ -2153,7 +2153,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Navigate</h4>
+          <h3>Navigate</h3>
           <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#shows">Upcoming Shows</a></li>
@@ -2163,7 +2163,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>For Artists</h4>
+          <h3>For Artists</h3>
           <ul>
             <li><a href="#shows">Claim Your Space</a></li>
             <li><a href="#faq">Artist FAQ</a></li>
@@ -2172,7 +2172,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <ul>
             <li><a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a></li>
             <li><a href="https://instagram.com/pancakesandbooze" target="_blank">@pancakesandbooze</a></li>
@@ -2253,7 +2253,11 @@
       document.querySelectorAll('.faq-tab').forEach(btn => {
         btn.onclick = () => {
           const target = btn.dataset.tab;
-          document.querySelectorAll('.faq-tab').forEach(b => b.classList.toggle('active', b === btn));
+          document.querySelectorAll('.faq-tab').forEach(b => {
+          const isActive = b === btn;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
           document.querySelectorAll('.faq-group').forEach(g => {
             g.classList.toggle('active', g.dataset.group === target);
           });
@@ -2541,7 +2545,7 @@
                   <p class="show-venue">${venueLine}</p>
                 </div>
                 <div class="show-ticket" style="display:flex;gap:8px;">
-                  <a href="${exhibitUrl}" class="btn btn-outline" target="_blank" rel="noopener">Exhibit</a>
+                  <a href="${exhibitUrl}" class="btn btn-outline" target="_blank" rel="noopener" aria-label="Exhibit at the ${escapeAttr(s.city || 'this')} show">Exhibit</a>
                   ${ticketsBtn}
                 </div>
               </div>`;
