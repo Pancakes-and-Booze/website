@@ -1133,6 +1133,12 @@
       color: var(--gray);
       font-size: 0.8rem;
       transition: color 0.2s;
+      /* 44x44 touch target per WCAG 2.5.5 — the Termly auto-generated
+         legal links are otherwise too small to reliably tap on mobile. */
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 4px 6px;
     }
     .footer-bottom-links a:hover {
       color: var(--accent);
@@ -2532,7 +2538,7 @@
             const cityUrl = s.slug ? `/${escapeAttr(s.slug)}` : '#';
             const exhibitUrl = s.apply_link ? escapeAttr(s.apply_link) : '/submit';
             const ticketsBtn = s.ticket_link
-              ? `<a href="${escapeAttr(s.ticket_link)}" class="btn btn-primary" target="_blank" rel="noopener">Tickets</a>`
+              ? `<a href="${escapeAttr(s.ticket_link)}" class="btn btn-primary" target="_blank" rel="noopener" aria-label="Get tickets for the ${escapeAttr(s.city || 'upcoming')} show">Tickets</a>`
               : '';
             return `
               <div class="show-card fade-up visible" data-slug="${escapeAttr(s.slug || '')}" role="link" tabindex="0">
