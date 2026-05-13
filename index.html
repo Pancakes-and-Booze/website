@@ -35,7 +35,7 @@
 
   <!-- Preload the hero image (LCP element) so it starts downloading
        immediately, ahead of fonts and other assets. -->
-  <link rel="preload" as="image" href="images/crowd-energy.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="images/crowd-energy.webp" type="image/webp" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1505,7 +1505,7 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="Pancakes and Booze — Home">
-        <img src="logo.png" alt="Pancakes & Booze" width="40" height="40">
+        <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Pancakes & Booze" width="40" height="40"></picture>
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -1534,10 +1534,10 @@
   <main id="main">
   <section class="hero">
     <div class="hero-bg">
-      <img src="images/crowd-energy.jpg" alt="Pancakes & Booze crowd" width="1920" height="1558" decoding="async" fetchpriority="high">
+      <picture><source srcset="images/crowd-energy.webp" type="image/webp"><img src="images/crowd-energy.jpg" alt="Pancakes & Booze crowd" width="1920" height="1558" decoding="async" fetchpriority="high"></picture>
     </div>
     <div class="hero-content">
-      <img src="hero-logo.png" alt="Pancakes & Booze" class="hero-logo" width="600" height="600">
+      <picture><source srcset="hero-logo.webp" type="image/webp"><img src="hero-logo.png" alt="Pancakes & Booze" class="hero-logo" width="600" height="600"></picture>
       <p class="hero-tagline">UNDERGROUND ART SHOW</p>
       <!-- Hero sub: direct copy from Justin (2026-04-24 v2.2 pass). Do not
            paraphrase. The "Still Alive" mission now closes the hero — it's
@@ -1610,7 +1610,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image fade-up">
-          <img src="images/gallery-art.jpg" alt="Art on display at Pancakes & Booze" width="1200" height="800" decoding="async" loading="lazy">
+          <picture><source srcset="images/gallery-art.webp" type="image/webp"><img src="images/gallery-art.jpg" alt="Art on display at Pancakes & Booze" width="1200" height="800" decoding="async" loading="lazy"></picture>
         </div>
         <div class="fade-up">
           <p class="section-label">Where culture gets fed</p>
@@ -1654,31 +1654,31 @@
          When swapping images: keep the same filename to avoid editing here,
          OR edit BOTH halves identically. -->
     <div class="gallery-row">
-      <img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above" width="1200" height="800" decoding="async" loading="lazy">
-      <img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
-      <img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze" width="720" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze" width="1200" height="800" decoding="async" loading="lazy">
-      <img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
-      <img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze" width="1280" height="853" decoding="async" loading="lazy">
-      <img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls" width="1280" height="832" decoding="async" loading="lazy">
-      <img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze" width="667" height="1000" decoding="async" loading="lazy">
-      <img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze" width="960" height="1280" decoding="async" loading="lazy">
+      <picture><source srcset="images/event-vibe9.webp" type="image/webp"><img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe3.webp" type="image/webp"><img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above" width="1200" height="800" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe5.webp" type="image/webp"><img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe7.webp" type="image/webp"><img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze" width="720" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe2.webp" type="image/webp"><img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze" width="1200" height="800" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe12.webp" type="image/webp"><img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe6.webp" type="image/webp"><img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe11.webp" type="image/webp"><img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe10.webp" type="image/webp"><img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze" width="1280" height="853" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe8.webp" type="image/webp"><img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls" width="1280" height="832" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe1.webp" type="image/webp"><img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze" width="667" height="1000" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe4.webp" type="image/webp"><img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze" width="960" height="1280" decoding="async" loading="lazy"></picture>
       <!-- duplicate for loop -->
-      <img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above" width="1200" height="800" decoding="async" loading="lazy">
-      <img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
-      <img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze" width="720" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze" width="1200" height="800" decoding="async" loading="lazy">
-      <img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy">
-      <img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy">
-      <img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze" width="1280" height="853" decoding="async" loading="lazy">
-      <img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls" width="1280" height="832" decoding="async" loading="lazy">
-      <img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze" width="667" height="1000" decoding="async" loading="lazy">
-      <img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze" width="960" height="1280" decoding="async" loading="lazy">
+      <picture><source srcset="images/event-vibe9.webp" type="image/webp"><img src="images/event-vibe9.jpeg" alt="Pancakes cooking on the griddle at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe3.webp" type="image/webp"><img src="images/event-vibe3.jpg" alt="Pancakes &amp; Booze show floor from above" width="1200" height="800" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe5.webp" type="image/webp"><img src="images/event-vibe5.jpg" alt="Friends with free pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe7.webp" type="image/webp"><img src="images/event-vibe7.jpeg" alt="Crowd in the gallery at Pancakes &amp; Booze" width="720" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe2.webp" type="image/webp"><img src="images/event-vibe2.jpg" alt="Syrup pouring over fresh pancakes at Pancakes &amp; Booze" width="1200" height="800" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe12.webp" type="image/webp"><img src="images/event-vibe12.jpeg" alt="Browsing the vendor wall at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe6.webp" type="image/webp"><img src="images/event-vibe6.jpg" alt="Crew with pancakes at Pancakes &amp; Booze" width="1000" height="667" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe11.webp" type="image/webp"><img src="images/event-vibe11.jpeg" alt="Live painter mid-stroke at Pancakes &amp; Booze" width="853" height="1280" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe10.webp" type="image/webp"><img src="images/event-vibe10.jpeg" alt="Wild crew with pancakes at Pancakes &amp; Booze" width="1280" height="853" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe8.webp" type="image/webp"><img src="images/event-vibe8.jpeg" alt="Crowd browsing the salon-style art walls" width="1280" height="832" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe1.webp" type="image/webp"><img src="images/event-vibe1.jpg" alt="Artist live-painting at Pancakes &amp; Booze" width="667" height="1000" decoding="async" loading="lazy"></picture>
+      <picture><source srcset="images/event-vibe4.webp" type="image/webp"><img src="images/event-vibe4.jpeg" alt="Marionette art piece at Pancakes &amp; Booze" width="960" height="1280" decoding="async" loading="lazy"></picture>
     </div>
   </section>
 
@@ -1756,11 +1756,11 @@
           <a href="#shows" class="btn btn-primary">Claim Your Space</a>
         </div>
         <div class="exhibit-image fade-up">
-          <img src="images/art-display.jpg" alt="Artist displaying work at P&B" width="1200" height="800" decoding="async" loading="lazy">
+          <picture><source srcset="images/art-display.webp" type="image/webp"><img src="images/art-display.jpg" alt="Artist displaying work at P&B" width="1200" height="800" decoding="async" loading="lazy"></picture>
         </div>
       </div>
     </div>
-    <img src="images/bunny-mascot.png" class="bunny-float" alt="" width="500" height="267" decoding="async" loading="lazy">
+    <picture><source srcset="images/bunny-mascot.webp" type="image/webp"><img src="images/bunny-mascot.png" class="bunny-float" alt="" width="500" height="267" decoding="async" loading="lazy"></picture>
   </section>
 
   <!-- ════════════ EXPERIENCE ════════════ -->
@@ -1779,21 +1779,21 @@
       </div>
       <div class="exp-grid">
         <div class="exp-card fade-up">
-          <img src="images/walls-overhead.jpg" alt="Overhead view of the Pancakes &amp; Booze show floor packed with salon-style art walls and crowd" width="640" height="427" decoding="async" loading="lazy">
+          <picture><source srcset="images/walls-overhead.webp" type="image/webp"><img src="images/walls-overhead.jpg" alt="Overhead view of the Pancakes &amp; Booze show floor packed with salon-style art walls and crowd" width="640" height="427" decoding="async" loading="lazy"></picture>
           <div class="exp-card-overlay">
             <h3>The Walls</h3>
             <p>Salon-style walls packed floor-to-ceiling with local work. No white-cube pretense, just pure creativity.</p>
           </div>
         </div>
         <div class="exp-card fade-up">
-          <img src="images/body-paint.jpg" alt="Body-paint artist mid-spray on a model at a Pancakes &amp; Booze show" width="1200" height="800" decoding="async" loading="lazy">
+          <picture><source srcset="images/body-paint.webp" type="image/webp"><img src="images/body-paint.jpg" alt="Body-paint artist mid-spray on a model at a Pancakes &amp; Booze show" width="1200" height="800" decoding="async" loading="lazy"></picture>
           <div class="exp-card-overlay">
             <h3>Moving Canvases</h3>
             <p>Live artists turning skin into story. Watch the art walk off the wall and into the crowd.</p>
           </div>
         </div>
         <div class="exp-card fade-up">
-          <img src="images/handoff-pancakes.jpeg" alt="Volunteer handing off a paper plate of free pancakes at the Pancakes &amp; Booze show" width="852" height="1280" decoding="async" loading="lazy">
+          <picture><source srcset="images/handoff-pancakes.webp" type="image/webp"><img src="images/handoff-pancakes.jpeg" alt="Volunteer handing off a paper plate of free pancakes at the Pancakes &amp; Booze show" width="852" height="1280" decoding="async" loading="lazy"></picture>
           <div class="exp-card-overlay">
             <h3>The Griddle</h3>
             <p>Free pancakes, hot griddles, and sticky fingers, in the heart of the underground.</p>
@@ -2140,7 +2140,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="logo.png" alt="Pancakes & Booze" style="height: 36px;" width="36" height="36">
+          <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Pancakes & Booze" style="height: 36px;" width="36" height="36"></picture>
           <p>
             Born in L.A. Raised by the underground. 15 years. 500+ exhibitions.
             Free pancakes, real art, no pretense.
