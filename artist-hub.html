@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Hub | Pancakes &amp; Booze</title>
+  <meta name="description" content="Resources for exhibiting artists at Pancakes & Booze. Show day prep, hanging hardware, title cards, social promotion, and more.">
+
+  <!-- Keep this page out of search results — it's a resource for accepted artists,
+       not something we want random visitors finding. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Shared tokens — keep in sync with index.html */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-card-2: #1a1a1a;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --accent-glow: rgba(255, 45, 123, 0.3);
+      --yellow: #e8ff21;
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    section[id] { scroll-margin-top: 96px; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement bar */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .announcement a { color: var(--black); text-decoration: underline; font-weight: 800; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 40px; }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* ════════════ HERO ════════════ */
+    .hub-hero {
+      padding: 80px 0 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hub-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,45,123,0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .hub-eyebrow {
+      font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+    .hub-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      letter-spacing: 1px;
+      line-height: 0.95;
+      margin-bottom: 16px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+    }
+    .hub-sub {
+      font-size: 1.1rem;
+      color: var(--gray-light);
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    /* ════════════ YOUR SHOW SNAPSHOT ════════════ */
+    .snapshot {
+      padding: 24px 0 48px;
+    }
+    .snapshot-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+    }
+    .snapshot-eyebrow {
+      font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 6px;
+    }
+    .snapshot-city {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .snapshot-date {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--yellow);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px 24px;
+      margin-top: 16px;
+    }
+    .snapshot-item {
+      font-size: 0.95rem;
+    }
+    .snapshot-item dt {
+      font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray); font-weight: 700; margin-bottom: 4px;
+    }
+    .snapshot-item dd {
+      color: var(--white);
+    }
+    .snapshot-item dd a {
+      color: var(--gray-light);
+      border-bottom: 1px solid var(--dark-border);
+      padding-bottom: 1px;
+    }
+    .snapshot-item dd a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      text-decoration: none;
+    }
+    .snapshot-fallback {
+      color: var(--gray);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* ════════════ QUICK FACTS STRIP ════════════ */
+    .quick-facts {
+      padding: 0 0 48px;
+    }
+    .quick-facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .quick-fact {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+    .quick-fact-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .quick-fact-label {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      line-height: 1.4;
+    }
+
+    /* ════════════ SECTIONS ════════════ */
+    .hub-section {
+      padding: 32px 0;
+      border-top: 1px solid var(--dark-border);
+    }
+    .hub-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hub-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin: 24px 0 8px;
+    }
+    .hub-section p {
+      color: var(--gray-light);
+      margin-bottom: 14px;
+    }
+    .hub-section a {
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .hub-section a:hover { border-bottom-color: var(--accent); text-decoration: none; }
+    .hub-section strong { color: var(--white); }
+    .hub-section ul, .hub-section ol {
+      margin: 8px 0 16px 22px;
+      color: var(--gray-light);
+    }
+    .hub-section ul { list-style: square; }
+    .hub-section li { margin-bottom: 6px; }
+
+    .callout {
+      background: var(--dark-card);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 12px 0;
+      color: var(--gray-light);
+      font-size: 0.95rem;
+    }
+    .callout strong { color: var(--white); }
+
+    .coming-soon {
+      background: var(--dark-card);
+      border: 1px dashed var(--dark-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* Hardware reference grid */
+    .hardware-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 12px 0 20px;
+    }
+    .hardware-item {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .hardware-item-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .hardware-item-preferred {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--yellow);
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .hardware-item-desc {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+    }
+
+    /* In-page nav (sticky table of contents) */
+    .toc {
+      position: sticky;
+      top: 88px;
+      display: none;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding-right: 12px;
+    }
+    .toc-title {
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gray); font-weight: 700; margin-bottom: 12px;
+    }
+    .toc ul { list-style: none; padding: 0; margin: 0; }
+    .toc li { margin: 0 0 6px; }
+    .toc a {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      display: block;
+      padding: 4px 0;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .toc a:hover {
+      color: var(--white);
+      border-left-color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hub-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 1024px) {
+      .hub-layout {
+        grid-template-columns: 240px 1fr;
+      }
+      .toc { display: block; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* A11Y BASE */
+    .skip-link {
+      position: absolute; top: -100px; left: 8px;
+      background: var(--yellow); color: var(--black);
+      padding: 12px 20px; border-radius: 6px;
+      font-weight: 700; font-family: var(--font-display);
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid var(--accent); outline-offset: 2px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 640px) {
+      .snapshot-card { padding: 22px; }
+    }
+  </style>
+
+  <!-- ════════════ TERMLY CMP ════════════ -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
+
+  <!-- Google Consent Mode bridge -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '785234971632299');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=785234971632299&ev=PageView&noscript=1" /></noscript>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="announcement">
+    Artist Hub &mdash; everything you need to know for your show
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes &amp; Booze" width="40" height="40">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+    </div>
+  </nav>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hub-hero">
+    <div class="container">
+      <div class="hub-eyebrow">Artist Hub</div>
+      <h1 class="hub-title">You&rsquo;re In.</h1>
+      <p class="hub-sub">Everything you need to know between today and the night of your show. Read it once, refer back as needed.</p>
+    </div>
+  </section>
+
+  <!-- ════════════ YOUR SHOW SNAPSHOT (pulled from shows.json) ════════════ -->
+  <section class="snapshot" id="snapshot">
+    <div class="container">
+      <div class="snapshot-card" id="snapshotCard">
+        <div class="snapshot-eyebrow">Your Show</div>
+        <div class="snapshot-city" id="snapshotCity">&mdash;</div>
+        <div class="snapshot-date" id="snapshotDate"></div>
+        <dl class="snapshot-grid" id="snapshotGrid">
+          <!-- Populated by JS from shows.json. Falls back to placeholders below. -->
+        </dl>
+        <p class="snapshot-fallback" id="snapshotFallback" hidden>
+          Show-specific details didn&rsquo;t load. Check your acceptance email for date, venue, and install time, or contact <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Hub">info@pancakesandbooze.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <div class="container">
+      <div class="hub-layout">
+
+        <!-- TOC sidebar (visible on desktop only) -->
+        <aside class="toc" aria-label="On this page">
+          <div class="toc-title">On This Page</div>
+          <ul>
+            <li><a href="#quick-facts">Quick Facts</a></li>
+            <li><a href="#before">Before the Show</a></li>
+            <li><a href="#installation">Installation Day</a></li>
+            <li><a href="#during">During the Show</a></li>
+            <li><a href="#painters">Live &amp; Body Painters</a></li>
+            <li><a href="#teardown">Tear-Down</a></li>
+            <li><a href="#promote">Promotion Toolkit</a></li>
+            <li><a href="#after">After the Show</a></li>
+            <li><a href="#photo-tips">Photo &amp; Social Tips</a></li>
+            <li><a href="#parking">Parking &amp; Load-In</a></li>
+            <li><a href="#sales-tax">Sales Tax</a></li>
+            <li><a href="#support">Support</a></li>
+          </ul>
+        </aside>
+
+        <div>
+
+          <!-- QUICK FACTS -->
+          <section class="quick-facts" id="quick-facts">
+            <div class="quick-facts-grid">
+              <div class="quick-fact">
+                <div class="quick-fact-num">0%</div>
+                <div class="quick-fact-label">Commission &mdash; keep every dollar you sell</div>
+              </div>
+              <div class="quick-fact">
+                <div class="quick-fact-num">2&ndash;10</div>
+                <div class="quick-fact-label">Pieces you can hang</div>
+              </div>
+              <div class="quick-fact">
+                <div class="quick-fact-num">36&times;36 in</div>
+                <div class="quick-fact-label">Max size per piece</div>
+              </div>
+              <div class="quick-fact">
+                <div class="quick-fact-num">Bin OK</div>
+                <div class="quick-fact-label">Sell prints &amp; small items from a bin or short table under your work &mdash; no extra charge</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- BEFORE THE SHOW -->
+          <section class="hub-section" id="before">
+            <h2>Before the Show</h2>
+            <p>A short prep list. Knock these out the week before and install day goes smoothly.</p>
+
+            <h3>Hanging hardware</h3>
+            <p>Pieces should be <strong>wired for hanging</strong>. That&rsquo;s our preferred setup &mdash; it&rsquo;s the fastest to install and the most stable on our wall panels.</p>
+            <p>That said, we can work with almost any standard hanging method. Common options include:</p>
+            <div class="hardware-grid">
+              <div class="hardware-item">
+                <div class="hardware-item-name">Picture wire<span class="hardware-item-preferred">Preferred</span></div>
+                <div class="hardware-item-desc">Braided wire across two D-rings or eye-screws on the back of the piece. Fast, stable, what we recommend.</div>
+              </div>
+              <div class="hardware-item">
+                <div class="hardware-item-name">Sawtooth hanger</div>
+                <div class="hardware-item-desc">Small metal bracket with a notched edge. Works fine, especially on lighter pieces.</div>
+              </div>
+              <div class="hardware-item">
+                <div class="hardware-item-name">D-rings (no wire)</div>
+                <div class="hardware-item-desc">Two D-rings, one screw per ring. Solid for medium-weight work.</div>
+              </div>
+              <div class="hardware-item">
+                <div class="hardware-item-name">Eye-screws / eye-hooks</div>
+                <div class="hardware-item-desc">Drilled directly into the frame or stretcher bar. Wired version is preferred.</div>
+              </div>
+            </div>
+            <p>If you&rsquo;re not sure what your piece has on the back, look before install day. Adding hardware in the parking lot is stressful.</p>
+
+            <h3>Title cards</h3>
+            <p>Each piece needs a title card. Bring them with you on install day &mdash; we don&rsquo;t print these for you.</p>
+            <p><strong>What to include:</strong></p>
+            <ul>
+              <li>Artist name</li>
+              <li>Social handle(s)</li>
+              <li>Title of the piece</li>
+              <li>Medium</li>
+              <li>Year</li>
+              <li>Price</li>
+              <li>A payment QR code (Venmo, Cash App, etc.) so buyers can pay you instantly</li>
+            </ul>
+            <p><strong>Size:</strong> roughly <strong>3&times;5 inches</strong>. Bigger than that eats into wall space and your neighbor&rsquo;s real estate.</p>
+            <p>Design is up to you. Some artists print on cardstock, others use stickers. As long as the info is readable from a step away, you&rsquo;re good.</p>
+
+            <h3>Pricing your work</h3>
+            <p>Most first-time artists underprice. Quick check before you commit:</p>
+            <ul>
+              <li>Add up materials + your time at a rate you&rsquo;d be okay walking away with.</li>
+              <li>Add a small markup &mdash; you&rsquo;re also paying for the wall, the crowd, and the rent on your studio.</li>
+              <li>Round to memorable numbers ($150, $275, $400) so people can think about it quickly.</li>
+              <li>Bring a small range of price points if you can &mdash; an entry-level item moves faster than a single $1,200 piece.</li>
+            </ul>
+
+            <h3>Prints &amp; small merch</h3>
+            <p>Sell prints, stickers, pins, zines, and other small items from a bin, box, or short table on the floor under your displayed work. No extra charge for this &mdash; it&rsquo;s part of your hanging space. Just keep your setup tidy and don&rsquo;t encroach on your neighbor.</p>
+
+            <h3>What to bring</h3>
+            <ul>
+              <li>Your art</li>
+              <li>Title cards (one per piece)</li>
+              <li>Payment setup (Square reader, Venmo / Cash App / Zelle QR codes, plus some small bills for change)</li>
+              <li>Business cards or postcards with your work and handle</li>
+              <li>Your own screw gun (optional but recommended &mdash; see Installation Day)</li>
+            </ul>
+          </section>
+
+          <!-- INSTALLATION DAY -->
+          <section class="hub-section" id="installation">
+            <h2>Installation Day</h2>
+            <p>Install window for your show: <strong id="installWindow">check your acceptance email</strong>.</p>
+            <p>If you have 5+ pieces or anything close to the 36&times;36 max, <strong>arrive in the first hour</strong>. Wall locations are first-come, first-served, and the prime spots fill quickly.</p>
+
+            <h3>Salon-style hanging</h3>
+            <p>Your work hangs salon-style on 8&times;4 ft wall panels &mdash; floor to ceiling, edge to edge. Depending on how many artists show up at once, you may share a panel with someone else. Be ready to negotiate placement.</p>
+
+            <h3>What we provide</h3>
+            <ul>
+              <li>Walls (the panels we build for the show)</li>
+              <li>Screws</li>
+              <li>Screw guns (shared &mdash; you may wait for one during peak install)</li>
+              <li>Lighting</li>
+            </ul>
+
+            <h3>What to bring on install day</h3>
+            <ul>
+              <li><strong>Your own screw gun</strong> if you&rsquo;re on a tight timeline &mdash; ours get backed up around peak hours.</li>
+              <li>A level if you&rsquo;re particular about straight lines.</li>
+            </ul>
+
+            <div class="callout">
+              <strong>Hammers and nails are not permitted.</strong> Screws only.
+            </div>
+          </section>
+
+          <!-- DURING THE SHOW -->
+          <section class="hub-section" id="during">
+            <h2>During the Show</h2>
+            <p>Show hours: <strong id="showHours">check your acceptance email</strong>.</p>
+            <ul>
+              <li><strong>You keep 100% of sales.</strong> We don&rsquo;t take a commission and we don&rsquo;t process payments for you.</li>
+              <li>We recommend staying near your work &mdash; it&rsquo;s the easiest way to introduce yourself to people, answer questions, and collect contacts for future commissions. Not required, but it pays off.</li>
+              <li>Free entry for the exhibiting artist. Sorry, no plus-ones or assistants on the guest list.</li>
+            </ul>
+          </section>
+
+          <!-- LIVE / BODY PAINTERS -->
+          <section class="hub-section" id="painters">
+            <h2>Live Painters &amp; Body Painters</h2>
+            <p>If you&rsquo;re exhibiting on the wall, skip this section.</p>
+
+            <h3>Live painters</h3>
+            <p>Arrival window: <strong id="livePainterArrival">check your acceptance email</strong>.</p>
+            <p>Set up after the event starts &mdash; please don&rsquo;t arrive earlier, we may need the floor for production setup. Bring drop cloths to protect the venue&rsquo;s floor.</p>
+
+            <h3>Body painters</h3>
+            <p>Arrival window: <strong id="bodyPainterArrival">check your acceptance email</strong>.</p>
+            <p>Same rule on setup timing &mdash; after the event starts. Bring drop cloths.</p>
+            <p><strong>Models:</strong> body paint models get in free, but <strong>maximum 2 per artist</strong>. Anyone else with you pays cover.</p>
+          </section>
+
+          <!-- TEAR-DOWN -->
+          <section class="hub-section" id="teardown">
+            <h2>Tear-Down</h2>
+            <p>All art must come down and go home with you immediately after the show ends. The venue may close earlier than midnight or run later depending on the crowd &mdash; we&rsquo;ll let you know if that&rsquo;s happening.</p>
+            <div class="callout">
+              <strong>Important:</strong> We don&rsquo;t have access to the venue once we leave. If you forget your work, we can&rsquo;t retrieve it from the venue on your behalf. Neither Pancakes &amp; Booze nor the venue is responsible for left-behind or damaged artwork.
+            </div>
+          </section>
+
+          <!-- PROMOTION TOOLKIT -->
+          <section class="hub-section" id="promote">
+            <h2>Promotion Toolkit</h2>
+            <p>The show gets bigger when artists help spread the word. Five things you can do:</p>
+            <ol>
+              <li><strong>Follow us</strong> on <a href="https://www.instagram.com/pancakesandbooze" target="_blank" rel="noopener">Instagram</a> and <a href="https://www.facebook.com/PancakesandBoozeArtShow/" target="_blank" rel="noopener">Facebook</a>. Our paid ads target our followers and their friends, so this directly amplifies your reach.</li>
+              <li><strong>Grab the flyer</strong> from <a href="/tickets">our tickets page</a> &mdash; save the square version to your phone and repost it now and then.</li>
+              <li><strong>Tag us in posts and stories.</strong> Use <strong>@pancakesandbooze</strong> and hashtags <strong>#pancakesandbooze</strong> + <strong>#pancakesandbooze[yourcity]</strong>. We repost a lot of tagged content.</li>
+              <li><strong>Like and share the Eventbrite event</strong> &mdash; once you pay your hanging fee, hit Like and share the listing to your socials.</li>
+              <li><strong>Pitch local media.</strong> Local blogs, TV, radio, and newspapers love a "local artist in upcoming show" angle. <a href="mailto:info@pancakesandbooze.com?subject=Press%20Release%20Request">Email us for a press release template</a> (coming soon &mdash; we&rsquo;ll send one over manually for now).</li>
+            </ol>
+          </section>
+
+          <!-- AFTER THE SHOW -->
+          <section class="hub-section" id="after">
+            <h2>After the Show</h2>
+            <p>The night doesn&rsquo;t end when the lights come up. A few small habits turn a good show into long-term momentum:</p>
+            <ul>
+              <li><strong>Send thank-you DMs</strong> to anyone who bought a piece. A short message goes a long way.</li>
+              <li><strong>Restock your online store</strong> with anything that didn&rsquo;t sell. The momentum from a live show carries online for about a week.</li>
+              <li><strong>Post a recap</strong> &mdash; behind-the-scenes shots, the wall before vs. after, your favorite conversation. Tag us so we can share it.</li>
+              <li><strong>Save buyer contacts</strong> for next time &mdash; they&rsquo;re likely to come back for your next show or commission.</li>
+            </ul>
+          </section>
+
+          <!-- PHOTO TIPS -->
+          <section class="hub-section" id="photo-tips">
+            <h2>Photo &amp; Social Tips</h2>
+            <p>Your content during install and at the show is honestly some of the best material we get. A few things that work well:</p>
+            <ul>
+              <li><strong>"Get ready with me" install content</strong> &mdash; loading in, hanging your work, setting up your bin. Time-lapses do really well.</li>
+              <li><strong>Shoot before the room goes dark.</strong> Around the start of the event the lighting is best for clean shots of your wall.</li>
+              <li><strong>Use the show as backdrop.</strong> The marquee, the gallery walls, and the griddle line are recognizable and on-brand.</li>
+              <li><strong>Tag everything.</strong> @pancakesandbooze + #pancakesandbooze + your city hashtag. We share the best stuff.</li>
+            </ul>
+          </section>
+
+          <!-- PARKING -->
+          <section class="hub-section" id="parking">
+            <h2>Parking &amp; Load-In</h2>
+            <p>Per-city parking and load-in details are coming soon. In most cities you&rsquo;ll either find street parking near the venue or use the venue&rsquo;s lot. If you&rsquo;re hauling large pieces or a lot of work, scout the entrance the day before if you can.</p>
+            <div class="coming-soon">
+              City-specific parking and load-in info coming soon. If you need details before your show, email <a href="mailto:info@pancakesandbooze.com?subject=Parking%20Question">info@pancakesandbooze.com</a>.
+            </div>
+          </section>
+
+          <!-- SALES TAX -->
+          <section class="hub-section" id="sales-tax">
+            <h2>Sales Tax</h2>
+            <p>Sales tax handling is your responsibility &mdash; rules vary by state, city, and even by event type. Some places require a temporary seller&rsquo;s permit for one-day events; some don&rsquo;t. Most casual artist-level transactions fall well below thresholds that anyone enforces, but we&rsquo;re not your accountant. Check your state&rsquo;s rules if you&rsquo;re unsure.</p>
+          </section>
+
+          <!-- SUPPORT -->
+          <section class="hub-section" id="support">
+            <h2>Support</h2>
+            <p>Questions we didn&rsquo;t cover? Email <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Hub">info@pancakesandbooze.com</a> with subject line "Artist Hub" and we&rsquo;ll get back to you.</p>
+            <p>Need to cancel? <a href="mailto:info@pancakesandbooze.com?subject=Cancellation">Email us</a> as soon as possible &mdash; we order supplies and crew based on confirmed artist count, so giving us notice helps everyone.</p>
+            <p>Need a deeper FAQ? Most policy questions are answered on the <a href="/#faq">main FAQ page</a>.</p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/cookies">Cookie Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/accessibility">Accessibility Statement</a>
+        <a href="/imprint">Imprint</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ════════════ SHOWS.JSON INTEGRATION ════════════
+    // Pulls the artist's show data from /shows.json based on ?city= URL param.
+    // Falls back gracefully if no match, no param, or fetch fails — content
+    // already has "check your acceptance email" defaults baked in.
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const wantedCity = (params.get('city') || '').toLowerCase().trim();
+
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && value) el.textContent = value;
+      };
+
+      const renderSnapshot = (show) => {
+        if (!show) {
+          // No show matched — show generic fallback message in snapshot card
+          document.getElementById('snapshotCity').textContent = 'Your Upcoming Show';
+          document.getElementById('snapshotDate').textContent = '';
+          document.getElementById('snapshotFallback').hidden = false;
+          return;
+        }
+
+        setText('snapshotCity', show.city || 'Your Upcoming Show');
+
+        // Date — try to assemble a readable label from whatever fields exist
+        const dateLabel = show.date_label
+          || show.date_range
+          || [show.date_month_short, show.date_day, show.date_year].filter(Boolean).join(' ');
+        setText('snapshotDate', dateLabel || '');
+
+        // Build the details grid
+        const grid = document.getElementById('snapshotGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        const row = (label, value, isLink) => {
+          if (!value) return;
+          const dt = document.createElement('dt');
+          dt.textContent = label;
+          const dd = document.createElement('dd');
+          if (isLink && value.startsWith('http')) {
+            const a = document.createElement('a');
+            a.href = value;
+            a.textContent = value;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            dd.appendChild(a);
+          } else {
+            dd.textContent = value;
+          }
+          const wrap = document.createElement('div');
+          wrap.className = 'snapshot-item';
+          wrap.appendChild(dt);
+          wrap.appendChild(dd);
+          grid.appendChild(wrap);
+        };
+
+        row('Venue', show.venue);
+        row('Address', show.address);
+        row('Show Hours', show.show_hours || show.event_hours);
+        row('Install Window', show.artist_install_time || show.install_time);
+        row('Age Policy', show.age || show.age_policy);
+        row('Hanging Fee', show.artist_fee_tier || show.hanging_fee);
+
+        // Sync details into the in-body sections too
+        const installWin = show.artist_install_time || show.install_time;
+        if (installWin) setText('installWindow', installWin);
+
+        const showHrs = show.show_hours || show.event_hours;
+        if (showHrs) setText('showHours', showHrs);
+
+        // Live painter / body painter arrival from JSON (Column A / Column B
+        // per Justin's spec)
+        const livePainter = show.live_painter_arrival || show.live_paint_arrival;
+        if (livePainter) setText('livePainterArrival', livePainter);
+
+        const bodyPainter = show.body_painter_arrival || show.body_paint_arrival;
+        if (bodyPainter) setText('bodyPainterArrival', bodyPainter);
+      };
+
+      try {
+        const res = await fetch('/shows.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('shows.json fetch failed');
+        const data = await res.json();
+        const shows = Array.isArray(data) ? data : (data.shows || []);
+
+        let match = null;
+        if (wantedCity) {
+          match = shows.find(s => {
+            const slug = (s.slug || s.city_slug || '').toLowerCase();
+            const name = (s.city || '').toLowerCase();
+            return slug === wantedCity || name === wantedCity
+              || slug.replace(/[\s_]/g, '-') === wantedCity
+              || name.replace(/[\s_]/g, '-') === wantedCity;
+          });
+        }
+
+        // If no city param or no match, pick the next live + future show
+        if (!match) {
+          const now = new Date();
+          match = shows.find(s => {
+            if (s.live === false) return false;
+            const d = s.date_iso ? new Date(s.date_iso) : null;
+            return !d || d >= now;
+          });
+        }
+
+        renderSnapshot(match);
+      } catch (e) {
+        // Network failure or shows.json missing — show fallback
+        renderSnapshot(null);
+      }
+    })();
+  </script>
+</body>
+</html>
