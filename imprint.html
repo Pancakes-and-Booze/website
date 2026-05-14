@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessibility Statement | Pancakes &amp; Booze</title>
-  <meta name="description" content="Accessibility Statement for Pancakes & Booze. Our commitment to making the site usable for everyone, conformance status, known limitations, and how to give feedback.">
+  <title>Imprint | Pancakes &amp; Booze</title>
+  <meta name="description" content="Imprint (Impressum) for Pancakes & Booze Art Show. Legal disclosure of company information per German § 5 TMG.">
   <link rel="icon" type="image/png" href="/logo.png">
 
   <!-- Fonts -->
@@ -84,7 +84,7 @@
     /* Page wrapper */
     .page { padding: 60px 0 100px; }
 
-    /* Legal-style content — matches cookies.html / privacy.html / terms.html */
+    /* Legal-style content — matches privacy.html / terms.html / cookies.html / accessibility.html */
     .legal-content { max-width: 860px; margin: 0 auto; }
     .legal-content h1 {
       font-family: var(--font-display);
@@ -102,19 +102,10 @@
     .legal-content h2 {
       font-family: var(--font-display);
       color: var(--white);
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       letter-spacing: 1px;
       line-height: 1.1;
-      margin: 32px 0 12px;
-      scroll-margin-top: 96px;
-    }
-    .legal-content h3 {
-      font-family: var(--font-display);
-      color: var(--white);
-      font-size: 1.3rem;
-      letter-spacing: 1px;
-      line-height: 1.2;
-      margin: 24px 0 10px;
+      margin: 28px 0 10px;
     }
     .legal-content p,
     .legal-content li {
@@ -123,7 +114,7 @@
       font-size: 1rem;
       line-height: 1.7;
     }
-    .legal-content p { margin: 0 0 14px; }
+    .legal-content p { margin: 0 0 8px; }
     .legal-content a {
       color: var(--accent);
       text-decoration: none;
@@ -136,13 +127,23 @@
       color: var(--white);
       font-weight: 700;
     }
-    .legal-content ul, .legal-content ol { margin: 8px 0 16px 24px; }
-    .legal-content ul { list-style: square; }
-    .legal-content ol { list-style: decimal; }
-    .legal-content li { margin-bottom: 6px; }
     .legal-content address {
       font-style: normal;
-      margin: 8px 0 16px;
+      margin: 0 0 8px;
+      color: var(--gray-light);
+    }
+    .legal-content .imprint-block {
+      margin-bottom: 24px;
+    }
+    .legal-content .imprint-label {
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .legal-content .imprint-translation {
+      color: var(--gray);
+      font-size: 0.85rem;
+      font-style: italic;
     }
 
     /* Footer */
@@ -163,7 +164,7 @@
 
     @media (max-width: 640px) {
       .page { padding: 40px 0 72px; }
-      .legal-content h2 { font-size: 1.5rem; }
+      .legal-content h2 { font-size: 1.3rem; }
     }
 
     /* ═════════════ A11Y BASE ═════════════ */
@@ -256,77 +257,48 @@
   <main id="main" class="page">
     <div class="container">
       <div class="legal-content">
-        <h1>Accessibility Statement</h1>
+        <h1>Impressum</h1>
         <p class="subtitle">Last updated May 13, 2026</p>
 
-        <p>This statement applies to the <a href="https://www.pancakesandbooze.com">https://www.pancakesandbooze.com</a> website.</p>
+        <div class="imprint-block">
+          <address>
+            <strong>MoneyCakes, LLC dba The Pancakes &amp; Booze Art Show</strong><br>
+            24381 Chamalea Dr<br>
+            92691 Mission Viejo<br>
+            United States
+          </address>
+        </div>
 
-        <h2>Our Commitment</h2>
-        <p><strong>MoneyCakes, LLC dba The Pancakes &amp; Booze Art Show</strong> is committed to ensuring our services are accessible to people with disabilities. We aim to conform with the WCAG 2.2 Level AA. This accessibility statement forms an integral part of our Terms and Conditions: <a href="https://pancakesandbooze.com/terms">https://pancakesandbooze.com/terms</a>.</p>
+        <h2>Kontaktinformationen</h2>
+        <p class="imprint-translation">Contact information</p>
+        <div class="imprint-block">
+          <p>Telefon: <a href="tel:+13234354920">(+1) 323&#8209;435&#8209;4920</a></p>
+          <p>E-mail: <a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a></p>
+        </div>
 
-        <h2>Accessibility Features</h2>
-        <p>You should be able to:</p>
-        <ul>
-          <li>Zoom in up to 200% without loss of information or functionality</li>
-          <li>Navigate the website with just a keyboard</li>
-          <li>Listen to the website using a screen reader</li>
-          <li>Skip-to-content link for keyboard users</li>
-          <li>Respects <code>prefers-reduced-motion</code> to pause animations</li>
-          <li>Visible focus indicators on all interactive elements</li>
-        </ul>
+        <h2>Bevollm&auml;chtigte Vertreter</h2>
+        <p class="imprint-translation">Authorized representative</p>
+        <div class="imprint-block">
+          <p>Justin Allen</p>
+        </div>
 
-        <h2>Conformance Status</h2>
-        <p><strong>Status:</strong> Partially compliant with WCAG 2.2 Level AA</p>
-        <p>We conducted our most recent accessibility evaluation on May 12, 2026. For more information, see the <a href="#how-we-test">How We Test</a> and <a href="#non-accessible">Non-Accessible Content</a> sections below.</p>
+        <h2>Eingetragener Sitz</h2>
+        <p class="imprint-translation">Registered office</p>
+        <div class="imprint-block">
+          <p>United States</p>
+        </div>
 
-        <h2 id="non-accessible">Non-Accessible Content</h2>
-        <p>Below is a description of known limitations we&rsquo;re working to address.</p>
-        <ol>
-          <li><strong>Third-party embedded content:</strong> Ticket purchase pages and consent management interfaces are hosted by third-party providers (Eventbrite, Etix, Termly) whose accessibility we do not directly control.</li>
-          <li><strong>Dynamic content from shows.json:</strong> City pages and show listings are generated dynamically. While the page templates are accessible, individual show entries may occasionally contain content that does not fully meet accessibility standards.</li>
-          <li><strong>Marquee animations:</strong> The scrolling announcement bar and city ticker pause on mouse hover and respect users&rsquo; &ldquo;reduce motion&rdquo; preference, but do not pause on keyboard focus.</li>
-          <li><strong>FAQ keyboard navigation:</strong> FAQ category tabs are usable with mouse, touch, and Tab/Enter keys, but do not yet support arrow-key navigation between tabs (full ARIA Tabs pattern).</li>
-        </ol>
-        <p>We are actively working to address these issues as part of an ongoing plan to improve accessibility.</p>
+        <h2>Registergericht</h2>
+        <p class="imprint-translation">Registry court</p>
+        <div class="imprint-block">
+          <p>California Secretary of State</p>
+        </div>
 
-        <h2>Preparation of This Statement</h2>
-        <p>This statement was prepared on 13 May 2026 and is reviewed annually or when we make significant service changes.</p>
-        <p>We maintain records of accessibility feedback and our responses for regulatory compliance.</p>
-
-        <h2 id="how-we-test">How We Test</h2>
-        <p>We evaluate accessibility using:</p>
-        <ul>
-          <li>External accessibility audit</li>
-          <li>Self-assessment conducted in accordance with EAA requirements</li>
-          <li>Automated testing via Lighthouse and axe DevTools</li>
-          <li>Manual keyboard navigation testing</li>
-        </ul>
-
-        <h2>Feedback and Contact Information</h2>
-        <p>Please let us know if you experience accessibility barriers using our services or need information in an alternative format.</p>
-        <ul>
-          <li>Email: <a href="mailto:info@pancakesandbooze.com?subject=Accessibility">info@pancakesandbooze.com</a> (mark subject line &ldquo;Accessibility&rdquo;)</li>
-        </ul>
-        <p>We respond to accessibility feedback within 15 business days.</p>
-        <p>You can also contact us by post:</p>
-        <address>
-          MoneyCakes, LLC dba The Pancakes &amp; Booze Art Show<br>
-          24381 Chamalea Dr<br>
-          Mission Viejo, CA 92691<br>
-          United States
-        </address>
-
-        <h2>Enforcement</h2>
-        <p>If you&rsquo;re not satisfied with our response, you can contact the enforcement authority in your country:</p>
-        <ul>
-          <li><strong>Germany:</strong> <a href="https://www.bfdi.bund.de/EN/Service/Kontakt/kontakt_node.html" target="_blank" rel="noopener">BFIT-Bund</a></li>
-          <li><strong>France:</strong> <a href="https://www.defenseurdesdroits.fr/nous-contacter-355" target="_blank" rel="noopener">D&eacute;fenseur des droits</a></li>
-          <li><strong>Ireland:</strong> <a href="https://nda.ie/accessibility" target="_blank" rel="noopener">National Disability Authority</a></li>
-          <li><strong>Spain:</strong> <a href="https://www.rpdiscapacidad.gob.es/organismos/oadis.htm" target="_blank" rel="noopener">OADIS</a></li>
-          <li><strong>Italy:</strong> <a href="https://www.agid.gov.it/it/ambiti-intervento/accessibilita-usabilita" target="_blank" rel="noopener">AgID</a></li>
-        </ul>
-        <p>For other EU countries, contact your national consumer protection authority.</p>
-        <p>For questions about accessibility or this statement, contact us using the details above.</p>
+        <h2>Handelsregisternummer</h2>
+        <p class="imprint-translation">Commercial registry number</p>
+        <div class="imprint-block">
+          <p>202565218103</p>
+        </div>
       </div>
     </div>
   </main>
@@ -341,7 +313,7 @@
         <a href="/privacy">Privacy Policy</a>
         <a href="/cookies">Cookie Policy</a>
         <a href="/terms">Terms &amp; Conditions</a>
-        <a href="/accessibility">Accessibility</a>
+        <a href="/accessibility">Accessibility Statement</a>
         <a href="/imprint">Imprint</a>
       </div>
     </div>
