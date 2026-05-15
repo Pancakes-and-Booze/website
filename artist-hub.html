@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artist Hub | Pancakes &amp; Booze</title>
-  <meta name="description" content="Show day instructions for exhibiting artists at Pancakes & Booze. Arrival, hanging, sales, parking, and promotion.">
+  <meta name="description" content="Show day instructions for exhibiting artists at Pancakes & Booze. Arrival, hanging, sales, parking, promotion, and the 2026 growth kit.">
 
-  <!-- Keep this page out of search results — it's a resource for accepted artists. -->
+  <!-- Resource for accepted artists. Don't index. -->
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="icon" type="image/png" href="/logo.png">
@@ -30,6 +30,7 @@
       --accent: #ff2d7b;
       --accent-glow: rgba(255, 45, 123, 0.3);
       --yellow: #e8ff21;
+      --yellow-glow: rgba(232, 255, 33, 0.3);
       --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'Inter', sans-serif;
@@ -51,7 +52,7 @@
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    /* Announcement bar */
+    /* Announcement */
     .announcement {
       background: var(--gradient);
       color: var(--black);
@@ -62,7 +63,6 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
-    .announcement a { color: var(--black); text-decoration: underline; font-weight: 800; }
 
     /* Nav */
     nav {
@@ -76,20 +76,15 @@
     .nav-inner {
       max-width: 1280px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-      gap: 12px;
+      height: 72px; gap: 12px;
     }
     .nav-logo img { height: 40px; }
     .nav-back {
       color: var(--gray-light);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
     }
     .nav-back:hover { color: var(--accent); text-decoration: none; }
-
-    /* Mobile sticky jump-to dropdown — replaces Back Home link on mobile */
     .mobile-jump {
       display: none;
       background: var(--dark-card);
@@ -102,23 +97,20 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       cursor: pointer;
-      min-width: 160px;
+      min-width: 170px;
     }
     @media (max-width: 768px) {
       .nav-back { display: none; }
       .mobile-jump { display: block; }
     }
 
-    /* ════════════ HERO ════════════ */
+    /* Hero */
     .hub-hero {
-      padding: 60px 0 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      padding: 60px 0 28px; text-align: center;
+      position: relative; overflow: hidden;
     }
     .hub-hero::before {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(circle at 50% 0%, rgba(255,45,123,0.18), transparent 60%);
       pointer-events: none;
     }
@@ -129,9 +121,8 @@
     }
     .hub-title {
       font-family: var(--font-display);
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      letter-spacing: 1px;
-      line-height: 0.95;
+      font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+      letter-spacing: 1px; line-height: 0.95;
       margin-bottom: 14px;
       background: var(--gradient);
       -webkit-background-clip: text;
@@ -139,56 +130,161 @@
       background-clip: text;
       position: relative; z-index: 1;
     }
+    .hub-subhead {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      letter-spacing: 3px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
     .hub-sub {
-      font-size: 1rem;
-      color: var(--gray-light);
-      max-width: 580px;
-      margin: 0 auto;
+      font-size: 1rem; color: var(--gray-light);
+      max-width: 580px; margin: 0 auto;
       position: relative; z-index: 1;
     }
 
-    /* ════════════ SNAPSHOT + MAP ROW ════════════ */
-    .show-block { padding: 16px 0 32px; }
-    .show-grid {
+    /* Hardware diagram (single image, clickable for lightbox) */
+    .hardware-diagram {
+      margin: 16px 0 8px;
+      text-align: center;
+    }
+    .hardware-diagram-btn {
+      display: block;
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .hardware-diagram-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .hardware-diagram-btn img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hardware-diagram-zoom {
+      position: absolute;
+      bottom: 12px; right: 12px;
+      background: rgba(10, 10, 10, 0.78);
+      color: var(--yellow);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .hardware-diagram figcaption {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    /* Salon Hang photos */
+    .salon-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (min-width: 720px) {
+      .salon-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .salon-photo {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--dark-card-2);
+    }
+    .salon-photo img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Lightbox overlay */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 10001;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto; height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--black);
+      border: none;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-close:hover { background: var(--yellow); }
+
+    /* Snapshot + map */
+    .show-block { padding: 12px 0 28px; }
+    .show-grid {
+      display: grid; grid-template-columns: 1fr; gap: 16px;
     }
     @media (min-width: 860px) {
       .show-grid { grid-template-columns: 1fr 1fr; }
     }
-    .show-card {
+    .show-card, .map-card {
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
       border-radius: var(--radius-lg);
-      padding: 24px;
     }
+    .show-card { padding: 24px; }
     .show-card h3, .map-card h3 {
       font-family: var(--font-display);
-      font-size: 1.1rem;
-      letter-spacing: 2px;
+      font-size: 1.05rem; letter-spacing: 2px;
       color: var(--accent);
-      margin-bottom: 12px;
-      text-transform: uppercase;
+      margin-bottom: 12px; text-transform: uppercase;
     }
     .show-city {
       font-family: var(--font-display);
       font-size: clamp(1.6rem, 4vw, 2.2rem);
-      letter-spacing: 1px;
-      margin-bottom: 4px;
+      letter-spacing: 1px; margin-bottom: 4px;
     }
     .show-date {
       font-family: var(--font-display);
-      font-size: 1.2rem;
-      color: var(--yellow);
-      letter-spacing: 2px;
-      margin-bottom: 14px;
+      font-size: 1.2rem; color: var(--yellow);
+      letter-spacing: 2px; margin-bottom: 14px;
     }
     .show-grid-details {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px 20px;
-      font-size: 0.9rem;
+      gap: 12px 20px; font-size: 0.9rem;
     }
     .show-grid-details dt {
       font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
@@ -196,27 +292,14 @@
     }
     .show-grid-details dd { color: var(--white); }
 
-    /* Map card */
-    .map-card {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+    .map-card { overflow: hidden; display: flex; flex-direction: column; }
     .map-card-header { padding: 24px 24px 12px; }
     .map-frame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: var(--dark-card-2);
-      flex: 1;
-      min-height: 220px;
+      position: relative; width: 100%; aspect-ratio: 4 / 3;
+      background: var(--dark-card-2); flex: 1; min-height: 220px;
     }
     .map-frame iframe {
-      width: 100%; height: 100%;
-      border: 0;
+      width: 100%; height: 100%; border: 0;
       filter: grayscale(0.2) invert(0.85) hue-rotate(180deg);
     }
     .map-no-data {
@@ -228,8 +311,7 @@
       background: var(--dark-card-2);
       padding: 16px 24px;
       border-top: 1px solid var(--dark-border);
-      font-size: 0.9rem;
-      color: var(--gray-light);
+      font-size: 0.9rem; color: var(--gray-light);
     }
     .parking-block strong { color: var(--white); }
     .parking-eyebrow {
@@ -237,20 +319,16 @@
       color: var(--accent); font-weight: 700; margin-bottom: 4px;
     }
 
-    /* ════════════ 6-ITEM GRID ════════════ */
-    .six-grid-section { padding: 32px 0; }
+    /* 6-item grid */
+    .six-grid-section { padding: 28px 0; }
     .section-title {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 4vw, 2.4rem);
-      letter-spacing: 1px;
-      color: var(--white);
-      margin-bottom: 20px;
-      text-align: center;
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 20px; text-align: center;
     }
     .six-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+      display: grid; grid-template-columns: 1fr; gap: 14px;
     }
     @media (min-width: 640px) {
       .six-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -264,34 +342,27 @@
       border-radius: var(--radius-lg);
       padding: 24px;
       transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
     }
-    .six-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
+    .six-card:hover { border-color: var(--accent); transform: translateY(-2px); }
     .six-card-num {
       display: inline-block;
       font-family: var(--font-display);
-      font-size: 1rem;
-      letter-spacing: 1px;
-      color: var(--black);
-      background: var(--yellow);
-      padding: 2px 10px;
-      border-radius: 4px;
-      margin-bottom: 12px;
+      font-size: 1rem; letter-spacing: 1px;
+      color: var(--black); background: var(--yellow);
+      padding: 2px 10px; border-radius: 4px;
+      margin-bottom: 12px; align-self: flex-start;
     }
     .six-card h3 {
       font-family: var(--font-display);
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-      color: var(--white);
-      margin-bottom: 10px;
+      font-size: 1.4rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 10px;
       line-height: 1.1;
     }
     .six-card p {
       color: var(--gray-light);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.95rem; line-height: 1.6;
+      flex: 1;
     }
     .six-card strong { color: var(--white); }
     .six-card .tech-note {
@@ -301,30 +372,38 @@
       background: var(--dark-card-2);
       border-left: 2px solid var(--accent);
       border-radius: 0 6px 6px 0;
-      font-size: 0.85rem;
-      color: var(--gray-light);
+      font-size: 0.85rem; color: var(--gray-light);
+    }
+    .six-card .card-action {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-display);
+      font-size: 0.8rem; letter-spacing: 2px;
+      color: var(--accent); text-transform: uppercase;
+      border: 1px solid var(--accent);
+      padding: 8px 14px; border-radius: 6px;
+      align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+    }
+    .six-card .card-action:hover {
+      background: var(--accent); color: var(--black);
+      text-decoration: none;
     }
 
-    /* ════════════ DETAILED RULES SECTIONS ════════════ */
+    /* Rules sections */
     .rules-section { padding: 24px 0; border-top: 1px solid var(--dark-border); }
     .rules-section h2 {
       font-family: var(--font-display);
       font-size: clamp(1.6rem, 3.5vw, 2rem);
-      letter-spacing: 1px;
-      color: var(--white);
+      letter-spacing: 1px; color: var(--white);
       margin-bottom: 16px;
     }
     .rules-section h3 {
       font-family: var(--font-display);
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-      color: var(--white);
-      margin: 18px 0 6px;
+      font-size: 1.2rem; letter-spacing: 1px;
+      color: var(--white); margin: 18px 0 6px;
     }
-    .rules-section p {
-      color: var(--gray-light);
-      margin-bottom: 10px;
-    }
+    .rules-section p { color: var(--gray-light); margin-bottom: 10px; }
     .rules-section strong { color: var(--white); }
     .rules-section a {
       color: var(--accent);
@@ -333,16 +412,11 @@
     }
     .rules-section a:hover { border-bottom-color: var(--accent); text-decoration: none; }
 
-    /* ════════════ HARDWARE CAROUSEL ════════════ */
-    .carousel-wrap {
-      margin: 16px -24px 12px;
-      position: relative;
-    }
+    /* Carousel */
+    .carousel-wrap { margin: 16px -24px 12px; position: relative; }
     .carousel {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      display: flex; gap: 14px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
       padding: 4px 24px 16px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
@@ -352,76 +426,180 @@
     .carousel::-webkit-scrollbar-track { background: var(--dark-card); border-radius: 3px; }
     .carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
     .carousel-item {
-      flex: 0 0 280px;
-      scroll-snap-align: start;
+      flex: 0 0 280px; scroll-snap-align: start;
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
-      border-radius: var(--radius);
-      overflow: hidden;
+      border-radius: var(--radius); overflow: hidden;
     }
     .carousel-img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
+      width: 100%; aspect-ratio: 4 / 3;
       background: linear-gradient(135deg, var(--dark-card-2), var(--dark-card));
       display: flex; align-items: center; justify-content: center;
       color: var(--gray);
       font-family: var(--font-display);
-      letter-spacing: 1.5px;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      object-fit: cover;
+      letter-spacing: 1.5px; font-size: 0.85rem;
+      text-transform: uppercase; object-fit: cover;
     }
     .carousel-item-body { padding: 14px 16px; }
     .carousel-item-name {
       font-family: var(--font-display);
-      font-size: 1.05rem;
-      letter-spacing: 1px;
-      color: var(--white);
-      margin-bottom: 4px;
+      font-size: 1.05rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 4px;
     }
-    .carousel-item-desc {
-      font-size: 0.85rem;
-      color: var(--gray-light);
-    }
+    .carousel-item-desc { font-size: 0.85rem; color: var(--gray-light); }
     .preferred-tag {
       display: inline-block;
-      font-size: 0.6rem;
-      letter-spacing: 1.5px;
+      font-size: 0.6rem; letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--black);
-      background: var(--yellow);
-      padding: 2px 6px;
-      border-radius: 3px;
-      margin-left: 6px;
-      vertical-align: middle;
+      color: var(--black); background: var(--yellow);
+      padding: 2px 6px; border-radius: 3px;
+      margin-left: 6px; vertical-align: middle;
     }
 
-    /* ════════════ CHECKLIST ════════════ */
-    .checklist-section {
-      padding: 32px 0;
+    /* GROWTH KIT */
+    .growth-kit-section {
+      padding: 36px 0;
       border-top: 1px solid var(--dark-border);
     }
+    .growth-intro {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 22px 26px;
+      margin-bottom: 22px;
+    }
+    .growth-intro p {
+      color: var(--gray-light);
+      font-size: 1rem;
+    }
+    .growth-intro strong { color: var(--yellow); }
+    .growth-phases {
+      display: grid; gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .growth-phases { grid-template-columns: repeat(2, 1fr); }
+    }
+    .phase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      position: relative;
+    }
+    .phase-card-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      line-height: 1; margin-bottom: 4px;
+      opacity: 0.5;
+    }
+    .phase-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .phase-card .phase-row {
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--gray-light);
+    }
+    .phase-card .phase-row strong { color: var(--white); }
+    .phase-card .phase-hack {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: var(--dark-card-2);
+      border-left: 2px solid var(--yellow);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+      color: var(--gray-light);
+    }
+    .phase-card .phase-hack strong { color: var(--yellow); }
+
+    /* Card 6 of the Growth Kit grid — the Cheat Sheet card. Sits inside
+       .growth-phases as a sixth tile, visually distinct with an accent
+       border, a pink star instead of a number, and a yellow-accented
+       Hashtag Toolkit block. */
+    .phase-card--cheat {
+      border-color: var(--accent);
+      border-width: 2px;
+      box-shadow: 0 0 30px rgba(255, 45, 123, 0.12);
+    }
+    .phase-star {
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: inline-block;
+      text-shadow: 0 0 12px rgba(255, 45, 123, 0.6);
+    }
+    .phase-card--cheat .phase-bullet {
+      display: flex; gap: 8px; align-items: flex-start;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+    .phase-card--cheat .phase-bullet::before {
+      content: '⚡';
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+    .phase-card--cheat .phase-bullet strong { color: var(--white); }
+    .hashtag-block {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--dark-card-2);
+      border-left: 2px solid var(--yellow);
+      border-radius: 0 6px 6px 0;
+    }
+    .hashtag-block-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+    .hashtag-list {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .hashtag {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: rgba(255, 45, 123, 0.1);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 45, 123, 0.3);
+    }
+    .hashtag-note {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .hashtag-note strong { color: var(--gray-light); }
+
+    /* Checklist */
+    .checklist-section { padding: 32px 0; border-top: 1px solid var(--dark-border); }
     .checklist {
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
       border-radius: var(--radius-lg);
       padding: 28px;
-      max-width: 720px;
-      margin: 0 auto;
+      max-width: 720px; margin: 0 auto;
     }
     .checklist h2 {
       font-family: var(--font-display);
-      font-size: 1.8rem;
-      letter-spacing: 1px;
-      color: var(--white);
-      margin-bottom: 16px;
+      font-size: 1.8rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 16px;
       text-align: center;
     }
     .checklist ul { list-style: none; padding: 0; margin: 0; }
     .checklist li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      display: flex; align-items: flex-start; gap: 12px;
       padding: 10px 0;
       border-bottom: 1px solid var(--dark-border);
     }
@@ -435,18 +613,12 @@
     }
     .checklist label {
       color: var(--gray-light);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      cursor: pointer;
-      flex: 1;
+      font-size: 0.95rem; line-height: 1.5;
+      cursor: pointer; flex: 1;
     }
-    .checklist label strong {
-      color: var(--white);
-      font-weight: 700;
-    }
+    .checklist label strong { color: var(--white); font-weight: 700; }
     .checklist input:checked + label {
-      color: var(--gray);
-      text-decoration: line-through;
+      color: var(--gray); text-decoration: line-through;
     }
 
     /* Footer */
@@ -484,15 +656,14 @@
     a:focus-visible, button:focus-visible, input:focus-visible,
     textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
       outline: 3px solid var(--accent);
-      outline-offset: 2px;
-      border-radius: 3px;
+      outline-offset: 2px; border-radius: 3px;
     }
   </style>
 
-  <!-- ════════════ TERMLY CMP ════════════ -->
+  <!-- TERMLY CMP -->
   <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
 
-  <!-- Google Consent Mode bridge -->
+  <!-- Consent bridge -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -541,44 +712,41 @@
       <select class="mobile-jump" aria-label="Jump to section"
               onchange="if (this.value) { document.getElementById(this.value).scrollIntoView({behavior:'smooth'}); this.selectedIndex=0; }">
         <option value="">Jump to&hellip;</option>
-        <option value="arrival">Arrival</option>
-        <option value="hanging">Hanging</option>
-        <option value="sales">Sales</option>
-        <option value="parking">Parking</option>
-        <option value="promotion">Promotion</option>
+        <option value="logistics">Logistics</option>
+        <option value="hardware">Hanging Specs</option>
+        <option value="salon-hang">The Salon Hang</option>
+        <option value="growth-kit">Growth Kit</option>
+        <option value="checklist">Checklist</option>
       </select>
     </div>
   </nav>
 
-  <!-- ════════════ HERO ════════════ -->
+  <!-- HERO -->
   <section class="hub-hero">
     <div class="container">
       <div class="hub-eyebrow">Artist Hub</div>
-      <h1 class="hub-title" id="hubTitle">Your City, Here We Come!</h1>
-      <p class="hub-sub">Read this once, refer back as needed. Everything below applies to your show.</p>
+      <h1 class="hub-title" id="hubTitle">Welcome to Your City</h1>
+      <p class="hub-subhead">Where culture and creativity spawn.</p>
+      <p class="hub-sub">Everything you need for a successful event is below.</p>
     </div>
   </section>
 
-  <!-- ════════════ SNAPSHOT + MAP ════════════ -->
+  <!-- SNAPSHOT + MAP -->
   <section class="show-block">
     <div class="container">
       <div class="show-grid">
 
-        <!-- Show details card -->
         <div class="show-card">
           <h3>Your Show</h3>
           <div class="show-city" id="snapshotCity">&mdash;</div>
           <div class="show-date" id="snapshotDate"></div>
-          <dl class="show-grid-details" id="snapshotGrid">
-            <!-- Populated by JS from shows.json -->
-          </dl>
+          <dl class="show-grid-details" id="snapshotGrid"></dl>
           <p class="show-no-data" id="showNoData" hidden style="color: var(--gray); font-size: 0.9rem; font-style: italic; margin-top: 12px;">
             Show details didn&rsquo;t load. Check your acceptance email or email
             <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Hub">info@pancakesandbooze.com</a>.
           </p>
         </div>
 
-        <!-- Map + parking card -->
         <div class="map-card" id="parking">
           <div class="map-card-header">
             <h3>Venue Map</h3>
@@ -601,8 +769,8 @@
   <main id="main">
     <div class="container">
 
-      <!-- ════════════ 6-ITEM GRID ════════════ -->
-      <section class="six-grid-section">
+      <!-- 6-ITEM LOGISTICS GRID -->
+      <section class="six-grid-section" id="logistics">
         <h2 class="section-title">Show Day, In Six</h2>
         <div class="six-grid">
 
@@ -612,17 +780,19 @@
             <p>Have your <strong>Artist QR code</strong> ready on your phone. Check-in is <strong id="checkInWindow">1 PM &ndash; 5 PM</strong>. Our greeting team scans you in and helps you find your section.</p>
           </div>
 
-          <div class="six-card" id="hanging">
+          <div class="six-card">
             <span class="six-card-num">02</span>
             <h3>The Salon Hang</h3>
-            <p>Panels are shared. Work is hung ceiling-to-floor. <strong>3 ft &times; 3 ft max</strong> per piece. We reserve the right to move artwork to make the layout fit or to enforce the rules.</p>
+            <p>Panels are shared. Work is hung top-to-bottom to use the entire wall. <strong>3 ft &times; 3 ft max</strong> per piece. We reserve the right to move artwork to make the layout fit or to enforce the rules.</p>
+            <a href="#salon-hang" class="card-action">See Examples</a>
           </div>
 
           <div class="six-card">
             <span class="six-card-num">03</span>
             <h3>Tools &amp; Hardware</h3>
-            <p><strong>Wire or sawtooth hangers</strong> are required on the back of every piece. We provide screws and drivers.</p>
-            <span class="tech-note"><strong>Technical Note:</strong> Walls are 1/2&Prime; drywall. Do not bring long screws or nails &mdash; they won&rsquo;t hold and they damage the panels.</span>
+            <p>We provide <strong>screws, drivers, and pushpins</strong>.</p>
+            <span class="tech-note"><strong>Community Note:</strong> Protect fellow artists &mdash; use our 1/2&Prime; screws to avoid penetrating the other side of the wall.</span>
+            <a href="#hardware" class="card-action">View Specs</a>
           </div>
 
           <div class="six-card" id="sales">
@@ -637,104 +807,181 @@
             <p>Setup begins at <strong id="livePaintStart">check your acceptance email</strong>. <strong>Drop cloths are mandatory.</strong> Bring your own supplies &mdash; we provide the space and the crowd.</p>
           </div>
 
-          <div class="six-card" id="promotion">
+          <div class="six-card">
             <span class="six-card-num">06</span>
-            <h3>Promotion &amp; Support</h3>
-            <p>Tag <strong>@pancakesandbooze</strong> to get featured. Our crew is on-site all day to help you find your section, troubleshoot, and get settled.</p>
+            <h3>Support &amp; Promotion</h3>
+            <p>Our crew is on-site all day to help you navigate the floor. Check the <strong>Growth Kit</strong> below for the 2026 playbook on selling out and growing your following.</p>
+            <a href="#growth-kit" class="card-action">Open Growth Kit</a>
           </div>
 
         </div>
       </section>
 
-      <!-- ════════════ HARDWARE CAROUSEL ════════════ -->
-      <section class="rules-section">
+      <!-- HARDWARE DIAGRAM -->
+      <section class="rules-section" id="hardware">
         <h2>Hanging Hardware Reference</h2>
-        <p>Wire is preferred for speed. Sawtooth works fine on lighter pieces. Anything else, ask before install day.</p>
-        <div class="carousel-wrap">
-          <div class="carousel" id="hardwareCarousel" aria-label="Hanging hardware examples (horizontal scroll)">
-            <div class="carousel-item">
-              <img class="carousel-img" src="/images/hw-wire.jpg" alt="Picture wire stretched across two D-rings on the back of a canvas" onerror="this.parentNode.replaceChild(Object.assign(document.createElement('div'),{className:'carousel-img',textContent:'Picture Wire'}), this);">
-              <div class="carousel-item-body">
-                <div class="carousel-item-name">Picture Wire<span class="preferred-tag">Preferred</span></div>
-                <div class="carousel-item-desc">Braided wire across two D-rings or eye-screws. Fastest to install, most stable on our panels.</div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="carousel-img" src="/images/hw-sawtooth.jpg" alt="Sawtooth hanger bracket attached to the back of a frame" onerror="this.parentNode.replaceChild(Object.assign(document.createElement('div'),{className:'carousel-img',textContent:'Sawtooth Hanger'}), this);">
-              <div class="carousel-item-body">
-                <div class="carousel-item-name">Sawtooth Hanger</div>
-                <div class="carousel-item-desc">Small metal bracket with a notched edge. Works well on lighter pieces.</div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="carousel-img" src="/images/hw-d-rings.jpg" alt="Two D-rings attached to the back of a canvas frame" onerror="this.parentNode.replaceChild(Object.assign(document.createElement('div'),{className:'carousel-img',textContent:'D-Rings'}), this);">
-              <div class="carousel-item-body">
-                <div class="carousel-item-name">D-Rings</div>
-                <div class="carousel-item-desc">Two D-rings, one screw per ring. Solid for medium-weight work.</div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="carousel-img" src="/images/hw-salon.jpg" alt="Example of salon-style hang with multiple pieces covering a wall floor-to-ceiling" onerror="this.parentNode.replaceChild(Object.assign(document.createElement('div'),{className:'carousel-img',textContent:'Salon-Style Hang'}), this);">
-              <div class="carousel-item-body">
-                <div class="carousel-item-name">Salon-Style Hang</div>
-                <div class="carousel-item-desc">What our walls look like. Floor-to-ceiling coverage. Tight grouping, shared panels.</div>
-              </div>
-            </div>
-          </div>
+        <p>Wire is preferred for speed, but we can work with any of the options below.</p>
+        <figure class="hardware-diagram">
+          <button type="button" class="hardware-diagram-btn"
+                  onclick="openLightbox(this.querySelector('img').src, this.querySelector('img').alt)"
+                  aria-label="Open the Acceptable Hanging Methods diagram at full size">
+            <img src="/images/hanging-methods.webp"
+                 alt="Acceptable Hanging Methods diagram showing picture wire, sawtooth hangers, D-rings, and eye-screws"
+                 loading="lazy">
+            <span class="hardware-diagram-zoom" aria-hidden="true">Tap to zoom</span>
+          </button>
+          <figcaption>Acceptable Hanging Methods &mdash; tap to view in detail.</figcaption>
+        </figure>
+      </section>
+
+      <!-- THE SALON HANG (visual vibe) -->
+      <section class="rules-section" id="salon-hang">
+        <h2>The Salon Hang</h2>
+        <p>Utilize the entire wall from top to bottom. <strong>Max 3 ft &times; 3 ft per piece.</strong></p>
+        <div class="salon-grid">
+          <figure class="salon-photo">
+            <img src="/images/salon-1.jpg"
+                 alt="A Pancakes & Booze gallery wall hung salon-style, floor to ceiling, with mixed media artwork"
+                 loading="lazy">
+          </figure>
+          <figure class="salon-photo">
+            <img src="/images/salon-2.jpg"
+                 alt="Crowd at a Pancakes & Booze show in front of a densely-hung salon-style wall"
+                 loading="lazy">
+          </figure>
         </div>
       </section>
 
-      <!-- ════════════ CRITICAL RULES ════════════ -->
+      <!-- CRITICAL RULES -->
       <section class="rules-section">
         <h2>Critical Rules &amp; Logistics</h2>
 
+        <h3>Adhesives</h3>
+        <p>Double-sided tape works well for prints and flat-backed, lighter artwork. Use enough to support the weight &mdash; nothing&rsquo;s sadder than a piece on the floor at 9 PM. <strong>Artists must bring their own tape</strong> or 3M adhesive strips.</p>
+
         <h3>The &ldquo;No Table&rdquo; Rule</h3>
-        <p>No standard tables or TV trays are allowed in the gallery &mdash; they eat wall and floor space, lowering venue capacity. <strong>Small stools or low-profile floor bins</strong> are permitted, kept beneath your hanging work, for prints and merch.</p>
+        <p>No standard tables or TV trays in the gallery &mdash; they eat wall and floor space and lower venue capacity. <strong>Low-profile stools or floor bins</strong> are permitted, kept beneath your hanging work, for prints and merch.</p>
 
         <h3>Assistants</h3>
-        <p>Help is welcome for load-in (check-in window above). Any assistant <strong>staying for the show (8 PM+) must have a General Admission ticket</strong> &mdash; no exceptions on the guest list.</p>
+        <p>Help is welcome for load-in (check-in window above). Any assistant <strong>staying for the show (8 PM+) must have a General Admission ticket</strong>. No exceptions on the guest list.</p>
 
-        <h3>Self-Management</h3>
-        <p>Artists are 100% responsible for their own sales, card readers, and cash bags. <strong>No on-site storage</strong> is provided for extra inventory. Everything you bring in goes out with you that night.</p>
-
-        <h3>Tear-Down</h3>
-        <p>All artwork must leave the venue with you immediately after the show. We don&rsquo;t have venue access after we leave, so if you forget your work, we can&rsquo;t retrieve it. Neither Pancakes &amp; Booze nor the venue is responsible for left-behind or damaged artwork.</p>
+        <h3>Self-Management &amp; Tear-Down</h3>
+        <p>Artists are 100% responsible for their own sales, card readers, and cash bags. No on-site storage for extra inventory. All artwork must leave the venue with you that night &mdash; we don&rsquo;t have venue access after we leave, and we can&rsquo;t retrieve work for you. Pancakes &amp; Booze and the venue are not responsible for left-behind or damaged work.</p>
       </section>
 
-      <!-- ════════════ SHOW DAY CHECKLIST ════════════ -->
-      <section class="checklist-section">
+      <!-- ════════════ ARTIST GROWTH KIT ════════════ -->
+      <section class="growth-kit-section" id="growth-kit">
+        <h2 class="section-title">The Artist Growth Kit</h2>
+
+        <div class="growth-intro">
+          <p><strong>The 2026 Strategy.</strong> We don&rsquo;t just want you to show up &mdash; we want you to sell out and grow your following. People don&rsquo;t buy a canvas; they buy the person behind it. Stop &ldquo;posting art&rdquo; and start documenting the journey.</p>
+        </div>
+
+        <div class="growth-phases">
+
+          <div class="phase-card">
+            <div class="phase-card-num">01</div>
+            <h3>The Pre-Show &ldquo;Hype&rdquo; Phase</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Commitment&rdquo; post.</div>
+            <div class="phase-row"><strong>The shot:</strong> A close-up of you signing your contract or marking the show date on a calendar.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Use a Countdown Sticker in Stories. Ask: &ldquo;What&rsquo;s one thing you want to see me paint live?&rdquo; This trains the algorithm that your audience is active.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">02</div>
+            <h3>The Work-In-Progress &ldquo;Hook&rdquo;</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Ugly Phase&rdquo; deep-dive.</div>
+            <div class="phase-row"><strong>Structure:</strong></div>
+            <div class="phase-row">&bull; 0&ndash;3s: Blank canvas or chaotic palette &mdash; stop the scroll.</div>
+            <div class="phase-row">&bull; 3&ndash;7s: Fast-cut painting clips synced to a trending beat.</div>
+            <div class="phase-row">&bull; 7&ndash;10s: The &ldquo;wait for it&rdquo; reveal of a specific detail.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Add text: &ldquo;Save this for your Inspo folder.&rdquo; Saves are the #1 growth signal in 2026.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">03</div>
+            <h3>Setup: &ldquo;Behind the Curtain&rdquo;</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Pack with Me&rdquo; POV.</div>
+            <div class="phase-row"><strong>The shot:</strong> Your art being wrapped, or your &ldquo;Show Survival Kit&rdquo; (paint, brushes, snacks).</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Use a Poll in Stories: &ldquo;Should I wear [A] or [B] for the show?&rdquo;</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">04</div>
+            <h3>Event Day: The High-Energy Peak</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Crowd POV.&rdquo;</div>
+            <div class="phase-row"><strong>The shot:</strong> Stand by your section and film the energy of the room, then pan to your art.</div>
+            <div class="phase-row"><strong>Pro Tip (Zoom Effect):</strong> Start macro on the texture of your piece, then slowly pull back to reveal the full work and the crowd behind it.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Use the Instagram Collab Feature with <strong>@PancakesAndBooze</strong>. This puts your post in front of our entire global audience instantly.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">05</div>
+            <h3>After the Event: Social Proof</h3>
+            <div class="phase-row"><strong>Content:</strong> Recap and gratitude.</div>
+            <div class="phase-row"><strong>The shot:</strong> You holding a &ldquo;Sold&rdquo; piece, or shaking hands with a new collector.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Share User-Generated Content. Repost every story a fan tags you in &mdash; it builds massive trust for your next show.</div>
+          </div>
+
+          <!-- Card 6: The Cheat Sheet (visually distinct — pink star instead
+               of a number, accent border, Hashtag Toolkit block) -->
+          <div class="phase-card phase-card--cheat">
+            <div class="phase-star" aria-hidden="true">&#9733;</div>
+            <h3>The 2026 Cheat Sheet</h3>
+            <div class="phase-bullet"><span><strong>Format Priority:</strong> Reels for new reach. Carousels (10 slides) for saves and shares.</span></div>
+            <div class="phase-bullet"><span><strong>The 3-Second Rule:</strong> If you don&rsquo;t hook them with movement in 3 seconds, they swipe away.</span></div>
+            <div class="phase-bullet"><span><strong>Captions:</strong> Start with a bold claim. Example: &ldquo;I almost gave up on this piece halfway through&hellip;&rdquo;</span></div>
+            <div class="phase-bullet"><span><strong>The Goal:</strong> Aim for <strong>10 Saves per post</strong>. If 10 people save it, the algorithm pushes it to 1,000 new ones.</span></div>
+
+            <div class="hashtag-block">
+              <div class="hashtag-block-title">Hashtag Toolkit</div>
+              <div class="hashtag-list">
+                <span class="hashtag">#PancakesAndBooze</span>
+                <span class="hashtag">#PancakesAndBooze[City]</span>
+                <span class="hashtag">#[City]PancakesAndBooze</span>
+                <span class="hashtag">#ArtNearMe</span>
+                <span class="hashtag">#[City]Creatives</span>
+                <span class="hashtag">#SupportLocalArt</span>
+                <span class="hashtag">#LocalArtist</span>
+                <span class="hashtag">#[City]Artist</span>
+              </div>
+              <p class="hashtag-note">Replace <strong>[City]</strong> with your show city (e.g., <strong>#PancakesAndBoozeAustin</strong>, <strong>#AustinCreatives</strong>). <strong>#ArtNearMe</strong> is great for location-based searches.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SHOW DAY CHECKLIST -->
+      <section class="checklist-section" id="checklist">
         <div class="checklist">
           <h2>Show Day Checklist</h2>
           <ul>
             <li>
               <input type="checkbox" id="chk-qr">
-              <label for="chk-qr"><strong>Artist QR Code</strong> &mdash; required for check-in. Keep it on your phone.</label>
+              <label for="chk-qr"><strong>Artist QR Code</strong> &mdash; from your Voxxy email. Required for check-in.</label>
             </li>
             <li>
               <input type="checkbox" id="chk-hw">
-              <label for="chk-hw"><strong>Hanging Hardware</strong> &mdash; sawtooth or wire already attached to every piece.</label>
+              <label for="chk-hw"><strong>Hanging Hardware</strong> &mdash; screws and pushpins provided; BYO tape or 3M strips for prints/light work.</label>
             </li>
             <li>
               <input type="checkbox" id="chk-cards">
-              <label for="chk-cards"><strong>Title Cards</strong> &mdash; one per piece, max 3&times;5 in, with title, medium, year, price, and payment QR.</label>
+              <label for="chk-cards"><strong>Title Cards</strong> &mdash; max index card size (about 3&times;5 in), with pricing and your payment QR.</label>
             </li>
             <li>
               <input type="checkbox" id="chk-data">
-              <label for="chk-data"><strong>Cellular Data</strong> &mdash; test your POS before you arrive. No Wi-Fi on-site.</label>
+              <label for="chk-data"><strong>Cellular Data</strong> &mdash; your POS must work without Wi-Fi.</label>
             </li>
             <li>
               <input type="checkbox" id="chk-cloth">
-              <label for="chk-cloth"><strong>Drop Cloth</strong> &mdash; live painters only. Mandatory.</label>
-            </li>
-            <li>
-              <input type="checkbox" id="chk-drill">
-              <label for="chk-drill"><strong>Cordless Drill</strong> &mdash; optional, but recommended. Skips the line on shared tools.</label>
+              <label for="chk-cloth"><strong>Drop Cloth</strong> &mdash; live painters only.</label>
             </li>
           </ul>
         </div>
       </section>
 
-      <!-- ════════════ SUPPORT ════════════ -->
+      <!-- SUPPORT -->
       <section class="rules-section">
         <h2>Need Help?</h2>
         <p>Email <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Hub">info@pancakesandbooze.com</a> with subject &ldquo;Artist Hub&rdquo; and we&rsquo;ll get back to you. Need to cancel? <a href="mailto:info@pancakesandbooze.com?subject=Cancellation">Email us</a> as soon as possible &mdash; we plan supplies and crew based on confirmed artist count.</p>
@@ -760,7 +1007,37 @@
     </div>
   </footer>
 
+  <!-- Lightbox overlay (shared, used by hardware diagram + salon photos) -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" onclick="closeLightbox()">
+    <button type="button" class="lightbox-close" aria-label="Close" onclick="event.stopPropagation(); closeLightbox();">&times;</button>
+    <img id="lightboxImg" alt="">
+  </div>
+
   <script>
+    // ════════════ LIGHTBOX ════════════
+    function openLightbox(src, alt) {
+      const box = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.alt = alt || '';
+      box.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      const box = document.getElementById('lightbox');
+      box.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    // Close on Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+    // Make salon photos clickable too
+    document.querySelectorAll('.salon-photo img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
     // ════════════ SHOWS.JSON INTEGRATION ════════════
     (async function () {
       const params = new URLSearchParams(window.location.search);
@@ -772,9 +1049,8 @@
       };
 
       const renderShow = (show) => {
-        // Hero title: "[City], Here We Come!"
         const cityName = (show && show.city) ? show.city : 'Your City';
-        document.getElementById('hubTitle').textContent = `${cityName}, Here We Come!`;
+        document.getElementById('hubTitle').textContent = `Welcome to ${cityName}`;
         setText('snapshotCity', cityName);
 
         if (!show) {
@@ -782,13 +1058,11 @@
           return;
         }
 
-        // Date label
         const dateLabel = show.date_label
           || show.date_range
           || [show.date_month_short, show.date_day, show.date_year].filter(Boolean).join(' ');
         setText('snapshotDate', dateLabel || '');
 
-        // Details grid
         const grid = document.getElementById('snapshotGrid');
         grid.innerHTML = '';
         const row = (label, value) => {
@@ -805,15 +1079,24 @@
         row('Age Policy', show.age || show.age_policy);
         row('Hanging Fee', show.artist_fee_tier || show.hanging_fee);
 
-        // Sync grid card field: check-in window
         const installWin = show.artist_install_time || show.install_time;
         if (installWin) setText('checkInWindow', installWin);
 
-        // Sync grid card field: live painting start
-        const livePaint = show.live_paint_start
+        // Live painter install time — matches column in the Event Details bible.
+        const livePaint = show.live_painter_install_time
+          || show.live_paint_start
           || show.live_painter_arrival
           || show.live_paint_arrival;
         if (livePaint) setText('livePaintStart', livePaint);
+
+        // Parking — column AC in the bible. Multiple possible JSON names.
+        const parking = show.parking_info
+          || show.parking_notes
+          || show.parking_details
+          || show.parking;
+        if (parking) {
+          document.getElementById('parkingBody').innerHTML = parking;
+        }
 
         // Map embed
         const address = show.address;
@@ -826,9 +1109,17 @@
             title="Map of ${show.venue || cityName} venue"></iframe>`;
         }
 
-        // Parking block override if available in JSON
-        if (show.parking_info) {
-          document.getElementById('parkingBody').innerHTML = show.parking_info;
+        // Hashtag personalization — replace [City] placeholders in the
+        // Cheat Sheet's Hashtag Toolkit with the actual city, stripped of
+        // spaces and punctuation so the hashtags stay valid.
+        // "Los Angeles" -> "LosAngeles", "Washington DC" -> "WashingtonDC".
+        const hashtagCity = cityName.replace(/[^a-zA-Z0-9]/g, '');
+        document.querySelectorAll('.hashtag').forEach(el => {
+          el.textContent = el.textContent.replace(/\[City\]/g, hashtagCity);
+        });
+        const note = document.querySelector('.hashtag-note');
+        if (note) {
+          note.innerHTML = `Customized for <strong>${cityName}</strong>. <strong>#ArtNearMe</strong> is great for location-based searches.`;
         }
       };
 
