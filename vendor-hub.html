@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Hub | Pancakes &amp; Booze</title>
+  <meta name="description" content="Show day instructions for vendors at Pancakes & Booze. Arrival, footprint, lighting, sales, load-out, and the 2026 vendor growth kit.">
+
+  <!-- Resource for accepted vendors. Don't index. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-card-2: #1a1a1a;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --accent-glow: rgba(255, 45, 123, 0.3);
+      --yellow: #e8ff21;
+      --yellow-glow: rgba(232, 255, 33, 0.3);
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    section[id] { scroll-margin-top: 96px; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; gap: 12px;
+    }
+    .nav-logo img { height: 40px; }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+    .mobile-jump {
+      display: none;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      color: var(--white);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      min-width: 170px;
+    }
+    @media (max-width: 768px) {
+      .nav-back { display: none; }
+      .mobile-jump { display: block; }
+    }
+
+    /* Hero */
+    .hub-hero {
+      padding: 60px 0 28px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hub-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,45,123,0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .hub-eyebrow {
+      font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 12px;
+      position: relative; z-index: 1;
+    }
+    .hub-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+      letter-spacing: 1px; line-height: 0.95;
+      margin-bottom: 14px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+    }
+    .hub-subhead {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      letter-spacing: 3px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .hub-sub {
+      font-size: 1rem; color: var(--gray-light);
+      max-width: 580px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    /* Snapshot + map */
+    .show-block { padding: 12px 0 28px; }
+    .show-grid {
+      display: grid; grid-template-columns: 1fr; gap: 16px;
+    }
+    @media (min-width: 860px) {
+      .show-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .show-card, .map-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+    }
+    .show-card { padding: 24px; }
+    .show-card h3, .map-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 12px; text-transform: uppercase;
+    }
+    .show-city {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      letter-spacing: 1px; margin-bottom: 4px;
+    }
+    .show-date {
+      font-family: var(--font-display);
+      font-size: 1.2rem; color: var(--yellow);
+      letter-spacing: 2px; margin-bottom: 14px;
+    }
+    .show-grid-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px 20px; font-size: 0.9rem;
+    }
+    .show-grid-details dt {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray); font-weight: 700; margin-bottom: 2px;
+    }
+    .show-grid-details dd { color: var(--white); }
+
+    .map-card { overflow: hidden; display: flex; flex-direction: column; }
+    .map-card-header { padding: 24px 24px 12px; }
+    .map-frame {
+      position: relative; width: 100%; aspect-ratio: 4 / 3;
+      background: var(--dark-card-2); flex: 1; min-height: 220px;
+    }
+    .map-frame iframe {
+      width: 100%; height: 100%; border: 0;
+      filter: grayscale(0.2) invert(0.85) hue-rotate(180deg);
+    }
+    .map-no-data {
+      display: flex; align-items: center; justify-content: center;
+      height: 100%; padding: 24px;
+      color: var(--gray); font-size: 0.9rem; text-align: center;
+    }
+    .parking-block {
+      background: var(--dark-card-2);
+      padding: 16px 24px;
+      border-top: 1px solid var(--dark-border);
+      font-size: 0.9rem; color: var(--gray-light);
+    }
+    .parking-block strong { color: var(--white); }
+    .parking-eyebrow {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 4px;
+    }
+
+    /* 2x2 grid (4 vendor cards) */
+    .grid-section { padding: 28px 0; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 20px; text-align: center;
+    }
+    .four-grid {
+      display: grid; grid-template-columns: 1fr; gap: 14px;
+    }
+    @media (min-width: 720px) {
+      .four-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+    .four-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .four-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .four-card-num {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1rem; letter-spacing: 1px;
+      color: var(--black); background: var(--yellow);
+      padding: 2px 10px; border-radius: 4px;
+      margin-bottom: 12px; align-self: flex-start;
+    }
+    .four-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .four-card p {
+      color: var(--gray-light);
+      font-size: 0.95rem; line-height: 1.6;
+      flex: 1;
+    }
+    .four-card strong { color: var(--white); }
+    .four-card .card-action {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-display);
+      font-size: 0.8rem; letter-spacing: 2px;
+      color: var(--accent); text-transform: uppercase;
+      border: 1px solid var(--accent);
+      padding: 8px 14px; border-radius: 6px;
+      align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+    }
+    .four-card .card-action:hover {
+      background: var(--accent); color: var(--black);
+      text-decoration: none;
+    }
+
+    /* Rules / detail sections */
+    .rules-section { padding: 24px 0; border-top: 1px solid var(--dark-border); }
+    .rules-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 16px;
+    }
+    .rules-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; letter-spacing: 1px;
+      color: var(--white); margin: 18px 0 6px;
+    }
+    .rules-section p { color: var(--gray-light); margin-bottom: 10px; }
+    .rules-section strong { color: var(--white); }
+    .rules-section a {
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .rules-section a:hover { border-bottom-color: var(--accent); text-decoration: none; }
+
+    /* Footprint highlight box */
+    .footprint-box {
+      background: var(--dark-card);
+      border: 2px solid var(--yellow);
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      margin: 16px 0 20px;
+      text-align: center;
+    }
+    .footprint-box .footprint-num {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      letter-spacing: 1px;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .footprint-box .footprint-label {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      color: var(--gray-light);
+      text-transform: uppercase;
+    }
+
+    /* GROWTH KIT */
+    .growth-kit-section {
+      padding: 36px 0;
+      border-top: 1px solid var(--dark-border);
+    }
+    .growth-intro {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 22px 26px;
+      margin-bottom: 22px;
+    }
+    .growth-intro p { color: var(--gray-light); font-size: 1rem; }
+    .growth-intro strong { color: var(--yellow); }
+    .growth-phases {
+      display: grid; gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .growth-phases { grid-template-columns: repeat(2, 1fr); }
+    }
+    .phase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      position: relative;
+    }
+    .phase-card-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      line-height: 1; margin-bottom: 4px;
+      opacity: 0.5;
+    }
+    .phase-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .phase-card .phase-row {
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--gray-light);
+    }
+    .phase-card .phase-row strong { color: var(--white); }
+    .phase-card .phase-hack {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: var(--dark-card-2);
+      border-left: 2px solid var(--yellow);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+      color: var(--gray-light);
+    }
+    .phase-card .phase-hack strong { color: var(--yellow); }
+
+    /* Card 6: cheat sheet */
+    .phase-card--cheat {
+      border-color: var(--accent);
+      border-width: 2px;
+      box-shadow: 0 0 30px rgba(255, 45, 123, 0.12);
+    }
+    .phase-star {
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: inline-block;
+      text-shadow: 0 0 12px rgba(255, 45, 123, 0.6);
+    }
+    .phase-card--cheat .phase-bullet {
+      display: flex; gap: 8px; align-items: flex-start;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+    .phase-card--cheat .phase-bullet::before {
+      content: '⚡';
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+    .phase-card--cheat .phase-bullet strong { color: var(--white); }
+    .hashtag-block {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--dark-card-2);
+      border-left: 2px solid var(--yellow);
+      border-radius: 0 6px 6px 0;
+    }
+    .hashtag-block-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+    .hashtag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .hashtag {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: rgba(255, 45, 123, 0.1);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 45, 123, 0.3);
+    }
+    .hashtag-note {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .hashtag-note strong { color: var(--gray-light); }
+
+    /* Checklist */
+    .checklist-section { padding: 32px 0; border-top: 1px solid var(--dark-border); }
+    .checklist {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      max-width: 720px; margin: 0 auto;
+    }
+    .checklist h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 16px;
+      text-align: center;
+    }
+    .checklist ul { list-style: none; padding: 0; margin: 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .checklist li:last-child { border-bottom: 0; }
+    .checklist input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .checklist label {
+      color: var(--gray-light);
+      font-size: 0.95rem; line-height: 1.5;
+      cursor: pointer; flex: 1;
+    }
+    .checklist label strong { color: var(--white); font-weight: 700; }
+    .checklist input:checked + label {
+      color: var(--gray); text-decoration: line-through;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* A11Y */
+    .skip-link {
+      position: absolute; top: -100px; left: 8px;
+      background: var(--yellow); color: var(--black);
+      padding: 12px 20px; border-radius: 6px;
+      font-weight: 700; font-family: var(--font-display);
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid var(--accent); outline-offset: 2px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px; border-radius: 3px;
+    }
+  </style>
+
+  <!-- TERMLY CMP -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
+
+  <!-- Consent bridge -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '785234971632299');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=785234971632299&ev=PageView&noscript=1" /></noscript>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="announcement">
+    Vendor Hub &mdash; everything you need for show day
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes &amp; Booze" width="40" height="40">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+      <select class="mobile-jump" aria-label="Jump to section"
+              onchange="if (this.value) { document.getElementById(this.value).scrollIntoView({behavior:'smooth'}); this.selectedIndex=0; }">
+        <option value="">Jump to&hellip;</option>
+        <option value="logistics">Logistics</option>
+        <option value="footprint">Your Footprint</option>
+        <option value="growth-kit">Vendor Growth Kit</option>
+        <option value="checklist">Checklist</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hub-hero">
+    <div class="container">
+      <div class="hub-eyebrow">Vendor Hub</div>
+      <h1 class="hub-title" id="hubTitle">Welcome to Your City</h1>
+      <p class="hub-subhead">Where culture and creativity spawn.</p>
+      <p class="hub-sub">Everything you need for a successful vendor setup is below.</p>
+    </div>
+  </section>
+
+  <!-- SNAPSHOT + MAP -->
+  <section class="show-block">
+    <div class="container">
+      <div class="show-grid">
+
+        <div class="show-card">
+          <h3>Your Show</h3>
+          <div class="show-city" id="snapshotCity">&mdash;</div>
+          <div class="show-date" id="snapshotDate"></div>
+          <dl class="show-grid-details" id="snapshotGrid"></dl>
+          <p class="show-no-data" id="showNoData" hidden style="color: var(--gray); font-size: 0.9rem; font-style: italic; margin-top: 12px;">
+            Show details didn&rsquo;t load. Check your acceptance email or email
+            <a href="mailto:info@pancakesandbooze.com?subject=Vendor%20Hub">info@pancakesandbooze.com</a>.
+          </p>
+        </div>
+
+        <div class="map-card" id="parking">
+          <div class="map-card-header">
+            <h3>Venue Map</h3>
+          </div>
+          <div class="map-frame" id="mapFrame">
+            <div class="map-no-data">Map will load once your show details are confirmed.</div>
+          </div>
+          <div class="parking-block">
+            <div class="parking-eyebrow">Vendor Unloading &amp; Parking</div>
+            <p id="parkingBody">
+              <strong>Coming soon.</strong> Most cities use street parking or the venue lot. Scout the venue&rsquo;s loading area before show day if you&rsquo;re hauling heavy inventory or display gear.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- VENDOR SUCCESS IN 4 STEPS -->
+      <section class="grid-section" id="logistics">
+        <h2 class="section-title">Vendor Success In Four</h2>
+        <div class="four-grid">
+
+          <div class="four-card">
+            <span class="four-card-num">01</span>
+            <h3>Check-In &amp; Arrival</h3>
+            <p>Have your <strong>Vendor QR code</strong> ready on your phone. Check-in begins at <strong id="checkInWindow">check your acceptance email</strong>. <strong>Do not arrive early</strong> &mdash; we won&rsquo;t be ready for you. Space location is first-come, first-served, so be on time.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">02</span>
+            <h3>Sales &amp; Connectivity</h3>
+            <p><strong>0% commission.</strong> You keep 100% of every sale. <strong>No guest Wi-Fi</strong> is provided &mdash; make sure your POS (Square, Venmo, Cash App, etc.) works on cellular data.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">03</span>
+            <h3>Support &amp; Promotion</h3>
+            <p>Our crew is on-site all day to help you find your space and get set up. Check the <strong>Vendor Growth Kit</strong> below to maximize your reach and sales before, during, and after the show.</p>
+            <a href="#growth-kit" class="card-action">Open Growth Kit</a>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">04</span>
+            <h3>The &ldquo;Non-Hangable&rdquo; Rule</h3>
+            <p>Vendor spaces are for <strong>non-hangable items</strong> (jewelry, apparel, candles, accessories, sculpture, etc.) or <strong>prints under 8&times;10 in only</strong>. If you have wall art, apply as an <strong>Artist</strong> for a panel space instead.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- YOUR FOOTPRINT & LOGISTICS -->
+      <section class="rules-section" id="footprint">
+        <h2>Your Footprint &amp; Logistics</h2>
+
+        <div class="footprint-box">
+          <div class="footprint-num">8 ft &times; 5 ft</div>
+          <div class="footprint-label">Your Allotted Space</div>
+        </div>
+
+        <p>Each vendor is allotted an <strong>8 ft wide by 5 ft deep footprint</strong>. Your entire setup must stay within these boundaries &mdash; we plan venue capacity and aisle traffic around it.</p>
+
+        <h3>Flexible Table Policy</h3>
+        <p>You&rsquo;re <strong>not limited to a single 6 ft table</strong>. Bring grid walls, racks, multiple smaller tables (L-shape, U-shape, whatever fits), or display stands &mdash; as long as the entire setup fits within your 8&times;5 ft footprint. Whatever maximizes your display and sales is fine with us.</p>
+
+        <h3>Lighting &amp; Power</h3>
+        <p>Power is available, but we <strong>highly recommend battery-operated or rechargeable LED lights</strong>. They give you the most placement flexibility and keep your booth cord-free (no tripping hazards for browsing customers). Clamp lights with extension cords are also permitted if you prefer.</p>
+
+        <h3>Assistants</h3>
+        <p>Your vendor space includes <strong>1 entry</strong> for you. Any assistant staying for the show needs a General Admission ticket. Help is welcome for setup and tear-down regardless.</p>
+
+        <h3>Load-Out</h3>
+        <p>Load-out begins after <strong>11 PM</strong>. <strong>All items must be removed the night of the show.</strong> The venue will dispose of anything left behind. We don&rsquo;t have venue access after we leave and can&rsquo;t retrieve forgotten merchandise on your behalf. No exceptions.</p>
+      </section>
+
+      <!-- ════════════ VENDOR GROWTH KIT ════════════ -->
+      <section class="growth-kit-section" id="growth-kit">
+        <h2 class="section-title">The Vendor Growth Kit</h2>
+
+        <div class="growth-intro">
+          <p><strong>The 2026 Strategy.</strong> We don&rsquo;t just want you to show up &mdash; we want you to sell out and grow your following. People don&rsquo;t buy a product; they buy the maker behind it. Stop &ldquo;posting stock&rdquo; and start documenting the journey.</p>
+        </div>
+
+        <div class="growth-phases">
+
+          <div class="phase-card">
+            <div class="phase-card-num">01</div>
+            <h3>The Pre-Show &ldquo;Hype&rdquo; Phase</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Market Setup&rdquo; teaser.</div>
+            <div class="phase-row"><strong>The shot:</strong> A close-up of your bestseller or a sneak peek of what you&rsquo;re bringing.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Use a Countdown Sticker in Stories. Ask: &ldquo;What&rsquo;s the first thing you want to grab at my booth?&rdquo; This trains the algorithm that your audience is active.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">02</div>
+            <h3>The Merch Reveal</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Restock&rdquo; or &ldquo;New for the Show&rdquo; reveal.</div>
+            <div class="phase-row"><strong>Structure:</strong></div>
+            <div class="phase-row">&bull; 0&ndash;3s: Show a stack of unreleased merch or your latest piece &mdash; stop the scroll.</div>
+            <div class="phase-row">&bull; 3&ndash;7s: Fast-cut close-ups of texture, color, packaging.</div>
+            <div class="phase-row">&bull; 7&ndash;10s: The &ldquo;only at the show&rdquo; reveal of a limited drop.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Add text: &ldquo;Save this for your shopping list.&rdquo; Saves are the #1 growth signal in 2026.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">03</div>
+            <h3>Setup: &ldquo;Pack with Me&rdquo;</h3>
+            <div class="phase-row"><strong>Content:</strong> The behind-the-scenes prep.</div>
+            <div class="phase-row"><strong>The shot:</strong> Packing inventory, prepping displays, snack runs &mdash; your &ldquo;Show Survival Kit.&rdquo;</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Use a Poll in Stories: &ldquo;Which booth backdrop should I run with: [A] or [B]?&rdquo; People love voting.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">04</div>
+            <h3>Event Day: The Market Vibe</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Crowd POV&rdquo; pan.</div>
+            <div class="phase-row"><strong>The shot:</strong> Stand at your booth and film the energy of the room, then pan to a customer interaction at your table.</div>
+            <div class="phase-row"><strong>Pro Tip (Zoom Effect):</strong> Start macro on a single product, then pull back to reveal the full booth and the crowd behind it.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Use the Instagram Collab Feature with <strong>@PancakesAndBooze</strong>. This puts your post in front of our entire global audience instantly.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">05</div>
+            <h3>After the Event: Social Proof</h3>
+            <div class="phase-row"><strong>Content:</strong> The &ldquo;Sold Out&rdquo; or &ldquo;Top Seller&rdquo; recap.</div>
+            <div class="phase-row"><strong>The shot:</strong> Empty racks, a happy customer holding their new piece, or a thank-you flat-lay of what sold.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Repost every customer story you&rsquo;re tagged in. User-generated content builds massive trust for your next show and online drops.</div>
+          </div>
+
+          <!-- Card 6: cheat sheet -->
+          <div class="phase-card phase-card--cheat">
+            <div class="phase-star" aria-hidden="true">&#9733;</div>
+            <h3>The 2026 Cheat Sheet</h3>
+            <div class="phase-bullet"><span><strong>Format Priority:</strong> Reels for new reach. Carousels (10 slides) for saves and shares.</span></div>
+            <div class="phase-bullet"><span><strong>The 3-Second Rule:</strong> If you don&rsquo;t hook them with movement in 3 seconds, they swipe away.</span></div>
+            <div class="phase-bullet"><span><strong>Captions:</strong> Start with a bold claim. Example: &ldquo;This collection sold out at my last show in 20 minutes&hellip;&rdquo;</span></div>
+            <div class="phase-bullet"><span><strong>The Goal:</strong> Aim for <strong>10 Saves per post</strong>. If 10 people save it, the algorithm pushes it to 1,000 new ones.</span></div>
+
+            <div class="hashtag-block">
+              <div class="hashtag-block-title">Hashtag Toolkit</div>
+              <div class="hashtag-list">
+                <span class="hashtag">#PancakesAndBooze</span>
+                <span class="hashtag">#PancakesAndBooze[City]</span>
+                <span class="hashtag">#[City]PancakesAndBooze</span>
+                <span class="hashtag">#ShopLocal</span>
+                <span class="hashtag">#[City]Makers</span>
+                <span class="hashtag">#SupportLocalMakers</span>
+                <span class="hashtag">#HandmadeNearMe</span>
+                <span class="hashtag">#[City]Vendor</span>
+              </div>
+              <p class="hashtag-note">Replace <strong>[City]</strong> with your show city (e.g., <strong>#PancakesAndBoozeAustin</strong>, <strong>#AustinMakers</strong>). <strong>#ShopLocal</strong> and <strong>#HandmadeNearMe</strong> are great for location-based discovery.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- VENDOR SHOW DAY CHECKLIST -->
+      <section class="checklist-section" id="checklist">
+        <div class="checklist">
+          <h2>Vendor Show Day Checklist</h2>
+          <ul>
+            <li>
+              <input type="checkbox" id="chk-qr">
+              <label for="chk-qr"><strong>Vendor QR Code</strong> &mdash; from your Eventbrite email. Required for check-in.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-tables">
+              <label for="chk-tables"><strong>Tables, racks, or grid walls</strong> &mdash; whatever fits inside your 8&times;5 ft footprint.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-lights">
+              <label for="chk-lights"><strong>Chairs &amp; Lighting</strong> &mdash; battery-operated LEDs recommended; clamp lights + extension cords also fine.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-data">
+              <label for="chk-data"><strong>Cellular Data</strong> &mdash; your POS must work without Wi-Fi.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-assistant">
+              <label for="chk-assistant"><strong>Assistant Ticket</strong> &mdash; your vendor space includes 1 entry; assistants staying for the show need a GA ticket.</label>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section class="rules-section">
+        <h2>Need Help?</h2>
+        <p>Email <a href="mailto:info@pancakesandbooze.com?subject=Vendor%20Hub">info@pancakesandbooze.com</a> with subject &ldquo;Vendor Hub&rdquo; and we&rsquo;ll get back to you. Need to cancel? <a href="mailto:info@pancakesandbooze.com?subject=Vendor%20Cancellation">Email us</a> as soon as possible &mdash; vendor spots are limited and someone else will want yours.</p>
+        <p>Policy questions not covered here? See the <a href="/#faq">main FAQ</a>.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/cookies">Cookie Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/accessibility">Accessibility Statement</a>
+        <a href="/imprint">Imprint</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ════════════ SHOWS.JSON INTEGRATION ════════════
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const wantedCity = (params.get('city') || '').toLowerCase().trim();
+
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && value) el.textContent = value;
+      };
+
+      const renderShow = (show) => {
+        const cityName = (show && show.city) ? show.city : 'Your City';
+        document.getElementById('hubTitle').textContent = `Welcome to ${cityName}`;
+        setText('snapshotCity', cityName);
+
+        if (!show) {
+          document.getElementById('showNoData').hidden = false;
+          return;
+        }
+
+        const dateLabel = show.date_label
+          || show.date_range
+          || [show.date_month_short, show.date_day, show.date_year].filter(Boolean).join(' ');
+        setText('snapshotDate', dateLabel || '');
+
+        const grid = document.getElementById('snapshotGrid');
+        grid.innerHTML = '';
+        const row = (label, value) => {
+          if (!value) return;
+          const dt = document.createElement('dt'); dt.textContent = label;
+          const dd = document.createElement('dd'); dd.textContent = value;
+          const wrap = document.createElement('div');
+          wrap.appendChild(dt); wrap.appendChild(dd);
+          grid.appendChild(wrap);
+        };
+        row('Venue', show.venue);
+        row('Show Hours', show.show_hours || show.event_hours);
+        row('Vendor Check-In', show.vendor_install_time || show.vendor_check_in || show.vendor_arrival || show.install_time);
+        row('Age Policy', show.age || show.age_policy);
+        row('Vendor Fee', show.vendor_fee_tier || show.vendor_fee);
+
+        // Card #1 check-in time — column W in the Event Details bible.
+        // Multiple possible JSON names to be safe.
+        const vendorCheckIn = show.vendor_install_time
+          || show.vendor_check_in
+          || show.vendor_arrival
+          || show.install_time;
+        if (vendorCheckIn) setText('checkInWindow', vendorCheckIn);
+
+        // Parking — column AC in the bible.
+        const parking = show.parking_info
+          || show.parking_notes
+          || show.parking_details
+          || show.parking;
+        if (parking) {
+          document.getElementById('parkingBody').innerHTML = parking;
+        }
+
+        // Map embed
+        const address = show.address;
+        const mapFrame = document.getElementById('mapFrame');
+        if (address && mapFrame) {
+          const query = encodeURIComponent([show.venue, address].filter(Boolean).join(', '));
+          mapFrame.innerHTML = `<iframe loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=${query}&output=embed"
+            title="Map of ${show.venue || cityName} venue"></iframe>`;
+        }
+
+        // Hashtag personalization — replace [City] placeholders.
+        const hashtagCity = cityName.replace(/[^a-zA-Z0-9]/g, '');
+        document.querySelectorAll('.hashtag').forEach(el => {
+          el.textContent = el.textContent.replace(/\[City\]/g, hashtagCity);
+        });
+        const note = document.querySelector('.hashtag-note');
+        if (note) {
+          note.innerHTML = `Customized for <strong>${cityName}</strong>. <strong>#ShopLocal</strong> and <strong>#HandmadeNearMe</strong> are great for location-based discovery.`;
+        }
+      };
+
+      try {
+        const res = await fetch('/shows.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('shows.json fetch failed');
+        const data = await res.json();
+        const shows = Array.isArray(data) ? data : (data.shows || []);
+
+        let match = null;
+        if (wantedCity) {
+          match = shows.find(s => {
+            const slug = (s.slug || s.city_slug || '').toLowerCase();
+            const name = (s.city || '').toLowerCase();
+            return slug === wantedCity || name === wantedCity
+              || slug.replace(/[\s_]/g, '-') === wantedCity
+              || name.replace(/[\s_]/g, '-') === wantedCity;
+          });
+        }
+
+        if (!match) {
+          const now = new Date();
+          match = shows.find(s => {
+            if (s.live === false) return false;
+            const d = s.date_iso ? new Date(s.date_iso) : null;
+            return !d || d >= now;
+          });
+        }
+
+        renderShow(match);
+      } catch (e) {
+        renderShow(null);
+      }
+    })();
+  </script>
+</body>
+</html>
