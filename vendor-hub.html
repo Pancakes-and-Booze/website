@@ -294,30 +294,33 @@
     }
     .rules-section a:hover { border-bottom-color: var(--accent); text-decoration: none; }
 
-    /* Footprint highlight box */
-    .footprint-box {
-      background: var(--dark-card);
-      border: 2px solid var(--yellow);
-      border-radius: var(--radius-lg);
-      padding: 22px 26px;
-      margin: 16px 0 20px;
+    /* Footprint callout INSIDE a card (the "8 ft × 5 ft" highlight on Card 1
+       of the 2×2 footprint grid — keeps the dimensions visually prominent
+       without making the whole card a different shape from its siblings). */
+    .footprint-callout {
       text-align: center;
+      padding: 14px;
+      background: var(--dark-card-2);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--yellow);
+      margin: 4px 0 14px;
     }
-    .footprint-box .footprint-num {
+    .footprint-callout .footprint-num {
       font-family: var(--font-display);
-      font-size: 2.6rem;
+      font-size: 2rem;
       letter-spacing: 1px;
       color: var(--yellow);
       line-height: 1;
-      margin-bottom: 6px;
     }
-    .footprint-box .footprint-label {
+    .footprint-callout .footprint-label {
       font-family: var(--font-display);
-      font-size: 0.85rem;
-      letter-spacing: 3px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
       color: var(--gray-light);
       text-transform: uppercase;
+      margin-top: 4px;
     }
+    .four-card p + p { margin-top: 8px; }
 
     /* GROWTH KIT */
     .growth-kit-section {
@@ -656,28 +659,41 @@
         </div>
       </section>
 
-      <!-- YOUR FOOTPRINT & LOGISTICS -->
-      <section class="rules-section" id="footprint">
-        <h2>Your Footprint &amp; Logistics</h2>
+      <!-- YOUR FOOTPRINT & LOGISTICS (2×2 grid) -->
+      <section class="grid-section" id="footprint">
+        <h2 class="section-title">Your Footprint &amp; Logistics</h2>
+        <div class="four-grid">
 
-        <div class="footprint-box">
-          <div class="footprint-num">8 ft &times; 5 ft</div>
-          <div class="footprint-label">Your Allotted Space</div>
+          <div class="four-card">
+            <span class="four-card-num">A</span>
+            <h3>The Footprint</h3>
+            <div class="footprint-callout">
+              <div class="footprint-num">8 ft &times; 5 ft</div>
+              <div class="footprint-label">Your Allotted Space</div>
+            </div>
+            <p>Your entire setup must stay within these boundaries &mdash; we plan venue capacity and aisle traffic around it.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">B</span>
+            <h3>Flexible Setup</h3>
+            <p>You&rsquo;re <strong>not limited to a single 6 ft table</strong>. Bring grid walls, racks, multiple smaller tables (L-shape, U-shape, whatever fits), or display stands &mdash; as long as everything fits within your 8&times;5 ft footprint.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">C</span>
+            <h3>Lighting &amp; Power</h3>
+            <p>Power is available, but we <strong>highly recommend battery-operated or rechargeable LED lights</strong>. They give you the most placement flexibility and keep your booth cord-free. Clamp lights with extension cords are also permitted.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">D</span>
+            <h3>Assistants &amp; Load-Out</h3>
+            <p><strong>Assistants:</strong> Vendor space includes 1 entry. Anyone staying for the show needs a GA ticket.</p>
+            <p><strong>Load-Out:</strong> Begins after 11 PM. All items must leave the night of the show &mdash; the venue disposes of anything left behind. No exceptions.</p>
+          </div>
+
         </div>
-
-        <p>Each vendor is allotted an <strong>8 ft wide by 5 ft deep footprint</strong>. Your entire setup must stay within these boundaries &mdash; we plan venue capacity and aisle traffic around it.</p>
-
-        <h3>Flexible Table Policy</h3>
-        <p>You&rsquo;re <strong>not limited to a single 6 ft table</strong>. Bring grid walls, racks, multiple smaller tables (L-shape, U-shape, whatever fits), or display stands &mdash; as long as the entire setup fits within your 8&times;5 ft footprint. Whatever maximizes your display and sales is fine with us.</p>
-
-        <h3>Lighting &amp; Power</h3>
-        <p>Power is available, but we <strong>highly recommend battery-operated or rechargeable LED lights</strong>. They give you the most placement flexibility and keep your booth cord-free (no tripping hazards for browsing customers). Clamp lights with extension cords are also permitted if you prefer.</p>
-
-        <h3>Assistants</h3>
-        <p>Your vendor space includes <strong>1 entry</strong> for you. Any assistant staying for the show needs a General Admission ticket. Help is welcome for setup and tear-down regardless.</p>
-
-        <h3>Load-Out</h3>
-        <p>Load-out begins after <strong>11 PM</strong>. <strong>All items must be removed the night of the show.</strong> The venue will dispose of anything left behind. We don&rsquo;t have venue access after we leave and can&rsquo;t retrieve forgotten merchandise on your behalf. No exceptions.</p>
       </section>
 
       <!-- ════════════ VENDOR GROWTH KIT ════════════ -->
