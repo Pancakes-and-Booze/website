@@ -257,7 +257,7 @@
       display: grid; grid-template-columns: 1fr; gap: 16px;
     }
     @media (min-width: 860px) {
-      .show-grid { grid-template-columns: 1fr 1.8fr; align-items: start; }
+      .show-grid { grid-template-columns: 1fr 1.8fr; }
     }
     .show-card, .map-card, .flyer-inner {
       background: var(--dark-card);
@@ -273,11 +273,13 @@
       .map-card   { order: 2; }
       .flyer-inner { order: 3; }
     }
-    /* Desktop: left column stacks show card + flyer vertically */
+    /* Desktop: left column stacks show card + flyer vertically, flyer grows to match map height */
     @media (min-width: 860px) {
       .show-left-col {
         display: flex; flex-direction: column; gap: 16px;
       }
+      .flyer-inner { flex: 1; min-height: 0; }
+      .flyer-inner img { height: 100%; object-fit: cover; }
     }
     .show-card { padding: 16px 18px; }
     @media (min-width: 860px) {
