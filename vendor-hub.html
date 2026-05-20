@@ -151,40 +151,83 @@
       display: grid; grid-template-columns: 1fr; gap: 16px;
     }
     @media (min-width: 860px) {
-      .show-grid { grid-template-columns: 1fr 1fr; }
+      .show-grid { grid-template-columns: 1fr 1.8fr; }
     }
-    .show-card, .map-card {
+    .show-card, .map-card, .flyer-inner {
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
       border-radius: var(--radius-lg);
     }
-    .show-card { padding: 24px; }
+
+    /* Mobile: show-left-col dissolves so its children stack in the grid */
+    .show-left-col { display: contents; }
+    @media (max-width: 859px) {
+      .show-card   { order: 1; }
+      .map-card    { order: 2; }
+      .flyer-inner { order: 3; }
+    }
+    /* Desktop: left column stacks show card + flyer, flyer grows to match map height */
+    @media (min-width: 860px) {
+      .show-left-col { display: flex; flex-direction: column; gap: 16px; }
+      .flyer-inner { flex: 1; min-height: 0; }
+      .flyer-inner img { height: 100%; object-fit: cover; }
+    }
+
+    .show-card { padding: 16px 18px; }
+    @media (min-width: 860px) {
+      .show-card { padding: 24px; }
+    }
     .show-card h3, .map-card h3 {
       font-family: var(--font-display);
       font-size: 1.05rem; letter-spacing: 2px;
       color: var(--accent);
-      margin-bottom: 12px; text-transform: uppercase;
+      margin-bottom: 10px; text-transform: uppercase;
+    }
+    .show-city-row {
+      display: flex; align-items: baseline;
+      gap: 10px; flex-wrap: wrap; margin-bottom: 10px;
     }
     .show-city {
       font-family: var(--font-display);
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      letter-spacing: 1px; margin-bottom: 4px;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      letter-spacing: 1px;
     }
     .show-date {
       font-family: var(--font-display);
-      font-size: 1.2rem; color: var(--yellow);
-      letter-spacing: 2px; margin-bottom: 14px;
+      font-size: 1rem; color: var(--yellow);
+      letter-spacing: 2px;
+    }
+    @media (min-width: 860px) {
+      .show-date { font-size: 1.2rem; }
     }
     .show-grid-details {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px 20px; font-size: 0.9rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px; font-size: 0.9rem;
+    }
+    @media (min-width: 860px) {
+      .show-grid-details {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px 20px;
+      }
+    }
+    /* Venue full-width, rest side by side on mobile */
+    @media (max-width: 859px) {
+      .show-grid-details > div:first-child { grid-column: span 2; }
     }
     .show-grid-details dt {
       font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
       color: var(--gray); font-weight: 700; margin-bottom: 2px;
     }
     .show-grid-details dd { color: var(--white); }
+
+    .flyer-inner { overflow: hidden; }
+    .flyer-eyebrow {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; font-family: var(--font-display);
+      padding: 14px 16px 10px;
+    }
+    .flyer-inner img { width: 100%; display: block; }
 
     .map-card { overflow: hidden; display: flex; flex-direction: column; }
     .map-card-header { padding: 24px 24px 12px; }
@@ -571,6 +614,7 @@
               onchange="if (this.value) { document.getElementById(this.value).scrollIntoView({behavior:'smooth'}); this.selectedIndex=0; }">
         <option value="">Jump to&hellip;</option>
         <option value="logistics">Logistics</option>
+        <option value="event-flyer">Flyer</option>
         <option value="footprint">Your Footprint</option>
         <option value="growth-kit">Vendor Growth Kit</option>
         <option value="checklist">Checklist</option>
@@ -593,15 +637,23 @@
     <div class="container">
       <div class="show-grid">
 
-        <div class="show-card">
-          <h3>Your Show</h3>
-          <div class="show-city" id="snapshotCity">&mdash;</div>
-          <div class="show-date" id="snapshotDate"></div>
-          <dl class="show-grid-details" id="snapshotGrid"></dl>
-          <p class="show-no-data" id="showNoData" hidden style="color: var(--gray); font-size: 0.9rem; font-style: italic; margin-top: 12px;">
-            Show details didn&rsquo;t load. Check your acceptance email or email
-            <a href="mailto:info@pancakesandbooze.com?subject=Vendor%20Hub">info@pancakesandbooze.com</a>.
-          </p>
+        <div class="show-left-col">
+          <div class="show-card">
+            <h3>Your Show</h3>
+            <div class="show-city-row">
+              <div class="show-city" id="snapshotCity">&mdash;</div>
+              <div class="show-date" id="snapshotDate"></div>
+            </div>
+            <dl class="show-grid-details" id="snapshotGrid"></dl>
+            <p class="show-no-data" id="showNoData" hidden style="color: var(--gray); font-size: 0.9rem; font-style: italic; margin-top: 12px;">
+              Show details didn&rsquo;t load. Check your acceptance email or email
+              <a href="mailto:info@pancakesandbooze.com?subject=Vendor%20Hub">info@pancakesandbooze.com</a>.
+            </p>
+          </div>
+          <div class="flyer-inner" id="event-flyer" hidden>
+            <p class="flyer-eyebrow">Event Flyer</p>
+            <img id="flyerImg" src="" alt="Event flyer" />
+          </div>
         </div>
 
         <div class="map-card" id="parking">
@@ -890,6 +942,15 @@
           || show.parking;
         if (parking) {
           document.getElementById('parkingBody').innerHTML = parking;
+        }
+
+        // Flyer
+        const flyerInner = document.getElementById('event-flyer');
+        const flyerImg = document.getElementById('flyerImg');
+        if (show.flyer_url && flyerInner && flyerImg) {
+          flyerImg.src = show.flyer_url;
+          flyerImg.alt = `${cityName} event flyer`;
+          flyerInner.hidden = false;
         }
 
         // Map embed
