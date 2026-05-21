@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission Received | Pancakes &amp; Booze</title>
+  <meta name="description" content="Your application to Pancakes &amp; Booze has been received. We'll be in touch soon.">
+
+  <!-- Confirmation page. Don't index. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-card-2: #1a1a1a;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --accent-glow: rgba(255, 45, 123, 0.3);
+      --yellow: #e8ff21;
+      --yellow-glow: rgba(232, 255, 33, 0.3);
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container--narrow { max-width: 600px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Announcement bar ── */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; gap: 12px;
+    }
+    .nav-logo img { height: 40px; }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── Main ── */
+    main { flex: 1; padding: 64px 0 80px; }
+
+    /* ── Confirm hero ── */
+    .confirm-hero {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .confirm-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 45, 123, 0.16), transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Checkmark icon */
+    .confirm-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      width: 92px; height: 92px;
+      border-radius: 50%;
+      background: var(--dark-card);
+      box-shadow: 0 0 0 1px var(--dark-border), 0 0 48px rgba(255, 45, 123, 0.22);
+      position: relative; z-index: 1;
+    }
+
+    /* Submission type badge */
+    .confirm-type {
+      margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+    .type-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gradient);
+      padding: 4px 16px;
+      border-radius: 100px;
+    }
+
+    /* Headline */
+    .confirm-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 12vw, 6.5rem);
+      letter-spacing: 2px;
+      line-height: 0.9;
+      margin-bottom: 18px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+    }
+
+    /* City/event context line */
+    .confirm-context {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      letter-spacing: 2px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      position: relative; z-index: 1;
+    }
+
+    /* Application code block */
+    .confirm-code-block {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 20px 24px;
+      margin: 0 auto 32px;
+      text-align: left;
+      position: relative; z-index: 1;
+    }
+    .code-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .code-value {
+      font-family: 'Courier New', 'Courier', monospace;
+      font-size: clamp(1rem, 4vw, 1.45rem);
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: 2px;
+      word-break: break-all;
+      margin-bottom: 8px;
+    }
+    .code-note {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* Body copy */
+    .confirm-body {
+      color: var(--gray-light);
+      font-size: 0.98rem;
+      line-height: 1.65;
+      position: relative; z-index: 1;
+    }
+
+    /* ── What's Next card ── */
+    .next-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 30px;
+      margin-bottom: 40px;
+    }
+    .next-card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .next-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .next-step:last-child { border-bottom: 0; padding-bottom: 0; }
+    .next-step-num {
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: var(--black);
+      background: var(--yellow);
+      padding: 2px 9px;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+    .next-step-text {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      line-height: 1.55;
+    }
+    .next-step-text strong { color: var(--white); }
+
+    /* ── Action buttons ── */
+    .confirm-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gradient);
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      display: inline-block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); text-decoration: none; }
+    .btn-secondary {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      display: inline-block;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover { background: var(--accent); color: var(--black); text-decoration: none; transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+      margin-top: auto;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── A11Y ── */
+    .skip-link {
+      position: absolute; top: -100px; left: 8px;
+      background: var(--yellow); color: var(--black);
+      padding: 12px 20px; border-radius: 6px;
+      font-weight: 700; font-family: var(--font-display);
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid var(--accent); outline-offset: 2px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px; border-radius: 3px;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 44px 0 60px; }
+      .next-card { padding: 20px; }
+      .confirm-code-block { padding: 16px 18px; }
+    }
+  </style>
+
+  <!-- TERMLY CMP — must be first script -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
+
+  <!-- Google Consent Mode bridge -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
+  </script>
+
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="announcement">
+    Application Received &mdash; You&rsquo;re one step closer
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes &amp; Booze" width="40" height="40">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="container--narrow">
+
+      <!-- ── Success hero ── -->
+      <section class="confirm-hero">
+
+        <!-- Checkmark icon -->
+        <div class="confirm-icon" role="img" aria-label="Success checkmark">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="23" cy="23" r="21.5" stroke="url(#chk-grad)" stroke-width="2"/>
+            <path d="M13 23L20.5 30.5L33 16" stroke="url(#chk-grad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="chk-grad" x1="0" y1="0" x2="46" y2="46" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ff2d7b"/>
+                <stop offset="50%" stop-color="#ff6b35"/>
+                <stop offset="100%" stop-color="#e8ff21"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- Submission type label — hidden until JS populates it -->
+        <div class="confirm-type" id="confirmType" hidden>
+          <span class="type-badge" id="typeText"></span>
+        </div>
+
+        <h1 class="confirm-title">Submission Received</h1>
+
+        <!-- City/event line — JS updates this; fallback is the generic copy -->
+        <p class="confirm-context" id="confirmContext">We&rsquo;ll be in touch soon.</p>
+
+        <!-- Application code — hidden until JS finds the param -->
+        <div class="confirm-code-block" id="confirmCodeBlock" hidden>
+          <div class="code-eyebrow">Application Code</div>
+          <div class="code-value" id="confirmCode"></div>
+          <p class="code-note">Save this reference number. You may need it if you contact us about your application.</p>
+        </div>
+
+      </section>
+
+      <!-- ── What happens next ── -->
+      <div class="next-card">
+        <h2 class="next-card-title">What Happens Next</h2>
+        <div class="next-step">
+          <span class="next-step-num">01</span>
+          <p class="next-step-text"><strong>Review.</strong> We'll review your submission and get back to you within 10 days.</p>
+        </div>
+        <div class="next-step">
+          <span class="next-step-num">02</span>
+          <p class="next-step-text"><strong>Email confirmation.</strong> Accepted applicants get an email with event details, logistics, and next steps. If you don&rsquo;t see anything in your inbox, check your spam and promotions folders. If they land there, drag them into your inbox so your email provider knows you want these emails to be seen.</p>
+        </div>
+        <div class="next-step">
+          <span class="next-step-num">03</span>
+          <p class="next-step-text"><strong>Questions?</strong> Email <a href="mailto:info@pancakesandbooze.com">info@pancakesandbooze.com</a> and include your application code (if you have one) &mdash; we&rsquo;ll get back to you.</p>
+        </div>
+      </div>
+
+      <!-- ── Action buttons ── -->
+      <div class="confirm-actions">
+        <a href="https://pancakesandbooze.com" class="btn-primary">Back to Pancakes &amp; Booze</a>
+        <a href="/#shows" class="btn-secondary">Browse Shows</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/cookies">Cookie Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/accessibility">Accessibility Statement</a>
+        <a href="/imprint">Imprint</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var urlParams = new URLSearchParams(window.location.search);
+
+      // ── Submission type label ──
+      var type = urlParams.get('type');
+      var typeLabels = {
+        artwork: 'Artwork Submission',
+        vendor:  'Vendor Application',
+        artist:  'Artist Application'
+      };
+      if (type && typeLabels[type]) {
+        document.getElementById('typeText').textContent = typeLabels[type];
+        document.getElementById('confirmType').hidden = false;
+      }
+
+      // ── Application code ──
+      var applicationCode = urlParams.get('application_code');
+      if (applicationCode) {
+        document.getElementById('confirmCode').textContent = applicationCode;
+        document.getElementById('confirmCodeBlock').hidden = false;
+      }
+
+      // ── City / event context line ──
+      function formatSlug(slug) {
+        return slug.split('-').map(function (w) {
+          return w.charAt(0).toUpperCase() + w.slice(1);
+        }).join(' ');
+      }
+
+      var city  = urlParams.get('city');
+      var event = urlParams.get('event');
+      var contextEl = document.getElementById('confirmContext');
+
+      if (city) {
+        contextEl.textContent = ‘We’ll be in touch about the ‘ + formatSlug(city) + ‘ show.’;
+      } else if (event) {
+        // Slug convention: "pancakes-booze-brooklyn" — last segment is the city
+        var parts = event.split(‘-’);
+        var cityPart = parts[parts.length - 1];
+        contextEl.textContent = ‘We’ll be in touch about the ‘ + formatSlug(cityPart) + ‘ show.’;
+      }
+      // If neither param is present, the fallback copy in the HTML stays.
+
+      // ── Zaraz tracking ──
+      if (typeof zaraz === 'object' && typeof zaraz.track === 'function') {
+        zaraz.track('Lead', {
+          content_name: 'Submission Success',
+          source: urlParams.get('source') || 'unknown',
+          type:   urlParams.get('type')   || 'unknown',
+          city:   urlParams.get('city')   || urlParams.get('event') || 'unknown'
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
