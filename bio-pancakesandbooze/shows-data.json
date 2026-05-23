@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "portland",
+    "label": "Portland, OR · May 15",
+    "tickets": "https://www.etix.com/ticket/p/39425163/pancakes-booze-portland-hawthorne-theatre",
+    "artist": "https://shows.pancakesandbooze.com/apply?city=portland&type=artist",
+    "vendor": "https://shows.pancakesandbooze.com/apply?city=portland&type=vendor",
+    "faq": "https://pancakesandbooze.com/faq"
+  },
+  {
+    "slug": "austin",
+    "label": "Austin, TX · May 30",
+    "tickets": "https://www.eventbrite.com/e/the-austin-pancakes-booze-art-show-tickets-1984004936172",
+    "artist": "https://shows.pancakesandbooze.com/apply?city=austin&type=artist",
+    "vendor": "https://shows.pancakesandbooze.com/apply?city=austin&type=vendor",
+    "faq": "https://pancakesandbooze.com/faq"
+  },
+  {
+    "slug": "philadelphia",
+    "label": "Philadelphia, PA · Jun 6",
+    "tickets": "https://www.tixr.com/pr/h/179700",
+    "artist": "https://shows.pancakesandbooze.com/apply?city=philadelphia&type=artist",
+    "vendor": "https://shows.pancakesandbooze.com/apply?city=philadelphia&type=vendor",
+    "faq": "https://pancakesandbooze.com/faq"
+  },
+  {
+    "slug": "orlando",
+    "label": "Orlando, FL · Jun 27",
+    "tickets": "https://eventbrite.com/e/the-orlando-pancakes-booze-art-show-tickets-1987699816659",
+    "artist": "https://shows.pancakesandbooze.com/apply?city=orlando&type=artist",
+    "vendor": "https://shows.pancakesandbooze.com/apply?city=orlando&type=vendor",
+    "faq": "https://pancakesandbooze.com/faq"
+  }
+]
