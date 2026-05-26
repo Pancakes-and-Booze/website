@@ -5,7 +5,7 @@
     "tickets": "https://www.eventbrite.com/e/the-austin-pancakes-booze-art-show-tickets-1984004936172?aff=PBEmails",
     "artist": "https://shows.pancakesandbooze.com/shows/austin-30-may-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/austin-30-may-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "philadelphia",
@@ -13,7 +13,7 @@
     "tickets": "https://www.tixr.com/pr/h/179700",
     "artist": "https://shows.pancakesandbooze.com/shows/philadelphia-06-jun-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/philadelphia-06-jun-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "orlando",
@@ -21,7 +21,7 @@
     "tickets": "https://eventbrite.com/e/the-orlando-pancakes-booze-art-show-tickets-1987699816659?aff=PBEmails",
     "artist": "https://shows.pancakesandbooze.com/shows/orlando-27-jun-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/orlando-27-jun-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "nyc",
@@ -29,7 +29,7 @@
     "tickets": "https://kyd.to/fRuYlxP9",
     "artist": "https://www.voxxypresents.com/events/pancakes-booze-brooklyn/apply/531",
     "vendor": "https://www.voxxypresents.com/events/pancakes-booze-brooklyn/apply/532",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "sanantonio",
@@ -37,7 +37,7 @@
     "tickets": "https://www.stubwire.com/e/38447/thepancakesboozeartshow/therockbox/",
     "artist": "https://shows.pancakesandbooze.com/shows/san-antonio-11-jul-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/san-antonio-11-jul-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "toronto",
@@ -45,7 +45,7 @@
     "tickets": "https://www.eventbrite.com/e/the-toronto-pancakes-booze-art-show-tickets-1989621116318?aff=PBEmails",
     "artist": "https://shows.pancakesandbooze.com/shows/toronto-17-jul-2026/submit-artists",
     "vendor": "https://shows.pancakesandbooze.com/shows/toronto-17-jul-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "chicago",
@@ -53,7 +53,7 @@
     "tickets": "https://www.ticketweb.com/event/the-pancakes-and-booze-art-reggies-rock-club-tickets/14931603",
     "artist": "https://shows.pancakesandbooze.com/shows/chicago-18-jul-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/chicago-18-jul-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "detroit",
@@ -61,7 +61,7 @@
     "tickets": "https://www.eventbrite.com/e/the-detroit-pancakes-booze-art-show-tickets-1989928464605?aff=PBEmails",
     "artist": "https://shows.pancakesandbooze.com/shows/detroit-18-jul-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/detroit-18-jul-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "oakland",
@@ -69,7 +69,7 @@
     "tickets": "https://eventbrite.com/e/the-oakland-pancakes-booze-art-show-tickets-1990070904647?aff=PBEmails",
     "artist": "https://shows.pancakesandbooze.com/shows/oakland-30-jul-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/oakland-30-jul-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   },
   {
     "slug": "raleigh",
@@ -77,6 +77,6 @@
     "tickets": "https://eventbrite.com/e/the-raleigh-pancakes-booze-art-show-tickets-1990199203392?aff=PBEmails",
     "artist": "https://shows.pancakesandbooze.com/shows/raleigh-13-aug-2026/submit-artwork",
     "vendor": "https://shows.pancakesandbooze.com/shows/raleigh-13-aug-2026/submit-vendor",
-    "faq": "https://pancakesandbooze.com/faq"
+    "faq": "https://pancakesandbooze.com/#faq"
   }
 ]
