@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro de Vendedores | Pancakes &amp; Booze</title>
+  <meta name="description" content="Instrucciones para el día del show para vendedores en Pancakes & Booze. Llegada, espacio, iluminación, ventas, desmontaje y el kit de crecimiento 2026.">
+
+  <!-- Recurso para vendedores aceptados. No indexar. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Bilingual hreflang — Spanish is canonical. -->
+  <link rel="alternate" hreflang="es" href="https://pancakesandbooze.pages.dev/centro-de-vendedor">
+  <link rel="alternate" hreflang="en" href="https://pancakesandbooze.pages.dev/vendor-hub">
+  <link rel="alternate" hreflang="x-default" href="https://pancakesandbooze.pages.dev/centro-de-vendedor">
+
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-card-2: #1a1a1a;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --accent-glow: rgba(255, 45, 123, 0.3);
+      --yellow: #e8ff21;
+      --yellow-glow: rgba(232, 255, 33, 0.3);
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    section[id] { scroll-margin-top: 96px; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; gap: 12px;
+    }
+    .nav-logo img { height: 40px; }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+    /* Right-side group: lang pill + mobile jump */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    /* Language switcher pill (ES | EN) */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--dark-border);
+      border-radius: 999px;
+      padding: 3px;
+    }
+    .lang-switch a,
+    .lang-switch span {
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 999px;
+      color: var(--gray-light);
+      text-decoration: none;
+      line-height: 1;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-switch a:hover { color: var(--white); text-decoration: none; }
+    .lang-switch .lang-active {
+      background: var(--accent);
+      color: var(--black);
+      cursor: default;
+    }
+    .mobile-jump {
+      display: none;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      color: var(--white);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      min-width: 170px;
+    }
+    @media (max-width: 768px) {
+      .nav-back { display: none; }
+      .mobile-jump { display: block; }
+    }
+
+    /* Hero */
+    .hub-hero {
+      padding: 60px 0 28px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hub-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,45,123,0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .hub-eyebrow {
+      font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 12px;
+      position: relative; z-index: 1;
+    }
+    .hub-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+      letter-spacing: 1px; line-height: 0.95;
+      margin-bottom: 14px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+    }
+    .hub-subhead {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      letter-spacing: 3px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .hub-sub {
+      font-size: 1rem; color: var(--gray-light);
+      max-width: 580px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    /* Snapshot + map */
+    .show-block { padding: 12px 0 28px; }
+    .show-grid {
+      display: grid; grid-template-columns: 1fr; gap: 16px;
+    }
+    @media (min-width: 860px) {
+      .show-grid { grid-template-columns: 1fr 1.8fr; }
+    }
+    .show-card, .map-card, .flyer-inner {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+    }
+
+    .show-left-col { display: contents; }
+    @media (max-width: 859px) {
+      .show-card   { order: 1; }
+      .map-card    { order: 2; }
+      .flyer-inner { order: 3; }
+    }
+    @media (min-width: 860px) {
+      .show-left-col { display: flex; flex-direction: column; gap: 16px; }
+      .flyer-inner { flex: 1; min-height: 0; }
+      .flyer-inner img { height: 100%; object-fit: cover; }
+    }
+
+    .show-card { padding: 16px 18px; }
+    @media (min-width: 860px) {
+      .show-card { padding: 24px; }
+    }
+    .show-card h3, .map-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 10px; text-transform: uppercase;
+    }
+    .show-city-row {
+      display: flex; align-items: baseline;
+      gap: 10px; flex-wrap: wrap; margin-bottom: 10px;
+    }
+    .show-city {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      letter-spacing: 1px;
+    }
+    .show-date {
+      font-family: var(--font-display);
+      font-size: 1rem; color: var(--yellow);
+      letter-spacing: 2px;
+    }
+    @media (min-width: 860px) {
+      .show-date { font-size: 1.2rem; }
+    }
+    .show-grid-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px; font-size: 0.9rem;
+    }
+    @media (min-width: 860px) {
+      .show-grid-details {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px 20px;
+      }
+    }
+    @media (max-width: 859px) {
+      .show-grid-details > div:first-child { grid-column: span 2; }
+    }
+    .show-grid-details dt {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray); font-weight: 700; margin-bottom: 2px;
+    }
+    .show-grid-details dd { color: var(--white); }
+
+    .flyer-inner { overflow: hidden; }
+    .flyer-eyebrow {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; font-family: var(--font-display);
+      padding: 14px 16px 10px;
+    }
+    .flyer-inner img { width: 100%; display: block; }
+
+    .map-card { overflow: hidden; display: flex; flex-direction: column; }
+    .map-card-header { padding: 24px 24px 12px; }
+    .map-frame {
+      position: relative; width: 100%; aspect-ratio: 4 / 3;
+      background: var(--dark-card-2); flex: 1; min-height: 220px;
+    }
+    .map-frame iframe {
+      width: 100%; height: 100%; border: 0;
+      filter: grayscale(0.2) invert(0.85) hue-rotate(180deg);
+    }
+    .map-no-data {
+      display: flex; align-items: center; justify-content: center;
+      height: 100%; padding: 24px;
+      color: var(--gray); font-size: 0.9rem; text-align: center;
+    }
+    .parking-block {
+      background: var(--dark-card-2);
+      padding: 16px 24px;
+      border-top: 1px solid var(--dark-border);
+      font-size: 0.9rem; color: var(--gray-light);
+    }
+    .parking-block strong { color: var(--white); }
+    .parking-eyebrow {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 4px;
+    }
+
+    /* 2×2 grid (4 vendor cards) */
+    .grid-section { padding: 28px 0; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 20px; text-align: center;
+    }
+    .four-grid {
+      display: grid; grid-template-columns: 1fr; gap: 14px;
+    }
+    @media (min-width: 720px) {
+      .four-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+    .four-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .four-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .four-card-num {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1rem; letter-spacing: 1px;
+      color: var(--black); background: var(--yellow);
+      padding: 2px 10px; border-radius: 4px;
+      margin-bottom: 12px; align-self: flex-start;
+    }
+    .four-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .four-card p {
+      color: var(--gray-light);
+      font-size: 0.95rem; line-height: 1.6;
+      flex: 1;
+    }
+    .four-card strong { color: var(--white); }
+    .four-card .card-action {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-display);
+      font-size: 0.8rem; letter-spacing: 2px;
+      color: var(--accent); text-transform: uppercase;
+      border: 1px solid var(--accent);
+      padding: 8px 14px; border-radius: 6px;
+      align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+    }
+    .four-card .card-action:hover {
+      background: var(--accent); color: var(--black);
+      text-decoration: none;
+    }
+
+    /* Rules / detail sections */
+    .rules-section { padding: 24px 0; border-top: 1px solid var(--dark-border); }
+    .rules-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 16px;
+    }
+    .rules-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; letter-spacing: 1px;
+      color: var(--white); margin: 18px 0 6px;
+    }
+    .rules-section p { color: var(--gray-light); margin-bottom: 10px; }
+    .rules-section strong { color: var(--white); }
+    .rules-section a {
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .rules-section a:hover { border-bottom-color: var(--accent); text-decoration: none; }
+
+    /* Footprint callout */
+    .footprint-callout {
+      text-align: center;
+      padding: 14px;
+      background: var(--dark-card-2);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--yellow);
+      margin: 4px 0 14px;
+    }
+    .footprint-callout .footprint-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .footprint-callout .footprint-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--gray-light);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .four-card p + p { margin-top: 8px; }
+
+    /* GROWTH KIT */
+    .growth-kit-section {
+      padding: 36px 0;
+      border-top: 1px solid var(--dark-border);
+    }
+    .growth-intro {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 22px 26px;
+      margin-bottom: 22px;
+    }
+    .growth-intro p { color: var(--gray-light); font-size: 1rem; }
+    .growth-intro strong { color: var(--yellow); }
+    .growth-phases {
+      display: grid; gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .growth-phases { grid-template-columns: repeat(2, 1fr); }
+    }
+    .phase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      position: relative;
+    }
+    .phase-card-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      line-height: 1; margin-bottom: 4px;
+      opacity: 0.5;
+    }
+    .phase-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .phase-card .phase-row {
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--gray-light);
+    }
+    .phase-card .phase-row strong { color: var(--white); }
+    .phase-card .phase-hack {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: var(--dark-card-2);
+      border-left: 2px solid var(--yellow);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+      color: var(--gray-light);
+    }
+    .phase-card .phase-hack strong { color: var(--yellow); }
+
+    .phase-card--cheat {
+      border-color: var(--accent);
+      border-width: 2px;
+      box-shadow: 0 0 30px rgba(255, 45, 123, 0.12);
+    }
+    .phase-star {
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: inline-block;
+      text-shadow: 0 0 12px rgba(255, 45, 123, 0.6);
+    }
+    .phase-card--cheat .phase-bullet {
+      display: flex; gap: 8px; align-items: flex-start;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+    .phase-card--cheat .phase-bullet::before {
+      content: '⚡';
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+    .phase-card--cheat .phase-bullet strong { color: var(--white); }
+    .hashtag-block {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--dark-card-2);
+      border-left: 2px solid var(--yellow);
+      border-radius: 0 6px 6px 0;
+    }
+    .hashtag-block-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+    .hashtag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .hashtag {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: rgba(255, 45, 123, 0.1);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 45, 123, 0.3);
+    }
+    .hashtag-note {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .hashtag-note strong { color: var(--gray-light); }
+
+    /* Checklist */
+    .checklist-section { padding: 32px 0; border-top: 1px solid var(--dark-border); }
+    .checklist {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      max-width: 720px; margin: 0 auto;
+    }
+    .checklist h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 16px;
+      text-align: center;
+    }
+    .checklist ul { list-style: none; padding: 0; margin: 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .checklist li:last-child { border-bottom: 0; }
+    .checklist input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .checklist label {
+      color: var(--gray-light);
+      font-size: 0.95rem; line-height: 1.5;
+      cursor: pointer; flex: 1;
+    }
+    .checklist label strong { color: var(--white); font-weight: 700; }
+    .checklist input:checked + label {
+      color: var(--gray); text-decoration: line-through;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* A11Y */
+    .skip-link {
+      position: absolute; top: -100px; left: 8px;
+      background: var(--yellow); color: var(--black);
+      padding: 12px 20px; border-radius: 6px;
+      font-weight: 700; font-family: var(--font-display);
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid var(--accent); outline-offset: 2px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px; border-radius: 3px;
+    }
+  </style>
+
+  <!-- TERMLY CMP -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
+
+  <!-- Consent bridge -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
+  </script>
+
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
+  <div class="announcement">
+    Centro de Vendedores &mdash; todo lo que necesitas para el día del show
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes &amp; Booze" width="40" height="40">
+      </a>
+      <a href="/" class="nav-back">&larr; Volver al Inicio</a>
+      <div class="nav-right">
+        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+          <span class="lang-active" aria-current="true">ES</span>
+          <a href="/vendor-hub" hreflang="en" aria-label="View in English">EN</a>
+        </div>
+        <select class="mobile-jump" aria-label="Ir a la sección"
+                onchange="if (this.value) { document.getElementById(this.value).scrollIntoView({behavior:'smooth'}); this.selectedIndex=0; }">
+          <option value="">Ir a&hellip;</option>
+          <option value="logistics">Logística</option>
+          <option value="event-flyer">Flyer</option>
+          <option value="footprint">Tu Espacio</option>
+          <option value="growth-kit">Kit de Crecimiento</option>
+          <option value="checklist">Lista de Verificación</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hub-hero">
+    <div class="container">
+      <div class="hub-eyebrow">Centro de Vendedores</div>
+      <h1 class="hub-title" id="hubTitle">Bienvenido a Tu Ciudad</h1>
+      <p class="hub-subhead">Donde la cultura y la creatividad emergen.</p>
+      <p class="hub-sub">Todo lo que necesitas para una instalación exitosa como vendedor está aquí.</p>
+    </div>
+  </section>
+
+  <!-- SNAPSHOT + MAP -->
+  <section class="show-block">
+    <div class="container">
+      <div class="show-grid">
+
+        <div class="show-left-col">
+          <div class="show-card">
+            <h3>Tu Show</h3>
+            <div class="show-city-row">
+              <div class="show-city" id="snapshotCity">&mdash;</div>
+              <div class="show-date" id="snapshotDate"></div>
+            </div>
+            <dl class="show-grid-details" id="snapshotGrid"></dl>
+            <p class="show-no-data" id="showNoData" hidden style="color: var(--gray); font-size: 0.9rem; font-style: italic; margin-top: 12px;">
+              Los detalles del show no cargaron. Revisa tu correo de aceptación o escribe a
+              <a href="mailto:info@pancakesandbooze.com?subject=Centro%20de%20Vendedores">info@pancakesandbooze.com</a>.
+            </p>
+          </div>
+          <div class="flyer-inner" id="event-flyer" hidden>
+            <p class="flyer-eyebrow">Flyer del Evento</p>
+            <img id="flyerImg" src="" alt="Flyer del evento" />
+          </div>
+        </div>
+
+        <div class="map-card" id="parking">
+          <div class="map-card-header">
+            <h3>Mapa del Lugar</h3>
+          </div>
+          <div class="map-frame" id="mapFrame">
+            <div class="map-no-data">El mapa cargará cuando los detalles de tu show estén confirmados.</div>
+          </div>
+          <div class="parking-block">
+            <div class="parking-eyebrow">Descarga de Vendedores y Estacionamiento</div>
+            <p id="parkingBody">
+              <strong>Próximamente.</strong> La mayoría de las ciudades usan estacionamiento en la calle o en el estacionamiento del lugar. Explora el área de carga antes del día del show si traes inventario pesado o equipo de exhibición.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- VENDOR SUCCESS IN 4 STEPS -->
+      <section class="grid-section" id="logistics">
+        <h2 class="section-title">Éxito del Vendedor en Cuatro</h2>
+        <div class="four-grid">
+
+          <div class="four-card">
+            <span class="four-card-num">01</span>
+            <h3>Check-In y Llegada</h3>
+            <p>Ten tu <strong>código QR de Vendedor</strong> listo en tu celular. El check-in comienza a <strong id="checkInWindow">revisa tu correo de aceptación</strong>. <strong>No llegues antes de tiempo</strong> &mdash; no estaremos listos para ti. La ubicación del espacio es por orden de llegada, sé puntual.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">02</span>
+            <h3>Ventas y Conectividad</h3>
+            <p><strong>0% de comisión.</strong> Te quedas con el 100% de cada venta. <strong>No se proporciona Wi-Fi para invitados</strong> &mdash; asegúrate de que tu POS (Square, Venmo, Cash App, etc.) funcione con datos móviles.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">03</span>
+            <h3>Apoyo y Promoción</h3>
+            <p>Nuestro equipo está en el lugar todo el día para ayudarte a encontrar tu espacio y configurarte. Revisa el <strong>Kit de Crecimiento para Vendedores</strong> a continuación para maximizar tu alcance y ventas antes, durante y después del show.</p>
+            <a href="#growth-kit" class="card-action">Abrir Kit de Crecimiento</a>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">04</span>
+            <h3>La Regla de lo &ldquo;No Colgable&rdquo;</h3>
+            <p>Los espacios de vendedores son para <strong>artículos no colgables</strong> (joyería, ropa, velas, accesorios, esculturas, etc.) o <strong>impresiones de menos de 8&times;10 pulg. únicamente</strong>. Si tienes arte para pared, aplica como <strong>Artista</strong> para un espacio de panel.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TU ESPACIO Y LOGÍSTICA (2×2 grid) -->
+      <section class="grid-section" id="footprint">
+        <h2 class="section-title">Tu Espacio y Logística</h2>
+        <div class="four-grid">
+
+          <div class="four-card">
+            <span class="four-card-num">A</span>
+            <h3>El Espacio</h3>
+            <div class="footprint-callout">
+              <div class="footprint-num">8 ft &times; 5 ft</div>
+              <div class="footprint-label">Tu Espacio Asignado</div>
+            </div>
+            <p>Tu instalación completa debe mantenerse dentro de estos límites &mdash; planificamos la capacidad del venue y el tráfico de pasillos en función de ellos.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">B</span>
+            <h3>Instalación Flexible</h3>
+            <p>No estás limitado a una sola mesa de 6 ft. Trae paredes de rejilla, racks, múltiples mesas más pequeñas (en L, en U, lo que encaje) o pedestales de exhibición &mdash; siempre que todo quede dentro de tu espacio de 8&times;5 ft.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">C</span>
+            <h3>Iluminación y Energía</h3>
+            <p>Hay energía disponible, pero <strong>recomendamos altamente luces LED a batería o recargables</strong>. Te dan la mayor flexibilidad de colocación y mantienen tu stand sin cables. Las luces de pinza con extensiones también están permitidas.</p>
+          </div>
+
+          <div class="four-card">
+            <span class="four-card-num">D</span>
+            <h3>Asistentes y Desmontaje</h3>
+            <p><strong>Asistentes:</strong> El espacio de vendedor incluye 1 entrada. Cualquiera que se quede para el show necesita un boleto de Admisión General.</p>
+            <p><strong>Desmontaje:</strong> Comienza después de las 11 PM. Todos los artículos deben salir la noche del show &mdash; el venue desecha lo que quede. Sin excepciones.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ════════════ KIT DE CRECIMIENTO PARA VENDEDORES ════════════ -->
+      <section class="growth-kit-section" id="growth-kit">
+        <h2 class="section-title">El Kit de Crecimiento para Vendedores</h2>
+
+        <div class="growth-intro">
+          <p><strong>La Estrategia 2026.</strong> No solo queremos que aparezcas &mdash; queremos que vendas todo y hagas crecer tu audiencia. La gente no compra un producto; compra al creador detrás de él. Deja de &ldquo;publicar inventario&rdquo; y empieza a documentar el camino.</p>
+        </div>
+
+        <div class="growth-phases">
+
+          <div class="phase-card">
+            <div class="phase-card-num">01</div>
+            <h3>La Fase de &ldquo;Hype&rdquo; Antes del Show</h3>
+            <div class="phase-row"><strong>Contenido:</strong> El teaser de la &ldquo;Preparación del Stand&rdquo;.</div>
+            <div class="phase-row"><strong>La toma:</strong> Un primer plano de tu producto más vendido o un adelanto de lo que traerás.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Usa un Sticker de Cuenta Regresiva en Stories. Pregunta: &ldquo;¿Qué es lo primero que quieres tomar en mi stand?&rdquo; Esto le enseña al algoritmo que tu audiencia está activa.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">02</div>
+            <h3>La Revelación de Mercancía</h3>
+            <div class="phase-row"><strong>Contenido:</strong> La revelación de &ldquo;Reabastecimiento&rdquo; o &ldquo;Nuevo para el Show&rdquo;.</div>
+            <div class="phase-row"><strong>Estructura:</strong></div>
+            <div class="phase-row">&bull; 0&ndash;3s: Muestra una pila de mercancía no lanzada o tu pieza más reciente &mdash; detén el scroll.</div>
+            <div class="phase-row">&bull; 3&ndash;7s: Primeros planos rápidos de textura, color y empaque.</div>
+            <div class="phase-row">&bull; 7&ndash;10s: La revelación &ldquo;solo en el show&rdquo; de un lanzamiento limitado.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Añade texto: &ldquo;Guarda esto para tu lista de compras.&rdquo; Los guardados son la señal de crecimiento #1 en 2026.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">03</div>
+            <h3>Preparación: &ldquo;Empaca Conmigo&rdquo;</h3>
+            <div class="phase-row"><strong>Contenido:</strong> La preparación entre bastidores.</div>
+            <div class="phase-row"><strong>La toma:</strong> Empacando inventario, preparando exhibidores, compras de snacks &mdash; tu &ldquo;Kit de Supervivencia del Show&rdquo;.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Usa una Encuesta en Stories: &ldquo;¿Con qué fondo de stand debería ir: [A] o [B]?&rdquo; A la gente le encanta votar.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">04</div>
+            <h3>Día del Evento: El Ambiente del Mercado</h3>
+            <div class="phase-row"><strong>Contenido:</strong> El paneo del &ldquo;POV de la Multitud&rdquo;.</div>
+            <div class="phase-row"><strong>La toma:</strong> Párate en tu stand y filma la energía del lugar, luego mueve la cámara hacia una interacción con un cliente en tu mesa.</div>
+            <div class="phase-row"><strong>Pro Tip (Efecto Zoom):</strong> Empieza en macro en un solo producto, luego aleja para revelar el stand completo y la multitud detrás.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Usa la Función de Colaboración de Instagram con <strong>@PancakesAndBooze</strong>. Esto pone tu post frente a toda nuestra audiencia global instantáneamente.</div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-card-num">05</div>
+            <h3>Después del Evento: Prueba Social</h3>
+            <div class="phase-row"><strong>Contenido:</strong> El resumen de &ldquo;Agotado&rdquo; o &ldquo;Más Vendido&rdquo;.</div>
+            <div class="phase-row"><strong>La toma:</strong> Racks vacíos, un cliente feliz sosteniendo su nueva pieza, o un flat-lay de agradecimiento de lo que se vendió.</div>
+            <div class="phase-hack"><strong>Growth Hack:</strong> Repostea cada historia de clientes en la que te etiqueten. El contenido generado por usuarios genera una confianza masiva para tu próximo show y lanzamientos en línea.</div>
+          </div>
+
+          <div class="phase-card phase-card--cheat">
+            <div class="phase-star" aria-hidden="true">&#9733;</div>
+            <h3>El Resumen 2026</h3>
+            <div class="phase-bullet"><span><strong>Prioridad de Formato:</strong> Reels para nuevo alcance. Carruseles (10 slides) para guardados y compartidos.</span></div>
+            <div class="phase-bullet"><span><strong>La Regla de los 3 Segundos:</strong> Si no los enganchas con movimiento en 3 segundos, deslizan.</span></div>
+            <div class="phase-bullet"><span><strong>Pies de Foto:</strong> Empieza con una afirmación atrevida. Ejemplo: &ldquo;Esta colección se agotó en mi último show en 20 minutos&hellip;&rdquo;</span></div>
+            <div class="phase-bullet"><span><strong>El Objetivo:</strong> Apunta a <strong>10 Guardados por post</strong>. Si 10 personas lo guardan, el algoritmo lo empuja a 1,000 nuevas personas.</span></div>
+
+            <div class="hashtag-block">
+              <div class="hashtag-block-title">Kit de Hashtags</div>
+              <div class="hashtag-list">
+                <span class="hashtag">#PancakesAndBooze</span>
+                <span class="hashtag">#PancakesAndBooze[City]</span>
+                <span class="hashtag">#[City]PancakesAndBooze</span>
+                <span class="hashtag">#ShopLocal</span>
+                <span class="hashtag">#[City]Makers</span>
+                <span class="hashtag">#SupportLocalMakers</span>
+                <span class="hashtag">#HandmadeNearMe</span>
+                <span class="hashtag">#[City]Vendor</span>
+              </div>
+              <p class="hashtag-note">Reemplaza <strong>[City]</strong> con tu ciudad del show (ej., <strong>#PancakesAndBoozeAustin</strong>, <strong>#AustinMakers</strong>). <strong>#ShopLocal</strong> y <strong>#HandmadeNearMe</strong> son excelentes para descubrimiento basado en ubicación.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- LISTA DE VERIFICACIÓN DEL VENDEDOR -->
+      <section class="checklist-section" id="checklist">
+        <div class="checklist">
+          <h2>Lista de Verificación del Vendedor</h2>
+          <ul>
+            <li>
+              <input type="checkbox" id="chk-qr">
+              <label for="chk-qr"><strong>Código QR de Vendedor</strong> &mdash; de tu correo de Eventbrite. Requerido para el check-in.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-tables">
+              <label for="chk-tables"><strong>Mesas, racks o paredes de rejilla</strong> &mdash; lo que quepa dentro de tu espacio de 8&times;5 ft.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-lights">
+              <label for="chk-lights"><strong>Sillas e Iluminación</strong> &mdash; se recomiendan LEDs a batería; luces de pinza con extensiones también funcionan.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-data">
+              <label for="chk-data"><strong>Datos Móviles</strong> &mdash; tu POS debe funcionar sin Wi-Fi.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="chk-assistant">
+              <label for="chk-assistant"><strong>Boleto de Asistente</strong> &mdash; tu espacio incluye 1 entrada; los asistentes que se queden para el show necesitan un boleto de Admisión General.</label>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- APOYO -->
+      <section class="rules-section">
+        <h2>¿Necesitas Ayuda?</h2>
+        <p>Escríbenos a <a href="mailto:info@pancakesandbooze.com?subject=Centro%20de%20Vendedores">info@pancakesandbooze.com</a> con el asunto &ldquo;Centro de Vendedores&rdquo; y te responderemos. ¿Necesitas cancelar? <a href="mailto:info@pancakesandbooze.com?subject=Cancelaci%C3%B3n%20Vendedor">Escríbenos</a> lo antes posible &mdash; los espacios de vendedores son limitados y alguien más querrá el tuyo.</p>
+        <p>¿Preguntas sobre políticas no cubiertas aquí? Consulta el <a href="/#faq">FAQ principal</a>.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="/">Inicio</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/vendor-hub">English</a>
+        <a href="/privacy">Política de Privacidad</a>
+        <a href="/cookies">Política de Cookies</a>
+        <a href="/terms">Términos y Condiciones</a>
+        <a href="/accessibility">Accesibilidad</a>
+        <a href="/imprint">Aviso Legal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ════════════ SHOWS.JSON INTEGRATION ════════════
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const wantedCity = (params.get('city') || '').toLowerCase().trim();
+
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && value) el.textContent = value;
+      };
+
+      const renderShow = (show) => {
+        const cityName = (show && show.city) ? show.city : 'Tu Ciudad';
+        document.getElementById('hubTitle').textContent = `Bienvenido a ${cityName}`;
+        setText('snapshotCity', cityName);
+
+        if (!show) {
+          document.getElementById('showNoData').hidden = false;
+          return;
+        }
+
+        const dateLabel = show.date_label
+          || show.date_range
+          || [show.date_month_short, show.date_day, show.date_year].filter(Boolean).join(' ');
+        setText('snapshotDate', dateLabel || '');
+
+        const grid = document.getElementById('snapshotGrid');
+        grid.innerHTML = '';
+        const row = (label, value) => {
+          if (!value) return;
+          const dt = document.createElement('dt'); dt.textContent = label;
+          const dd = document.createElement('dd'); dd.textContent = value;
+          const wrap = document.createElement('div');
+          wrap.appendChild(dt); wrap.appendChild(dd);
+          grid.appendChild(wrap);
+        };
+        row('Lugar', show.venue);
+        row('Horario del Show', show.show_hours || show.event_hours);
+        row('Check-In de Vendedor', show.vendor_install_time || show.vendor_check_in || show.vendor_arrival || show.install_time);
+        row('Política de Edad', show.age || show.age_policy);
+        row('Tarifa de Vendedor', show.vendor_fee_tier || show.vendor_fee);
+
+        const vendorCheckIn = show.vendor_install_time
+          || show.vendor_check_in
+          || show.vendor_arrival
+          || show.install_time;
+        if (vendorCheckIn) setText('checkInWindow', vendorCheckIn);
+
+        const parking = show.parking_info
+          || show.parking_notes
+          || show.parking_details
+          || show.parking;
+        if (parking) {
+          document.getElementById('parkingBody').innerHTML = parking;
+        }
+
+        const flyerInner = document.getElementById('event-flyer');
+        const flyerImg = document.getElementById('flyerImg');
+        if (show.flyer_url && flyerInner && flyerImg) {
+          flyerImg.src = show.flyer_url;
+          flyerImg.alt = `${cityName} flyer del evento`;
+          flyerInner.hidden = false;
+        }
+
+        const address = show.address;
+        const mapFrame = document.getElementById('mapFrame');
+        if (address && mapFrame) {
+          const query = encodeURIComponent([show.venue, address].filter(Boolean).join(', '));
+          mapFrame.innerHTML = `<iframe loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=${query}&output=embed"
+            title="Mapa de ${show.venue || cityName}"></iframe>`;
+        }
+
+        const hashtagCity = cityName.replace(/[^a-zA-Z0-9]/g, '');
+        document.querySelectorAll('.hashtag').forEach(el => {
+          el.textContent = el.textContent.replace(/\[City\]/g, hashtagCity);
+        });
+        const note = document.querySelector('.hashtag-note');
+        if (note) {
+          note.innerHTML = `Personalizado para <strong>${cityName}</strong>. <strong>#ShopLocal</strong> y <strong>#HandmadeNearMe</strong> son excelentes para descubrimiento basado en ubicación.`;
+        }
+      };
+
+      try {
+        const res = await fetch('/shows.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('shows.json fetch failed');
+        const data = await res.json();
+        const shows = Array.isArray(data) ? data : (data.shows || []);
+
+        let match = null;
+        if (wantedCity) {
+          match = shows.find(s => {
+            const slug = (s.slug || s.city_slug || '').toLowerCase();
+            const name = (s.city || '').toLowerCase();
+            return slug === wantedCity || name === wantedCity
+              || slug.replace(/[\s_]/g, '-') === wantedCity
+              || name.replace(/[\s_]/g, '-') === wantedCity;
+          });
+        }
+
+        if (!match) {
+          const now = new Date();
+          match = shows.find(s => {
+            if (s.live === false) return false;
+            const d = s.date_iso ? new Date(s.date_iso) : null;
+            return !d || d >= now;
+          });
+        }
+
+        renderShow(match);
+      } catch (e) {
+        renderShow(null);
+      }
+    })();
+
+    // ════════════ SOFT LANGUAGE NUDGE ════════════
+    // Spanish is canonical. If browser clearly skews English, show a small
+    // dismissable nudge pointing to /vendor-hub. No hard redirect.
+    (() => {
+      try {
+        if (sessionStorage.getItem('vendor-en-nudge-dismissed') === '1') return;
+      } catch (e) {}
+
+      const langs = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || ''];
+      const looksSpanish = langs.some(l => String(l).toLowerCase().startsWith('es'));
+      if (looksSpanish) return;
+
+      const note = document.createElement('div');
+      note.style.cssText = 'position:fixed;bottom:18px;right:18px;background:var(--dark-card);border:1px solid var(--accent);border-radius:12px;padding:14px 18px 14px 16px;font-size:0.9rem;color:var(--white);z-index:2000;max-width:300px;box-shadow:0 8px 24px rgba(0,0,0,0.4);font-family:var(--font-body);';
+      note.innerHTML =
+        '<button aria-label="Dismiss" style="background:none;border:none;color:var(--gray);font-size:1.4rem;cursor:pointer;position:absolute;top:6px;right:10px;line-height:1;padding:0;">&times;</button>' +
+        '<strong style="display:block;margin-bottom:6px;color:var(--white);padding-right:18px;">Prefer English?</strong>' +
+        '<a href="/vendor-hub" style="color:var(--accent);font-weight:700;text-decoration:none;">View this page in English &rarr;</a>';
+      note.querySelector('button').addEventListener('click', () => {
+        try { sessionStorage.setItem('vendor-en-nudge-dismissed', '1'); } catch (e) {}
+        note.remove();
+      });
+      document.body.appendChild(note);
+    })();
+  </script>
+</body>
+</html>
