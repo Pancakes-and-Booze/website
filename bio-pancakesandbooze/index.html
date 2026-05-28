@@ -132,6 +132,7 @@
     /* Tour header */
     .tour-header {
       margin-bottom: 14px;
+      text-align: center;
     }
 
     .section-label {
@@ -289,9 +290,43 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 52px 32px 48px;
       background: var(--dark);
+    }
+
+    /* Right main (empty state / panel area) */
+    .right-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 32px 32px;
+    }
+
+    .right-main.has-panel {
+      justify-content: flex-start;
+    }
+
+    /* Standalone FAQ (always visible at bottom of right column) */
+    .faq-standalone {
+      flex-shrink: 0;
+      padding: 20px 32px 32px;
+      border-top: 1px solid var(--dark-border);
+    }
+
+    .faq-standalone-inner {
+      max-width: 420px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Mobile FAQ (shown below shows list, hidden on desktop) */
+    .mobile-faq {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--dark-border);
+      padding-bottom: 8px;
     }
 
     /* Empty state */
@@ -488,6 +523,7 @@
       }
 
       .right-col { display: none; }
+      .mobile-faq { display: block; }
 
       /* Show accordion on mobile */
       .accordion-panel { display: block; }
@@ -545,6 +581,20 @@
         Don't see your city? Get notified →
       </a>
 
+      <div class="mobile-faq">
+        <div class="panel-section-label">Info</div>
+        <a class="btn-outline"
+           href="https://pancakesandbooze.com/#faq"
+           target="_blank" rel="noopener"
+           data-slug="global" data-action="faq">
+          <div class="btn-outline-content">
+            <div class="btn-outline-title">FAQs</div>
+            <div class="btn-outline-sub">What to expect, parking, policies</div>
+          </div>
+          <span class="btn-outline-arrow">→</span>
+        </a>
+      </div>
+
     </div>
     <div class="left-footer">pancakesandbooze.com</div>
   </div>
@@ -553,11 +603,28 @@
        RIGHT COLUMN
   ══════════════════════════════════ -->
   <div class="right-col" id="right-col">
-    <div class="empty-state" id="empty-state">
-      <div class="empty-icon">📍</div>
-      <div class="empty-text">Select a show to see tickets &amp; applications</div>
+    <div class="right-main" id="right-main">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📍</div>
+        <div class="empty-text">Select a show to see tickets &amp; applications</div>
+      </div>
+      <div class="panel" id="panel" style="display:none;"></div>
     </div>
-    <div class="panel" id="panel" style="display:none;"></div>
+    <div class="faq-standalone">
+      <div class="faq-standalone-inner">
+        <div class="panel-section-label">Info</div>
+        <a class="btn-outline"
+           href="https://pancakesandbooze.com/#faq"
+           target="_blank" rel="noopener"
+           data-slug="global" data-action="faq">
+          <div class="btn-outline-content">
+            <div class="btn-outline-title">FAQs</div>
+            <div class="btn-outline-sub">What to expect, parking, policies</div>
+          </div>
+          <span class="btn-outline-arrow">→</span>
+        </a>
+      </div>
+    </div>
   </div>
 
 </div><!-- /.layout -->
@@ -637,19 +704,6 @@
         </a>
       </div>
 
-      <div class="panel-section">
-        <div class="panel-section-label">Info</div>
-        <a class="btn-outline"
-           href="https://pancakesandbooze.com/#faq"
-           target="_blank" rel="noopener"
-           data-slug="${escAttr(show.slug)}" data-action="faq">
-          <div class="btn-outline-content">
-            <div class="btn-outline-title">FAQs</div>
-            <div class="btn-outline-sub">What to expect, parking, policies</div>
-          </div>
-          <span class="btn-outline-arrow">→</span>
-        </a>
-      </div>
     `;
   }
 
@@ -750,8 +804,10 @@
 
       const emptyState = document.getElementById('empty-state');
       const panel      = document.getElementById('panel');
+      const rightMain  = document.getElementById('right-main');
       emptyState.style.display = 'none';
       panel.style.display      = 'block';
+      rightMain?.classList.add('has-panel');
       panel.innerHTML          = buildPanel(show);
 
       /* Re-trigger animation */
@@ -806,12 +862,17 @@
       const panel      = document.getElementById('panel');
       emptyState.style.display = 'none';
       panel.style.display      = 'block';
+      document.getElementById('right-main')?.classList.add('has-panel');
       panel.innerHTML          = buildPanel(show);
       attachTracking(panel);
     }
   });
 
-  document.addEventListener('DOMContentLoaded', loadShows);
+  document.addEventListener('DOMContentLoaded', () => {
+    loadShows();
+    // Attach Zaraz tracking to the static FAQ links (faq-standalone + mobile-faq)
+    document.querySelectorAll('.faq-standalone, .mobile-faq').forEach(c => attachTracking(c));
+  });
 </script>
 </body>
 </html>
