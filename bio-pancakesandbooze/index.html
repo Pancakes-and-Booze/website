@@ -1,637 +1,817 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pancakes &amp; Booze | Shows &amp; Links</title>
-  <meta name="description" content="Where culture gets fed. Underground art shows in 40+ cities. Get tickets, exhibit your work, or set up shop.">
-  <meta name="theme-color" content="#ff2d7b">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Pancakes &amp; Booze Art Show">
-  <meta property="og:url" content="https://bio.pancakesandbooze.com">
-  <meta property="og:title" content="Pancakes &amp; Booze | Shows &amp; Links">
-  <meta property="og:description" content="Where culture gets fed. Underground art shows in 40+ cities.">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Get tickets, exhibit your art, or become a vendor at The Pancakes &amp; Booze Art Show." />
+  <meta name="theme-color" content="#ff2d7b" />
+  <title>Pancakes &amp; Booze</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ═══════════════════════════════════════
-       CSS TOKENS — mirrors pancakesandbooze.com
-    ═══════════════════════════════════════ */
+    /* ─── Tokens ─── */
     :root {
-      --black:         #0a0a0a;
-      --dark:          #111111;
-      --dark-card:     #161616;
-      --dark-elevated: #1e1e1e;
-      --dark-border:   #222222;
-      --dark-border-hi:#333333;
-      --white:         #f5f5f5;
-      --gray:          #888888;
-      --gray-light:    #b0b0b0;
-      --accent:        #ff2d7b;
-      --accent-hover:  #e0206c;
-      --accent-dim:    rgba(255, 45, 123, 0.12);
-      --accent-border: rgba(255, 45, 123, 0.25);
-      --font-display:  'Bebas Neue', sans-serif;
-      --font-body:     'Inter', sans-serif;
-      --radius:        12px;
-      --radius-full:   9999px;
-      --ease:          0.18s ease;
+      --black:          #0a0a0a;
+      --dark:           #111111;
+      --dark-card:      #161616;
+      --dark-elevated:  #1c1c1c;
+      --dark-border:    #222222;
+      --dark-border-hi: #333333;
+      --white:          #f5f5f5;
+      --gray:           #888888;
+      --gray-light:     #b0b0b0;
+      --accent:         #ff2d7b;
+      --accent-hover:   #e0206c;
+      --accent-dim:     rgba(255, 45, 123, 0.09);
+      --accent-border:  rgba(255, 45, 123, 0.28);
+      --accent-glow:    rgba(255, 45, 123, 0.30);
+      --font-display:   'Bebas Neue', sans-serif;
+      --font-body:      'Inter', sans-serif;
+      --radius:         12px;
+      --radius-full:    9999px;
+      --ease:           0.18s ease;
     }
 
-    /* ═══════════════════════════════════════
-       RESET
-    ═══════════════════════════════════════ */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      font-size: 16px;
-      -webkit-text-size-adjust: 100%;
-    }
-    body {
-      font-family: var(--font-body);
+    html, body {
+      height: 100%;
       background: var(--dark);
       color: var(--white);
-      min-height: 100dvh;
+      font-family: var(--font-body);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    a   { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
 
     /* ═══════════════════════════════════════
-       PAGE SHELL
+       LAYOUT
     ═══════════════════════════════════════ */
-    .page {
+    .layout {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100dvh;
-      padding: 0 16px 52px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      height: 100vh;
+      overflow: hidden;
     }
 
     /* ═══════════════════════════════════════
-       TOP WORDMARK
+       LEFT COLUMN
     ═══════════════════════════════════════ */
-    .top-wordmark {
-      width: 100%;
-      max-width: 420px;
-      padding: 22px 0 30px;
-      text-align: center;
+    .left-col {
+      width: 360px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--black);
+      border-right: 1px solid var(--dark-border);
     }
-    .top-wordmark a {
+
+    .left-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px 24px 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dark-border) transparent;
+    }
+    .left-scroll::-webkit-scrollbar        { width: 3px; }
+    .left-scroll::-webkit-scrollbar-track  { background: transparent; }
+    .left-scroll::-webkit-scrollbar-thumb  { background: var(--dark-border); border-radius: 2px; }
+
+    /* Wordmark */
+    .wordmark {
       font-family: var(--font-display);
-      font-size: 0.78rem;
-      letter-spacing: 4px;
-      color: var(--gray);
-      text-transform: uppercase;
-      transition: color var(--ease);
+      font-size: 21px;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      margin-bottom: 22px;
     }
-    .top-wordmark a:hover { color: var(--gray-light); }
 
-    /* ═══════════════════════════════════════
-       AVATAR
-    ═══════════════════════════════════════ */
+    /* Profile */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
     .avatar {
-      width: 84px;
-      height: 84px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: var(--dark-card);
-      border: 2.5px solid var(--accent);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 18px var(--accent-glow);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 4px var(--accent-dim);
-    }
-    .avatar-initials {
       font-family: var(--font-display);
-      font-size: 1.65rem;
-      letter-spacing: 1px;
+      font-size: 18px;
       color: var(--accent);
-      line-height: 1;
-      user-select: none;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
     }
 
-    /* ═══════════════════════════════════════
-       PROFILE TEXT
-    ═══════════════════════════════════════ */
     .profile-name {
       font-family: var(--font-display);
-      font-size: 2.5rem;
-      letter-spacing: 3px;
-      color: var(--white);
-      text-align: center;
+      font-size: 30px;
+      letter-spacing: 0.06em;
       line-height: 1;
       margin-bottom: 8px;
     }
+
     .profile-tagline {
-      font-size: 0.73rem;
-      font-weight: 500;
+      font-size: 11px;
       color: var(--gray);
-      text-align: center;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 28px;
-      line-height: 1.5;
     }
 
-    /* ═══════════════════════════════════════
-       CITY SELECTOR
-    ═══════════════════════════════════════ */
-    .selector-wrap {
-      width: 100%;
-      position: relative;
-      margin-bottom: 10px;
-    }
-    .selector-wrap select {
-      width: 100%;
-      appearance: none;
-      -webkit-appearance: none;
-      background: var(--dark-card);
-      border: 1.5px solid var(--dark-border);
-      border-radius: var(--radius);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 500;
-      padding: 14px 44px 14px 16px;
-      cursor: pointer;
-      outline: none;
-      transition: border-color var(--ease), background var(--ease);
-    }
-    .selector-wrap select:hover {
-      border-color: var(--dark-border-hi);
-      background: var(--dark-elevated);
-    }
-    .selector-wrap select:focus {
-      border-color: var(--accent);
-    }
-    .selector-wrap select option {
-      background: #1a1a1a;
-      color: var(--white);
-    }
-    .selector-wrap select option:disabled {
-      color: var(--gray);
-    }
-    .selector-chevron {
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: var(--gray);
-      display: flex;
-      align-items: center;
-    }
-
-    /* ═══════════════════════════════════════
-       "DON'T SEE YOUR CITY?" LINK
-    ═══════════════════════════════════════ */
-    .no-city-link {
-      font-size: 0.73rem;
-      color: var(--gray);
-      text-align: center;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-    .no-city-link a {
-      color: var(--gray-light);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color var(--ease);
-    }
-    .no-city-link a:hover { color: var(--white); }
-
-    /* ═══════════════════════════════════════
-       FETCH FALLBACK
-    ═══════════════════════════════════════ */
-    .fetch-fallback {
-      display: none;
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: var(--radius);
-      padding: 20px 16px;
-      text-align: center;
-      width: 100%;
-      color: var(--gray-light);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    /* ═══════════════════════════════════════
-       EMPTY STATE
-    ═══════════════════════════════════════ */
-    .empty-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 36px 16px;
-      width: 100%;
-      opacity: 0.42;
-    }
-    .empty-state svg {
-      width: 28px;
-      height: 28px;
-      color: var(--gray-light);
-    }
-    .empty-state p {
-      font-size: 0.82rem;
-      color: var(--gray-light);
-      text-align: center;
-    }
-
-    /* ═══════════════════════════════════════
-       SHOW CHIP
-    ═══════════════════════════════════════ */
-    .show-chip {
-      display: none;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      border-radius: var(--radius-full);
-      padding: 5px 12px 5px 9px;
-      margin-bottom: 12px;
-    }
-    .show-chip svg {
-      width: 12px;
-      height: 12px;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-    .show-chip span {
-      font-size: 0.73rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.3px;
-    }
-
-    /* ═══════════════════════════════════════
-       LINK PANEL
-    ═══════════════════════════════════════ */
-    .link-panel {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-    }
-    .link-panel.visible {
-      display: flex;
-      animation: panelIn 0.22s ease forwards;
-    }
-    @keyframes panelIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* Tour header */
+    .tour-header {
+      margin-bottom: 14px;
     }
 
     .section-label {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 2.5px;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gray);
-      text-align: center;
-      padding: 14px 0 8px;
+      margin-bottom: 4px;
     }
 
-    .link-btn {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 13px 40px 13px 16px;
-      background: var(--dark-card);
-      border: 1.5px solid var(--dark-border);
-      border-radius: var(--radius);
-      color: var(--white);
-      cursor: pointer;
-      text-decoration: none;
-      transition: background var(--ease), border-color var(--ease), transform var(--ease);
-      margin-bottom: 8px;
-      position: relative;
-    }
-    .link-btn:hover {
-      background: var(--dark-elevated);
-      border-color: var(--dark-border-hi);
-      transform: translateY(-1px);
-    }
-    .link-btn:active { transform: translateY(0); }
-
-    /* Right-pointing chevron */
-    .link-btn::after {
-      content: '';
-      position: absolute;
-      right: 17px;
-      top: 50%;
-      width: 6px;
-      height: 6px;
-      border-right: 1.5px solid currentColor;
-      border-top: 1.5px solid currentColor;
-      transform: translateY(-50%) rotate(45deg);
-      opacity: 0.45;
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 0.04em;
+      line-height: 1;
     }
 
-    .link-btn--primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--black);
-    }
-    .link-btn--primary:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-    }
-    .link-btn--primary::after { opacity: 0.5; }
-
-    .link-btn-content {
+    /* ─── Show Cards ─── */
+    .shows-list {
       display: flex;
       flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
     }
-    .btn-label {
-      font-size: 0.93rem;
-      font-weight: 600;
-      line-height: 1.3;
+
+    .show-item { /* wrapper for card + accordion */ }
+
+    .show-card {
+      display: grid;
+      grid-template-columns: 64px 1fr 18px;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform var(--ease), border-color var(--ease), background var(--ease);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .show-card:hover {
+      transform: translateX(4px);
+      border-color: var(--accent);
+    }
+
+    .show-card.selected {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      transform: translateX(4px);
+    }
+
+    .date-block { text-align: center; }
+
+    .date-month {
+      display: block;
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .date-day {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 36px;
+      line-height: 1;
       color: var(--white);
     }
-    .btn-sub {
-      font-size: 0.68rem;
-      font-weight: 400;
-      color: var(--gray-light);
-      line-height: 1.4;
-      margin-top: 1px;
+
+    .show-info { min-width: 0; }
+
+    .show-city {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .link-btn--primary .btn-label {
-      color: var(--black);
+
+    .show-meta {
+      font-size: 11px;
+      color: var(--gray);
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .link-btn--primary .btn-sub {
-      color: rgba(10, 10, 10, 0.55);
+
+    .chevron {
+      width: 16px;
+      height: 16px;
+      color: var(--gray);
+      flex-shrink: 0;
+      transition: color var(--ease), transform var(--ease);
+    }
+
+    .show-card:hover .chevron,
+    .show-card.selected .chevron {
+      color: var(--accent);
+    }
+
+    /* Accordion (mobile only) */
+    .accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .accordion-panel.open { max-height: 560px; }
+
+    .accordion-inner {
+      padding: 14px 16px 16px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      border-top: none;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+    }
+
+    /* City notify */
+    .city-notify {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color var(--ease);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .city-notify:hover { color: var(--accent); }
+
+    /* Left footer */
+    .left-footer {
+      flex-shrink: 0;
+      padding: 13px 24px;
+      border-top: 1px solid var(--dark-border);
+      font-size: 11px;
+      color: var(--dark-border-hi);
+      letter-spacing: 0.06em;
     }
 
     /* ═══════════════════════════════════════
-       FOOTER
+       RIGHT COLUMN
     ═══════════════════════════════════════ */
-    .footer {
-      margin-top: 40px;
-      text-align: center;
+    .right-col {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 52px 32px 48px;
+      background: var(--dark);
     }
-    .footer a {
-      font-size: 0.68rem;
+
+    /* Empty state */
+    .empty-state {
+      margin: auto;
+      text-align: center;
       color: var(--gray);
-      letter-spacing: 0.5px;
+    }
+
+    .empty-icon {
+      font-size: 38px;
+      opacity: 0.35;
+      margin-bottom: 14px;
+    }
+
+    .empty-text {
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 200px;
+      margin: 0 auto;
+      opacity: 0.7;
+    }
+
+    /* Panel */
+    .panel {
+      width: 100%;
+      max-width: 420px;
+      animation: panelIn 0.2s ease;
+    }
+
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Show chip */
+    .show-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 16px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Panel sections */
+    .panel-section { margin-bottom: 22px; }
+
+    .panel-section-label {
+      font-size: 10px;
+      color: var(--gray);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ─── Primary button (Get Tickets) ─── */
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 22px;
+      background: var(--accent);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      transition: background var(--ease), transform var(--ease);
+      margin-bottom: 7px;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateX(2px);
+    }
+
+    .btn-primary-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .btn-primary-arrow {
+      font-size: 16px;
+      color: var(--black);
+      opacity: 0.55;
+      transition: opacity var(--ease);
+    }
+
+    .btn-primary:hover .btn-primary-arrow { opacity: 1; }
+
+    .btn-subtitle {
+      font-size: 11px;
+      color: var(--gray);
+      padding: 0 6px;
+      margin-top: 2px;
+    }
+
+    /* ─── Outline buttons ─── */
+    .btn-outline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: border-color var(--ease), transform var(--ease), background var(--ease);
+      margin-bottom: 8px;
+    }
+
+    .btn-outline:last-child { margin-bottom: 0; }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+      background: var(--accent-dim);
+    }
+
+    .btn-outline-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .btn-outline-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .btn-outline-sub {
+      font-size: 11px;
+      color: var(--gray);
+    }
+
+    .btn-outline-arrow {
+      font-size: 16px;
+      color: var(--gray);
+      flex-shrink: 0;
+      margin-left: 14px;
       transition: color var(--ease);
     }
-    .footer a:hover { color: var(--gray-light); }
+
+    .btn-outline:hover .btn-outline-arrow { color: var(--accent); }
+
+    /* Accordion compact button overrides */
+    .accordion-inner .btn-outline {
+      background: rgba(0,0,0,0.25);
+      border-color: var(--dark-border-hi);
+    }
+
+    .accordion-inner .btn-outline:hover {
+      background: rgba(255, 45, 123, 0.12);
+    }
+
+    .accordion-inner .panel-section-label {
+      color: rgba(136, 136, 136, 0.8);
+    }
+
+    .accordion-inner .show-chip {
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+
+    /* ═══════════════════════════════════════
+       MOBILE  (≤ 768px)
+    ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+      }
+
+      .left-col {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--dark-border);
+      }
+
+      .left-scroll {
+        overflow: visible;
+        padding: 20px 16px 14px;
+      }
+
+      .right-col { display: none; }
+
+      /* Show accordion on mobile */
+      .accordion-panel { display: block; }
+
+      /* On mobile, card with open accordion: square bottom corners */
+      .show-card.selected {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        transform: none;
+      }
+
+      .show-card:hover { transform: none; }
+
+      /* Ensure accordion never shows on desktop no matter what */
+    }
+
+    @media (min-width: 769px) {
+      .accordion-panel {
+        max-height: 0 !important;
+        overflow: hidden !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="page">
 
-    <!-- TOP WORDMARK -->
-    <div class="top-wordmark">
-      <a href="https://pancakesandbooze.com" target="_blank" rel="noopener">pancakesandbooze.com</a>
+<div class="layout">
+
+  <!-- ══════════════════════════════════
+       LEFT COLUMN
+  ══════════════════════════════════ -->
+  <div class="left-col">
+    <div class="left-scroll">
+
+      <div class="wordmark">P&amp;B</div>
+
+      <div class="profile">
+        <div class="avatar">P&amp;B</div>
+        <div class="profile-name">PANCAKES &amp; BOOZE</div>
+        <div class="profile-tagline">Pop-Up Art Show &nbsp;·&nbsp; 40+ Cities</div>
+      </div>
+
+      <div class="tour-header">
+        <div class="section-label">On Tour Now</div>
+        <div class="section-title">Upcoming Shows</div>
+      </div>
+
+      <div class="shows-list" id="shows-list">
+        <div style="color:var(--gray);font-size:13px;padding:10px 0;">Loading shows…</div>
+      </div>
+
+      <a class="city-notify"
+         href="https://pancakesandbooze.com/locations#shows"
+         target="_blank" rel="noopener">
+        Don't see your city? Get notified →
+      </a>
+
     </div>
+    <div class="left-footer">pancakesandbooze.com</div>
+  </div>
 
-    <div class="card">
+  <!-- ══════════════════════════════════
+       RIGHT COLUMN
+  ══════════════════════════════════ -->
+  <div class="right-col" id="right-col">
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">📍</div>
+      <div class="empty-text">Select a show to see tickets &amp; applications</div>
+    </div>
+    <div class="panel" id="panel" style="display:none;"></div>
+  </div>
 
-      <!-- AVATAR -->
-      <div class="avatar" aria-hidden="true">
-        <span class="avatar-initials">P&amp;B</span>
+</div><!-- /.layout -->
+
+<script>
+  'use strict';
+
+  let shows = [];
+  let selectedSlug = null;
+
+  const isMobile = () => window.innerWidth <= 768;
+
+  /* ── Escape helpers ── */
+  function esc(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+  function escAttr(str) {
+    if (str == null) return '#';
+    return String(str).replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  /* ── Build link panel HTML ── */
+  function buildPanel(show) {
+    const subtitleParts = [];
+    if (show.presale_price) subtitleParts.push(esc(show.presale_price) + ' presale');
+    subtitleParts.push('21+');
+    if (show.doors) subtitleParts.push('Doors ' + esc(show.doors));
+    const subtitle = subtitleParts.join(' · ');
+
+    const chipLabel = esc(show.city) + (show.state ? ', ' + esc(show.state) : '') +
+                      ' · ' + esc(show.month) + ' ' + esc(show.day);
+
+    return `
+      <div class="show-chip">
+        <span>📅</span>
+        <span>${chipLabel}</span>
       </div>
 
-      <!-- PROFILE -->
-      <h1 class="profile-name">Pancakes &amp; Booze</h1>
-      <p class="profile-tagline">International Pop-Up Art Show&nbsp;&middot;&nbsp;40+ Cities</p>
-
-      <!-- CITY SELECTOR -->
-      <div class="selector-wrap" id="selector-wrap">
-        <select id="city-select" aria-label="Pick a show">
-          <option value="" disabled selected>— Pick a show —</option>
-        </select>
-        <span class="selector-chevron" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </span>
+      <div class="panel-section">
+        <div class="panel-section-label">Tickets</div>
+        <a class="btn-primary"
+           href="${escAttr(show.ticket_link)}"
+           target="_blank" rel="noopener"
+           data-slug="${escAttr(show.slug)}" data-action="tickets">
+          <span class="btn-primary-label">Get Tickets</span>
+          <span class="btn-primary-arrow">→</span>
+        </a>
+        <div class="btn-subtitle">${subtitle}</div>
       </div>
 
-      <!-- DON'T SEE YOUR CITY? -->
-      <p class="no-city-link">
-        Don't see your city?&nbsp;<a href="https://pancakesandbooze.com/locations#shows"
-          target="_blank" rel="noopener">View all locations &rarr;</a>
-      </p>
-
-      <!-- FETCH FALLBACK — shown if shows-data.json fails to load -->
-      <div class="fetch-fallback" id="fetch-fallback">
-        Check back soon for upcoming shows.
+      <div class="panel-section">
+        <div class="panel-section-label">Participate</div>
+        <a class="btn-outline"
+           href="${escAttr(show.artist_link)}"
+           target="_blank" rel="noopener"
+           data-slug="${escAttr(show.slug)}" data-action="artist">
+          <div class="btn-outline-content">
+            <div class="btn-outline-title">Exhibit Your Art</div>
+            <div class="btn-outline-sub">Salon-style wall hang · No commission</div>
+          </div>
+          <span class="btn-outline-arrow">→</span>
+        </a>
+        <a class="btn-outline"
+           href="${escAttr(show.vendor_link)}"
+           target="_blank" rel="noopener"
+           data-slug="${escAttr(show.slug)}" data-action="vendor">
+          <div class="btn-outline-content">
+            <div class="btn-outline-title">Table Vendor</div>
+            <div class="btn-outline-sub">Table space · Goods &amp; more</div>
+          </div>
+          <span class="btn-outline-arrow">→</span>
+        </a>
       </div>
 
-      <!-- EMPTY STATE — shown before a city is selected -->
-      <div class="empty-state" id="empty-state" role="status">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-        <p>Pick a city above to see show links.</p>
+      <div class="panel-section">
+        <div class="panel-section-label">Info</div>
+        <a class="btn-outline"
+           href="https://pancakesandbooze.com/#faq"
+           target="_blank" rel="noopener"
+           data-slug="${escAttr(show.slug)}" data-action="faq">
+          <div class="btn-outline-content">
+            <div class="btn-outline-title">FAQs</div>
+            <div class="btn-outline-sub">What to expect, parking, policies</div>
+          </div>
+          <span class="btn-outline-arrow">→</span>
+        </a>
       </div>
+    `;
+  }
 
-      <!-- SHOW CHIP — appears when a city is selected -->
-      <div class="show-chip" id="show-chip" aria-live="polite">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8"  y1="2" x2="8"  y2="6"/>
-          <line x1="3"  y1="10" x2="21" y2="10"/>
-        </svg>
-        <span id="chip-label"></span>
-      </div>
-
-      <!-- LINK PANEL — populated by JS on city selection -->
-      <div class="link-panel" id="link-panel" role="region" aria-label="Show links"></div>
-
-    </div><!-- /.card -->
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <a href="https://pancakesandbooze.com" target="_blank" rel="noopener">pancakesandbooze.com</a>
-    </footer>
-
-  </div><!-- /.page -->
-
-  <script>
-    (function () {
-      'use strict';
-
-      var shows = [];
-      var selectedShow = null;
-
-      document.addEventListener('DOMContentLoaded', function () {
-        var citySelect    = document.getElementById('city-select');
-        var selectorWrap  = document.getElementById('selector-wrap');
-        var emptyState    = document.getElementById('empty-state');
-        var showChip      = document.getElementById('show-chip');
-        var chipLabel     = document.getElementById('chip-label');
-        var linkPanel     = document.getElementById('link-panel');
-        var fetchFallback = document.getElementById('fetch-fallback');
-
-        /* ── Fetch shows data ──────────────────────────────── */
-        fetch('./shows-data.json', { cache: 'no-store' })
-          .then(function (res) {
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            return res.json();
-          })
-          .then(function (data) {
-            if (!Array.isArray(data) || data.length === 0) {
-              throw new Error('empty dataset');
-            }
-            shows = data;
-            data.forEach(function (show) {
-              var opt = document.createElement('option');
-              opt.value = show.slug;
-              opt.textContent = show.label;
-              citySelect.appendChild(opt);
-            });
-          })
-          .catch(function () {
-            selectorWrap.style.display  = 'none';
-            emptyState.style.display    = 'none';
-            fetchFallback.style.display = 'block';
+  /* ── Attach Zaraz tracking to all [data-slug] links ── */
+  function attachTracking(container) {
+    container.querySelectorAll('a[data-slug][data-action]').forEach(el => {
+      el.addEventListener('click', function () {
+        if (typeof zaraz !== 'undefined') {
+          zaraz.track('linkinbio_click', {
+            show:   this.dataset.slug,
+            action: this.dataset.action,
+            source: 'linkinbio'
           });
-
-        /* ── City selection handler ────────────────────────── */
-        citySelect.addEventListener('change', function () {
-          var slug = this.value;
-          if (!slug) { resetPanel(); return; }
-
-          selectedShow = null;
-          for (var i = 0; i < shows.length; i++) {
-            if (shows[i].slug === slug) { selectedShow = shows[i]; break; }
-          }
-          if (selectedShow) renderLinks(selectedShow);
-        });
-
-        /* ── Reset to empty state ──────────────────────────── */
-        function resetPanel() {
-          selectedShow = null;
-          showChip.style.display = 'none';
-          linkPanel.classList.remove('visible');
-          linkPanel.innerHTML = '';
-          emptyState.style.display = 'flex';
-        }
-
-        /* ── Render link panel for the selected show ───────── */
-        function renderLinks(show) {
-          emptyState.style.display = 'none';
-
-          chipLabel.textContent = show.label;
-          showChip.style.display = 'flex';
-
-          linkPanel.innerHTML = '';
-
-          /* Get Tickets — primary */
-          linkPanel.appendChild(createBtn(
-            'Get Tickets',
-            show.ticket_subtitle || 'Presale available · 21+',
-            show.tickets,
-            'tickets',
-            true
-          ));
-
-          /* Participate section */
-          linkPanel.appendChild(createSectionLabel('Participate'));
-
-          linkPanel.appendChild(createBtn(
-            'Exhibit Your Art',
-            show.artist_subtitle || 'No commission · Salon-style hang',
-            show.artist,
-            'artist',
-            false
-          ));
-
-          linkPanel.appendChild(createBtn(
-            'Table Vendor',
-            show.vendor_subtitle || 'Table space · Goods & more',
-            show.vendor,
-            'vendor',
-            false
-          ));
-
-          /* Info section */
-          linkPanel.appendChild(createSectionLabel('Info'));
-
-          linkPanel.appendChild(createBtn(
-            'FAQs',
-            show.faq_subtitle || 'Everything you need to know',
-            show.faq,
-            'faq',
-            false
-          ));
-
-          linkPanel.classList.add('visible');
-        }
-
-        /* ── Build a link button element ───────────────────── */
-        function createBtn(label, subtitle, href, action, isPrimary) {
-          var a = document.createElement('a');
-          a.href      = href || '#';
-          a.target    = '_blank';
-          a.rel       = 'noopener noreferrer';
-          a.className = 'link-btn' + (isPrimary ? ' link-btn--primary' : '');
-
-          var content = document.createElement('div');
-          content.className = 'link-btn-content';
-
-          var labelEl = document.createElement('span');
-          labelEl.className   = 'btn-label';
-          labelEl.textContent = label;
-
-          var subEl = document.createElement('span');
-          subEl.className   = 'btn-sub';
-          subEl.textContent = subtitle;
-
-          content.appendChild(labelEl);
-          content.appendChild(subEl);
-          a.appendChild(content);
-
-          /* Zaraz tracking — fires before the new tab opens */
-          a.addEventListener('click', function () {
-            if (typeof zaraz !== 'undefined' && selectedShow) {
-              zaraz.track('linkinbio_click', {
-                show:   selectedShow.slug,
-                action: action,
-                source: 'linkinbio'
-              });
-            }
-          });
-
-          return a;
-        }
-
-        /* ── Build a section label element ─────────────────── */
-        function createSectionLabel(text) {
-          var div = document.createElement('div');
-          div.className   = 'section-label';
-          div.textContent = text;
-          return div;
         }
       });
-    })();
-  </script>
+    });
+  }
+
+  /* ── Render a single show card + accordion ── */
+  function renderCard(show) {
+    const item = document.createElement('div');
+    item.className = 'show-item';
+
+    /* Card */
+    const card = document.createElement('div');
+    card.className = 'show-card';
+    card.dataset.slug = show.slug;
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `${show.city} ${show.month} ${show.day}`);
+    card.innerHTML = `
+      <div class="date-block">
+        <span class="date-month">${esc(show.month)}</span>
+        <span class="date-day">${esc(show.day)}</span>
+      </div>
+      <div class="show-info">
+        <div class="show-city">${esc(show.city)}${show.state ? ', ' + esc(show.state) : ''}</div>
+        <div class="show-meta">${esc(show.venue)}${show.doors ? ' · Doors ' + esc(show.doors) : ''}</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    `;
+
+    card.addEventListener('click', () => handleCardClick(show.slug));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleCardClick(show.slug);
+      }
+    });
+
+    /* Accordion (visible on mobile only via CSS) */
+    const accordion = document.createElement('div');
+    accordion.className = 'accordion-panel';
+    accordion.dataset.slug = show.slug;
+
+    const inner = document.createElement('div');
+    inner.className = 'accordion-inner';
+    inner.innerHTML = buildPanel(show);
+    accordion.appendChild(inner);
+    attachTracking(inner);
+
+    item.appendChild(card);
+    item.appendChild(accordion);
+    return item;
+  }
+
+  /* ── Handle card click ── */
+  function handleCardClick(slug) {
+    const show = shows.find(s => s.slug === slug);
+    if (!show) return;
+
+    if (isMobile()) {
+      /* Toggle: if same card, close; else open new and close old */
+      const isOpen = selectedSlug === slug;
+
+      /* Reset all cards */
+      document.querySelectorAll('.show-card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.accordion-panel').forEach(p => p.classList.remove('open'));
+
+      if (!isOpen) {
+        document.querySelector(`.show-card[data-slug="${slug}"]`)?.classList.add('selected');
+        document.querySelector(`.accordion-panel[data-slug="${slug}"]`)?.classList.add('open');
+        selectedSlug = slug;
+      } else {
+        selectedSlug = null;
+      }
+    } else {
+      /* Desktop: populate right panel */
+      document.querySelectorAll('.show-card').forEach(c =>
+        c.classList.toggle('selected', c.dataset.slug === slug)
+      );
+      selectedSlug = slug;
+
+      const emptyState = document.getElementById('empty-state');
+      const panel      = document.getElementById('panel');
+      emptyState.style.display = 'none';
+      panel.style.display      = 'block';
+      panel.innerHTML          = buildPanel(show);
+
+      /* Re-trigger animation */
+      panel.style.animation = 'none';
+      panel.offsetHeight; /* reflow */
+      panel.style.animation = '';
+
+      attachTracking(panel);
+    }
+  }
+
+  /* ── Render all shows ── */
+  function renderShows(data) {
+    const list = document.getElementById('shows-list');
+    list.innerHTML = '';
+
+    if (!data.length) {
+      list.innerHTML = '<div style="color:var(--gray);font-size:13px;padding:10px 0;">Check back soon for upcoming shows.</div>';
+      return;
+    }
+
+    data.forEach(show => list.appendChild(renderCard(show)));
+  }
+
+  /* ── Fetch shows-data.json ── */
+  async function loadShows() {
+    try {
+      const res = await fetch('./shows-data.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const raw = await res.json();
+      /* Support both {shows:[]} and [] formats */
+      shows = Array.isArray(raw) ? raw : (raw.shows || []);
+      renderShows(shows);
+    } catch (err) {
+      const list = document.getElementById('shows-list');
+      list.innerHTML = '<div style="color:var(--gray);font-size:13px;padding:10px 0;">Check back soon for upcoming shows.</div>';
+    }
+  }
+
+  /* ── On resize: sync state between mobile ↔ desktop ── */
+  window.addEventListener('resize', () => {
+    if (!selectedSlug) return;
+    const show = shows.find(s => s.slug === selectedSlug);
+    if (!show) return;
+
+    if (!isMobile()) {
+      /* Switched to desktop — ensure right panel is populated */
+      document.querySelectorAll('.accordion-panel').forEach(p => p.classList.remove('open'));
+      document.querySelector(`.show-card[data-slug="${selectedSlug}"]`)?.classList.add('selected');
+
+      const emptyState = document.getElementById('empty-state');
+      const panel      = document.getElementById('panel');
+      emptyState.style.display = 'none';
+      panel.style.display      = 'block';
+      panel.innerHTML          = buildPanel(show);
+      attachTracking(panel);
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', loadShows);
+</script>
 </body>
 </html>
