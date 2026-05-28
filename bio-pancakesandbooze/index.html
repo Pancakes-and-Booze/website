@@ -307,11 +307,11 @@
       justify-content: flex-start;
     }
 
-    /* Standalone FAQ (always visible at bottom of right column) */
+    /* Standalone FAQ (always visible at top of right column) */
     .faq-standalone {
       flex-shrink: 0;
-      padding: 20px 32px 32px;
-      border-top: 1px solid var(--dark-border);
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--dark-border);
     }
 
     .faq-standalone-inner {
@@ -603,13 +603,6 @@
        RIGHT COLUMN
   ══════════════════════════════════ -->
   <div class="right-col" id="right-col">
-    <div class="right-main" id="right-main">
-      <div class="empty-state" id="empty-state">
-        <div class="empty-icon">📍</div>
-        <div class="empty-text">Select a show to see tickets &amp; applications</div>
-      </div>
-      <div class="panel" id="panel" style="display:none;"></div>
-    </div>
     <div class="faq-standalone">
       <div class="faq-standalone-inner">
         <div class="panel-section-label">Info</div>
@@ -624,6 +617,13 @@
           <span class="btn-outline-arrow">→</span>
         </a>
       </div>
+    </div>
+    <div class="right-main" id="right-main">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📍</div>
+        <div class="empty-text">Select a show to see tickets &amp; applications</div>
+      </div>
+      <div class="panel" id="panel" style="display:none;"></div>
     </div>
   </div>
 
