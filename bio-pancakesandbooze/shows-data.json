@@ -129,6 +129,19 @@
       "ticket_link": "https://eventbrite.com/e/the-raleigh-pancakes-booze-art-show-tickets-1990199203392?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/raleigh-13-aug-2026/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/raleigh-13-aug-2026/submit-vendor"
+    },
+    {
+      "slug": "norfolk",
+      "city": "Norfolk",
+      "state": "VA",
+      "venue": "Maker's Craft Brewery",
+      "month": "Aug",
+      "day": "15",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-norfolk-pancakes-booze-art-show-tickets-1990609055270?aff=PBEmails",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/norfolk-15-aug-2026/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/norfolk-15-aug-2026/submit-vendor"
     }
   ]
 }
