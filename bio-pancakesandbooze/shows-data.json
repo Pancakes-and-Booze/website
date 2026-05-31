@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "austin",
-      "city": "Austin",
-      "state": "TX",
-      "venue": "Far Out Lounge & Stage",
-      "month": "May",
-      "day": "30",
-      "doors": "8PM",
-      "presale_price": "15",
-      "ticket_link": "https://www.eventbrite.com/e/the-austin-pancakes-booze-art-show-tickets-1984004936172?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/austin-30-may-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/austin-30-may-2026/submit-vendor"
-    },
-    {
       "slug": "philadelphia",
       "city": "Philadelphia",
       "state": "PA",
