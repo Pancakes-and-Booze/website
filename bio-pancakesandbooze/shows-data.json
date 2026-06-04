@@ -129,6 +129,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-norfolk-pancakes-booze-art-show-tickets-1990609055270?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/norfolk-15-aug-2026/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/norfolk-15-aug-2026/submit-vendor"
+    },
+    {
+      "slug": "mexicocity",
+      "city": "Mexico City",
+      "state": null,
+      "venue": "Pinche Bar",
+      "month": "Sep",
+      "day": "05",
+      "doors": "8PM",
+      "presale_price": "200",
+      "ticket_link": "https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-1990827023218?aff=emailCDMX",
+      "artist_link": "/submit-artists",
+      "vendor_link": "/submit-vendor"
     }
   ]
 }
