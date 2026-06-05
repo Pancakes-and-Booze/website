@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T17:00:17Z",
+  "generated_at": "2026-06-05T19:10:03Z",
   "shows": [
     {
       "live": true,
@@ -360,7 +360,7 @@
       "event_time": "8pm - Midnight",
       "age": "18",
       "ticket_link": "https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-1990827023218?aff=emailCDMX",
-      "apply_link": null,
+      "apply_link": "https://www.voxxypresents.com/events/pancakes-and-booze-4/mexico-city-266",
       "flyer_url": "/images/flyers/Mexico-City-flyer-sept-5-2026.webp",
       "fb_link": "https://www.facebook.com/events/2476191872868879",
       "early_bird_price": "200",
@@ -368,8 +368,8 @@
       "min_pieces": 2,
       "artist_price": "200",
       "vendor_price": "800",
-      "artist_submission_link": "/submit-artists",
-      "vendor_submission_link": "/submit-vendor",
+      "artist_submission_link": "https://www.voxxypresents.com/events/mexico-city/apply/545",
+      "vendor_submission_link": "https://www.voxxypresents.com/events/mexico-city/apply/546",
       "artist_install_date": "2026/9/5",
       "artist_install_time": "1p - 5p",
       "vendor_install_date": "2026/5/28",
