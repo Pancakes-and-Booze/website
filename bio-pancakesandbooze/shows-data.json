@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "philadelphia",
-      "city": "Philadelphia",
-      "state": "PA",
-      "venue": "Underground Arts",
-      "month": "Jun",
-      "day": "06",
-      "doors": "8PM",
-      "presale_price": "15",
-      "ticket_link": "https://www.tixr.com/pr/h/179700",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/philadelphia-06-jun-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/philadelphia-06-jun-2026/submit-vendor"
-    },
-    {
       "slug": "orlando",
       "city": "Orlando",
       "state": "FL",
