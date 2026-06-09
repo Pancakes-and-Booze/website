@@ -129,6 +129,19 @@
       "ticket_link": "https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-1990827023218?aff=emailCDMX",
       "artist_link": "https://www.voxxypresents.com/events/mexico-city/apply/545",
       "vendor_link": "https://www.voxxypresents.com/events/mexico-city/apply/546"
+    },
+    {
+      "slug": "seattle",
+      "city": "Seattle",
+      "state": "WA",
+      "venue": "El Corazon",
+      "month": "Sep",
+      "day": "12",
+      "doors": "8PM",
+      "presale_price": "15",
+      "ticket_link": "https://www.elcorazonseattle.com/",
+      "artist_link": "https://www.voxxypresents.com/events/seattle/apply/548",
+      "vendor_link": "https://www.voxxypresents.com/events/seattle/apply/547"
     }
   ]
 }
