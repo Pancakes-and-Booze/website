@@ -576,7 +576,7 @@
       </p>
 
       <div class="show-actions" style="margin-top: 36px;">
-        <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Submission%20%E2%80%94%20CDMX%205%20Sep%202026&amp;body=Hi%20Pancakes%20%26%20Booze%2C%0A%0AI%27d%20like%20to%20exhibit%20my%20work%20at%20the%20Mexico%20City%20edition%20on%20September%205.%0A%0AName%3A%20%0AInstagram%20%2F%20portfolio%3A%20%0AHow%20many%20pieces%20I%27d%20like%20to%20exhibit%20(2%E2%80%9310)%3A%20%0AApproximate%20size%20of%20pieces%3A%20%0AQuestions%20or%20notes%3A%20%0A%0AThanks!" class="btn btn-primary">Apply Now</a>
+        <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Submission%20%E2%80%94%20CDMX%205%20Sep%202026&amp;body=Hi%20Pancakes%20%26%20Booze%2C%0A%0AI%27d%20like%20to%20exhibit%20my%20work%20at%20the%20Mexico%20City%20edition%20on%20September%205.%0A%0AName%3A%20%0AInstagram%20%2F%20portfolio%3A%20%0AHow%20many%20pieces%20I%27d%20like%20to%20exhibit%20(2%E2%80%9310)%3A%20%0AApproximate%20size%20of%20pieces%3A%20%0AQuestions%20or%20notes%3A%20%0A%0AThanks!" class="btn btn-primary" id="applyBtn">Apply Now</a>
         <a href="#faq" class="btn btn-secondary">See FAQ</a>
       </div>
     </div>
@@ -909,6 +909,14 @@
             b.target = '_blank';
             b.rel = 'noopener';
           });
+        }
+        if (mx && mx.apply_link) {
+          const ab = document.getElementById('applyBtn');
+          if (ab) {
+            ab.href = mx.apply_link;
+            ab.target = '_blank';
+            ab.rel = 'noopener';
+          }
         }
         if (mx && mx.flyer_url) {
           const wrap = document.getElementById('flyerWrap');
