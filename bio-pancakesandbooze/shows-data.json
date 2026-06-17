@@ -118,6 +118,19 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/norfolk-15-aug-2026/submit-vendor"
     },
     {
+      "slug": "providence",
+      "city": "Providence",
+      "state": null,
+      "venue": "The Met",
+      "month": "Aug",
+      "day": "29",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-providence-pancakes-booze-art-show-tickets-1991799748666?aff=PBEmails",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/providence-29-aug-2026/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/providence-29-aug-2026/submit-vendor"
+    },
+    {
       "slug": "mexicocity",
       "city": "Mexico City",
       "state": null,
