@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Pancakes & Booze</title>
+  <meta name="description" content="Pancakes & Booze Privacy Policy — what we collect, why we collect it, and how we protect it.">
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Shared tokens — keep in sync with index.html */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --yellow: #e8ff21;
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement bar */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .announcement a { color: var(--black); text-decoration: underline; font-weight: 800; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 40px; }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* Legal page wrapper */
+    .legal { padding: 80px 0 100px; }
+    .legal-body { color: var(--gray-light); font-size: 1rem; }
+
+    /* ════════════════════════════════════════════════════════════════════
+       TERMLY OVERRIDES — translate Termly's light-theme [data-custom-class]
+       inline styles to our dark-theme tokens. The Termly source ships with
+       !important rules, so these overrides also use !important to win.
+       Do NOT edit the pasted Termly markup directly — regenerate via
+       Termly when content changes, paste fresh into .legal-body, and
+       these overrides keep the styling on-brand.
+    ════════════════════════════════════════════════════════════════════ */
+    .legal-body [data-custom-class='body'],
+    .legal-body [data-custom-class='body'] * {
+      background: transparent !important;
+    }
+    .legal-body [data-custom-class='title'],
+    .legal-body [data-custom-class='title'] * {
+      font-family: var(--font-display) !important;
+      font-size: clamp(2.5rem, 6vw, 4rem) !important;
+      color: var(--white) !important;
+      letter-spacing: 1px !important;
+      line-height: 1 !important;
+    }
+    .legal-body [data-custom-class='subtitle'],
+    .legal-body [data-custom-class='subtitle'] * {
+      font-family: var(--font-body) !important;
+      color: var(--gray) !important;
+      font-size: 0.9rem !important;
+    }
+    .legal-body [data-custom-class='heading_1'],
+    .legal-body [data-custom-class='heading_1'] * {
+      font-family: var(--font-display) !important;
+      font-size: 1.8rem !important;
+      color: var(--white) !important;
+      letter-spacing: 1px !important;
+    }
+    .legal-body [data-custom-class='heading_2'],
+    .legal-body [data-custom-class='heading_2'] * {
+      font-family: var(--font-body) !important;
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+      color: var(--white) !important;
+    }
+    .legal-body [data-custom-class='body_text'],
+    .legal-body [data-custom-class='body_text'] * {
+      color: var(--gray-light) !important;
+      font-size: 1rem !important;
+      font-family: var(--font-body) !important;
+      line-height: 1.7 !important;
+    }
+    .legal-body [data-custom-class='link'],
+    .legal-body [data-custom-class='link'] *,
+    .legal-body a {
+      color: var(--accent) !important;
+      font-size: 1rem !important;
+      font-family: var(--font-body) !important;
+      word-break: break-word !important;
+    }
+
+    /* Termly tables (state-by-state collection table) */
+    .legal-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      background: var(--dark-card);
+    }
+    .legal-body table th,
+    .legal-body table td {
+      border-color: var(--dark-border) !important;
+      padding: 12px 16px;
+      text-align: left;
+      color: var(--gray-light);
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+    .legal-body table th {
+      color: var(--white);
+      background: var(--dark);
+      font-weight: 700;
+    }
+
+    /* Termly section headings (h2/h3 inside heading classes) */
+    .legal-body h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 1px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .legal-body h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin: 48px 0 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--dark-border);
+    }
+    .legal-body h3 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 24px 0 10px;
+    }
+
+    /* Body content spacing */
+    .legal-body p { margin-bottom: 14px; }
+    .legal-body ul, .legal-body ol {
+      margin: 0 0 18px 24px;
+      padding-left: 4px;
+    }
+    .legal-body li { margin-bottom: 8px; }
+    .legal-body strong { color: var(--white); font-weight: 700; }
+    .legal-body em { font-style: italic; }
+
+    /* Termly's <bdt> templating tags — make sure they render as inline
+       and don't introduce stray boxes or break flow. */
+    .legal-body bdt { display: inline; }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .legal { padding: 48px 0 72px; }
+      .legal-body h2 { font-size: 1.5rem; margin: 36px 0 16px; padding-top: 24px; }
+      .legal-body [data-custom-class='heading_1'],
+      .legal-body [data-custom-class='heading_1'] * {
+        font-size: 1.5rem !important;
+      }
+      .legal-body table th, .legal-body table td { padding: 10px 12px; font-size: 0.85rem; }
+    }
+  </style>
+
+  <!-- ════════════ TRACKING ════════════
+       GA4 + Meta Pixel base install. PageView fires automatically.
+       Automatic Advanced Matching is enabled at Meta's end. -->
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB6BSHXFKP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VB6BSHXFKP');
+  </script>
+
+
+</head>
+<body>
+
+  <div class="announcement">
+    Coming soon to your city &mdash; <a href="/#shows">See all upcoming shows</a>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes & Booze">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <div class="container">
+      <!-- ════════════════════════════════════════════════════════════════
+           PRIVACY POLICY — Termly-generated content.
+           To update: regenerate at https://app.termly.io, copy the
+           HTML embed snippet, and paste between the markers below.
+           Strip out Termly's wrapping <style> block and the trailing
+           <style> for ul lists — both light-theme styles that fight
+           our dark-theme overrides above. The [data-custom-class]
+           overrides in this file's <style> handle theming.
+      ════════════════════════════════════════════════════════════════ -->
+      <div class="legal-body">
+      <!-- BEGIN TERMLY -->
+      <div data-custom-class="body">
+      <div><strong><span data-custom-class="title"><h1>PRIVACY POLICY</h1></span></strong></div>
+      <div><strong><span data-custom-class="subtitle">Last updated May 08, 2026</span></strong></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">This Privacy Notice for MoneyCakes, LLC (doing business as The Pancakes &amp; Booze Art Show) ("<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>"), describes how and why we might access, collect, store, use, and/or share ("<strong>process</strong>") your personal information when you use our services ("<strong>Services</strong>"), including when you:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">Visit our website at <a data-custom-class="link" href="https://www.pancakesandbooze.com" target="_blank">https://www.pancakesandbooze.com</a> or any website of ours that links to this Privacy Notice</span></li>
+        <li><span data-custom-class="body_text">Download and use our Facebook application (Ads DM Assistant), or any other application of ours that links to this Privacy Notice</span></li>
+        <li><span data-custom-class="body_text">Use Underground Art Show. <strong>About Our Service.</strong> Pancakes &amp; Booze is an underground touring art show. Founded in Los Angeles in 2009, the show has produced 500+ events across 40+ cities in North America, Europe, and Asia, with editions launching in Mexico City and Bangkok. The show features local artists, vendors, free pancakes, and a high-energy underground gallery experience. <strong>About This Website.</strong> The pancakesandbooze.com website is the public-facing platform for the show. Through it, we (a) publish information about upcoming and past shows including dates, venues, and city locations; (b) link visitors to third-party ticketing platforms for ticket purchases; (c) accept applications from artists and vendors who wish to exhibit at our events; (d) capture leads from prospective attendees ("Notify Me" signups) and city hosts ("Bring P&amp;B to Your City" requests); and (e) provide informational content including artist resources, FAQs, and brand history. <strong>What We Do Not Do.</strong> We do not directly process payments through this website. Ticket purchases are handled by third-party platforms (currently Eventbrite, transitioning to Voxxy). We do not sell user-generated content or imagery. We do not operate as a social network, marketplace, or platform for user-to-user transactions.</span></li>
+        <li><span data-custom-class="body_text">Engage with us in other related ways, including any marketing or events</span></li>
+      </ul>
+      <div><span data-custom-class="body_text"><strong>Questions or concerns?</strong> Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <a data-custom-class="link" href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a>.</span></div>
+      <div><br></div>
+
+      <div><strong><span data-custom-class="heading_1"><h2>SUMMARY OF KEY POINTS</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>This summary provides key points from our Privacy Notice, but you can find out more details about any of these topics by clicking the link following each key point or by using our </em></strong><a data-custom-class="link" href="#toc"><strong><em>table of contents</em></strong></a><strong><em> below to find the section you are looking for.</em></strong></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>What personal information do we process?</strong> When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use. Learn more about <a data-custom-class="link" href="#personalinfo">personal information you disclose to us</a>.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>Do we process any sensitive personal information?</strong> Some of the information may be considered "special" or "sensitive" in certain jurisdictions, for example your racial or ethnic origins, sexual orientation, and religious beliefs. We do not process sensitive personal information.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>Do we collect any information from third parties?</strong> We may collect information from public databases, marketing partners, social media platforms, and other outside sources. Learn more about <a data-custom-class="link" href="#othersources">information collected from other sources</a>.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>How do we process your information?</strong> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about <a data-custom-class="link" href="#infouse">how we process your information</a>.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>In what situations and with which parties do we share personal information?</strong> We may share information in specific situations and with specific third parties. Learn more about <a data-custom-class="link" href="#whoshare">when and with whom we share your personal information</a>.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>How do we keep your information safe?</strong> We have adequate organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about <a data-custom-class="link" href="#infosafe">how we keep your information safe</a>.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>What are your rights?</strong> Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information. Learn more about <a data-custom-class="link" href="#privacyrights">your privacy rights</a>.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>How do you exercise your rights?</strong> The easiest way to exercise your rights is by submitting a <a data-custom-class="link" href="https://app.termly.io/dsar/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc" rel="noopener noreferrer" target="_blank">data subject access request</a>, or by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">Want to learn more about what we do with any information we collect? <a data-custom-class="link" href="#toc">Review the Privacy Notice in full</a>.</span></div>
+      <div><br></div>
+
+      <div id="toc"><strong><span data-custom-class="heading_1"><h2>TABLE OF CONTENTS</h2></span></strong></div>
+      <div><a data-custom-class="link" href="#infocollect">1. WHAT INFORMATION DO WE COLLECT?</a></div>
+      <div><a data-custom-class="link" href="#infouse">2. HOW DO WE PROCESS YOUR INFORMATION?</a></div>
+      <div><a data-custom-class="link" href="#legalbases">3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR PERSONAL INFORMATION?</a></div>
+      <div><a data-custom-class="link" href="#whoshare">4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</a></div>
+      <div><a data-custom-class="link" href="#cookies">5. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</a></div>
+      <div><a data-custom-class="link" href="#intltransfers">6. IS YOUR INFORMATION TRANSFERRED INTERNATIONALLY?</a></div>
+      <div><a data-custom-class="link" href="#inforetain">7. HOW LONG DO WE KEEP YOUR INFORMATION?</a></div>
+      <div><a data-custom-class="link" href="#infosafe">8. HOW DO WE KEEP YOUR INFORMATION SAFE?</a></div>
+      <div><a data-custom-class="link" href="#infominors">9. DO WE COLLECT INFORMATION FROM MINORS?</a></div>
+      <div><a data-custom-class="link" href="#privacyrights">10. WHAT ARE YOUR PRIVACY RIGHTS?</a></div>
+      <div><a data-custom-class="link" href="#DNT">11. CONTROLS FOR DO-NOT-TRACK FEATURES</a></div>
+      <div><a data-custom-class="link" href="#uslaws">12. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</a></div>
+      <div><a data-custom-class="link" href="#otherlaws">13. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?</a></div>
+      <div><a data-custom-class="link" href="#policyupdates">14. DO WE MAKE UPDATES TO THIS NOTICE?</a></div>
+      <div><a data-custom-class="link" href="#contact">15. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a></div>
+      <div><a data-custom-class="link" href="#request">16. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</a></div>
+      <div><br></div>
+
+      <div id="infocollect"><strong><span data-custom-class="heading_1"><h2>1. WHAT INFORMATION DO WE COLLECT?</h2></span></strong></div>
+      <div id="personalinfo"><strong><span data-custom-class="heading_2"><h3>Personal information you disclose to us</h3></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We collect personal information that you provide to us.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>Personal Information Provided by You.</strong> The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">names</span></li>
+        <li><span data-custom-class="body_text">phone numbers</span></li>
+        <li><span data-custom-class="body_text">email addresses</span></li>
+        <li><span data-custom-class="body_text">artist website / portfolio url</span></li>
+        <li><span data-custom-class="body_text">city / location of interest</span></li>
+        <li><span data-custom-class="body_text">social media handles / user-generated content</span></li>
+        <li><span data-custom-class="body_text">application/registration number</span></li>
+        <li><span data-custom-class="body_text">visual likeness / photos from events</span></li>
+      </ul>
+      <div><span data-custom-class="body_text"><strong>Sensitive Information.</strong> We do not process sensitive information.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.</span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>Information automatically collected</h3></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>Some information — such as your Internet Protocol (IP) address and/or browser and device characteristics — is collected automatically when you visit our Services.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We automatically collect certain information when you visit, use, or navigate the Services. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services, and other technical information. This information is primarily needed to maintain the security and operation of our Services, and for our internal analytics and reporting purposes.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">Like many businesses, we also collect information through cookies and similar technologies.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">The information we collect includes:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text"><em>Log and Usage Data.</em> Log and usage data is service-related, diagnostic, usage, and performance information our servers automatically collect when you access or use our Services and which we record in log files. Depending on how you interact with us, this log data may include your IP address, device information, browser type, and settings and information about your activity in the Services (such as the date/time stamps associated with your usage, pages and files viewed, searches, and other actions you take such as which features you use), device event information (such as system activity, error reports (sometimes called "crash dumps"), and hardware settings).</span></li>
+        <li><span data-custom-class="body_text"><em>Device Data.</em> We collect device data such as information about your computer, phone, tablet, or other device you use to access the Services. Depending on the device used, this device data may include information such as your IP address (or proxy server), device and application identification numbers, location, browser type, hardware model, Internet service provider and/or mobile carrier, operating system, and system configuration information.</span></li>
+        <li><span data-custom-class="body_text"><em>Location Data.</em> We collect location data such as information about your device's location, which can be either precise or imprecise. How much information we collect depends on the type and settings of the device you use to access the Services. For example, we may use GPS and other technologies to collect geolocation data that tells us your current location (based on your IP address). You can opt out of allowing us to collect this information either by refusing access to the information or by disabling your Location setting on your device. However, if you choose to opt out, you may not be able to use certain aspects of the Services.</span></li>
+      </ul>
+
+      <div id="othersources"><strong><span data-custom-class="heading_2"><h3>Information collected from other sources</h3></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We may collect limited data from public databases, marketing partners, social media platforms, and other outside sources.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">In order to enhance our ability to provide relevant marketing, offers, and services to you and update our records, we may obtain information about you from other sources, such as public databases, joint marketing partners, affiliate programs, data providers, social media platforms, and from other third parties. This information includes mailing addresses, job titles, email addresses, phone numbers, intent data (or user behavior data), Internet Protocol (IP) addresses, social media profiles, social media URLs, and custom profiles, for purposes of targeted advertising and event promotion.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you interact with us on a social media platform using your social media account (e.g., Facebook or X), we receive personal information about you from such platforms such as your name, email address, and gender. You may have the right to withdraw your consent to processing your personal information. Learn more about <a data-custom-class="link" href="#withdrawconsent">withdrawing your consent</a>. Any personal information that we collect from your social media account depends on your social media account's privacy settings. Please note that their own use of your information is not governed by this Privacy Notice.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>Information collected when you use our Facebook application(s).</strong> We by default access your Facebook basic account information, including your name, email, gender, birthday, current city, and profile picture URL, as well as other information that you choose to make public. We may also request access to other permissions related to your account, such as friends, check-ins, and likes, and you may choose to grant or deny us access to each individual permission. For more information regarding Facebook permissions, refer to the <a data-custom-class="link" href="https://developers.facebook.com/docs/facebook-login/permissions" rel="noopener noreferrer" target="_blank">Facebook Permissions Reference</a> page.</span></div>
+      <div><br></div>
+
+      <div id="infouse"><strong><span data-custom-class="heading_1"><h2>2. HOW DO WE PROCESS YOUR INFORMATION?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We process the personal information for the following purposes listed below. We may also process your information for other purposes only with your prior explicit consent.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>We process your personal information for a variety of reasons, depending on how you interact with our Services, including:</strong></span></div>
+      <ul>
+        <li><span data-custom-class="body_text"><strong>To deliver and facilitate delivery of services to the user.</strong> We may process your information to provide you with the requested service.</span></li>
+        <li><span data-custom-class="body_text"><strong>To respond to user inquiries/offer support to users.</strong> We may process your information to respond to your inquiries and solve any potential issues you might have with the requested service.</span></li>
+        <li><span data-custom-class="body_text"><strong>To send administrative information to you.</strong> We may process your information to send you details about our products and services, changes to our terms and policies, and other similar information.</span></li>
+        <li><span data-custom-class="body_text"><strong>To fulfill and manage your orders.</strong> We may process your information to fulfill and manage your orders, payments, returns, and exchanges made through the Services.</span></li>
+        <li><span data-custom-class="body_text"><strong>To request feedback.</strong> We may process your information when necessary to request feedback and to contact you about your use of our Services.</span></li>
+        <li><span data-custom-class="body_text"><strong>To send you marketing and promotional communications.</strong> We may process the personal information you send to us for our marketing purposes, if this is in accordance with your marketing preferences. You can opt out of our marketing emails at any time. For more information, see "<a data-custom-class="link" href="#privacyrights">WHAT ARE YOUR PRIVACY RIGHTS?</a>" below.</span></li>
+        <li><span data-custom-class="body_text"><strong>To deliver targeted advertising to you.</strong> We may process your information to develop and display personalized content and advertising tailored to your interests, location, and more.</span></li>
+        <li><span data-custom-class="body_text"><strong>To protect our Services.</strong> We may process your information as part of our efforts to keep our Services safe and secure, including fraud monitoring and prevention.</span></li>
+        <li><span data-custom-class="body_text"><strong>To identify usage trends.</strong> We may process information about how you use our Services to better understand how they are being used so we can improve them.</span></li>
+        <li><span data-custom-class="body_text"><strong>To determine the effectiveness of our marketing and promotional campaigns.</strong> We may process your information to better understand how to provide marketing and promotional campaigns that are most relevant to you.</span></li>
+        <li><span data-custom-class="body_text"><strong>To save or protect an individual's vital interest.</strong> We may process your information when necessary to save or protect an individual's vital interest, such as to prevent harm.</span></li>
+        <li><span data-custom-class="body_text"><strong>Promotion, Marketing, and Social Media Display.</strong> We may use personal information, including your name, social media handle, and visual likeness (such as photos or videos from our events or content in which we are tagged), for promotional and marketing purposes. This includes reposting your content on our website, social media profiles, and in advertising materials to showcase our events and participating artists.</span></li>
+        <li><span data-custom-class="body_text"><strong>Business Development and Commercial Sales.</strong> To process transactions, manage customer accounts for merchandise sales, and improve our service offerings based on purchase trends and artist feedback.</span></li>
+        <li><span data-custom-class="body_text"><strong>Social Media Promotion and Artist Showcasing.</strong> We use artist names, social media handles, and images/videos from our events to promote the Pancakes &amp; Booze Art Show and highlight participating talent.</span></li>
+      </ul>
+
+      <div id="legalbases"><strong><span data-custom-class="heading_1"><h2>3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><em><strong>In Short:</strong> We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e., legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with services to enter into or fulfill our contractual obligations, to protect your rights, or to fulfill our legitimate business interests.</em></span></div>
+      <div><br></div>
+      <div><em><span data-custom-class="body_text"><strong><u>If you are located in the EU or UK, this section applies to you.</u></strong></span></em></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">The General Data Protection Regulation (GDPR) and UK GDPR require us to explain the valid legal bases we rely on in order to process your personal information. As such, we may rely on the following legal bases to process your personal information:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text"><strong>Consent.</strong> We may process your information if you have given us permission (i.e., consent) to use your personal information for a specific purpose. You can withdraw your consent at any time. Learn more about <a data-custom-class="link" href="#withdrawconsent">withdrawing your consent</a>.</span></li>
+        <li><span data-custom-class="body_text"><strong>Performance of a Contract.</strong> We may process your personal information when we believe it is necessary to fulfill our contractual obligations to you, including providing our Services or at your request prior to entering into a contract with you.</span></li>
+        <li><span data-custom-class="body_text"><strong>Legitimate Interests.</strong> We may process your information when we believe it is reasonably necessary to achieve our legitimate business interests and those interests do not outweigh your interests and fundamental rights and freedoms. For example, we may process your personal information for some of the purposes described in order to:</span>
+          <ul>
+            <li><span data-custom-class="body_text">Send users information about special offers and discounts on our products and services</span></li>
+            <li><span data-custom-class="body_text">Develop and display personalized and relevant advertising content for our users</span></li>
+            <li><span data-custom-class="body_text">Analyze how our Services are used so we can improve them to engage and retain users</span></li>
+            <li><span data-custom-class="body_text">Support our marketing activities</span></li>
+            <li><span data-custom-class="body_text">Diagnose problems and/or prevent fraudulent activities</span></li>
+            <li><span data-custom-class="body_text">Understand how our users use our products and services so we can improve user experience</span></li>
+            <li><span data-custom-class="body_text">It is in our legitimate interest to promote our events and the participating artists by reposting content from social media where we have been tagged or mentioned, and by using event photography for future promotional materials.</span></li>
+          </ul>
+        </li>
+        <li><span data-custom-class="body_text"><strong>Legal Obligations.</strong> We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, exercise or defend our legal rights, or disclose your information as evidence in litigation in which we are involved.</span></li>
+        <li><span data-custom-class="body_text"><strong>Vital Interests.</strong> We may process your information where we believe it is necessary to protect your vital interests or the vital interests of a third party, such as situations involving potential threats to the safety of any person.</span></li>
+      </ul>
+      <div><em><span data-custom-class="body_text"><strong><u>If you are located in Canada, this section applies to you.</u></strong></span></em></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We may process your information if you have given us specific permission (i.e., express consent) to use your personal information for a specific purpose, or in situations where your permission can be inferred (i.e., implied consent). You can <a data-custom-class="link" href="#withdrawconsent">withdraw your consent</a> at any time.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">In some exceptional cases, we may be legally permitted under applicable law to process your information without your consent, including, for example:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">If collection is clearly in the interests of an individual and consent cannot be obtained in a timely way</span></li>
+        <li><span data-custom-class="body_text">For investigations and fraud detection and prevention</span></li>
+        <li><span data-custom-class="body_text">For business transactions provided certain conditions are met</span></li>
+        <li><span data-custom-class="body_text">If it is contained in a witness statement and the collection is necessary to assess, process, or settle an insurance claim</span></li>
+        <li><span data-custom-class="body_text">For identifying injured, ill, or deceased persons and communicating with next of kin</span></li>
+        <li><span data-custom-class="body_text">If we have reasonable grounds to believe an individual has been, is, or may be victim of financial abuse</span></li>
+        <li><span data-custom-class="body_text">If it is reasonable to expect collection and use with consent would compromise the availability or the accuracy of the information and the collection is reasonable for purposes related to investigating a breach of an agreement or a contravention of the laws of Canada or a province</span></li>
+        <li><span data-custom-class="body_text">If disclosure is required to comply with a subpoena, warrant, court order, or rules of the court relating to the production of records</span></li>
+        <li><span data-custom-class="body_text">If it was produced by an individual in the course of their employment, business, or profession and the collection is consistent with the purposes for which the information was produced</span></li>
+        <li><span data-custom-class="body_text">If the collection is solely for journalistic, artistic, or literary purposes</span></li>
+        <li><span data-custom-class="body_text">If the information is publicly available and is specified by the regulations</span></li>
+        <li><span data-custom-class="body_text">We may disclose de-identified information for approved research or statistics projects, subject to ethics oversight and confidentiality commitments</span></li>
+      </ul>
+
+      <div id="whoshare"><strong><span data-custom-class="heading_1"><h2>4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We may share information in specific situations described in this section and/or with the following third parties.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>Vendors, Consultants, and Other Third-Party Service Providers.</strong> We may share your data with third-party vendors, service providers, contractors, or agents ("<strong>third parties</strong>") who perform services for us or on our behalf and require access to such information to do that work. We have contracts in place with our third parties, which are designed to help safeguard your personal information. This means that they cannot do anything with your personal information unless we have instructed them to do it. They will also not share your personal information with any organization apart from us. They also commit to protect the data they hold on our behalf and to retain it for the period we instruct.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">The third parties we may share personal information with are as follows:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text"><strong>Advertising, Direct Marketing, and Lead Generation:</strong> Facebook Audience Network and Google AdSense</span></li>
+        <li><span data-custom-class="body_text"><strong>AI Service Providers:</strong> Google Cloud AI and Anthropic</span></li>
+        <li><span data-custom-class="body_text"><strong>Cloud Computing Services:</strong> Google Cloud Platform</span></li>
+        <li><span data-custom-class="body_text"><strong>Communicate and Chat with Users:</strong> Customer.io, Facebook Customer Chat, Mailgun and Sendgrid</span></li>
+        <li><span data-custom-class="body_text"><strong>Content Optimization:</strong> Google Fonts and Adobe Edge Web Fonts</span></li>
+        <li><span data-custom-class="body_text"><strong>Data Backup and Security:</strong> Google Drive Backup</span></li>
+        <li><span data-custom-class="body_text"><strong>Functionality and Infrastructure Optimization:</strong> Termly.io and GitHub Pages</span></li>
+        <li><span data-custom-class="body_text"><strong>Retargeting Platforms:</strong> Facebook Custom Audience, Facebook Remarketing, Google Ads Remarketing and Google Analytics Remarketing</span></li>
+        <li><span data-custom-class="body_text"><strong>Social Media Sharing and Advertising:</strong> Facebook advertising, Facebook social plugins, Instagram advertising, YouTube social plugins and Snapchat advertising</span></li>
+        <li><span data-custom-class="body_text"><strong>User Commenting and Forums:</strong> Facebook Comments and Google Tag Manager</span></li>
+        <li><span data-custom-class="body_text"><strong>Web and Mobile Analytics:</strong> Google Ads, Google Analytics, Facebook Ads conversion tracking, Facebook Analytics and Google Tag Manager</span></li>
+        <li><span data-custom-class="body_text"><strong>Website Hosting:</strong> Squarespace and Cloudflare</span></li>
+        <li><span data-custom-class="body_text"><strong>Website Testing:</strong> Google Website Optimizer and Cloudflare</span></li>
+      </ul>
+      <div><span data-custom-class="body_text">We also may need to share your personal information in the following situations:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text"><strong>Business Transfers.</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</span></li>
+        <li><span data-custom-class="body_text"><strong>When we use Google Maps Platform APIs.</strong> We may share your information with certain Google Maps Platform APIs (e.g., Google Maps API, Places API). We use certain Google Maps Platform APIs to retrieve certain information when you make location-specific requests. This includes: We use Google APIs to improve your experience, and Google may process your data according to their own policy; IP Address; Approximate Location; User-Provided Address; and other similar information. A full list of what we use information for can be found in this section and in the previous section titled "<a data-custom-class="link" href="#infouse">HOW DO WE PROCESS YOUR INFORMATION?</a>" Google Maps uses GPS, Wi-Fi, and cell towers to estimate your location. GPS is accurate to about 20 meters, while Wi-Fi and cell towers help improve accuracy when GPS signals are weak, like indoors. This data helps Google Maps provide directions, but it is not always perfectly precise. We obtain and store on your device ("cache") your location for one (1) months. You may revoke your consent anytime by contacting us at the contact details provided at the end of this document. The Google Maps Platform APIs that we use store and access cookies and other information on your devices. If you are a user currently in the European Economic Area (EU countries, Iceland, Liechtenstein, and Norway) or the United Kingdom, please take a look at our Cookie Notice.</span></li>
+        <li><span data-custom-class="body_text"><strong>Business Partners.</strong> We may share your information with our business partners to offer you certain products, services, or promotions.</span></li>
+      </ul>
+
+      <div id="cookies"><strong><span data-custom-class="heading_1"><h2>5. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We may use cookies and other tracking technologies to collect and store your information.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We may use cookies and similar tracking technologies (like web beacons and pixels) to gather information when you interact with our Services. Some online tracking technologies help us maintain the security of our Services, prevent crashes, fix bugs, save your preferences, and assist with basic site functions.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We also permit third parties and service providers to use online tracking technologies on our Services for analytics and advertising, including to help manage and display advertisements, to tailor advertisements to your interests, or to send abandoned shopping cart reminders (depending on your communication preferences). The third parties and service providers use their technology to provide advertising about products and services tailored to your interests which may appear either on our Services or on other websites.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">To the extent these online tracking technologies are deemed to be a "sale"/"sharing" (which includes targeted advertising, as defined under the applicable laws) under applicable US state laws, you can opt out of these online tracking technologies by submitting a request as described below under section "<a data-custom-class="link" href="#uslaws">DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</a>"</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice.</span></div>
+      <div><strong><span data-custom-class="heading_2"><h3>Google Analytics</h3></span></strong></div>
+      <div><span data-custom-class="body_text">We may share your information with Google Analytics to track and analyze the use of the Services. The Google Analytics Advertising Features that we may use include: Remarketing with Google Analytics, Google Display Network Impressions Reporting and Google Analytics Demographics and Interests Reporting. To opt out of being tracked by Google Analytics across the Services, visit <a data-custom-class="link" href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">https://tools.google.com/dlpage/gaoptout</a>. You can opt out of Google Analytics Advertising Features through <a data-custom-class="link" href="https://adssettings.google.com/" rel="noopener noreferrer" target="_blank">Ads Settings</a> and Ad Settings for mobile apps. Other opt out means include <a data-custom-class="link" href="http://optout.networkadvertising.org/" rel="noopener noreferrer" target="_blank">http://optout.networkadvertising.org/</a> and <a data-custom-class="link" href="http://www.networkadvertising.org/mobile-choice" rel="noopener noreferrer" target="_blank">http://www.networkadvertising.org/mobile-choice</a>. For more information on the privacy practices of Google, please visit the <a data-custom-class="link" href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Google Privacy &amp; Terms page</a>.</span></div>
+
+      <div id="intltransfers"><strong><span data-custom-class="heading_1"><h2>6. IS YOUR INFORMATION TRANSFERRED INTERNATIONALLY?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We may transfer, store, and process your information in countries other than your own.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">Our servers are located in the United States. Regardless of your location, please be aware that your information may be transferred to, stored by, and processed by us in our facilities and in the facilities of the third parties with whom we may share your personal information (see "<a data-custom-class="link" href="#whoshare">WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</a>" above), including facilities in the United States, Ireland, and other countries.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you are a resident in the European Economic Area (EEA), United Kingdom (UK), or Switzerland, then these countries may not necessarily have data protection laws or other similar laws as comprehensive as those in your country. However, we will take all necessary measures to protect your personal information in accordance with this Privacy Notice and applicable law.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong>European Commission's Standard Contractual Clauses:</strong></span></div>
+      <div><span data-custom-class="body_text">We have implemented measures to protect your personal information, including by using the European Commission's Standard Contractual Clauses for transfers of personal information between our group companies and between us and our third-party providers. These clauses require all recipients to protect all personal information that they process originating from the EEA or UK in accordance with European data protection laws and regulations. Our Standard Contractual Clauses can be provided upon request. We have implemented similar appropriate safeguards with our third-party service providers and partners and further details can be provided upon request.</span></div>
+
+      <div id="inforetain"><strong><span data-custom-class="heading_1"><h2>7. HOW LONG DO WE KEEP YOUR INFORMATION?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements).</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or, if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible.</span></div>
+
+      <div id="infosafe"><strong><span data-custom-class="heading_1"><h2>8. HOW DO WE KEEP YOUR INFORMATION SAFE?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We aim to protect your personal information through a system of organizational and technical security measures.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.</span></div>
+
+      <div id="infominors"><strong><span data-custom-class="heading_1"><h2>9. DO WE COLLECT INFORMATION FROM MINORS?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>We do not knowingly collect data from or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We do not knowingly collect, solicit data from, or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or the equivalent age as specified by law in your jurisdiction or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users less than 18 years of age or the equivalent age as specified by law in your jurisdiction has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18 or the equivalent age as specified by law in your jurisdiction, please contact us at <a data-custom-class="link" href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a>.</span></div>
+
+      <div id="privacyrights"><strong><span data-custom-class="heading_1"><h2>10. WHAT ARE YOUR PRIVACY RIGHTS?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>Depending on your state of residence in the US or in some regions, such as the European Economic Area (EEA), United Kingdom (UK), Switzerland, and Canada, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time, depending on your country, province, or state of residence.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">In some regions (like the EEA, UK, Switzerland, and Canada), you have certain rights under applicable data protection laws. These may include the right (i) to request access and obtain a copy of your personal information, (ii) to request rectification or erasure; (iii) to restrict the processing of your personal information; (iv) if applicable, to data portability; and (v) not to be subject to automated decision-making. If a decision that produces legal or similarly significant effects is made solely by automated means, we will inform you, explain the main factors, and offer a simple way to request human review. In certain circumstances, you may also have the right to object to the processing of your personal information. You can make such a request by contacting us by using the contact details provided in the section "<a data-custom-class="link" href="#contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>" below.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We will consider and act upon any request in accordance with applicable data protection laws.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you are located in the EEA or UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your <a data-custom-class="link" href="https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm" rel="noopener noreferrer" target="_blank">Member State data protection authority</a> or <a data-custom-class="link" href="https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/" rel="noopener noreferrer" target="_blank">UK data protection authority</a>.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you are located in Switzerland, you may contact the <a data-custom-class="link" href="https://www.edoeb.admin.ch/edoeb/en/home.html" rel="noopener noreferrer" target="_blank">Federal Data Protection and Information Commissioner</a>.</span></div>
+
+      <div id="withdrawconsent"><span data-custom-class="body_text"><strong><u>Withdrawing your consent:</u></strong> If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us by using the contact details provided in the section "<a data-custom-class="link" href="#contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>" below.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">However, please note that this will not affect the lawfulness of the processing before its withdrawal nor, when applicable law allows, will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong><u>Opting out of marketing and promotional communications:</u></strong> You can unsubscribe from our marketing and promotional communications at any time by clicking on the unsubscribe link in the emails that we send, replying "STOP" or "UNSUBSCRIBE" to the SMS messages that we send, by reviewing our policy noted below, or by contacting us using the details provided in the section "<a data-custom-class="link" href="#contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>" below. You will then be removed from the marketing lists. However, we may still communicate with you — for example, to send you service-related messages that are necessary for the administration and use of your account, to respond to service requests, or for other non-marketing purposes.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with third parties.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text"><strong><u>Cookies and similar technologies:</u></strong> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you have questions or comments about your privacy rights, you may email us at <a data-custom-class="link" href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a>.</span></div>
+
+      <div id="DNT"><strong><span data-custom-class="heading_1"><h2>11. CONTROLS FOR DO-NOT-TRACK FEATURES</h2></span></strong></div>
+      <div><span data-custom-class="body_text">Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Notice.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">California law requires us to let you know how we respond to web browser DNT signals. Because there currently is not an industry or legal standard for recognizing or honoring DNT signals, we do not respond to them at this time.</span></div>
+      <div><br></div>
+      <div><strong><u><span data-custom-class="body_text">Global Privacy Control:</span></u></strong> <span data-custom-class="body_text">We recognize and honor Global Privacy Control (GPC) signals. If you use a browser or extension that supports GPC, we will treat this as a valid request to opt out of the sale or sharing of your personal information for targeted advertising purposes under applicable state privacy laws, including the California Consumer Privacy Act (CCPA). When we detect a GPC signal from your browser, we will automatically apply your opt-out preference without requiring you to take any additional action. For more information about GPC and how to enable it, visit <a data-custom-class="link" href="http://globalprivacycontrol.org" rel="noopener noreferrer" target="_blank">globalprivacycontrol.org</a>.</span></div>
+
+      <div id="uslaws"><strong><span data-custom-class="heading_1"><h2>12. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><strong><em>In Short:</em></strong> <em>If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Maryland, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Rhode Island, Tennessee, Texas, Utah, or Virginia, you may have the right to request access to and receive details about the personal information we maintain about you and how we have processed it, correct inaccuracies, get a copy of, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. More information is provided below.</em></span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>Categories of Personal Information We Collect</h3></span></strong></div>
+      <div><span data-custom-class="body_text">The table below shows the categories of personal information we have collected in the past twelve (12) months. The table includes illustrative examples of each category and does not reflect the personal information we collect from you. For a comprehensive inventory of all personal information we process, please refer to the section "<a data-custom-class="link" href="#infocollect">WHAT INFORMATION DO WE COLLECT?</a>"</span></div>
+      <table>
+        <thead>
+          <tr>
+            <th><span data-custom-class="body_text"><strong>Category</strong></span></th>
+            <th><span data-custom-class="body_text"><strong>Examples</strong></span></th>
+            <th><span data-custom-class="body_text"><strong>Collected</strong></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span data-custom-class="body_text">A. Identifiers</span></td><td><span data-custom-class="body_text">Contact details, such as real name, alias, postal address, telephone or mobile contact number, unique personal identifier, online identifier, Internet Protocol address, email address, and account name</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">B. Personal information as defined in the California Customer Records statute</span></td><td><span data-custom-class="body_text">Name, contact information, education, employment, employment history, and financial information</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">C. Protected classification characteristics under state or federal law</span></td><td><span data-custom-class="body_text">Gender, age, date of birth, race and ethnicity, national origin, marital status, and other demographic data</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">D. Commercial information</span></td><td><span data-custom-class="body_text">Transaction information, purchase history, financial details, and payment information</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">E. Biometric information</span></td><td><span data-custom-class="body_text">Fingerprints and voiceprints</span></td><td><span data-custom-class="body_text">NO</span></td></tr>
+          <tr><td><span data-custom-class="body_text">F. Internet or other similar network activity</span></td><td><span data-custom-class="body_text">Browsing history, search history, online behavior, interest data, and interactions with our and other websites, applications, systems, and advertisements</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">G. Geolocation data</span></td><td><span data-custom-class="body_text">Device location</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">H. Audio, electronic, sensory, or similar information</span></td><td><span data-custom-class="body_text">Images and audio, video or call recordings created in connection with our business activities</span></td><td><span data-custom-class="body_text">NO</span></td></tr>
+          <tr><td><span data-custom-class="body_text">I. Professional or employment-related information</span></td><td><span data-custom-class="body_text">Business contact details in order to provide you our Services at a business level or job title, work history, and professional qualifications if you apply for a job with us</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">J. Education Information</span></td><td><span data-custom-class="body_text">Student records and directory information</span></td><td><span data-custom-class="body_text">NO</span></td></tr>
+          <tr><td><span data-custom-class="body_text">K. Inferences drawn from collected personal information</span></td><td><span data-custom-class="body_text">Inferences drawn from any of the collected personal information listed above to create a profile or summary about, for example, an individual's preferences and characteristics</span></td><td><span data-custom-class="body_text">YES</span></td></tr>
+          <tr><td><span data-custom-class="body_text">L. Sensitive personal Information</span></td><td><span data-custom-class="body_text">&mdash;</span></td><td><span data-custom-class="body_text">NO</span></td></tr>
+        </tbody>
+      </table>
+      <div><span data-custom-class="body_text">We may also collect other personal information outside of these categories through instances where you interact with us in person, online, or by phone or mail in the context of:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">Receiving help through our customer support channels;</span></li>
+        <li><span data-custom-class="body_text">Participation in customer surveys or contests; and</span></li>
+        <li><span data-custom-class="body_text">Facilitation in the delivery of our Services and to respond to your inquiries.</span></li>
+      </ul>
+      <div><span data-custom-class="body_text">We will use and retain the collected personal information as needed to provide the Services or for: As long as the user has an account with us (Categories A, B, C, D, F, G, I, K).</span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>Sources of Personal Information</h3></strong></span></div>
+      <div><span data-custom-class="body_text">Learn more about the sources of personal information we collect in "<a data-custom-class="link" href="#infocollect">WHAT INFORMATION DO WE COLLECT?</a>"</span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>How We Use and Share Personal Information</h3></strong></span></div>
+      <div><span data-custom-class="body_text">Learn more about how we use your personal information in the section, "<a data-custom-class="link" href="#infouse">HOW DO WE PROCESS YOUR INFORMATION?</a>"</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We collect and share your personal information through:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">Targeting cookies/Marketing cookies</span></li>
+        <li><span data-custom-class="body_text">Social media cookies</span></li>
+        <li><span data-custom-class="body_text">Beacons/Pixels/Tags</span></li>
+        <li><span data-custom-class="body_text">Click redirects: Eventbrite (Ticketing), Voxxy (Artist Management), District.net (Marketplace), and Cloudways (Data Hosting).</span></li>
+      </ul>
+      <div><span data-custom-class="body_text"><strong>Will your information be shared with anyone else?</strong></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We may disclose your personal information with our service providers pursuant to a written contract between us and each service provider. Learn more about how we disclose personal information to in the section, "<a data-custom-class="link" href="#whoshare">WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</a>"</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We may use your personal information for our own business purposes, such as for undertaking internal research for technological development and demonstration. This is not considered to be "selling" of your personal information.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We have disclosed the following categories of personal information to third parties for a business or commercial purpose in the preceding twelve (12) months:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">Category A. Identifiers</span></li>
+        <li><span data-custom-class="body_text">Category B. Personal information as defined in the California Customer Records law</span></li>
+        <li><span data-custom-class="body_text">Category C. Characteristics of protected classifications under state or federal law</span></li>
+        <li><span data-custom-class="body_text">Category D. Commercial information</span></li>
+        <li><span data-custom-class="body_text">Category F. Internet or other electronic network activity information</span></li>
+        <li><span data-custom-class="body_text">Category G. Geolocation data</span></li>
+        <li><span data-custom-class="body_text">Category I. Professional or employment-related information</span></li>
+        <li><span data-custom-class="body_text">Category K. Inferences drawn from collected personal information</span></li>
+      </ul>
+      <div><span data-custom-class="body_text">The categories of third parties to whom we disclosed personal information for a business or commercial purpose can be found under "<a data-custom-class="link" href="#whoshare">WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</a>"</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We have sold or shared the following categories of personal information to third parties in the preceding twelve (12) months: Categories A, B, C, D, F, G, I, K.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">The categories of third parties to whom we shared personal information with are:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text"><strong>Advertising, Direct Marketing, and Lead Generation:</strong> Facebook Audience Network and Google AdSense</span></li>
+        <li><span data-custom-class="body_text"><strong>AI Service Providers:</strong> Google Cloud AI and Anthropic</span></li>
+        <li><span data-custom-class="body_text"><strong>Retargeting Platforms:</strong> Facebook Custom Audience, Facebook Remarketing, Google Ads Remarketing and Google Analytics Remarketing</span></li>
+        <li><span data-custom-class="body_text"><strong>Social Media Sharing and Advertising:</strong> Facebook advertising, Facebook social plugins, Instagram advertising, YouTube social plugins and Snapchat advertising</span></li>
+        <li><span data-custom-class="body_text"><strong>Web and Mobile Analytics:</strong> Google Ads, Google Analytics, Facebook Ads conversion tracking, Facebook Analytics and Google Tag Manager</span></li>
+        <li><span data-custom-class="body_text"><strong>Workflow Automation &amp; Communication:</strong> n8n</span></li>
+        <li><span data-custom-class="body_text"><strong>Artist Application &amp; Data Management:</strong> Voxxy</span></li>
+        <li><span data-custom-class="body_text"><strong>SMS/Text Messaging Services:</strong> Sendly, Google Voice</span></li>
+      </ul>
+
+      <div><strong><span data-custom-class="heading_2"><h3>Your Rights</h3></strong></span></div>
+      <div><span data-custom-class="body_text">You have rights under certain US state data protection laws. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law. These rights include:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text"><strong>Right to know</strong> whether or not we are processing your personal data</span></li>
+        <li><span data-custom-class="body_text"><strong>Right to access</strong> your personal data</span></li>
+        <li><span data-custom-class="body_text"><strong>Right to correct</strong> inaccuracies in your personal data</span></li>
+        <li><span data-custom-class="body_text"><strong>Right to request</strong> the deletion of your personal data</span></li>
+        <li><span data-custom-class="body_text"><strong>Right to obtain a copy</strong> of the personal data you previously shared with us</span></li>
+        <li><span data-custom-class="body_text"><strong>Right to non-discrimination</strong> for exercising your rights</span></li>
+        <li><span data-custom-class="body_text"><strong>Right to opt out</strong> of the processing of your personal data if it is used for targeted advertising (or sharing as defined under California's privacy law), the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects ("profiling")</span></li>
+      </ul>
+      <div><span data-custom-class="body_text">Depending upon the state where you live, you may also have the following rights:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">Right to access the categories of personal data being processed (as permitted by applicable law, including the privacy law in Minnesota)</span></li>
+        <li><span data-custom-class="body_text">Right to obtain a list of the categories of third parties to which we have disclosed personal data (as permitted by applicable law, including the privacy law in California, Delaware, and Maryland)</span></li>
+        <li><span data-custom-class="body_text">Right to obtain a list of specific third parties to which we have disclosed personal data (as permitted by applicable law, including the privacy law in Minnesota and Oregon)</span></li>
+        <li><span data-custom-class="body_text">Right to obtain a list of third parties to which we have sold personal data (as permitted by applicable law, including the privacy law in Connecticut)</span></li>
+        <li><span data-custom-class="body_text">Right to review, understand, question, and depending on where you live, correct how personal data has been profiled (as permitted by applicable law, including the privacy law in Connecticut and Minnesota)</span></li>
+        <li><span data-custom-class="body_text">Right to limit use and disclosure of sensitive personal data (as permitted by applicable law, including the privacy law in California)</span></li>
+        <li><span data-custom-class="body_text">Right to opt out of the collection of sensitive data and personal data collected through the operation of a voice or facial recognition feature (as permitted by applicable law, including the privacy law in Florida)</span></li>
+      </ul>
+
+      <div><strong><span data-custom-class="heading_2"><h3>How to Exercise Your Rights</h3></strong></span></div>
+      <div><span data-custom-class="body_text">To exercise these rights, you can contact us by submitting a <a data-custom-class="link" href="https://app.termly.io/dsar/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc" rel="noopener noreferrer" target="_blank">data subject access request</a>, by emailing us at <a data-custom-class="link" href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a>, or by referring to the contact details at the bottom of this document.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">You can opt out from the selling of your personal information, targeted advertising, or profiling by disabling cookies in Cookie Preference Settings.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We will honor your opt-out preferences if you enact the <a data-custom-class="link" href="https://globalprivacycontrol.org/" rel="noopener noreferrer" target="_blank">Global Privacy Control</a> (GPC) opt-out signal on your browser.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws.</span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>Request Verification</h3></strong></span></div>
+      <div><span data-custom-class="body_text">Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. We will only use personal information provided in your request to verify your identity or authority to make the request. However, if we cannot verify your identity from the information already maintained by us, we may request that you provide additional information for the purposes of verifying your identity and for security or fraud-prevention purposes.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you submit the request through an authorized agent, we may need to collect additional information to verify your identity before processing your request and the agent will need to provide a written and signed permission from you to submit such request on your behalf.</span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>Appeals</h3></strong></span></div>
+      <div><span data-custom-class="body_text">Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at <a data-custom-class="link" href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a>. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.</span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>California "Shine The Light" Law</h3></strong></span></div>
+      <div><span data-custom-class="body_text">California Civil Code Section 1798.83, also known as the "Shine The Light" law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us by using the contact details provided in the section "<a data-custom-class="link" href="#contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>"</span></div>
+
+      <div id="otherlaws"><strong><span data-custom-class="heading_1"><h2>13. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?</h2></span></strong></div>
+      <div><em><strong><span data-custom-class="body_text">In Short:</span></strong></em> <span data-custom-class="body_text"><em>You may have additional rights based on the country you reside in.</em></span></div>
+      <div><br></div>
+      <div><strong><span data-custom-class="heading_2"><h3>Australia and New Zealand</h3></span></strong></div>
+      <div><span data-custom-class="body_text">We collect and process your personal information under the obligations and conditions set by Australia's Privacy Act 1988 and New Zealand's Privacy Act 2020 (Privacy Act).</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">This Privacy Notice satisfies the notice requirements defined in both Privacy Acts, in particular: what personal information we collect from you, from which sources, for which purposes, and other recipients of your personal information.</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you do not wish to provide the personal information necessary to fulfill their applicable purpose, it may affect our ability to provide our services, in particular:</span></div>
+      <ul>
+        <li><span data-custom-class="body_text">offer you the products or services that you want</span></li>
+        <li><span data-custom-class="body_text">respond to or help with your requests</span></li>
+        <li><span data-custom-class="body_text">manage your account with us</span></li>
+        <li><span data-custom-class="body_text">confirm your identity and protect your account</span></li>
+      </ul>
+      <div><span data-custom-class="body_text">At any time, you have the right to request access to or correction of your personal information. You can make such a request by contacting us by using the contact details provided in the section "<a data-custom-class="link" href="#request">HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</a>"</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you believe we are unlawfully processing your personal information, you have the right to submit a complaint about a breach of the Australian Privacy Principles to the <a data-custom-class="link" href="https://www.oaic.gov.au/privacy/privacy-complaints/lodge-a-privacy-complaint-with-us" rel="noopener noreferrer" target="_blank">Office of the Australian Information Commissioner</a> and a breach of New Zealand's Privacy Principles to the <a data-custom-class="link" href="https://www.privacy.org.nz/your-rights/making-a-complaint/" rel="noopener noreferrer" target="_blank">Office of New Zealand Privacy Commissioner</a>.</span></div>
+
+      <div><strong><span data-custom-class="heading_2"><h3>Republic of South Africa</h3></strong></span></div>
+      <div><span data-custom-class="body_text">At any time, you have the right to request access to or correction of your personal information. You can make such a request by contacting us by using the contact details provided in the section "<a data-custom-class="link" href="#request">HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</a>"</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">If you are unsatisfied with the manner in which we address any complaint with regard to our processing of personal information, you can contact the office of the regulator, the details of which are:</span></div>
+      <div><br></div>
+      <div><a data-custom-class="link" href="https://inforegulator.org.za/" rel="noopener noreferrer" target="_blank">The Information Regulator (South Africa)</a></div>
+      <div><span data-custom-class="body_text">General enquiries: <a data-custom-class="link" href="mailto:enquiries@inforegulator.org.za">enquiries@inforegulator.org.za</a></span></div>
+      <div><span data-custom-class="body_text">Complaints (complete POPIA/PAIA form 5): <a data-custom-class="link" href="mailto:PAIAComplaints@inforegulator.org.za">PAIAComplaints@inforegulator.org.za</a> &amp; <a data-custom-class="link" href="mailto:POPIAComplaints@inforegulator.org.za">POPIAComplaints@inforegulator.org.za</a></span></div>
+
+      <div id="policyupdates"><strong><span data-custom-class="heading_1"><h2>14. DO WE MAKE UPDATES TO THIS NOTICE?</h2></span></strong></div>
+      <div><span data-custom-class="body_text"><em><strong>In Short:</strong> Yes, we will update this notice as necessary to stay compliant with relevant laws.</em></span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">We may update this Privacy Notice from time to time. The updated version will be indicated by an updated "Revised" date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.</span></div>
+
+      <div id="contact"><strong><span data-custom-class="heading_1"><h2>15. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2></span></strong></div>
+      <div><span data-custom-class="body_text">If you have questions or comments about this notice, you may email us at <a data-custom-class="link" href="mailto:privacy@pancakesandbooze.com">privacy@pancakesandbooze.com</a> or contact us by post at:</span></div>
+      <div><br></div>
+      <div><span data-custom-class="body_text">MoneyCakes, LLC<br>24381 Chamalea Dr<br>Mission Viejo, CA 92691<br>United States</span></div>
+
+      <div id="request"><strong><span data-custom-class="heading_1"><h2>16. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2></span></strong></div>
+      <div><span data-custom-class="body_text">You have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please fill out and submit a <a data-custom-class="link" href="https://app.termly.io/dsar/9ff14f29-8372-45af-9aa7-7c9b3b49c1bc" rel="noopener noreferrer" target="_blank">data subject access request</a>.</span></div>
+      </div>
+      <!-- END TERMLY -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
