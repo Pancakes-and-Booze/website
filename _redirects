@@ -151,7 +151,26 @@
 /discount*                      /                               301
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 11 — Per-city page rewrites (rewrites to /city, which reads the
+# SECTION 11 — Legacy subpages and trailing slash cleanup
+# ════════════════════════════════════════════════════════════════════════
+/mexicocity/contacto/              /mexicocity                     301
+/mexicocity/acerca-de/             /mexicocity                     301
+/mexicocity/boletos/               /mexicocity                     301
+/mexicocity/testimonios/           /mexicocity                     301
+/mexicocity/en/                    /mexicocity                     301
+/mexicocity/postlate/              /mexicocity                     301
+/mexicocity/preguntas-frecuentes/  /mexicocity                     301
+/honolulu/                         /honolulu                       301
+/nashville/                        /nashville                      301
+/miami/                            /miami                          301
+/vancouver/                        /vancouver                      301
+/paris/                            /paris                          301
+/zombiefashionshow/                /                               301
+/parking                           /                               301
+/tickets/dallas                    /dallas                         301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 12 — Per-city page rewrites (rewrites to /city, which reads the
 # slug from window.location.pathname and fetches shows.json).
 #
 # ADDING A NEW CITY: add a line here AND a row to the Shows sheet.
