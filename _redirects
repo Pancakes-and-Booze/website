@@ -137,7 +137,21 @@
 /payment-example    /   301
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 10 — Per-city page rewrites (rewrites to /city, which reads the
+# SECTION 10 — 404 Recovery — old URLs from previous site
+# ════════════════════════════════════════════════════════════════════════
+/shows                          /#shows                         301
+/los-angeles/                   /losangeles                     301
+/philadelphia-holiday-market    /philadelphia                   301
+/atlanta-parking                /atlanta                        301
+/dallas-holiday-market          /dallas                         301
+/holidaymarket                  /                               301
+/mexicocity/opiniones           /mexicocity                     301
+/home-v2                        /                               301
+/home-1                         /                               301
+/discount*                      /                               301
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 11 — Per-city page rewrites (rewrites to /city, which reads the
 # slug from window.location.pathname and fetches shows.json).
 #
 # ADDING A NEW CITY: add a line here AND a row to the Shows sheet.
