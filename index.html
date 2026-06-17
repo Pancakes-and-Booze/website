@@ -14,12 +14,12 @@
   <link rel="shortcut icon" href="/favicon.ico">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://www.pancakesandbooze.com/">
+  <link rel="canonical" href="https://pancakesandbooze.com/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pancakes & Booze Art Show">
-  <meta property="og:url" content="https://www.pancakesandbooze.com/">
+  <meta property="og:url" content="https://pancakesandbooze.com/">
   <meta property="og:title" content="Pancakes & Booze Art Show | The Wildest Art Show in North America">
   <meta property="og:description" content="Where culture gets fed. The underground art show — free pancakes, real artists, vendors, live DJs, body paint. Support local artists while they're still alive. 500+ shows across 40+ cities.">
   <meta property="og:image" content="https://www.pancakesandbooze.com/images/og-image.jpg">
@@ -2752,21 +2752,19 @@
           msg.className = 'city-modal-msg success';
           msg.textContent = `Thanks ${payload.first_name} — we'll be in touch about ${payload.city}.`;
 
-          // Fire Lead conversions to Meta + GA with Manual Advanced
-          // Matching so the lead is attributed to this user. Pixel
-          // hashes em/fn/ln client-side before sending. Wrapped in
+          // Fire Lead conversions via Zaraz (routes to Meta CAPI server-side)
+          // and GA4. em/fn/ln are passed as event properties so Zaraz can
+          // apply Advanced Matching without client-side hashing. Wrapped in
           // try/catch — a tracking failure must never break the form
           // success UX.
           try {
-            if (typeof fbq === 'function') {
-              fbq('init', '785234971632299', {
+            if (typeof zaraz === 'object' && typeof zaraz.track === 'function') {
+              zaraz.track('Lead', {
+                content_name: 'City Request',
+                content_category: payload.city,
                 em: payload.email,
                 fn: payload.first_name,
                 ln: payload.last_name
-              });
-              fbq('track', 'Lead', {
-                content_name: 'City Request',
-                content_category: payload.city
               });
             }
             if (typeof gtag === 'function') {

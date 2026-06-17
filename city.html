@@ -14,11 +14,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="canonical" id="canonical" href="https://www.pancakesandbooze.com/">
+  <link rel="canonical" id="canonical" href="https://pancakesandbooze.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pancakes & Booze Art Show">
-  <meta property="og:url" id="ogUrl" content="https://www.pancakesandbooze.com/">
+  <meta property="og:url" id="ogUrl" content="https://pancakesandbooze.com/">
   <meta property="og:title" id="ogTitle" content="Pancakes & Booze Art Show">
   <meta property="og:description" id="ogDesc" content="Where culture gets fed. Free pancakes, real artists, vendors, live DJs, body paint. Support local artists while they're still alive.">
   <meta property="og:image" id="ogImage" content="https://www.pancakesandbooze.com/images/og-image.jpg">
@@ -890,21 +890,19 @@
           msg.className = 'notify-msg success';
           msg.textContent = `Thanks ${payload.first_name} — we'll be in touch when the next ${cityName} show drops.`;
 
-          // Fire Lead conversions to Meta + GA with Manual Advanced
-          // Matching so the lead is attributed to this user. Pixel
-          // hashes em/fn/ln client-side before sending. Wrapped in
+          // Fire Lead conversions via Zaraz (routes to Meta CAPI server-side)
+          // and GA4. em/fn/ln are passed as event properties so Zaraz can
+          // apply Advanced Matching without client-side hashing. Wrapped in
           // try/catch — a tracking failure must never break the form
           // success UX.
           try {
-            if (typeof fbq === 'function') {
-              fbq('init', '785234971632299', {
+            if (typeof zaraz === 'object' && typeof zaraz.track === 'function') {
+              zaraz.track('Lead', {
+                content_name: 'City RSVP',
+                content_category: cityName,
                 em: payload.email,
                 fn: payload.first_name,
                 ln: payload.last_name
-              });
-              fbq('track', 'Lead', {
-                content_name: 'City RSVP',
-                content_category: cityName
               });
             }
             if (typeof gtag === 'function') {
