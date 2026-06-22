@@ -25,6 +25,16 @@
 #    catch-all → infinite loop. Dropping .html from the rewrite destination
 #    (just `/city`) sidesteps this — Pages still finds city.html via the
 #    pretty-URL resolution in the OTHER direction.
+#
+# 3. Cloudflare Pages applies only the FIRST 100 rules in this file and
+#    SILENTLY DROPS the rest — no deploy error, no warning. Rules past #100
+#    just never match, so the request falls through to the homepage. This
+#    bit us when /toronto (and 11 other cities at the bottom of Section 12)
+#    started serving the homepage. Keep the ACTIVE, ticket-selling cities in
+#    the first 100 rules; dormant cities are parked at the very bottom of
+#    Section 12 on purpose so they're the first to fall off if we creep back
+#    toward the cap. Count active rules with:
+#      grep -vcE '^[[:space:]]*#|^[[:space:]]*$' _redirects
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 1 — Specific /tickets/<slug> overrides (MUST come before catchall)
@@ -58,20 +68,14 @@
 /bangkok-tickets    /bangkok  301
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 4 — Parking & load-in pages → respective city page
-# Per-venue logistics pages on Squarespace. Roll them into the city page —
-# dormant cities show the "Notify me" form, live shows show current info.
+# SECTION 4 — Parking & load-in pages (REMOVED 2026-06-22)
+# Old Squarespace per-venue parking/load-in pages (/austin-parking,
+# /atl-parking, /atlanta-load-in, /brooklyn-parking, /chicago-parking,
+# /dallas-parking, /denver-parking, /denver-load-in, /raleigh-parking,
+# /atlanta-parking) used to 301 to their city page. Removed to free up
+# rule slots under Cloudflare Pages' 100-rule cap (see gotcha #3 at top).
+# These low-traffic legacy URLs now 404.
 # ════════════════════════════════════════════════════════════════════════
-/austin-parking        /austin     301
-/atl-parking           /atlanta    301
-/atl-parking-event     /atlanta    301
-/atlanta-load-in       /atlanta    301
-/brooklyn-parking      /nyc        301
-/chicago-parking       /chicago    301
-/dallas-parking        /dallas     301
-/denver-parking        /denver     301
-/denver-load-in        /denver     301
-/raleigh-parking       /raleigh    301
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 5 — Mexico City bilingual routing
@@ -142,10 +146,8 @@
 /shows                          /#shows                         301
 /los-angeles/                   /losangeles                     301
 /philadelphia-holiday-market    /philadelphia                   301
-/atlanta-parking                /atlanta                        301
 /dallas-holiday-market          /dallas                         301
 /holidaymarket                  /                               301
-/mexicocity/opiniones           /mexicocity                     301
 /home-v2                        /                               301
 /home-1                         /                               301
 /discount*                      /                               301
@@ -153,21 +155,15 @@
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 11 — Legacy subpages and trailing slash cleanup
 # ════════════════════════════════════════════════════════════════════════
-/mexicocity/contacto/              /mexicocity                     301
-/mexicocity/acerca-de/             /mexicocity                     301
-/mexicocity/boletos/               /mexicocity                     301
-/mexicocity/testimonios/           /mexicocity                     301
-/mexicocity/en/                    /mexicocity                     301
-/mexicocity/postlate/              /mexicocity                     301
-/mexicocity/preguntas-frecuentes/  /mexicocity                     301
+# (Dead /mexicocity/<subpage>/ rules removed 2026-06-22 — already covered by
+#  the /mexicocity/* catch-all in Section 5. Likewise /tickets/dallas was
+#  already covered by /tickets/* in Section 2. /parking removed with Section 4.)
 /honolulu/                         /honolulu                       301
 /nashville/                        /nashville                      301
 /miami/                            /miami                          301
 /vancouver/                        /vancouver                      301
 /paris/                            /paris                          301
 /zombiefashionshow/                /                               301
-/parking                           /                               301
-/tickets/dallas                    /dallas                         301
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 12 — Per-city page rewrites (rewrites to /city, which reads the
@@ -180,22 +176,18 @@
 /austin         /city  200
 /baltimore      /city  200
 /bangkok        /city  200
-/berlin         /city  200
 /boston         /city  200
 /calgary        /city  200
 /charlotte      /city  200
 /chicago        /city  200
 /cincinnati     /city  200
 /cleveland      /city  200
-/columbus       /city  200
 /dallas         /city  200
 /denver         /city  200
 /detroit        /city  200
-/honolulu       /city  200
 /houston        /city  200
 /kansascity     /city  200
 /lasvegas       /city  200
-/london         /city  200
 /losangeles     /city  200
 /memphis        /city  200
 # /mexicocity served directly by Cloudflare Pages clean URL (mexicocity.html).
@@ -211,20 +203,31 @@
 /oakland        /city  200
 /okc            /city  200
 /orlando        /city  200
-/paris          /city  200
 /philadelphia   /city  200
 /phoenix        /city  200
 /pittsburgh     /city  200
 /portland       /city  200
-/providence	/city  200
+/providence     /city  200
 /raleigh        /city  200
-/saltlakecity   /city  200
 /sanantonio     /city  200
 /sandiego       /city  200
 /sanfrancisco   /city  200
-/sanjose        /city  200
 /seattle        /city  200
 /toronto        /city  200
 /tucson         /city  200
 /vancouver      /city  200
 /washingtondc   /city  200
+
+# ─── Lower-priority / dormant cities — PARKED LAST ON PURPOSE ────────────
+# Cloudflare Pages only applies the first 100 rules (gotcha #3 at top). If
+# the rule count ever creeps back toward that cap, the cities at the very
+# bottom are the first to silently fall off and start serving the homepage.
+# These are dormant (no active show booked), so they're the safest to lose.
+# When one books a show, MOVE it up into the alphabetical list above.
+/berlin         /city  200
+/columbus       /city  200
+/honolulu       /city  200
+/london         /city  200
+/paris          /city  200
+/saltlakecity   /city  200
+/sanjose        /city  200
