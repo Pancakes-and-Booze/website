@@ -49,7 +49,7 @@
       "doors": "7PM",
       "presale_price": "20",
       "ticket_link": "https://www.eventbrite.com/e/the-toronto-pancakes-booze-art-show-tickets-1989621116318?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/toronto-17-jul-2026/submit-artists",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/toronto-17-jul-2026/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/toronto-17-jul-2026/submit-vendor"
     },
     {
@@ -90,6 +90,19 @@
       "ticket_link": "https://eventbrite.com/e/the-oakland-pancakes-booze-art-show-tickets-1990070904647?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/oakland-30-jul-2026/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/oakland-30-jul-2026/submit-vendor"
+    },
+    {
+      "slug": "phoenix",
+      "city": "Phoenix",
+      "state": "AZ",
+      "venue": "Walter Studios",
+      "month": "Aug",
+      "day": "08",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://walterstudios.com/",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/phoenix/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/phoenix/submit-vendor"
     },
     {
       "slug": "raleigh",
