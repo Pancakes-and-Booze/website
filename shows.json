@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T01:46:49Z",
+  "generated_at": "2026-06-29T20:42:40Z",
   "shows": [
     {
       "live": true,
@@ -1829,10 +1829,10 @@
       "address": "801 E St NW",
       "event_time": "7pm - Midnight",
       "age": "21",
-      "ticket_link": null,
+      "ticket_link": "https://www.eventbrite.com/e/the-washington-dc-pancakes-booze-art-show-tickets-1992779053794?aff=PBEmails",
       "apply_link": null,
       "flyer_url": "/images/flyers/dc-flyer-sept-2026.webp",
-      "fb_link": null,
+      "fb_link": "https://www.facebook.com/events/1378621594154939",
       "early_bird_price": "17",
       "day_of_price": "23",
       "min_pieces": 2,
@@ -1844,8 +1844,8 @@
       "artist_install_time": "2p - 5p",
       "vendor_install_date": "2026/9/26",
       "vendor_install_time": "5:00 PM",
-      "artist_payment_link": null,
-      "vendor_payment_link": null,
+      "artist_payment_link": "https://eventbrite.com/e/1992779053794/?discount=ArtistsWashDC_Sept26th",
+      "vendor_payment_link": "https://eventbrite.com/e/1992779053794/?discount=VendsWashDC_Sept26th",
       "live_painter_install_time": "7:30 PM",
       "body_painter_install_time": "7:30 PM",
       "date_iso": "2026-09-26",
