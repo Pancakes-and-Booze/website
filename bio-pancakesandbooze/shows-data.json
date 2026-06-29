@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "orlando",
-      "city": "Orlando",
-      "state": "FL",
-      "venue": "The Abbey",
-      "month": "Jun",
-      "day": "27",
-      "doors": "7PM",
-      "presale_price": "15",
-      "ticket_link": "https://eventbrite.com/e/the-orlando-pancakes-booze-art-show-tickets-1987699816659?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/orlando-27-jun-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/orlando-27-jun-2026/submit-vendor"
-    },
-    {
       "slug": "nyc",
       "city": "Brooklyn",
       "state": "NY",
