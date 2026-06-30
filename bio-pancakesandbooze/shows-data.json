@@ -144,6 +144,19 @@
       "vendor_link": "https://www.voxxypresents.com/events/mexico-city/apply/546"
     },
     {
+      "slug": "nashville",
+      "city": "Nashville",
+      "state": "TN",
+      "venue": "The Trimble",
+      "month": "Sep",
+      "day": "12",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://nashville-pnb-sept-12-2026.eventbrite.com",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-vendor"
+    },
+    {
       "slug": "seattle",
       "city": "Seattle",
       "state": "WA",
@@ -168,6 +181,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-oklahoma-city-pancakes-booze-art-show-tickets-1992064530636?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/oklahoma-city/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/oklahoma-city/submit-vendor"
+    },
+    {
+      "slug": "washingtondc",
+      "city": "Washington DC",
+      "state": "DC",
+      "venue": "Penn Social",
+      "month": "Sep",
+      "day": "26",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-washington-dc-pancakes-booze-art-show-tickets-1992779053794?aff=PBEmails",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/washington-d-c/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/washington-d-c/submit-vendor"
     }
   ]
 }
