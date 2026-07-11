@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "nyc",
-      "city": "Brooklyn",
-      "state": "NY",
-      "venue": "The Brooklyn Monarch",
-      "month": "Jul",
-      "day": "09",
-      "doors": "7PM",
-      "presale_price": "15",
-      "ticket_link": "https://kyd.to/fRuYlxP9",
-      "artist_link": "https://www.voxxypresents.com/events/pancakes-booze-brooklyn/apply/531",
-      "vendor_link": "https://www.voxxypresents.com/events/pancakes-booze-brooklyn/apply/532"
-    },
-    {
       "slug": "sanantonio",
       "city": "San Antonio",
       "state": "TX",
@@ -126,7 +113,7 @@
       "day": "29",
       "doors": "8PM",
       "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-providence-pancakes-booze-art-show-tickets-1991799748666?aff=PBEmails",
+      "ticket_link": "https://www.etix.com/ticket/p/46813018/the-pancakes-booze-underground-art-show-pawtucket-the-met-ri",
       "artist_link": "https://shows.pancakesandbooze.com/shows/providence-29-aug-2026/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/providence-29-aug-2026/submit-vendor"
     },
