@@ -759,7 +759,10 @@
     </div>
   </footer>
 
-  <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+  <!-- data-categories tells Termly's auto-blocker this is essential (it's the
+       payment flow, not tracking). Belt-and-suspenders: the checkout also
+       retries after consent, and falls back to a direct Eventbrite button. -->
+  <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js" data-categories="essential"></script>
   <script>
     // ════════════ SHOWS.JSON INTEGRATION ════════════
     // Same pattern as artist-hub.html: match ?slug= (or ?city=) against
@@ -774,11 +777,13 @@
       };
 
       let match = null;
+      let sheetPricing = null;
       try {
         const res = await fetch('/shows.json', { cache: 'no-cache' });
         if (!res.ok) throw new Error('shows.json fetch failed');
         const data = await res.json();
         const shows = Array.isArray(data) ? data : (data.shows || []);
+        if (!Array.isArray(data) && data.pricing) sheetPricing = data.pricing;
         if (wanted) {
           match = shows.find(s => {
             const slug = (s.slug || '').toLowerCase();
@@ -798,10 +803,10 @@
         return;
       }
 
-      renderShow(match);
+      renderShow(match, sheetPricing);
     })();
 
-    function renderShow(show) {
+    function renderShow(show, sheetPricing) {
       const city = show.city || 'Your City';
       const payUrl = /^https?:\/\//i.test(show.artist_payment_link)
         ? show.artist_payment_link
@@ -887,7 +892,7 @@
 
       // Pricing card
       const minPieces = parseInt(show.min_pieces, 10) || 0;
-      renderPricing(show);
+      renderPricing(show, sheetPricing);
 
       // Checkout
       const promoMatch = payUrl.match(/[?&](?:discount|promocode|promo_code|promo|code|coupon)=([^&#]+)/i);
@@ -977,10 +982,23 @@
       mexicocity: 'mexico'
     };
 
-    function renderPricing(show) {
+    function renderPricing(show, sheetPricing) {
       const card = document.getElementById('pricingCard');
       const region = REGION_BY_SLUG[(show.slug || '').toLowerCase()] || 'us';
-      const cfg = PRICING_TABLES[region];
+
+      // Prefer pricing exported into shows.json by n8n (the Bible's Pricing
+      // tab is the source of truth); the hardcoded table is the fallback for
+      // an older shows.json without a `pricing` key. Sheet rows are
+      // [pieces, early, regular] or [pieces, price] for flat-rate regions.
+      let cfg = PRICING_TABLES[region] || null;
+      const sheetRows = sheetPricing && sheetPricing[region];
+      if (Array.isArray(sheetRows) && sheetRows.length) {
+        cfg = {
+          note: (PRICING_TABLES[region] || {}).note || '',
+          cols: sheetRows[0].length >= 3 ? ['Early Bird', 'Regular'] : ['Price'],
+          rows: sheetRows
+        };
+      }
       if (!cfg) { card.hidden = true; return; } // region table not set yet
 
       const twoCols = cfg.cols.length === 2;
@@ -1071,8 +1089,24 @@
         frame.appendChild(wrap);
       }
 
+      let widgetLive = false;  // an iframe rendered and stayed
+      let attemptPending = false;
+      let failedVerifies = 0;  // stop retrying after repeated real failures
+
       function initWidget() {
+        if (widgetLive || attemptPending || failedVerifies >= 2) return;
         if (!window.EBWidgets || !eventId) { showFallbackOnly(); return; }
+
+        // The fallback may have replaced the container — rebuild it so the
+        // widget has somewhere to land (also restores the white backdrop).
+        const frame = document.getElementById('checkoutFrame');
+        if (!frame) return;
+        if (!document.getElementById('eventbrite-widget-container')) {
+          frame.innerHTML = '<div id="eventbrite-widget-container"></div>';
+          frame.style.background = '#fff';
+          frame.style.minHeight = '200px';
+        }
+
         try {
           const opts = {
             widgetType: 'checkout',
@@ -1099,11 +1133,16 @@
         // The widget logs (rather than throws) on failure, and can inject a
         // permanently height-0 iframe. If nothing usable rendered, fall back
         // to the direct Eventbrite button instead of an empty box.
+        attemptPending = true;
         setTimeout(function () {
+          attemptPending = false;
           const container = document.getElementById('eventbrite-widget-container');
           if (!container) return;
           if (!container.querySelector('iframe') || container.offsetHeight < 100) {
+            failedVerifies++;
             showFallbackOnly();
+          } else {
+            widgetLive = true;
           }
         }, 4000);
       }
@@ -1121,6 +1160,18 @@
           }
         }, 250);
       }
+
+      // Termly strips the Eventbrite script until consent — once the visitor
+      // accepts, the script loads late, so swap the fallback back out for the
+      // real embedded checkout. The slow poll catches other late arrivals.
+      window.addEventListener('termlyConsentChange', function () {
+        setTimeout(initWidget, 500);
+      });
+      let lateTries = 0;
+      const latePoll = setInterval(function () {
+        if (widgetLive || ++lateTries > 30) { clearInterval(latePoll); return; }
+        if (window.EBWidgets) initWidget();
+      }, 3000);
     }
   </script>
 </body>
