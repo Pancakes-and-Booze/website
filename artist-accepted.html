@@ -127,6 +127,14 @@
       max-width: 580px; margin: 0 auto;
       position: relative; z-index: 1;
     }
+    .hero-cta-row {
+      display: flex; gap: 14px;
+      justify-content: center; align-items: center;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      position: relative; z-index: 1;
+    }
+    .hero-cta-row .hero-cta, .cta-row .hero-cta { margin-top: 0; }
     .hero-cta {
       display: inline-block;
       margin-top: 22px;
@@ -154,7 +162,7 @@
       display: grid; grid-template-columns: 1fr; gap: 16px;
     }
     @media (min-width: 860px) {
-      .show-grid { grid-template-columns: 1fr 1.8fr; align-items: start; }
+      .show-grid { grid-template-columns: 1fr 1.8fr; align-items: stretch; }
     }
     .show-card, .flyer-inner, .pricing-card {
       background: var(--dark-card);
@@ -230,8 +238,11 @@
     }
     .flyer-inner img { width: 100%; display: block; }
     @media (min-width: 860px) {
-      .flyer-inner { display: flex; flex-direction: column; }
-      .flyer-inner img { flex: 1; object-fit: cover; min-height: 0; }
+      /* height:0 + flex:1 makes the flyer absorb exactly the leftover
+         column height (cropping via object-fit), so the left column always
+         ends level with the pricing card — no dead space either side. */
+      .flyer-inner { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+      .flyer-inner img { height: 0; flex: 1; min-height: 0; object-fit: cover; }
     }
 
     /* Pricing card (sits where the map sits on the artist hub) */
@@ -251,6 +262,11 @@
       font-size: 0.95rem; letter-spacing: 1.5px;
       color: var(--yellow);
       margin-bottom: 12px;
+    }
+    .pricing-currency {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin: -6px 0 12px;
     }
     .pricing-table-wrap { padding: 0 18px; overflow-x: auto; flex: 1; }
     @media (min-width: 860px) {
@@ -560,7 +576,10 @@
         <h1 class="hub-title" id="hubTitle">You&rsquo;re In</h1>
         <p class="hub-subhead">Your wall is waiting.</p>
         <p class="hub-sub">You&rsquo;ve been accepted to exhibit. Lock in your space below &mdash; it takes about two minutes, and you keep 100% of every sale.</p>
-        <a href="#checkout" class="hero-cta" id="heroCta">Reserve Your Wall Space &darr;</a>
+        <div class="hero-cta-row">
+          <a href="#checkout" class="hero-cta" id="heroCta">Reserve Your Wall Space &darr;</a>
+          <a href="#" class="btn-outline js-flyer-btn" target="_blank" rel="noopener" download hidden>Get the Flyer</a>
+        </div>
       </div>
     </section>
 
@@ -589,6 +608,7 @@
             <div class="pricing-card-header">
               <h3>Wall Space Pricing</h3>
               <div class="pricing-deadline" id="pricingDeadline" hidden></div>
+              <div class="pricing-currency" id="pricingCurrency" hidden></div>
             </div>
             <div class="pricing-table-wrap">
               <table class="pricing-table" id="pricingTable"></table>
@@ -701,7 +721,7 @@
         <section class="cta-row-section">
           <div class="cta-row">
             <a href="#checkout" class="hero-cta">Reserve Your Wall Space &uarr;</a>
-            <a href="#" class="btn-outline" id="flyerBtn" target="_blank" rel="noopener" download hidden>Get the Flyer</a>
+            <a href="#" class="btn-outline js-flyer-btn" target="_blank" rel="noopener" download hidden>Get the Flyer</a>
           </div>
         </section>
 
@@ -852,14 +872,16 @@
       row('Install / Load-In', installWhen);
       if (show.age) row('Age Policy', String(show.age).replace(/\+$/, '') + '+');
 
-      // Flyer: inline card is desktop-only (CSS); the bottom "Get the
-      // Flyer" button covers mobile.
+      // Flyer: inline card is desktop-only (CSS); "Get the Flyer" buttons
+      // (hero + bottom CTA row) cover everyone.
       if (show.flyer_url) {
         document.getElementById('flyerImg').src = show.flyer_url;
         document.getElementById('flyerImg').alt = city + ' event flyer';
         document.getElementById('flyerCard').hidden = false;
-        document.getElementById('flyerBtn').href = show.flyer_url;
-        document.getElementById('flyerBtn').hidden = false;
+        document.querySelectorAll('.js-flyer-btn').forEach(btn => {
+          btn.href = show.flyer_url;
+          btn.hidden = false;
+        });
       }
 
       // Pricing card
@@ -903,19 +925,51 @@
     // the regions in REGION_BY_SLUG — when Canada/Mexico numbers are set,
     // fill in their tables below and the right one renders automatically.
     const PRICING_TABLES = {
-      us: [
-        [2, '$20', '$25'],
-        [3, '$40', '$50'],
-        [4, '$60', '$75'],
-        [5, '$80', '$100'],
-        [6, '$100', '$125'],
-        [7, '$120', '$150'],
-        [8, '$140', '$175'],
-        [9, '$160', '$200'],
-        [10, '$180', '$225']
-      ],
-      canada: null, // TODO: add CAD rows, same [pieces, early, regular] shape
-      mexico: null  // TODO: add MXN rows
+      us: {
+        note: '',
+        cols: ['Early Bird', 'Regular'],
+        rows: [
+          [2, '$20', '$25'],
+          [3, '$40', '$50'],
+          [4, '$60', '$75'],
+          [5, '$80', '$100'],
+          [6, '$100', '$125'],
+          [7, '$120', '$150'],
+          [8, '$140', '$175'],
+          [9, '$160', '$200'],
+          [10, '$180', '$225']
+        ]
+      },
+      canada: {
+        note: 'Prices in CAD',
+        cols: ['Early Bird', 'Regular'],
+        rows: [
+          [2, '$25', '$30'],
+          [3, '$50', '$60'],
+          [4, '$75', '$90'],
+          [5, '$100', '$120'],
+          [6, '$125', '$150'],
+          [7, '$150', '$180'],
+          [8, '$175', '$210'],
+          [9, '$200', '$240'],
+          [10, '$225', '$270']
+        ]
+      },
+      mexico: {
+        note: 'Prices in MXN',
+        cols: ['Price'], // flat rate — no early bird for Mexico right now
+        rows: [
+          [2, '$200'],
+          [3, '$400'],
+          [4, '$600'],
+          [5, '$800'],
+          [6, '$1,000'],
+          [7, '$1,200'],
+          [8, '$1,400'],
+          [9, '$1,600'],
+          [10, '$1,800']
+        ]
+      }
     };
     const REGION_BY_SLUG = {
       vancouver: 'canada', toronto: 'canada', montreal: 'canada', calgary: 'canada',
@@ -925,13 +979,16 @@
     function renderPricing(show) {
       const card = document.getElementById('pricingCard');
       const region = REGION_BY_SLUG[(show.slug || '').toLowerCase()] || 'us';
-      const rows = PRICING_TABLES[region];
-      if (!rows) { card.hidden = true; return; } // region table not set yet
+      const cfg = PRICING_TABLES[region];
+      if (!cfg) { card.hidden = true; return; } // region table not set yet
+
+      const twoCols = cfg.cols.length === 2;
 
       // Early bird vs regular, keyed to the show's early-bird deadline.
+      // Flat-rate regions (single column) skip the whole early-bird story.
       const ebIso = show.early_bird_ends_iso;
       let ebActive = null; // null = no deadline known, show both plainly
-      if (ebIso) ebActive = new Date() <= new Date(ebIso + 'T23:59:59');
+      if (twoCols && ebIso) ebActive = new Date() <= new Date(ebIso + 'T23:59:59');
 
       const deadline = document.getElementById('pricingDeadline');
       if (ebActive === true) {
@@ -941,6 +998,12 @@
       } else if (ebActive === false) {
         deadline.textContent = 'Early bird has ended — regular pricing applies';
         deadline.hidden = false;
+      }
+
+      if (cfg.note) {
+        const currency = document.getElementById('pricingCurrency');
+        currency.textContent = cfg.note;
+        currency.hidden = false;
       }
 
       const ebCls  = ebActive === true ? 'active-col' : (ebActive === false ? 'inactive-col struck' : '');
@@ -975,17 +1038,16 @@
         cells.forEach(c => tr.appendChild(c));
         return tr;
       };
-      table.appendChild(mkRow([
-        mkCell('th', 'Pieces', ''),
-        mkCell('th', 'Early Bird', ebCls, ebChip),
-        mkCell('th', 'Regular', regCls, regChip)
-      ]));
-      rows.forEach(([pieces, early, regular]) => {
-        table.appendChild(mkRow([
-          mkCell('td', String(pieces), ''),
-          mkCell('td', early, ebCls),
-          mkCell('td', regular, regCls)
-        ]));
+      const headCells = [mkCell('th', 'Pieces', '')];
+      headCells.push(mkCell('th', cfg.cols[0], twoCols ? ebCls : '', twoCols ? ebChip : null));
+      if (twoCols) headCells.push(mkCell('th', cfg.cols[1], regCls, regChip));
+      table.appendChild(mkRow(headCells));
+
+      cfg.rows.forEach((r) => {
+        const cells = [mkCell('td', String(r[0]), '')];
+        cells.push(mkCell('td', r[1], twoCols ? ebCls : ''));
+        if (twoCols) cells.push(mkCell('td', r[2], regCls));
+        table.appendChild(mkRow(cells));
       });
     }
 
