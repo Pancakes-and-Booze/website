@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Confirmation | Pancakes &amp; Booze</title>
+  <meta name="description" content="Pre-payment confirmation for accepted Pancakes & Booze artists.">
+
+  <!-- Accepted artists only. Don't index. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --dark-card-2: #1a1a1a;
+      --dark-border: #222222;
+      --white: #f5f5f5;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --accent: #ff2d7b;
+      --accent-glow: rgba(255, 45, 123, 0.3);
+      --yellow: #e8ff21;
+      --yellow-glow: rgba(232, 255, 33, 0.3);
+      --gradient: linear-gradient(135deg, #ff2d7b, #ff6b35, #e8ff21);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    section[id] { scroll-margin-top: 96px; }
+    [hidden] { display: none !important; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Announcement */
+    .announcement {
+      background: var(--gradient);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; gap: 12px;
+    }
+    .nav-logo img { height: 40px; }
+    .nav-back {
+      color: var(--gray-light);
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .nav-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* Hero */
+    .hub-hero {
+      padding: 60px 0 28px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hub-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,45,123,0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .hub-eyebrow {
+      font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 12px;
+      position: relative; z-index: 1;
+    }
+    .hub-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+      letter-spacing: 1px; line-height: 0.95;
+      margin-bottom: 14px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+    }
+    .hub-subhead {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      letter-spacing: 3px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .hub-sub {
+      font-size: 1rem; color: var(--gray-light);
+      max-width: 580px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .hero-cta {
+      display: inline-block;
+      margin-top: 22px;
+      font-family: var(--font-display);
+      font-size: 1.1rem; letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--accent);
+      padding: 14px 34px;
+      border-radius: 8px;
+      position: relative; z-index: 1;
+      box-shadow: 0 0 30px var(--accent-glow);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover {
+      background: var(--yellow);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    /* Snapshot + flyer */
+    .show-block { padding: 12px 0 28px; }
+    .show-grid {
+      display: grid; grid-template-columns: 1fr; gap: 16px;
+    }
+    @media (min-width: 860px) {
+      .show-grid { grid-template-columns: 1.8fr 1fr; align-items: stretch; }
+    }
+    .show-card, .flyer-inner {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+    }
+    .show-card { padding: 16px 18px; }
+    @media (min-width: 860px) {
+      .show-card { padding: 24px; }
+    }
+    .show-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 10px; text-transform: uppercase;
+    }
+    .show-city-row {
+      display: flex; align-items: baseline;
+      gap: 10px; flex-wrap: wrap; margin-bottom: 10px;
+    }
+    .show-city {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      letter-spacing: 1px;
+    }
+    .show-date {
+      font-family: var(--font-display);
+      font-size: 1rem; color: var(--yellow);
+      letter-spacing: 2px;
+    }
+    @media (min-width: 860px) {
+      .show-date { font-size: 1.2rem; }
+    }
+    .show-grid-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px; font-size: 0.9rem;
+    }
+    @media (max-width: 859px) {
+      .show-grid-details > div:first-child { grid-column: span 2; }
+    }
+    @media (min-width: 860px) {
+      .show-grid-details {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px 20px;
+      }
+    }
+    .show-grid-details dt {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray); font-weight: 700; margin-bottom: 2px;
+    }
+    .show-grid-details dd { color: var(--white); }
+
+    .flyer-inner { overflow: hidden; }
+    .flyer-eyebrow {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; font-family: var(--font-display);
+      padding: 14px 16px 10px;
+    }
+    .flyer-inner img { width: 100%; display: block; }
+    @media (min-width: 860px) {
+      .flyer-inner { display: flex; flex-direction: column; }
+      .flyer-inner img { flex: 1; object-fit: cover; min-height: 0; }
+    }
+
+    /* Deal strip */
+    .deal-section { padding: 8px 0 28px; }
+    .deal-strip {
+      display: grid; grid-template-columns: 1fr; gap: 14px;
+    }
+    @media (min-width: 640px) {
+      .deal-strip { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
+    .deal-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      text-align: center;
+    }
+    .deal-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem; line-height: 1;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+    .deal-label {
+      font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray); font-weight: 700;
+    }
+    .deal-note {
+      margin-top: 6px;
+      font-size: 0.85rem; color: var(--gray-light);
+    }
+
+    /* Checkout */
+    .checkout-section { padding: 28px 0; border-top: 1px solid var(--dark-border); }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 8px; text-align: center;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--gray-light);
+      font-size: 0.95rem;
+      max-width: 560px;
+      margin: 0 auto 22px;
+    }
+    .checkout-card {
+      background: var(--dark-card);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 40px rgba(255, 45, 123, 0.12);
+      overflow: hidden;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .checkout-frame {
+      background: #fff; /* Eventbrite iframe renders on white */
+      min-height: 200px;
+    }
+    #eventbrite-widget-container { width: 100%; }
+    .checkout-fallback {
+      padding: 18px 24px;
+      background: var(--dark-card-2);
+      border-top: 1px solid var(--dark-border);
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--gray-light);
+    }
+    .checkout-fallback a { font-weight: 700; }
+    .checkout-direct {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1.2rem; letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--accent);
+      padding: 16px 38px;
+      border-radius: 8px;
+      margin: 28px auto;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .checkout-direct:hover {
+      background: var(--yellow);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .checkout-success {
+      display: none;
+      padding: 40px 28px;
+      text-align: center;
+    }
+    .checkout-success.active { display: block; }
+    .checkout-success h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem; letter-spacing: 1px;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+    .checkout-success p { color: var(--gray-light); max-width: 520px; margin: 0 auto 8px; }
+    .checkout-success strong { color: var(--white); }
+
+    /* Steps */
+    .steps-section { padding: 28px 0; border-top: 1px solid var(--dark-border); }
+    .steps-grid {
+      display: grid; grid-template-columns: 1fr; gap: 14px;
+    }
+    @media (min-width: 760px) {
+      .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
+    .step-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .step-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .step-num {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1rem; letter-spacing: 1px;
+      color: var(--black); background: var(--yellow);
+      padding: 2px 10px; border-radius: 4px;
+      margin-bottom: 12px; align-self: flex-start;
+    }
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .step-card p {
+      color: var(--gray-light);
+      font-size: 0.95rem; line-height: 1.6;
+      flex: 1;
+    }
+    .step-card strong { color: var(--white); }
+    .step-card .tech-note {
+      display: block;
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: var(--dark-card-2);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.85rem; color: var(--gray-light);
+    }
+
+    /* Rules / support */
+    .rules-section { padding: 24px 0; border-top: 1px solid var(--dark-border); }
+    .rules-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 16px;
+    }
+    .rules-section p { color: var(--gray-light); margin-bottom: 10px; }
+    .rules-section strong { color: var(--white); }
+    .rules-section a {
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .rules-section a:hover { border-bottom-color: var(--accent); text-decoration: none; }
+
+    /* Unavailable state */
+    .unavailable {
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .unavailable .hub-title { margin-bottom: 18px; }
+    .unavailable p {
+      color: var(--gray-light);
+      max-width: 520px; margin: 0 auto 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 0 32px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 24px; align-items: center;
+    }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray-light); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* A11Y */
+    .skip-link {
+      position: absolute; top: -100px; left: 8px;
+      background: var(--yellow); color: var(--black);
+      padding: 12px 20px; border-radius: 6px;
+      font-weight: 700; font-family: var(--font-display);
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; z-index: 10000;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid var(--accent); outline-offset: 2px; }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px; border-radius: 3px;
+    }
+  </style>
+
+  <!-- TERMLY CMP -->
+  <script type="text/javascript" src="https://app.termly.io/resource-blocker/49c7ca22-d374-44e5-90e8-60f59c33283e?autoBlock=on"></script>
+
+  <!-- Consent bridge -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    window.addEventListener('termlyConsentChange', function (e) {
+      if (!window.Termly || !window.Termly.getConsentState) return;
+      var consent = window.Termly.getConsentState();
+      gtag('consent', 'update', {
+        'analytics_storage': consent.categories && consent.categories.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.categories && consent.categories.advertising ? 'granted' : 'denied'
+      });
+    });
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="announcement">Accepted Artists &mdash; Confirm Your Space</div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Pancakes &amp; Booze" width="40" height="40">
+      </a>
+      <a href="/" class="nav-back">&larr; Back Home</a>
+    </div>
+  </nav>
+
+  <!-- UNAVAILABLE STATE (shown when the slug doesn't match a live show) -->
+  <main id="unavailable" hidden>
+    <section class="unavailable">
+      <h1 class="hub-title">This page isn&rsquo;t available yet</h1>
+      <p>Double-check the link in your acceptance email or text &mdash; it should end with your city&rsquo;s name.</p>
+      <p>Still stuck? Email <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Confirmation%20Link">info@pancakesandbooze.com</a> and we&rsquo;ll get you sorted.</p>
+    </section>
+  </main>
+
+  <!-- CONFIRMATION CONTENT (revealed once show data loads) -->
+  <div id="confirmContent" hidden>
+
+    <!-- HERO -->
+    <section class="hub-hero">
+      <div class="container">
+        <div class="hub-eyebrow">Artist Confirmation</div>
+        <h1 class="hub-title" id="hubTitle">You&rsquo;re In</h1>
+        <p class="hub-subhead">Your wall is waiting.</p>
+        <p class="hub-sub">You&rsquo;ve been accepted to exhibit. Lock in your space below &mdash; it takes about two minutes, and you keep 100% of every sale.</p>
+        <a href="#checkout" class="hero-cta" id="heroCta">Claim Your Space &darr;</a>
+      </div>
+    </section>
+
+    <!-- SHOW SNAPSHOT + FLYER -->
+    <section class="show-block">
+      <div class="container">
+        <div class="show-grid">
+
+          <div class="show-card">
+            <h3>Your Show</h3>
+            <div class="show-city-row">
+              <div class="show-city" id="snapshotCity">&mdash;</div>
+              <div class="show-date" id="snapshotDate"></div>
+            </div>
+            <dl class="show-grid-details" id="snapshotGrid"></dl>
+          </div>
+
+          <div class="flyer-inner" id="flyerCard" hidden>
+            <p class="flyer-eyebrow">Event Flyer</p>
+            <img id="flyerImg" src="" alt="Event flyer">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <main id="main">
+      <div class="container">
+
+        <!-- THE DEAL -->
+        <section class="deal-section">
+          <div class="deal-strip">
+            <div class="deal-card">
+              <div class="deal-num" id="dealPrice">&mdash;</div>
+              <div class="deal-label">Per Piece</div>
+              <div class="deal-note">Your only cost to hang.</div>
+            </div>
+            <div class="deal-card">
+              <div class="deal-num" id="dealMin">&mdash;</div>
+              <div class="deal-label">Piece Minimum</div>
+              <div class="deal-note" id="dealMinNote">Bring enough to own your section.</div>
+            </div>
+            <div class="deal-card">
+              <div class="deal-num">0%</div>
+              <div class="deal-label">Commission</div>
+              <div class="deal-note">Every sale is yours. No gatekeepers, no cut.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHECKOUT -->
+        <section class="checkout-section" id="checkout">
+          <h2 class="section-title">Lock It In</h2>
+          <p class="section-sub" id="checkoutSub">Select the number of pieces you&rsquo;re hanging and check out below.</p>
+
+          <div class="checkout-card">
+            <div class="checkout-success" id="checkoutSuccess">
+              <h3>Space Confirmed.</h3>
+              <p>Your Eventbrite confirmation email has your <strong>Artist QR code</strong> &mdash; you&rsquo;ll need it at check-in.</p>
+              <p>Next, watch for a separate email from <strong>no-reply@voxxy.io</strong> with your Artist Portal link: parking, load-in, and the full prep guide. Check Spam and drag it to your Primary inbox.</p>
+            </div>
+
+            <div class="checkout-frame" id="checkoutFrame">
+              <div id="eventbrite-widget-container"></div>
+            </div>
+            <div class="checkout-fallback" id="checkoutFallback">
+              Checkout not loading?
+              <a id="directLink" href="#" target="_blank" rel="noopener">Open it directly on Eventbrite</a>.
+            </div>
+          </div>
+        </section>
+
+        <!-- WHAT HAPPENS NEXT -->
+        <section class="steps-section" id="next">
+          <h2 class="section-title">What Happens After You Pay</h2>
+          <div class="steps-grid">
+
+            <div class="step-card">
+              <span class="step-num">01</span>
+              <h3>Save Your QR</h3>
+              <p>Your Eventbrite confirmation email contains your <strong>Artist QR code</strong>. That&rsquo;s your check-in at the door on install day &mdash; keep it on your phone.</p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">02</span>
+              <h3>Watch for the Portal Email</h3>
+              <p>A separate email from <strong>no-reply@voxxy.io</strong> delivers your Artist Portal link: parking, load-in instructions, and the full prep guide.</p>
+              <span class="tech-note"><strong>Don&rsquo;t miss it:</strong> check Spam/Promotions and drag it to your Primary inbox so show updates reach you.</span>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">03</span>
+              <h3>Show Up &amp; Hang</h3>
+              <p>Install is <strong id="installText">listed in your portal</strong>. We provide screws, drivers, and pushpins. Max 3&nbsp;ft &times; 3&nbsp;ft per piece.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SUPPORT -->
+        <section class="rules-section">
+          <h2>Need Help?</h2>
+          <p>Payment link acting up, or questions before you commit? Email <a id="helpMail" href="mailto:info@pancakesandbooze.com?subject=Artist%20Confirmation">info@pancakesandbooze.com</a> with subject &ldquo;Artist Confirmation&rdquo; and we&rsquo;ll get back to you.</p>
+          <p>Policy questions? See the <a href="/#faq">main FAQ</a>.</p>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <noscript>
+    <div style="padding:60px 24px;text-align:center;color:#b0b0b0;">
+      This page needs JavaScript to load your show details. Please enable it, or use the payment link in your acceptance email.
+    </div>
+  </noscript>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Pancakes &amp; Booze Art Show. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#shows">Shows</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/cookies">Cookie Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/accessibility">Accessibility Statement</a>
+        <a href="/imprint">Imprint</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+  <script>
+    // ════════════ SHOWS.JSON INTEGRATION ════════════
+    // Same pattern as artist-hub.html: match ?slug= (or ?city=) against
+    // /shows.json, which n8n keeps in sync with the Event Details Master.
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const wanted = (params.get('slug') || params.get('city') || '').toLowerCase().trim();
+
+      const showUnavailable = () => {
+        document.getElementById('unavailable').hidden = false;
+        document.getElementById('confirmContent').hidden = true;
+      };
+
+      let match = null;
+      try {
+        const res = await fetch('/shows.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('shows.json fetch failed');
+        const data = await res.json();
+        const shows = Array.isArray(data) ? data : (data.shows || []);
+        if (wanted) {
+          match = shows.find(s => {
+            const slug = (s.slug || '').toLowerCase();
+            const name = (s.city || '').toLowerCase();
+            return slug === wanted || name === wanted
+              || slug.replace(/[\s_]/g, '-') === wanted
+              || name.replace(/[\s_]/g, '-') === wanted;
+          });
+        }
+      } catch (e) {
+        match = null;
+      }
+
+      // Gate: must be a live show with an artist payment link.
+      if (!match || match.live === false || !match.artist_payment_link) {
+        showUnavailable();
+        return;
+      }
+
+      renderShow(match);
+    })();
+
+    function renderShow(show) {
+      const city = show.city || 'Your City';
+      const payUrl = /^https?:\/\//i.test(show.artist_payment_link)
+        ? show.artist_payment_link
+        : 'https://' + show.artist_payment_link;
+
+      document.title = city + ' — Confirm Your Space | Pancakes & Booze';
+      document.getElementById('hubTitle').textContent = `You’re In, ${city}`;
+      document.getElementById('snapshotCity').textContent = city;
+
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && value) el.textContent = value;
+      };
+
+      // "2026/4/25" → "Saturday, April 25, 2026"
+      const prettyDate = (raw) => {
+        if (!raw) return '';
+        const m = String(raw).match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);
+        if (!m) return raw;
+        const d = new Date(+m[1], +m[2] - 1, +m[3]);
+        return d.toLocaleDateString('en-US', {
+          weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+        });
+      };
+
+      const dateLabel = show.date_display
+        || prettyDate(show.date)
+        || [show.date_month_short, show.date_day].filter(Boolean).join(' ');
+      setText('snapshotDate', dateLabel);
+
+      // Snapshot grid
+      const grid = document.getElementById('snapshotGrid');
+      grid.innerHTML = '';
+      const row = (label, value, href) => {
+        if (!value) return;
+        const dt = document.createElement('dt'); dt.textContent = label;
+        const dd = document.createElement('dd');
+        if (href) {
+          const a = document.createElement('a');
+          a.href = href; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = value;
+          dd.appendChild(a);
+        } else {
+          dd.textContent = value;
+        }
+        const wrap = document.createElement('div');
+        wrap.appendChild(dt); wrap.appendChild(dd);
+        grid.appendChild(wrap);
+      };
+
+      const installWhen = [prettyDate(show.artist_install_date), show.artist_install_time]
+        .filter(Boolean).join(', ');
+      const mapsUrl = show.address
+        ? 'https://maps.google.com/?q=' + encodeURIComponent([show.venue, show.address].filter(Boolean).join(', '))
+        : null;
+
+      row('Venue', show.venue);
+      if (show.address) row('Address', show.address, mapsUrl);
+      row('Show Hours', show.event_time);
+      row('Install / Load-In', installWhen);
+      if (show.age) row('Age Policy', String(show.age).replace(/\+$/, '') + '+');
+      if (show.artist_price) row('Hanging Fee', show.artist_price + ' per piece');
+
+      // Flyer
+      if (show.flyer_url) {
+        document.getElementById('flyerImg').src = show.flyer_url;
+        document.getElementById('flyerImg').alt = city + ' event flyer';
+        document.getElementById('flyerCard').hidden = false;
+      }
+
+      // Deal strip
+      const perPiece = parseFloat(String(show.artist_price || '').replace(/[^0-9.]/g, ''));
+      const minPieces = parseInt(show.min_pieces, 10) || 0;
+      setText('dealPrice', show.artist_price || '—');
+      setText('dealMin', minPieces > 0 ? String(minPieces) : '—');
+      if (perPiece && minPieces > 0) {
+        const total = perPiece * minPieces;
+        setText('dealMinNote', '$' + (total % 1 ? total.toFixed(2) : total) + ' minimum to claim your wall.');
+      }
+
+      // Checkout
+      const promoMatch = payUrl.match(/[?&](?:discount|promocode|promo_code|promo|code|coupon)=([^&#]+)/i);
+      const promoCode = promoMatch ? decodeURIComponent(promoMatch[1]) : '';
+      const idMatch = payUrl.match(/\/e\/[^/?#]*?(\d{9,})/) || payUrl.match(/(\d{9,})/);
+      const eventId = idMatch ? idMatch[1] : '';
+
+      let sub = 'Select the number of pieces you’re hanging' +
+        (minPieces > 0 ? ` (${minPieces} minimum)` : '') + ' and check out below.';
+      if (promoCode) sub += ' Your artist code is already applied.';
+      setText('checkoutSub', sub);
+
+      document.getElementById('directLink').href = payUrl;
+      setText('installText', installWhen || 'listed in your portal');
+      document.getElementById('helpMail').href =
+        'mailto:info@pancakesandbooze.com?subject=' + encodeURIComponent('Artist Confirmation ' + city);
+
+      // Reveal the page before the widget loads so nothing feels stuck.
+      document.getElementById('confirmContent').hidden = false;
+
+      // Zaraz checkout-intent tracking (no-op if Zaraz isn't loaded).
+      document.getElementById('heroCta').addEventListener('click', function () {
+        if (window.zaraz && typeof window.zaraz.track === 'function') {
+          window.zaraz.track('artist_checkout_intent', {
+            city: city, slug: show.slug || '', source: 'artist-accepted'
+          });
+        }
+      });
+
+      initCheckout(eventId, promoCode, payUrl, city, show.slug || '');
+    }
+
+    // ════════════ EVENTBRITE EMBEDDED CHECKOUT ════════════
+    function initCheckout(eventId, promoCode, payUrl, city, slug) {
+      function showFallbackOnly() {
+        const frame = document.getElementById('checkoutFrame');
+        if (!frame) return;
+        frame.style.background = 'transparent';
+        frame.style.minHeight = '0';
+        frame.innerHTML = '';
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'padding:40px 24px;text-align:center;background:#161616;';
+        const a = document.createElement('a');
+        a.className = 'checkout-direct';
+        a.style.margin = '0';
+        a.href = payUrl; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = 'Claim Your Space';
+        wrap.appendChild(a);
+        frame.appendChild(wrap);
+      }
+
+      function initWidget() {
+        if (!window.EBWidgets || !eventId) { showFallbackOnly(); return; }
+        try {
+          const opts = {
+            widgetType: 'checkout',
+            eventId: eventId,
+            iframeContainerId: 'eventbrite-widget-container',
+            iframeContainerHeight: 700,
+            onOrderComplete: function () {
+              document.getElementById('checkoutSuccess').classList.add('active');
+              document.getElementById('checkoutFrame').style.display = 'none';
+              document.getElementById('checkoutFallback').style.display = 'none';
+              if (window.zaraz && typeof window.zaraz.track === 'function') {
+                window.zaraz.track('artist_payment_complete', {
+                  city: city, slug: slug, source: 'artist-accepted'
+                });
+              }
+            }
+          };
+          if (promoCode) opts.promoCode = promoCode;
+          window.EBWidgets.createWidget(opts);
+        } catch (e) {
+          showFallbackOnly();
+          return;
+        }
+        // The widget logs (rather than throws) on failure, and can inject a
+        // permanently height-0 iframe. If nothing usable rendered, fall back
+        // to the direct Eventbrite button instead of an empty box.
+        setTimeout(function () {
+          const container = document.getElementById('eventbrite-widget-container');
+          if (!container) return;
+          if (!container.querySelector('iframe') || container.offsetHeight < 100) {
+            showFallbackOnly();
+          }
+        }, 4000);
+      }
+
+      if (window.EBWidgets) {
+        initWidget();
+      } else {
+        // Guard against blockers (consent tools, ad blockers) delaying or
+        // killing eb_widgets.js.
+        let tries = 0;
+        const poll = setInterval(function () {
+          if (window.EBWidgets || ++tries > 20) {
+            clearInterval(poll);
+            initWidget();
+          }
+        }, 250);
+      }
+    }
+  </script>
+</body>
+</html>
