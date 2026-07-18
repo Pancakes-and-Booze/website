@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "toronto",
-      "city": "Toronto",
-      "state": "ON",
-      "venue": "Revival",
-      "month": "Jul",
-      "day": "17",
-      "doors": "7PM",
-      "presale_price": "20",
-      "ticket_link": "https://www.eventbrite.com/e/the-toronto-pancakes-booze-art-show-tickets-1989621116318?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/toronto-17-jul-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/toronto-17-jul-2026/submit-vendor"
-    },
-    {
       "slug": "chicago",
       "city": "Chicago",
       "state": "IL",
