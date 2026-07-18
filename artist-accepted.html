@@ -147,18 +147,32 @@
       text-decoration: none;
     }
 
-    /* Snapshot + flyer */
+    /* Snapshot + flyer + pricing (mirrors artist-hub's show/map grid:
+       left column stacks show card + flyer, right column is pricing) */
     .show-block { padding: 12px 0 28px; }
     .show-grid {
       display: grid; grid-template-columns: 1fr; gap: 16px;
     }
     @media (min-width: 860px) {
-      .show-grid { grid-template-columns: 1.8fr 1fr; align-items: stretch; }
+      .show-grid { grid-template-columns: 1fr 1.5fr; align-items: stretch; }
     }
-    .show-card, .flyer-inner {
+    .show-card, .flyer-inner, .pricing-card {
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
       border-radius: var(--radius-lg);
+    }
+    /* Mobile: left column dissolves so children stack in the grid.
+       Order: show card → pricing → flyer. */
+    .show-left-col { display: contents; }
+    @media (max-width: 859px) {
+      .show-card    { order: 1; }
+      .pricing-card { order: 2; }
+      .flyer-inner  { order: 3; }
+    }
+    @media (min-width: 860px) {
+      .show-left-col {
+        display: flex; flex-direction: column; gap: 16px;
+      }
     }
     .show-card { padding: 16px 18px; }
     @media (min-width: 860px) {
@@ -219,35 +233,70 @@
       .flyer-inner img { flex: 1; object-fit: cover; min-height: 0; }
     }
 
-    /* Deal strip */
-    .deal-section { padding: 8px 0 28px; }
-    .deal-strip {
-      display: grid; grid-template-columns: 1fr; gap: 14px;
+    /* Pricing card (sits where the map sits on the artist hub) */
+    .pricing-card { display: flex; flex-direction: column; overflow: hidden; }
+    .pricing-card-header { padding: 16px 18px 0; }
+    @media (min-width: 860px) {
+      .pricing-card-header { padding: 24px 24px 0; }
     }
-    @media (min-width: 640px) {
-      .deal-strip { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    }
-    .deal-card {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: var(--radius-lg);
-      padding: 22px 24px;
-      text-align: center;
-    }
-    .deal-num {
+    .pricing-card h3 {
       font-family: var(--font-display);
-      font-size: 2.4rem; line-height: 1;
+      font-size: 1.05rem; letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 10px; text-transform: uppercase;
+    }
+    .pricing-deadline {
+      font-family: var(--font-display);
+      font-size: 0.95rem; letter-spacing: 1.5px;
       color: var(--yellow);
-      margin-bottom: 6px;
+      margin-bottom: 12px;
     }
-    .deal-label {
-      font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+    .pricing-table-wrap { padding: 0 18px; overflow-x: auto; flex: 1; }
+    @media (min-width: 860px) {
+      .pricing-table-wrap { padding: 0 24px; }
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    .pricing-table th {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
       color: var(--gray); font-weight: 700;
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--dark-border);
     }
-    .deal-note {
-      margin-top: 6px;
+    .pricing-table th.active-col { color: var(--yellow); }
+    .pricing-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--dark-border);
+      color: var(--gray-light);
+    }
+    .pricing-table tr:last-child td { border-bottom: 0; }
+    @media (min-width: 860px) {
+      .pricing-table { font-size: 0.95rem; }
+      .pricing-table th, .pricing-table td { padding: 11px 12px; }
+    }
+    .pricing-table td:first-child { color: var(--white); font-weight: 600; }
+    .pricing-table td.active-col {
+      color: var(--white); font-weight: 700;
+      background: rgba(232, 255, 33, 0.05);
+    }
+    .pricing-table .inactive-col { opacity: 0.55; }
+    .pricing-notes {
+      background: var(--dark-card-2);
+      padding: 14px 18px;
+      border-top: 1px solid var(--dark-border);
       font-size: 0.85rem; color: var(--gray-light);
+      margin-top: 14px;
     }
+    @media (min-width: 860px) {
+      .pricing-notes { padding: 16px 24px; }
+    }
+    .pricing-notes strong { color: var(--white); }
+    .pricing-notes p { margin-bottom: 6px; }
+    .pricing-notes p:last-child { margin-bottom: 0; }
 
     /* Checkout */
     .checkout-section { padding: 28px 0; border-top: 1px solid var(--dark-border); }
@@ -492,18 +541,34 @@
       <div class="container">
         <div class="show-grid">
 
-          <div class="show-card">
-            <h3>Your Show</h3>
-            <div class="show-city-row">
-              <div class="show-city" id="snapshotCity">&mdash;</div>
-              <div class="show-date" id="snapshotDate"></div>
+          <div class="show-left-col">
+            <div class="show-card">
+              <h3>Your Show</h3>
+              <div class="show-city-row">
+                <div class="show-city" id="snapshotCity">&mdash;</div>
+                <div class="show-date" id="snapshotDate"></div>
+              </div>
+              <dl class="show-grid-details" id="snapshotGrid"></dl>
             </div>
-            <dl class="show-grid-details" id="snapshotGrid"></dl>
+
+            <div class="flyer-inner" id="flyerCard" hidden>
+              <p class="flyer-eyebrow">Event Flyer</p>
+              <img id="flyerImg" src="" alt="Event flyer">
+            </div>
           </div>
 
-          <div class="flyer-inner" id="flyerCard" hidden>
-            <p class="flyer-eyebrow">Event Flyer</p>
-            <img id="flyerImg" src="" alt="Event flyer">
+          <div class="pricing-card" id="pricingCard">
+            <div class="pricing-card-header">
+              <h3>Wall Space Pricing</h3>
+              <div class="pricing-deadline" id="pricingDeadline" hidden></div>
+            </div>
+            <div class="pricing-table-wrap">
+              <table class="pricing-table" id="pricingTable"></table>
+            </div>
+            <div class="pricing-notes">
+              <p><strong>2-piece minimum</strong> to claim your wall. Pick your piece count at checkout below &mdash; your artist code applies these rates automatically.</p>
+              <p><strong>0% commission.</strong> Every sale is yours. No gatekeepers, no cut.</p>
+            </div>
           </div>
 
         </div>
@@ -512,27 +577,6 @@
 
     <main id="main">
       <div class="container">
-
-        <!-- THE DEAL -->
-        <section class="deal-section">
-          <div class="deal-strip">
-            <div class="deal-card">
-              <div class="deal-num" id="dealPrice">&mdash;</div>
-              <div class="deal-label">Per Piece</div>
-              <div class="deal-note">Your only cost to hang.</div>
-            </div>
-            <div class="deal-card">
-              <div class="deal-num" id="dealMin">&mdash;</div>
-              <div class="deal-label">Piece Minimum</div>
-              <div class="deal-note" id="dealMinNote">Bring enough to own your section.</div>
-            </div>
-            <div class="deal-card">
-              <div class="deal-num">0%</div>
-              <div class="deal-label">Commission</div>
-              <div class="deal-note">Every sale is yours. No gatekeepers, no cut.</div>
-            </div>
-          </div>
-        </section>
 
         <!-- CHECKOUT -->
         <section class="checkout-section" id="checkout">
@@ -665,7 +709,16 @@
         : 'https://' + show.artist_payment_link;
 
       document.title = city + ' — Confirm Your Space | Pancakes & Booze';
-      document.getElementById('hubTitle').textContent = `You’re In, ${city}`;
+
+      // Personalize the hero with the artist's first name when the link
+      // carries one (?name=Justin). Falls back to the city. textContent
+      // keeps it safe; strip anything that isn't name-like.
+      const rawName = (new URLSearchParams(window.location.search).get('name') || '').trim();
+      const firstName = rawName.split(/\s+/)[0].replace(/[^A-Za-zÀ-ÿ'’-]/g, '').slice(0, 20);
+      const heroName = firstName
+        ? firstName.charAt(0).toUpperCase() + firstName.slice(1)
+        : city;
+      document.getElementById('hubTitle').textContent = `You’re In, ${heroName}`;
       document.getElementById('snapshotCity').textContent = city;
 
       const setText = (id, value) => {
@@ -720,7 +773,6 @@
       row('Show Hours', show.event_time);
       row('Install / Load-In', installWhen);
       if (show.age) row('Age Policy', String(show.age).replace(/\+$/, '') + '+');
-      if (show.artist_price) row('Hanging Fee', show.artist_price + ' per piece');
 
       // Flyer
       if (show.flyer_url) {
@@ -729,15 +781,9 @@
         document.getElementById('flyerCard').hidden = false;
       }
 
-      // Deal strip
-      const perPiece = parseFloat(String(show.artist_price || '').replace(/[^0-9.]/g, ''));
+      // Pricing card
       const minPieces = parseInt(show.min_pieces, 10) || 0;
-      setText('dealPrice', show.artist_price || '—');
-      setText('dealMin', minPieces > 0 ? String(minPieces) : '—');
-      if (perPiece && minPieces > 0) {
-        const total = perPiece * minPieces;
-        setText('dealMinNote', '$' + (total % 1 ? total.toFixed(2) : total) + ' minimum to claim your wall.');
-      }
+      renderPricing(show);
 
       // Checkout
       const promoMatch = payUrl.match(/[?&](?:discount|promocode|promo_code|promo|code|coupon)=([^&#]+)/i);
@@ -745,8 +791,9 @@
       const idMatch = payUrl.match(/\/e\/[^/?#]*?(\d{9,})/) || payUrl.match(/(\d{9,})/);
       const eventId = idMatch ? idMatch[1] : '';
 
-      let sub = 'Select the number of pieces you’re hanging' +
-        (minPieces > 0 ? ` (${minPieces} minimum)` : '') + ' and check out below.';
+      let sub = 'Pick the number of pieces you’re hanging' +
+        (minPieces > 0 ? ` (${minPieces} minimum)` : '') +
+        ' and check out below — prices match the table above.';
       if (promoCode) sub += ' Your artist code is already applied.';
       setText('checkoutSub', sub);
 
@@ -768,6 +815,76 @@
       });
 
       initCheckout(eventId, promoCode, payUrl, city, show.slug || '');
+    }
+
+    // ════════════ WALL SPACE PRICING ════════════
+    // From the Bible's Pricing tab. The US table applies everywhere except
+    // the regions in REGION_BY_SLUG — when Canada/Mexico numbers are set,
+    // fill in their tables below and the right one renders automatically.
+    const PRICING_TABLES = {
+      us: [
+        [2, '$20', '$25'],
+        [3, '$40', '$50'],
+        [4, '$60', '$75'],
+        [5, '$80', '$100'],
+        [6, '$100', '$125'],
+        [7, '$120', '$150'],
+        [8, '$140', '$175'],
+        [9, '$160', '$200'],
+        [10, '$180', '$225']
+      ],
+      canada: null, // TODO: add CAD rows, same [pieces, early, regular] shape
+      mexico: null  // TODO: add MXN rows
+    };
+    const REGION_BY_SLUG = {
+      vancouver: 'canada', toronto: 'canada', montreal: 'canada', calgary: 'canada',
+      mexicocity: 'mexico'
+    };
+
+    function renderPricing(show) {
+      const card = document.getElementById('pricingCard');
+      const region = REGION_BY_SLUG[(show.slug || '').toLowerCase()] || 'us';
+      const rows = PRICING_TABLES[region];
+      if (!rows) { card.hidden = true; return; } // region table not set yet
+
+      // Early bird vs regular, keyed to the show's early-bird deadline.
+      const ebIso = show.early_bird_ends_iso;
+      let ebActive = null; // null = no deadline known, show both plainly
+      if (ebIso) ebActive = new Date() <= new Date(ebIso + 'T23:59:59');
+
+      const deadline = document.getElementById('pricingDeadline');
+      if (ebActive === true) {
+        deadline.textContent = 'Early bird pricing ends ' +
+          (show.early_bird_ends_display || ebIso);
+        deadline.hidden = false;
+      } else if (ebActive === false) {
+        deadline.textContent = 'Early bird has ended — regular pricing applies';
+        deadline.hidden = false;
+      }
+
+      const ebCls  = ebActive === true ? 'active-col' : (ebActive === false ? 'inactive-col' : '');
+      const regCls = ebActive === false ? 'active-col' : (ebActive === true ? 'inactive-col' : '');
+
+      const table = document.getElementById('pricingTable');
+      table.innerHTML = '';
+      const mkRow = (tag, cells) => {
+        const tr = document.createElement('tr');
+        cells.forEach(([text, cls]) => {
+          const el = document.createElement(tag);
+          el.textContent = text;
+          if (cls) el.className = cls;
+          tr.appendChild(el);
+        });
+        return tr;
+      };
+      table.appendChild(mkRow('th', [
+        ['Pieces', ''], ['Early Bird', ebCls], ['Regular', regCls]
+      ]));
+      rows.forEach(([pieces, early, regular]) => {
+        table.appendChild(mkRow('td', [
+          [String(pieces), ''], [early, ebCls], [regular, regCls]
+        ]));
+      });
     }
 
     // ════════════ EVENTBRITE EMBEDDED CHECKOUT ════════════
