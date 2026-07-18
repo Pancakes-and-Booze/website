@@ -154,7 +154,7 @@
       display: grid; grid-template-columns: 1fr; gap: 16px;
     }
     @media (min-width: 860px) {
-      .show-grid { grid-template-columns: 1fr 1.5fr; align-items: stretch; }
+      .show-grid { grid-template-columns: 1fr 1.8fr; align-items: stretch; }
     }
     .show-card, .flyer-inner, .pricing-card {
       background: var(--dark-card);
@@ -284,19 +284,40 @@
       background: rgba(232, 255, 33, 0.05);
     }
     .pricing-table .inactive-col { opacity: 0.55; }
+    .pricing-table td.struck { text-decoration: line-through; }
+    .price-chip {
+      display: inline-block;
+      font-size: 0.58rem; letter-spacing: 1px;
+      font-weight: 700;
+      padding: 1px 6px; border-radius: 3px;
+      margin-left: 6px; vertical-align: middle;
+      text-decoration: none;
+    }
+    .price-chip--now { background: var(--yellow); color: var(--black); }
+    .price-chip--off { background: var(--dark-card-2); color: var(--gray); border: 1px solid var(--dark-border); }
     .pricing-notes {
       background: var(--dark-card-2);
       padding: 14px 18px;
       border-top: 1px solid var(--dark-border);
-      font-size: 0.85rem; color: var(--gray-light);
+      font-size: 0.88rem; color: var(--gray-light);
       margin-top: 14px;
     }
     @media (min-width: 860px) {
       .pricing-notes { padding: 16px 24px; }
     }
     .pricing-notes strong { color: var(--white); }
-    .pricing-notes p { margin-bottom: 6px; }
-    .pricing-notes p:last-child { margin-bottom: 0; }
+    .pricing-points { list-style: none; margin: 0; padding: 0; }
+    .pricing-points li {
+      display: flex; gap: 8px; align-items: flex-start;
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+    .pricing-points li:last-child { margin-bottom: 0; }
+    .pricing-points li::before {
+      content: '⚡';
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
 
     /* Checkout */
     .checkout-section { padding: 28px 0; border-top: 1px solid var(--dark-border); }
@@ -413,6 +434,12 @@
       border-left: 2px solid var(--accent);
       border-radius: 0 6px 6px 0;
       font-size: 0.85rem; color: var(--gray-light);
+    }
+    .grid-footnote {
+      text-align: center;
+      margin-top: 18px;
+      color: var(--gray-light);
+      font-size: 0.9rem;
     }
 
     /* Rules / support */
@@ -566,8 +593,12 @@
               <table class="pricing-table" id="pricingTable"></table>
             </div>
             <div class="pricing-notes">
-              <p><strong>2-piece minimum</strong> to claim your wall. Pick your piece count at checkout below &mdash; your artist code applies these rates automatically.</p>
-              <p><strong>0% commission.</strong> Every sale is yours. No gatekeepers, no cut.</p>
+              <ul class="pricing-points">
+                <li><span><strong>2-piece minimum,</strong> 10 max &mdash; each up to 3&nbsp;ft &times; 3&nbsp;ft.</span></li>
+                <li><span><strong>Claim your wall space</strong> &mdash; paying below is what locks your spot.</span></li>
+                <li><span><strong>Pick your piece count</strong> at checkout &mdash; your artist code applies these rates automatically.</span></li>
+                <li><span><strong>0% commission</strong> &mdash; every sale is yours. No gatekeepers, no cut.</span></li>
+              </ul>
             </div>
           </div>
 
@@ -577,6 +608,52 @@
 
     <main id="main">
       <div class="container">
+
+        <!-- KNOW BEFORE YOU PAY -->
+        <section class="steps-section" id="know">
+          <h2 class="section-title">Know Before You Pay</h2>
+          <div class="steps-grid">
+
+            <div class="step-card">
+              <span class="step-num">01</span>
+              <h3>No Commission on Sales</h3>
+              <p><strong>100% of every sale is yours.</strong> Price your work however you want, sell it yourself, keep it all. No gatekeepers, no cut.</p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">02</span>
+              <h3>Two Pieces Minimum, Ten Max</h3>
+              <p>Hang <strong>2&ndash;10 pieces</strong>, each up to <strong>3&nbsp;ft &times; 3&nbsp;ft</strong>. Anything larger won&rsquo;t fit the walls we build &mdash; and crowds your neighbors.</p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">03</span>
+              <h3>The Salon Hang</h3>
+              <p>Your work hangs <strong>salon style</strong> on 8&times;4&nbsp;ft drywall sections we build for the night. Placement is <strong>first come, first served</strong> &mdash; arrive early if you&rsquo;re picky. Sections may be shared with fellow artists.</p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">04</span>
+              <h3>Tools &amp; Hanging</h3>
+              <p>We provide <strong>walls, screws, and screw guns</strong>. Busy check-in can mean a short wait for tools &mdash; bring your own screw gun to skip it.</p>
+              <span class="tech-note"><strong>No hammers or nails</strong> &mdash; our walls are too thin for them.</span>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">05</span>
+              <h3>Prints, Merch &amp; Title Cards</h3>
+              <p>Sell prints and small merch from a <strong>bin under your work</strong> at no extra charge &mdash; <strong>no tables</strong>; they eat wall and floor space. Bring your own title cards, index-card size max.</p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">06</span>
+              <h3>Show Night</h3>
+              <p>You&rsquo;re on the <strong>guest list</strong> &mdash; free entry, but no plus-1s or assistants. The show runs till about midnight. <strong>Every piece leaves with you that night</strong> &mdash; we can&rsquo;t retrieve left-behind work.</p>
+            </div>
+
+          </div>
+          <p class="grid-footnote">Want the full rundown? Read the <a href="/faq">FAQ</a> before you commit.</p>
+        </section>
 
         <!-- CHECKOUT -->
         <section class="checkout-section" id="checkout">
@@ -862,27 +939,48 @@
         deadline.hidden = false;
       }
 
-      const ebCls  = ebActive === true ? 'active-col' : (ebActive === false ? 'inactive-col' : '');
+      const ebCls  = ebActive === true ? 'active-col' : (ebActive === false ? 'inactive-col struck' : '');
       const regCls = ebActive === false ? 'active-col' : (ebActive === true ? 'inactive-col' : '');
+
+      // Header chips spell the state out ("NOW" / "ENDED" / "AFTER {date}")
+      // so nobody has to decode the dimming.
+      const ebChip  = ebActive === true ? ['NOW', 'now'] : (ebActive === false ? ['ENDED', 'off'] : null);
+      let regChip = null;
+      if (ebActive === false) {
+        regChip = ['NOW', 'now'];
+      } else if (ebActive === true && show.early_bird_ends_display) {
+        regChip = ['AFTER ' + show.early_bird_ends_display.toUpperCase(), 'off'];
+      }
 
       const table = document.getElementById('pricingTable');
       table.innerHTML = '';
-      const mkRow = (tag, cells) => {
+      const mkCell = (tag, text, cls, chip) => {
+        const el = document.createElement(tag);
+        el.textContent = text;
+        if (cls) el.className = cls;
+        if (chip) {
+          const span = document.createElement('span');
+          span.className = 'price-chip price-chip--' + chip[1];
+          span.textContent = chip[0];
+          el.appendChild(span);
+        }
+        return el;
+      };
+      const mkRow = (cells) => {
         const tr = document.createElement('tr');
-        cells.forEach(([text, cls]) => {
-          const el = document.createElement(tag);
-          el.textContent = text;
-          if (cls) el.className = cls;
-          tr.appendChild(el);
-        });
+        cells.forEach(c => tr.appendChild(c));
         return tr;
       };
-      table.appendChild(mkRow('th', [
-        ['Pieces', ''], ['Early Bird', ebCls], ['Regular', regCls]
+      table.appendChild(mkRow([
+        mkCell('th', 'Pieces', ''),
+        mkCell('th', 'Early Bird', ebCls, ebChip),
+        mkCell('th', 'Regular', regCls, regChip)
       ]));
       rows.forEach(([pieces, early, regular]) => {
-        table.appendChild(mkRow('td', [
-          [String(pieces), ''], [early, ebCls], [regular, regCls]
+        table.appendChild(mkRow([
+          mkCell('td', String(pieces), ''),
+          mkCell('td', early, ebCls),
+          mkCell('td', regular, regCls)
         ]));
       });
     }
