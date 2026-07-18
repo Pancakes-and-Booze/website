@@ -154,7 +154,7 @@
       display: grid; grid-template-columns: 1fr; gap: 16px;
     }
     @media (min-width: 860px) {
-      .show-grid { grid-template-columns: 1fr 1.8fr; align-items: stretch; }
+      .show-grid { grid-template-columns: 1fr 1.8fr; align-items: start; }
     }
     .show-card, .flyer-inner, .pricing-card {
       background: var(--dark-card);
@@ -162,12 +162,13 @@
       border-radius: var(--radius-lg);
     }
     /* Mobile: left column dissolves so children stack in the grid.
-       Order: show card → pricing → flyer. */
+       The inline flyer is desktop-only — on mobile it's a "Get the Flyer"
+       button further down instead, to keep the scroll short. */
     .show-left-col { display: contents; }
     @media (max-width: 859px) {
       .show-card    { order: 1; }
       .pricing-card { order: 2; }
-      .flyer-inner  { order: 3; }
+      .flyer-inner  { display: none; }
     }
     @media (min-width: 860px) {
       .show-left-col {
@@ -276,7 +277,7 @@
     .pricing-table tr:last-child td { border-bottom: 0; }
     @media (min-width: 860px) {
       .pricing-table { font-size: 0.95rem; }
-      .pricing-table th, .pricing-table td { padding: 11px 12px; }
+      .pricing-table th, .pricing-table td { padding: 13px 12px; }
     }
     .pricing-table td:first-child { color: var(--white); font-weight: 600; }
     .pricing-table td.active-col {
@@ -295,29 +296,7 @@
     }
     .price-chip--now { background: var(--yellow); color: var(--black); }
     .price-chip--off { background: var(--dark-card-2); color: var(--gray); border: 1px solid var(--dark-border); }
-    .pricing-notes {
-      background: var(--dark-card-2);
-      padding: 14px 18px;
-      border-top: 1px solid var(--dark-border);
-      font-size: 0.88rem; color: var(--gray-light);
-      margin-top: 14px;
-    }
-    @media (min-width: 860px) {
-      .pricing-notes { padding: 16px 24px; }
-    }
-    .pricing-notes strong { color: var(--white); }
-    .pricing-points { list-style: none; margin: 0; padding: 0; }
-    .pricing-points li {
-      display: flex; gap: 8px; align-items: flex-start;
-      margin-bottom: 7px;
-      line-height: 1.5;
-    }
-    .pricing-points li:last-child { margin-bottom: 0; }
-    .pricing-points li::before {
-      content: '⚡';
-      color: var(--yellow);
-      flex-shrink: 0;
-    }
+    .pricing-table-wrap { padding-bottom: 18px; }
 
     /* Checkout */
     .checkout-section { padding: 28px 0; border-top: 1px solid var(--dark-border); }
@@ -442,6 +421,28 @@
       font-size: 0.9rem;
     }
 
+    /* Bottom CTA row + outline buttons */
+    .cta-row-section { padding: 28px 0 8px; text-align: center; }
+    .cta-row {
+      display: flex; gap: 14px;
+      justify-content: center; align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-outline {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1rem; letter-spacing: 2px;
+      color: var(--accent); text-transform: uppercase;
+      border: 1px solid var(--accent);
+      padding: 13px 28px; border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--accent); color: var(--black);
+      text-decoration: none;
+    }
+    .cta-row .hero-cta { margin-top: 0; }
+
     /* Rules / support */
     .rules-section { padding: 24px 0; border-top: 1px solid var(--dark-border); }
     .rules-section h2 {
@@ -559,7 +560,7 @@
         <h1 class="hub-title" id="hubTitle">You&rsquo;re In</h1>
         <p class="hub-subhead">Your wall is waiting.</p>
         <p class="hub-sub">You&rsquo;ve been accepted to exhibit. Lock in your space below &mdash; it takes about two minutes, and you keep 100% of every sale.</p>
-        <a href="#checkout" class="hero-cta" id="heroCta">Claim Your Space &darr;</a>
+        <a href="#checkout" class="hero-cta" id="heroCta">Reserve Your Wall Space &darr;</a>
       </div>
     </section>
 
@@ -591,14 +592,6 @@
             </div>
             <div class="pricing-table-wrap">
               <table class="pricing-table" id="pricingTable"></table>
-            </div>
-            <div class="pricing-notes">
-              <ul class="pricing-points">
-                <li><span><strong>2-piece minimum,</strong> 10 max &mdash; each up to 3&nbsp;ft &times; 3&nbsp;ft.</span></li>
-                <li><span><strong>Claim your wall space</strong> &mdash; paying below is what locks your spot.</span></li>
-                <li><span><strong>Pick your piece count</strong> at checkout &mdash; your artist code applies these rates automatically.</span></li>
-                <li><span><strong>0% commission</strong> &mdash; every sale is yours. No gatekeepers, no cut.</span></li>
-              </ul>
             </div>
           </div>
 
@@ -664,7 +657,7 @@
             <div class="checkout-success" id="checkoutSuccess">
               <h3>Space Confirmed.</h3>
               <p>Your Eventbrite confirmation email has your <strong>Artist QR code</strong> &mdash; you&rsquo;ll need it at check-in.</p>
-              <p>Next, watch for a separate email from <strong>no-reply@voxxy.io</strong> with your Artist Portal link: parking, load-in, and the full prep guide. Check Spam and drag it to your Primary inbox.</p>
+              <p>Next, watch for additional info from us &mdash; including your <strong>Artist Portal link</strong> with parking, load-in, and the full prep guide. Check Spam and drag us to your Primary inbox.</p>
             </div>
 
             <div class="checkout-frame" id="checkoutFrame">
@@ -690,9 +683,9 @@
 
             <div class="step-card">
               <span class="step-num">02</span>
-              <h3>Watch for the Portal Email</h3>
-              <p>A separate email from <strong>no-reply@voxxy.io</strong> delivers your Artist Portal link: parking, load-in instructions, and the full prep guide.</p>
-              <span class="tech-note"><strong>Don&rsquo;t miss it:</strong> check Spam/Promotions and drag it to your Primary inbox so show updates reach you.</span>
+              <h3>Watch for More From Us</h3>
+              <p>We&rsquo;ll follow up with additional info &mdash; including your <strong>Artist Portal link</strong> with parking, load-in instructions, and the full prep guide.</p>
+              <span class="tech-note"><strong>Don&rsquo;t miss it:</strong> check Spam/Promotions and drag us to your Primary inbox so show updates reach you.</span>
             </div>
 
             <div class="step-card">
@@ -704,11 +697,19 @@
           </div>
         </section>
 
+        <!-- BOTTOM CTAs -->
+        <section class="cta-row-section">
+          <div class="cta-row">
+            <a href="#checkout" class="hero-cta">Reserve Your Wall Space &uarr;</a>
+            <a href="#" class="btn-outline" id="flyerBtn" target="_blank" rel="noopener" download hidden>Get the Flyer</a>
+          </div>
+        </section>
+
         <!-- SUPPORT -->
         <section class="rules-section">
           <h2>Need Help?</h2>
           <p>Payment link acting up, or questions before you commit? Email <a id="helpMail" href="mailto:info@pancakesandbooze.com?subject=Artist%20Confirmation">info@pancakesandbooze.com</a> with subject &ldquo;Artist Confirmation&rdquo; and we&rsquo;ll get back to you.</p>
-          <p>Policy questions? See the <a href="/#faq">main FAQ</a>.</p>
+          <p style="margin-top: 14px;"><a href="/faq" class="btn-outline">Read the FAQs</a></p>
         </section>
 
       </div>
@@ -851,11 +852,14 @@
       row('Install / Load-In', installWhen);
       if (show.age) row('Age Policy', String(show.age).replace(/\+$/, '') + '+');
 
-      // Flyer
+      // Flyer: inline card is desktop-only (CSS); the bottom "Get the
+      // Flyer" button covers mobile.
       if (show.flyer_url) {
         document.getElementById('flyerImg').src = show.flyer_url;
         document.getElementById('flyerImg').alt = city + ' event flyer';
         document.getElementById('flyerCard').hidden = false;
+        document.getElementById('flyerBtn').href = show.flyer_url;
+        document.getElementById('flyerBtn').hidden = false;
       }
 
       // Pricing card
@@ -999,7 +1003,7 @@
         a.className = 'checkout-direct';
         a.style.margin = '0';
         a.href = payUrl; a.target = '_blank'; a.rel = 'noopener';
-        a.textContent = 'Claim Your Space';
+        a.textContent = 'Reserve Your Wall Space';
         wrap.appendChild(a);
         frame.appendChild(wrap);
       }
