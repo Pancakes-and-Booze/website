@@ -1,32 +1,6 @@
 {
   "shows": [
     {
-      "slug": "chicago",
-      "city": "Chicago",
-      "state": "IL",
-      "venue": "Reggie's",
-      "month": "Jul",
-      "day": "18",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.ticketweb.com/event/the-pancakes-and-booze-art-reggies-rock-club-tickets/14931603",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/chicago-18-jul-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/chicago-18-jul-2026/submit-vendor"
-    },
-    {
-      "slug": "detroit",
-      "city": "Detroit",
-      "state": "MI",
-      "venue": "Tangent Gallery",
-      "month": "Jul",
-      "day": "18",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-detroit-pancakes-booze-art-show-tickets-1989928464605?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/detroit-18-jul-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/detroit-18-jul-2026/submit-vendor"
-    },
-    {
       "slug": "oakland",
       "city": "Oakland",
       "state": "CA",
