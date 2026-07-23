@@ -142,19 +142,6 @@
       "ticket_link": "https://eventbrite.com/e/the-pittsburgh-pancakes-booze-art-show-tickets-1995026270279?aff=PBWebsite",
       "artist_link": "https://shows.pancakesandbooze.com/shows/pittsburgh/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/pittsburgh/submit-vendor"
-    },
-    {
-      "slug": "orlando",
-      "city": "Orlando",
-      "state": "FL",
-      "venue": "The Abbey",
-      "month": "Oct",
-      "day": "03",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://eventbrite.com/e/the-orlando-pancakes-booze-art-show-tickets-1995038667359?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/orlando/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/orlando/submit-vendor"
     }
   ]
 }
