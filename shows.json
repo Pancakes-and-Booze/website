@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T22:25:01Z",
+  "generated_at": "2026-07-23T22:53:57Z",
   "shows": [
     {
       "live": true,
@@ -361,7 +361,7 @@
       "age": "21",
       "ticket_link": "https://eventbrite.com/e/the-pittsburgh-pancakes-booze-art-show-tickets-1995026270279?aff=PBWebsite",
       "apply_link": "https://shows.pancakesandbooze.com/shows/pittsburgh",
-      "flyer_url": "/images/flyers/pittsburgh-flyer.webp",
+      "flyer_url": "/images/flyers/pittsburgh-flyer-oct-2026.webp",
       "fb_link": "https://www.facebook.com/events/2506310349830785",
       "early_bird_price": "17",
       "day_of_price": "23",
@@ -396,7 +396,7 @@
       "age": null,
       "ticket_link": null,
       "apply_link": null,
-      "flyer_url": null,
+      "flyer_url": "/images/flyers/albuquerque-flyer-dec-2026.webp",
       "fb_link": null,
       "early_bird_price": null,
       "day_of_price": null,
@@ -991,7 +991,7 @@
       "age": "18",
       "ticket_link": null,
       "apply_link": null,
-      "flyer_url": null,
+      "flyer_url": "/images/flyers/hartford-flyer-oct-2026.webp",
       "fb_link": null,
       "early_bird_price": "17",
       "day_of_price": "23",
@@ -1856,139 +1856,5 @@
       "early_bird_ends_iso": "2026-11-05",
       "early_bird_ends_display": "November 5"
     }
-  ],
-  "pricing": {
-    "us": [
-      [
-        2,
-        "$20",
-        "$25"
-      ],
-      [
-        3,
-        "$40",
-        "$50"
-      ],
-      [
-        4,
-        "$60",
-        "$75"
-      ],
-      [
-        5,
-        "$80",
-        "$100"
-      ],
-      [
-        6,
-        "$100",
-        "$125"
-      ],
-      [
-        7,
-        "$120",
-        "$150"
-      ],
-      [
-        8,
-        "$140",
-        "$175"
-      ],
-      [
-        9,
-        "$160",
-        "$200"
-      ],
-      [
-        10,
-        "$180",
-        "$225"
-      ]
-    ],
-    "canada": [
-      [
-        2,
-        "$25",
-        "$30"
-      ],
-      [
-        3,
-        "$50",
-        "$60"
-      ],
-      [
-        4,
-        "$75",
-        "$90"
-      ],
-      [
-        5,
-        "$100",
-        "$120"
-      ],
-      [
-        6,
-        "$125",
-        "$150"
-      ],
-      [
-        7,
-        "$150",
-        "$180"
-      ],
-      [
-        8,
-        "$175",
-        "$210"
-      ],
-      [
-        9,
-        "$200",
-        "$240"
-      ],
-      [
-        10,
-        "$225",
-        "$270"
-      ]
-    ],
-    "mexico": [
-      [
-        2,
-        "$200"
-      ],
-      [
-        3,
-        "$400"
-      ],
-      [
-        4,
-        "$600"
-      ],
-      [
-        5,
-        "$800"
-      ],
-      [
-        6,
-        "$1,000"
-      ],
-      [
-        7,
-        "$1,200"
-      ],
-      [
-        8,
-        "$1,400"
-      ],
-      [
-        9,
-        "$1,600"
-      ],
-      [
-        10,
-        "$1,800"
-      ]
-    ]
-  }
+  ]
 }
