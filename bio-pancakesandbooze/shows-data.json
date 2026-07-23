@@ -129,19 +129,6 @@
       "ticket_link": "https://www.eventbrite.com/e/the-washington-dc-pancakes-booze-art-show-tickets-1992779053794?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/washington-d-c/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/washington-d-c/submit-vendor"
-    },
-    {
-      "slug": "pittsburgh",
-      "city": "Pittsburgh",
-      "state": "PA",
-      "venue": "Velum Fermentation",
-      "month": "Oct",
-      "day": "02",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://eventbrite.com/e/the-pittsburgh-pancakes-booze-art-show-tickets-1995026270279?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/pittsburgh/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/pittsburgh/submit-vendor"
     }
   ]
 }
