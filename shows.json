@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T21:36:00Z",
+  "generated_at": "2026-07-24T22:14:18Z",
   "shows": [
     {
       "live": true,
@@ -464,10 +464,10 @@
       "address": "31 Webster Street",
       "event_time": "8pm - Midnight",
       "age": "18",
-      "ticket_link": null,
+      "ticket_link": "https://thewebsterct.com/events/",
       "apply_link": "https://shows.pancakesandbooze.com/shows/hartford",
       "flyer_url": "/images/flyers/hartford-flyer-oct-2026.webp",
-      "fb_link": null,
+      "fb_link": "https://www.facebook.com/events/1636066371262077",
       "early_bird_price": "17",
       "day_of_price": "23",
       "min_pieces": 2,
@@ -479,8 +479,8 @@
       "artist_install_time": "2p - 5p",
       "vendor_install_date": "2026/10/8",
       "vendor_install_time": "5:00 PM",
-      "artist_payment_link": null,
-      "vendor_payment_link": null,
+      "artist_payment_link": "https://eventbrite.com/e/1995168477625/?discount=ArtistHartford_Oct8th",
+      "vendor_payment_link": "https://eventbrite.com/e/1995168477625/?discount=VendorzHartford_Oct8th",
       "live_painter_install_time": "7:30 PM",
       "body_painter_install_time": "7:30 PM",
       "date_iso": "2026-10-08",
