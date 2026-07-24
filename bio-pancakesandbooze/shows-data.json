@@ -157,6 +157,19 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/orlando/submit-vendor"
     },
     {
+      "slug": "austin",
+      "city": "Austin",
+      "state": "TX",
+      "venue": "Far Out Lounge & Stage",
+      "month": "Oct",
+      "day": "03",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-austin-pancakes-booze-art-show-tickets-1995170606994?aff=PBEmails",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/austin/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/austin/submit-vendor"
+    },
+    {
       "slug": "hartford",
       "city": "Hartford",
       "state": null,
