@@ -155,6 +155,19 @@
       "ticket_link": "https://eventbrite.com/e/the-orlando-pancakes-booze-art-show-tickets-1995038667359?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/orlando/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/orlando/submit-vendor"
+    },
+    {
+      "slug": "hartford",
+      "city": "Hartford",
+      "state": null,
+      "venue": "The Webster",
+      "month": "Oct",
+      "day": "08",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://thewebsterct.com/events/",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-vendor"
     }
   ]
 }
