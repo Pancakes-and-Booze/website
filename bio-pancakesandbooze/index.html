@@ -480,6 +480,111 @@
 
     .btn-outline:hover .btn-outline-arrow { color: var(--accent); }
 
+    /* ═══════════════════════════════════════
+       FAQ ACCORDION
+       Content is fetched from pancakesandbooze.com/faq.json and rendered
+       inline (no navigation away from the bio page). If the fetch fails,
+       the whole FAQ section is hidden — see loadFaq().
+    ═══════════════════════════════════════ */
+    button.btn-outline {
+      width: 100%;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .faq-toggle .btn-outline-arrow { transition: transform var(--ease), color var(--ease); }
+    .faq-toggle.open { border-color: var(--accent); background: var(--accent-dim); }
+    .faq-toggle.open .btn-outline-arrow { transform: rotate(90deg); color: var(--accent); }
+
+    .faq-accordion { display: none; margin-top: 10px; }
+    .faq-accordion.open { display: block; animation: panelIn 0.2s ease; }
+
+    .faq-tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+
+    .faq-tab {
+      flex: 1;
+      padding: 8px 6px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-full);
+      color: var(--gray);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color var(--ease), border-color var(--ease), background var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .faq-tab:hover:not(.active) { color: var(--gray-light); border-color: var(--dark-border-hi); }
+    .faq-tab.active {
+      background: var(--accent-dim);
+      border-color: var(--accent-border);
+      color: var(--accent);
+    }
+
+    .faq-group { display: none; }
+    .faq-group.active { display: block; }
+
+    .faq-item {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .faq-item:last-child { margin-bottom: 0; }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      padding: 12px 14px;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      text-align: left;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .faq-q::after {
+      content: '+';
+      flex-shrink: 0;
+      color: var(--gray);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1;
+      transition: transform var(--ease), color var(--ease);
+    }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); color: var(--accent); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-a-inner {
+      padding: 0 14px 13px;
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--gray-light);
+    }
+    .faq-a-inner p { margin-bottom: 9px; }
+    .faq-a-inner p:last-child { margin-bottom: 0; }
+    .faq-a-inner ul { margin: 0 0 9px 18px; }
+    .faq-a-inner li { margin-bottom: 5px; }
+    .faq-a-inner strong { color: var(--white); }
+    .faq-a-inner a { color: var(--accent); }
+
     /* Accordion compact button overrides */
     .accordion-inner .btn-outline {
       background: rgba(0,0,0,0.25);
@@ -567,16 +672,15 @@
 
       <div class="mobile-faq">
         <div class="panel-section-label">Info</div>
-        <a class="btn-outline"
-           href="https://pancakesandbooze.com/#faq"
-           target="_blank" rel="noopener"
-           data-slug="global" data-action="faq">
+        <button class="btn-outline faq-toggle" type="button"
+                aria-expanded="false" aria-controls="faq-accordion-mobile">
           <div class="btn-outline-content">
             <div class="btn-outline-title">FAQs</div>
-            <div class="btn-outline-sub">What to expect, parking, policies</div>
+            <div class="btn-outline-sub">Artists, vendors &amp; live painting</div>
           </div>
           <span class="btn-outline-arrow">→</span>
-        </a>
+        </button>
+        <div class="faq-accordion" id="faq-accordion-mobile"></div>
       </div>
 
       <div class="tour-header">
@@ -605,16 +709,15 @@
     <div class="faq-standalone">
       <div class="faq-standalone-inner">
         <div class="panel-section-label">Info</div>
-        <a class="btn-outline"
-           href="https://pancakesandbooze.com/#faq"
-           target="_blank" rel="noopener"
-           data-slug="global" data-action="faq">
+        <button class="btn-outline faq-toggle" type="button"
+                aria-expanded="false" aria-controls="faq-accordion-desktop">
           <div class="btn-outline-content">
             <div class="btn-outline-title">FAQs</div>
-            <div class="btn-outline-sub">What to expect, parking, policies</div>
+            <div class="btn-outline-sub">Artists, vendors &amp; live painting</div>
           </div>
           <span class="btn-outline-arrow">→</span>
-        </a>
+        </button>
+        <div class="faq-accordion" id="faq-accordion-desktop"></div>
       </div>
     </div>
     <div class="right-main" id="right-main">
@@ -831,10 +934,18 @@
     data.forEach(show => list.appendChild(renderCard(show)));
   }
 
-  /* ── Fetch shows-data.json ── */
+  /* ── Fetch shows-data.json ──
+     Fetched cross-origin from the main site, NOT from this Worker's own
+     assets: n8n refreshes the file via GitHub commits, which reach the
+     Cloudflare Pages deploy automatically but never touch this Worker.
+     Fetching the Pages copy means shows stay current without redeploying
+     the bio site. (CORS for this path is granted in the main site's
+     _headers file.) */
+  const SHOWS_URL = 'https://pancakesandbooze.com/bio-pancakesandbooze/shows-data.json';
+
   async function loadShows() {
     try {
-      const res = await fetch('./shows-data.json', { cache: 'no-store' });
+      const res = await fetch(SHOWS_URL, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const raw = await res.json();
       /* Support both {shows:[]} and [] formats */
@@ -843,6 +954,132 @@
     } catch (err) {
       const list = document.getElementById('shows-list');
       list.innerHTML = '<div style="color:var(--gray);font-size:13px;padding:10px 0;">Check back soon for upcoming shows.</div>';
+    }
+  }
+
+  /* ── FAQ (fetched from the main site, rendered inline) ──
+     Tabs (Artists / Vendors / Live Painting) + single-open accordion,
+     mirroring the FAQ section on pancakesandbooze.com. Rendered into both
+     the desktop right-column container and the mobile one. If the fetch
+     fails for any reason, both FAQ sections are hidden — the rest of the
+     page is unaffected. */
+  const FAQ_URL = 'https://pancakesandbooze.com/faq.json';
+  const FAQ_CATEGORIES = ['Artists', 'Vendors', 'Live Painting'];
+
+  function renderFaq(container, faqs) {
+    const cats = FAQ_CATEGORIES.filter(c => faqs.some(f => f.category === c));
+
+    const closeOpenItems = () => {
+      container.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+    };
+
+    const tabs = document.createElement('div');
+    tabs.className = 'faq-tabs';
+    tabs.setAttribute('role', 'tablist');
+    const groups = [];
+
+    cats.forEach((cat, idx) => {
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'faq-tab' + (idx === 0 ? ' active' : '');
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+      tab.textContent = cat;
+
+      const group = document.createElement('div');
+      group.className = 'faq-group' + (idx === 0 ? ' active' : '');
+      group.setAttribute('role', 'tabpanel');
+
+      faqs.filter(f => f.category === cat).forEach(f => {
+        const item = document.createElement('div');
+        item.className = 'faq-item';
+
+        const q = document.createElement('button');
+        q.type = 'button';
+        q.className = 'faq-q';
+        q.textContent = f.question;
+
+        const a = document.createElement('div');
+        a.className = 'faq-a';
+        const inner = document.createElement('div');
+        inner.className = 'faq-a-inner';
+        inner.innerHTML = f.answer;
+        /* Answers are authored for the main site: absolutize root-relative
+           links and open non-mailto links in a new tab so the bio page
+           itself never navigates away. */
+        inner.querySelectorAll('a[href]').forEach(l => {
+          const href = l.getAttribute('href');
+          if (href.startsWith('/')) l.setAttribute('href', 'https://pancakesandbooze.com' + href);
+          if (!l.getAttribute('href').startsWith('mailto:')) {
+            l.target = '_blank';
+            l.rel = 'noopener';
+          }
+        });
+        a.appendChild(inner);
+
+        q.addEventListener('click', () => {
+          const wasOpen = item.classList.contains('open');
+          closeOpenItems();
+          if (!wasOpen) {
+            item.classList.add('open');
+            a.style.maxHeight = a.scrollHeight + 'px';
+          }
+        });
+
+        item.appendChild(q);
+        item.appendChild(a);
+        group.appendChild(item);
+      });
+
+      tab.addEventListener('click', () => {
+        tabs.querySelectorAll('.faq-tab').forEach(t => {
+          const active = t === tab;
+          t.classList.toggle('active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        groups.forEach((g, i) => g.classList.toggle('active', cats[i] === cat));
+        closeOpenItems();
+      });
+
+      tabs.appendChild(tab);
+      groups.push(group);
+    });
+
+    container.appendChild(tabs);
+    groups.forEach(g => container.appendChild(g));
+  }
+
+  async function loadFaq() {
+    try {
+      const res = await fetch(FAQ_URL, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const faqs = (data.faqs || []).filter(f => f && f.category && f.question && f.answer);
+      if (!faqs.length) throw new Error('no faq items');
+
+      document.querySelectorAll('.faq-accordion').forEach(el => renderFaq(el, faqs));
+
+      document.querySelectorAll('.faq-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const acc = document.getElementById(btn.getAttribute('aria-controls'));
+          if (!acc) return;
+          const open = !acc.classList.contains('open');
+          acc.classList.toggle('open', open);
+          btn.classList.toggle('open', open);
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if (open && typeof zaraz !== 'undefined') {
+            zaraz.track('linkinbio_click', { show: 'global', action: 'faq', source: 'linkinbio' });
+          }
+        });
+      });
+    } catch (err) {
+      /* faq.json unreachable/malformed — hide the FAQ sections entirely. */
+      document.querySelectorAll('.faq-standalone, .mobile-faq').forEach(el => {
+        el.style.display = 'none';
+      });
     }
   }
 
@@ -869,8 +1106,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     loadShows();
-    // Attach Zaraz tracking to the static FAQ links (faq-standalone + mobile-faq)
-    document.querySelectorAll('.faq-standalone, .mobile-faq').forEach(c => attachTracking(c));
+    loadFaq();
   });
 </script>
 </body>
