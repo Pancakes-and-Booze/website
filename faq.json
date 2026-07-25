@@ -94,6 +94,21 @@
       "category": "Vendors",
       "question": "When do I show up to set up my table?",
       "answer": "<p>Once accepted and paid, you'll get the load-in schedule. Setup is usually <strong>2 hours before the show starts</strong>, but we'll confirm closer to the date.</p> <p>Spaces are first-come, first-served. Be on time.</p>"
+    },
+    {
+      "category": "Live Painting",
+      "question": "How do I become a live painter or body painter?",
+      "answer": "<p>We welcome any exhibiting artist to live-paint during the show. It's a great way to draw attention to your work and network during the night.</p> <p><strong>No cost to live paint</strong>, but you must be an exhibiting artist who's already been accepted.</p> <p>For body painting, reach out directly at <a href=\"mailto:info@pancakesandbooze.com\">info@pancakesandbooze.com</a> with your portfolio.</p>"
+    },
+    {
+      "category": "Live Painting",
+      "question": "Do I need to bring my own gear?",
+      "answer": "<p>Yes &mdash; bring an <strong>easel, a chair, and a drop cloth</strong>. We'll give you a corner of the gallery to work from.</p> <p>If you're body painting, your model gets in free.</p>"
+    },
+    {
+      "category": "Live Painting",
+      "question": "test",
+      "answer": "test"
     }
   ],
   "items": [
@@ -210,6 +225,24 @@
       "section": "Vendors",
       "question": "When do I show up to set up my table?",
       "answer": "<p>Once accepted and paid, you'll get the load-in schedule. Setup is usually <strong>2 hours before the show starts</strong>, but we'll confirm closer to the date.</p> <p>Spaces are first-come, first-served. Be on time.</p>"
+    },
+    {
+      "live": true,
+      "section": "Live Painting",
+      "question": "How do I become a live painter or body painter?",
+      "answer": "<p>We welcome any exhibiting artist to live-paint during the show. It's a great way to draw attention to your work and network during the night.</p> <p><strong>No cost to live paint</strong>, but you must be an exhibiting artist who's already been accepted.</p> <p>For body painting, reach out directly at <a href=\"mailto:info@pancakesandbooze.com\">info@pancakesandbooze.com</a> with your portfolio.</p>"
+    },
+    {
+      "live": true,
+      "section": "Live Painting",
+      "question": "Do I need to bring my own gear?",
+      "answer": "<p>Yes &mdash; bring an <strong>easel, a chair, and a drop cloth</strong>. We'll give you a corner of the gallery to work from.</p> <p>If you're body painting, your model gets in free.</p>"
+    },
+    {
+      "live": true,
+      "section": "Live Painting",
+      "question": "test",
+      "answer": "test"
     }
   ]
 }
