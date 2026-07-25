@@ -104,6 +104,11 @@
       "category": "Live Painting",
       "question": "Do I need to bring my own gear?",
       "answer": "<p>Yes &mdash; bring an <strong>easel, a chair, and a drop cloth</strong>. We'll give you a corner of the gallery to work from.</p> <p>If you're body painting, your model gets in free.</p>"
+    },
+    {
+      "category": "Live Painting",
+      "question": "test",
+      "answer": "test"
     }
   ],
   "items": [
@@ -232,6 +237,12 @@
       "section": "Live Painting",
       "question": "Do I need to bring my own gear?",
       "answer": "<p>Yes &mdash; bring an <strong>easel, a chair, and a drop cloth</strong>. We'll give you a corner of the gallery to work from.</p> <p>If you're body painting, your model gets in free.</p>"
+    },
+    {
+      "live": true,
+      "section": "Live Painting",
+      "question": "test",
+      "answer": "test"
     }
   ]
 }
