@@ -6,3 +6,9 @@
 # FAQ section. The data is public, so a wildcard origin is fine.
 /faq.json
   Access-Control-Allow-Origin: *
+
+# The bio page also fetches its shows list cross-origin from here (this is
+# the copy n8n refreshes via GitHub commits). Without this header the bio
+# page falls back to its "Check back soon" empty state.
+/bio-pancakesandbooze/shows-data.json
+  Access-Control-Allow-Origin: *
