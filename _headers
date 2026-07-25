@@ -1,0 +1,8 @@
+# Cloudflare Pages custom headers.
+#
+# /faq.json is fetched cross-origin by bio.pancakesandbooze.com (the
+# link-in-bio page renders it as an inline accordion). Without the CORS
+# header that fetch is blocked by the browser and the bio page hides its
+# FAQ section. The data is public, so a wildcard origin is fine.
+/faq.json
+  Access-Control-Allow-Origin: *
