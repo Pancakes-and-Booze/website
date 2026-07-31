@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "oakland",
-      "city": "Oakland",
-      "state": "CA",
-      "venue": "Crybaby",
-      "month": "Jul",
-      "day": "30",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://eventbrite.com/e/the-oakland-pancakes-booze-art-show-tickets-1990070904647?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/oakland-30-jul-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/oakland-30-jul-2026/submit-vendor"
-    },
-    {
       "slug": "phoenix",
       "city": "Phoenix",
       "state": "AZ",
@@ -181,6 +168,19 @@
       "ticket_link": "https://thewebsterct.com/events/",
       "artist_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-vendor"
+    },
+    {
+      "slug": "denver",
+      "city": "Denver",
+      "state": "CO",
+      "venue": "Asterisk",
+      "month": "Oct",
+      "day": "10",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-denver-pancakes-booze-art-show-tickets-1996313937727?aff=PBEmails",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/denver/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/denver/submit-vendor"
     }
   ]
 }
