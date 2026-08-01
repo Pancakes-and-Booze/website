@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T16:47:48Z",
+  "generated_at": "2026-08-01T20:46:37Z",
   "shows": [
     {
       "live": true,
@@ -537,7 +537,7 @@
       "ticket_link": null,
       "apply_link": "https://shows.pancakesandbooze.com/shows/Boston",
       "flyer_url": "/images/flyers/boston-flyer-oct-2026.webp",
-      "fb_link": null,
+      "fb_link": "https://www.facebook.com/events/4460952444120786",
       "early_bird_price": "17",
       "day_of_price": "23",
       "min_pieces": 2,
@@ -549,8 +549,8 @@
       "artist_install_time": "2p - 5p",
       "vendor_install_date": "2026/10/15",
       "vendor_install_time": "5:00 PM",
-      "artist_payment_link": null,
-      "vendor_payment_link": null,
+      "artist_payment_link": "https://eventbrite.com/e/1996316553551/?discount=ArtistsBoston_Oct15th",
+      "vendor_payment_link": "https://eventbrite.com/e/1996316553551/?discount=VendrsBoston_Oct15th",
       "live_painter_install_time": "6:30 PM",
       "body_painter_install_time": "6:30 PM",
       "date_iso": "2026-10-15",
