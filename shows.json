@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T01:46:51Z",
+  "generated_at": "2026-08-01T16:47:48Z",
   "shows": [
     {
       "live": true,
@@ -464,10 +464,10 @@
       "address": "3200 Commerce St.",
       "event_time": "8pm - Midnight",
       "age": "21",
-      "ticket_link": null,
+      "ticket_link": "https://eventbrite.com/e/the-dallas-pancakes-booze-art-show-registration-1996312699022?aff=PBEmails",
       "apply_link": "https://shows.pancakesandbooze.com/shows/dallas",
       "flyer_url": "/images/flyers/dallas-flyer-oct-2026.webp",
-      "fb_link": null,
+      "fb_link": "https://www.facebook.com/events/1354964982829809",
       "early_bird_price": "17",
       "day_of_price": "23",
       "min_pieces": 2,
