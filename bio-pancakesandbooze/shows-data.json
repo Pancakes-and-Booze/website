@@ -170,6 +170,19 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-vendor"
     },
     {
+      "slug": "dallas",
+      "city": "Dallas",
+      "state": "TX",
+      "venue": "Deep Ellum Art Co",
+      "month": "Oct",
+      "day": "10",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://eventbrite.com/e/the-dallas-pancakes-booze-art-show-registration-1996312699022?aff=PBEmails",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/dallas/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/dallas/submit-vendor"
+    },
+    {
       "slug": "denver",
       "city": "Denver",
       "state": "CO",
