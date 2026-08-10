@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "phoenix",
-      "city": "Phoenix",
-      "state": "AZ",
-      "venue": "Walter Studios",
-      "month": "Aug",
-      "day": "08",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://wl.eventim.us/event/the-pancakes-and-booze-art-show/698044?afflky=WalterStudios",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/phoenix/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/phoenix/submit-vendor"
-    },
-    {
       "slug": "raleigh",
       "city": "Raleigh",
       "state": "NC",
