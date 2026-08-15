@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "raleigh",
-      "city": "Raleigh",
-      "state": "NC",
-      "venue": "Lincoln Theatre",
-      "month": "Aug",
-      "day": "13",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://eventbrite.com/e/the-raleigh-pancakes-booze-art-show-tickets-1990199203392?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/raleigh-13-aug-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/raleigh-13-aug-2026/submit-vendor"
-    },
-    {
       "slug": "norfolk",
       "city": "Norfolk",
       "state": "VA",
@@ -152,7 +139,7 @@
       "day": "08",
       "doors": "8PM",
       "presale_price": "17",
-      "ticket_link": "https://thewebsterct.com/events/",
+      "ticket_link": "https://thewebsterct.com/event/the-pancakes-booze-art-show/the-webster-underground/",
       "artist_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-vendor"
     },
@@ -181,6 +168,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-denver-pancakes-booze-art-show-tickets-1996313937727?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/denver/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/denver/submit-vendor"
+    },
+    {
+      "slug": "boston",
+      "city": "Boston",
+      "state": "MA",
+      "venue": "Mixx360",
+      "month": "Oct",
+      "day": "15",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://eventbrite.com/e/1996316553551",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/Boston/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/Boston/submit-vendor"
     },
     {
       "slug": "minneapolis",
