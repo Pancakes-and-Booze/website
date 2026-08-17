@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "norfolk",
-      "city": "Norfolk",
-      "state": "VA",
-      "venue": "Maker's Craft Brewery",
-      "month": "Aug",
-      "day": "15",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-norfolk-pancakes-booze-art-show-tickets-1990609055270?aff=PBEmails",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/norfolk-15-aug-2026/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/norfolk-15-aug-2026/submit-vendor"
-    },
-    {
       "slug": "providence",
       "city": "Providence",
       "state": null,
@@ -79,9 +66,9 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/oklahoma-city/submit-vendor"
     },
     {
-      "slug": "washingtondc",
-      "city": "Washington DC",
-      "state": "DC",
+      "slug": "washington,dc",
+      "city": "Washington, DC",
+      "state": null,
       "venue": "Penn Social",
       "month": "Sep",
       "day": "26",
