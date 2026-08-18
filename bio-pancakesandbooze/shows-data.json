@@ -66,9 +66,9 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/oklahoma-city/submit-vendor"
     },
     {
-      "slug": "washington,dc",
-      "city": "Washington, DC",
-      "state": null,
+      "slug": "washingtondc",
+      "city": "Washington DC",
+      "state": "DC",
       "venue": "Penn Social",
       "month": "Sep",
       "day": "26",
