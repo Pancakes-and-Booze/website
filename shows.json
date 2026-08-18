@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T01:46:49Z",
+  "generated_at": "2026-08-18T21:08:23Z",
   "shows": [
     {
       "live": true,
@@ -178,8 +178,8 @@
     },
     {
       "live": true,
-      "slug": "washington,dc",
-      "city": "Washington, DC",
+      "slug": "washingtondc",
+      "city": "Washington DC",
       "venue": "Penn Social",
       "address": "801 E St NW",
       "event_time": "7pm - Midnight",
