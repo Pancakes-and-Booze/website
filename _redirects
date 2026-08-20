@@ -173,7 +173,7 @@
 # REMOVE a rule when the campaign ends to stay under the 100-rule cap.
 # ════════════════════════════════════════════════════════════════════════
 /nashville/apply    https://shows.pancakesandbooze.com/shows/nashville?utm_source=facebook&utm_medium=paid&utm_campaign=nashville-artist-2026&utm_content=dm-response    302
-/okc/apply          https://shows.pancakesandbooze.com/shows/oklahoma-cith?utm_source=facebook&utm_medium=paid&utm_campaign=okc-artist-2026&utm_content=dm-response                302
+/okc/apply          https://shows.pancakesandbooze.com/shows/oklahoma-city?utm_source=facebook&utm_medium=paid&utm_campaign=okc-artist-2026&utm_content=dm-response                302
 
 # ════════════════════════════════════════════════════════════════════════
 # SECTION 12 — Per-city page rewrites (rewrites to /city, which reads the
