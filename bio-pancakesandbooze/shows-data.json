@@ -181,6 +181,19 @@
       "ticket_link": "https://eventbrite.com/e/the-minneapolis-pancakes-booze-art-show-tickets-1996350876211?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/Minneapolis/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/minneapolis/submit-vendor"
+    },
+    {
+      "slug": "portland",
+      "city": "Portland",
+      "state": "OR",
+      "venue": "Hawhtorne Theatre",
+      "month": "Nov",
+      "day": "07",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://hawthornetheatre.com/",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/portland-2026-11/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/apply?city=portland&type=vendor"
     }
   ]
 }
