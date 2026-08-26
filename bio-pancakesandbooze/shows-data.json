@@ -27,19 +27,6 @@
       "vendor_link": "https://www.voxxypresents.com/events/mexico-city/apply/546"
     },
     {
-      "slug": "nashville",
-      "city": "Nashville",
-      "state": "TN",
-      "venue": "The Trimble",
-      "month": "Sep",
-      "day": "12",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://nashville-pnb-sept-12-2026.eventbrite.com",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-vendor"
-    },
-    {
       "slug": "seattle",
       "city": "Seattle",
       "state": "WA",
@@ -181,6 +168,19 @@
       "ticket_link": "https://eventbrite.com/e/the-minneapolis-pancakes-booze-art-show-tickets-1996350876211?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/Minneapolis/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/minneapolis/submit-vendor"
+    },
+    {
+      "slug": "nashville",
+      "city": "Nashville",
+      "state": "TN",
+      "venue": "The Trimble",
+      "month": "Nov",
+      "day": "07",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://nashville-pnb-sept-12-2026.eventbrite.com",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-vendor"
     },
     {
       "slug": "portland",
