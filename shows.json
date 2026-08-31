@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T01:46:50Z",
+  "generated_at": "2026-08-31T22:40:38Z",
   "shows": [
     {
       "live": true,
@@ -565,9 +565,9 @@
       "live": false,
       "slug": "atlanta",
       "city": "Atlanta",
-      "venue": "Monday Night Brewing - Garage",
+      "venue": "The Garage @ Monday Night Brewing",
       "address": "933 Lee St SW",
-      "event_time": "8pm - Midnight",
+      "event_time": "7pm - Midnight",
       "age": "21",
       "ticket_link": null,
       "apply_link": null,
@@ -586,8 +586,8 @@
       "vendor_install_time": "5:00 PM",
       "artist_payment_link": null,
       "vendor_payment_link": null,
-      "live_painter_install_time": "7:30 PM",
-      "body_painter_install_time": "7:30 PM",
+      "live_painter_install_time": "6:30 PM",
+      "body_painter_install_time": "6:30 PM",
       "date_iso": "2026-10-23",
       "date_display": "Friday, October 23, 2026",
       "date_month_short": "OCT",
