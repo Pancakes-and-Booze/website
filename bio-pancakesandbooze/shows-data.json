@@ -194,6 +194,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-vancouver-pancakes-booze-art-show-tickets-1998600009429?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/vancouver-2026-11/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/vancouver-2026-11/submit-vendor"
+    },
+    {
+      "slug": "sanfrancisco",
+      "city": "San Francisco",
+      "state": "CA",
+      "venue": "Public Works",
+      "month": "Nov",
+      "day": "12",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://publicsf.com/",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-vendor"
     }
   ]
 }
