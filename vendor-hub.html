@@ -244,6 +244,66 @@
       height: 100%; padding: 24px;
       color: var(--gray); font-size: 0.9rem; text-align: center;
     }
+    /* ── Load-in / check-in block (city-gated: Mexico City) ──── */
+    [hidden] { display: none !important; }
+    .loadin-address {
+      background: var(--dark-card-2);
+      border-top: 1px solid var(--dark-border);
+      padding: 16px 24px 14px;
+    }
+    .loadin-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700; margin-bottom: 6px;
+    }
+    .loadin-street {
+      font-family: var(--font-display);
+      font-size: 1.3rem; letter-spacing: 1px;
+      color: var(--white); line-height: 1.2;
+    }
+    .loadin-note {
+      font-size: 0.85rem; color: var(--gray-light);
+      margin-top: 5px; line-height: 1.45;
+    }
+    .loadin-note strong { color: var(--white); }
+    .loadin-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 12px; }
+    .loadin-links a {
+      font-family: var(--font-display);
+      font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 700; color: var(--yellow); text-decoration: none;
+      border-bottom: 1px solid currentColor; padding-bottom: 2px;
+    }
+    .loadin-links a:hover { color: var(--accent); }
+    .map-pair {
+      display: grid; grid-template-columns: 1fr; gap: 1px;
+      background: var(--dark-border); flex: 1;
+    }
+    @media (min-width: 560px) {
+      .map-pair { grid-template-columns: 1fr 1fr; }
+    }
+    .map-pair figure {
+      margin: 0; background: var(--dark-card);
+      display: flex; flex-direction: column;
+    }
+    .map-pair .map-frame { aspect-ratio: 16 / 10; min-height: 140px; flex: none; }
+    @media (min-width: 560px) {
+      .map-pair .map-frame { aspect-ratio: 4 / 3; }
+    }
+    .map-pair figcaption {
+      padding: 10px 14px 12px; font-size: 0.78rem;
+      line-height: 1.45; color: var(--gray-light);
+    }
+    .map-pair figcaption strong {
+      display: block; font-family: var(--font-display);
+      font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 3px;
+    }
+    .arrival-lead { margin-bottom: 0; }
+    .arrival-steps { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; }
+    .arrival-steps li { font-size: 0.88rem; line-height: 1.5; color: var(--gray-light); }
+    .arrival-steps li::marker { color: var(--yellow); font-weight: 700; }
+    .arrival-steps strong { color: var(--white); }
+
     .parking-block {
       background: var(--dark-card-2);
       padding: 16px 24px;
@@ -647,6 +707,26 @@
           <div class="map-card-header">
             <h3>Venue Map</h3>
           </div>
+          <!-- ═══ Mexico City load-in (revealed by JS when slug = mexicocity) ═══ -->
+          <div class="loadin-address" id="loadInAddress" hidden>
+            <div class="loadin-eyebrow">Load-In &amp; Check-In Address</div>
+            <div class="loadin-street">Lago Ilmen 146</div>
+            <p class="loadin-note">Mexico City &mdash; this is <strong>not</strong> the bar entrance. Check in with the security guard at this door.</p>
+            <div class="loadin-links">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=19.4404805%2C-99.1814501" target="_blank" rel="noopener">Open In Google Maps</a>
+              <a href="https://www.google.com/maps/@19.4404805,-99.1814501,2244a,90y,48.34h,83.49t/data=!3m7!1e1!3m5!1senyvx1RXsYw0Wmow_Fy2gg!2e0!7i16384!8i8192" target="_blank" rel="noopener">See The Door</a>
+            </div>
+          </div>
+          <div class="map-pair" id="mapPair" hidden>
+            <figure>
+              <div class="map-frame" id="mapLoadIn"></div>
+              <figcaption><strong>1 &middot; Load-In &amp; Check-In</strong>Lago Ilmen 146 &mdash; artists, vendors, and all gear come in here.</figcaption>
+            </figure>
+            <figure>
+              <div class="map-frame" id="mapEntrance"></div>
+              <figcaption><strong>2 &middot; Show Night Entrance</strong>Pinche Gringo, Lago Iseo 296 &mdash; walk straight back to the stairs.</figcaption>
+            </figure>
+          </div>
           <div class="map-frame" id="mapFrame">
             <div class="map-no-data">Map will load once your show details are confirmed.</div>
           </div>
@@ -673,7 +753,16 @@
           <div class="four-card">
             <span class="four-card-num">01</span>
             <h3>Check-In &amp; Arrival</h3>
-            <p>Have your <strong>Vendor QR code</strong> ready on your phone. Check-in begins at <strong id="checkInWindow">check your acceptance email</strong>. <strong>Do not arrive early</strong> &mdash; we won&rsquo;t be ready for you. Space location is first-come, first-served, so be on time.</p>
+            <p id="arrivalGeneric">Have your <strong>Vendor QR code</strong> ready on your phone. Check-in begins at <strong id="checkInWindow">check your acceptance email</strong>. <strong>Do not arrive early</strong> &mdash; we won&rsquo;t be ready for you. Space location is first-come, first-served, so be on time.</p>
+            <div id="arrivalMX" hidden>
+              <p class="arrival-lead">Load-in is at <strong>Lago Ilmen 146</strong> &mdash; not the bar entrance. Check-in is <strong id="checkInWindowMX">check your acceptance email</strong>.</p>
+              <ol class="arrival-steps">
+                <li><strong>Security guard first.</strong> Give the guard your name and info to sign in &mdash; and <strong>sign out with the guard every time you leave.</strong></li>
+                <li><strong>Back right corner, up the stairs.</strong> The guard points you the rest of the way.</li>
+                <li><strong>First door on the right</strong> is P&amp;B check-in. Have your <strong>Vendor QR code</strong> ready on your phone.</li>
+                <li><strong>Show night:</strong> come in through the public <strong>Pinche Gringo</strong> entrance and walk straight back to the stairs.</li>
+              </ol>
+            </div>
           </div>
 
           <div class="four-card">
@@ -883,6 +972,42 @@
         if (el && value) el.textContent = value;
       };
 
+      // ═══ Mexico City load-in & check-in ═══
+      // Gated to the CDMX show. Matches on slug OR city name so a slug
+      // change in the sheet can't silently kill it.
+      const isMexicoCity = (show) => {
+        if (wantedCity === 'mexicocity' || wantedCity === 'mexico-city') return true;
+        if (!show) return false;
+        const slug = (show.slug || show.city_slug || '').toLowerCase();
+        const name = (show.city || '').toLowerCase();
+        return slug === 'mexicocity' || slug === 'mexico-city' || name.indexOf('mexico city') === 0;
+      };
+      const revealLoadIn = (show) => {
+        const embedMap = (el, q, title) => {
+          if (!el) return;
+          el.innerHTML = `<iframe loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=${encodeURIComponent(q)}&z=17&output=embed"
+            title="${title}"></iframe>`;
+        };
+        const loadInBlock = document.getElementById('loadInAddress');
+        const mapPair = document.getElementById('mapPair');
+        const singleMap = document.getElementById('mapFrame');
+        if (loadInBlock) loadInBlock.hidden = false;
+        if (mapPair) mapPair.hidden = false;
+        if (singleMap) singleMap.hidden = true;
+        embedMap(document.getElementById('mapLoadIn'), '19.4404805,-99.1814501',
+                 'Map of the Lago Ilmen 146 load-in entrance');
+        embedMap(document.getElementById('mapEntrance'),
+                 (show && show.address) ? [show.venue, show.address].filter(Boolean).join(', ')
+                                        : 'Pinche Gringo BBQ, Lago Iseo 296, Anahuac, Ciudad de Mexico',
+                 'Map of the Pinche Gringo show entrance');
+        const arrivalGeneric = document.getElementById('arrivalGeneric');
+        const arrivalMX = document.getElementById('arrivalMX');
+        if (arrivalGeneric) arrivalGeneric.hidden = true;
+        if (arrivalMX) arrivalMX.hidden = false;
+      };
+
       const renderShow = (show) => {
         const cityName = (show && show.city) ? show.city : 'Your City';
         document.getElementById('hubTitle').textContent = `Welcome to ${cityName}`;
@@ -890,6 +1015,7 @@
 
         if (!show) {
           document.getElementById('showNoData').hidden = false;
+          if (isMexicoCity(null)) revealLoadIn(null);
           return;
         }
 
@@ -920,7 +1046,7 @@
           || show.vendor_check_in
           || show.vendor_arrival
           || show.install_time;
-        if (vendorCheckIn) setText('checkInWindow', vendorCheckIn);
+        if (vendorCheckIn) { setText('checkInWindow', vendorCheckIn); setText('checkInWindowMX', vendorCheckIn); }
 
         // Parking — column AC in the bible.
         const parking = show.parking_info
@@ -950,6 +1076,9 @@
             src="https://maps.google.com/maps?q=${query}&output=embed"
             title="Map of ${show.venue || cityName} venue"></iframe>`;
         }
+
+        // ═══ Mexico City load-in & check-in — city-gated ═══
+        if (isMexicoCity(show)) revealLoadIn(show);
 
         // Hashtag personalization — replace [City] placeholders.
         const hashtagCity = cityName.replace(/[^a-zA-Z0-9]/g, '');
