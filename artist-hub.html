@@ -1171,7 +1171,12 @@
     // ════════════ SHOWS.JSON INTEGRATION ════════════
     (async function () {
       const params = new URLSearchParams(window.location.search);
-      const wantedCity = (params.get('city') || '').toLowerCase().trim();
+      // Normalize ?city= down to letters+digits. Links get copied out of
+      // Markdown, chat and email and pick up junk on the way — '?city=Seattle]'
+      // is a real one we saw. Anything that isn't alphanumeric is dropped, so
+      // 'Seattle]', 'seattle/', '"Seattle"' and 'Mexico City' all resolve.
+      const normCity = (v) => String(v || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      const wantedCity = normCity(params.get('city'));
 
       const setText = (id, value) => {
         const el = document.getElementById(id);
@@ -1310,16 +1315,17 @@
 
         let match = null;
         if (wantedCity) {
-          match = shows.find(s => {
-            const slug = (s.slug || s.city_slug || '').toLowerCase();
-            const name = (s.city || '').toLowerCase();
-            return slug === wantedCity || name === wantedCity
-              || slug.replace(/[\s_]/g, '-') === wantedCity
-              || name.replace(/[\s_]/g, '-') === wantedCity;
-          });
+          match = shows.find(s =>
+            normCity(s.slug || s.city_slug) === wantedCity ||
+            normCity(s.city) === wantedCity
+          );
         }
 
-        if (!match) {
+        // Only auto-pick the next upcoming show when NO city was asked for.
+        // If a city WAS requested and didn't match, never fall through to a
+        // different city — that's how a Seattle vendor landed on the Mexico
+        // City load-in instructions.
+        if (!match && !wantedCity) {
           const now = new Date();
           match = shows.find(s => {
             if (s.live === false) return false;
@@ -1329,6 +1335,11 @@
         }
 
         renderShow(match);
+
+        if (!match && wantedCity) {
+          const nd = document.getElementById('showNoData');
+          if (nd) nd.innerHTML = 'We couldn&rsquo;t find that city &mdash; the link may have been cut off or copied wrong. Use the link from your acceptance email, or email <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Hub">info@pancakesandbooze.com</a>.';
+        }
       } catch (e) {
         renderShow(null);
       }
