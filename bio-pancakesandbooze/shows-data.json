@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "mexicocity",
-      "city": "Mexico City",
-      "state": null,
-      "venue": "Pinche Bar",
-      "month": "Sep",
-      "day": "05",
-      "doors": "8PM",
-      "presale_price": "200",
-      "ticket_link": "https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-1990827023218?aff=emailCDMX",
-      "artist_link": "https://www.voxxypresents.com/events/mexico-city/apply/545",
-      "vendor_link": "https://www.voxxypresents.com/events/mexico-city/apply/546"
-    },
-    {
       "slug": "seattle",
       "city": "Seattle",
       "state": "WA",
@@ -155,6 +142,19 @@
       "ticket_link": "https://eventbrite.com/e/the-minneapolis-pancakes-booze-art-show-tickets-1996350876211?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/Minneapolis/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/Minneapolis/submit-vendor"
+    },
+    {
+      "slug": "atlanta",
+      "city": "Atlanta",
+      "state": "GA",
+      "venue": "The Garage @ Monday Night Brewing",
+      "month": "Oct",
+      "day": "23",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.pnb-atlanta-10-23-26.eventbrite.com/?aff=PBEmails",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/atlanta-2026-10/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/atlanta-2026-10/submit-vendor"
     },
     {
       "slug": "portland",
