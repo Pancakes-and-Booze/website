@@ -157,6 +157,19 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/atlanta-2026-10/submit-vendor"
     },
     {
+      "slug": "philadelphia",
+      "city": "Philadelphia",
+      "state": "PA",
+      "venue": "Underground Arts",
+      "month": "Oct",
+      "day": "24",
+      "doors": "8PM",
+      "presale_price": "15",
+      "ticket_link": "https://undergroundarts.org/",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/philadelphia-2026-10/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/philadelphia-2026-10/submit-vendor"
+    },
+    {
       "slug": "portland",
       "city": "Portland",
       "state": "OR",
