@@ -209,6 +209,19 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/vancouver-2026-11/submit-vendor"
     },
     {
+      "slug": "cincinnati",
+      "city": "Cincinnati",
+      "state": "OH",
+      "venue": "Bogart's",
+      "month": "Nov",
+      "day": "13",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.universe.com/events/the-cincinnati-pancakes-booze-art-show-tickets-V8YHZ9?ref=PBEMAIL",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/cincinnati-2026-11/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/cincinnati-2026-11/submit-vendor"
+    },
+    {
       "slug": "sanfrancisco",
       "city": "San Francisco",
       "state": "CA",
