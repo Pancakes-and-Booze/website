@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "seattle",
-      "city": "Seattle",
-      "state": "WA",
-      "venue": "El Corazon",
-      "month": "Sep",
-      "day": "12",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://app.opendate.io/e/the-pancakes-booze-art-show-september-12-2026-717027",
-      "artist_link": "https://www.voxxypresents.com/events/seattle/apply/548",
-      "vendor_link": "https://www.voxxypresents.com/events/seattle/apply/547"
-    },
-    {
       "slug": "okc",
       "city": "Oklahoma City",
       "state": "OK",
