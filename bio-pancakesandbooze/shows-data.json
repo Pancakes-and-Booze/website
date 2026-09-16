@@ -157,6 +157,19 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/philadelphia-2026-10/submit-vendor"
     },
     {
+      "slug": "charleston",
+      "city": "Charleston",
+      "state": null,
+      "venue": "New Realm Brewing",
+      "month": "Nov",
+      "day": "06",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://pnb-charleston-10-06-26.eventbrite.com",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/charleston-2026-11-2/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/charleston-2026-11-2/submit-vendor"
+    },
+    {
       "slug": "portland",
       "city": "Portland",
       "state": "OR",
@@ -219,7 +232,7 @@
       "presale_price": "17",
       "ticket_link": "https://eventbrite.com/e/the-detroit-pancakes-booze-art-show-tickets-2001020674704?aff=PBEmails",
       "artist_link": "https://shows.pancakesandbooze.com/shows/detroit-2026-11/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/apply?city=detroit&type=vendor"
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/detroit-2026-11/submit-vendor"
     },
     {
       "slug": "sanfrancisco",
