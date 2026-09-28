@@ -196,6 +196,19 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/cincinnati-2026-11/submit-vendor"
     },
     {
+      "slug": "phoenix",
+      "city": "Phoenix",
+      "state": "AZ",
+      "venue": "Walter Studios",
+      "month": "Nov",
+      "day": "13",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://walterstudios.com/",
+      "artist_link": "https://shows.pancakesandbooze.com/shows/phoenix-2026-11/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/shows/phoenix-2026-11/submit-vendor"
+    },
+    {
       "slug": "detroit",
       "city": "Detroit",
       "state": "MI",
