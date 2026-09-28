@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "washingtondc",
-      "city": "Washington DC",
-      "state": "DC",
-      "venue": "Penn Social",
-      "month": "Sep",
-      "day": "26",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-washington-dc-pancakes-booze-art-show-tickets-1992779053794?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/washington-d-c/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/washington-d-c/submit-vendor"
-    },
-    {
       "slug": "pittsburgh",
       "city": "Pittsburgh",
       "state": "PA",
@@ -138,7 +125,7 @@
       "month": "Oct",
       "day": "24",
       "doors": "8PM",
-      "presale_price": "15",
+      "presale_price": "21",
       "ticket_link": "https://tixr.com/pr/h/206111",
       "artist_link": "https://shows.pancakesandbooze.com/shows/philadelphia-2026-10/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/philadelphia-2026-10/submit-vendor"
@@ -233,6 +220,19 @@
       "ticket_link": "https://tixr.com/groups/publicsf/pancakesandbooze",
       "artist_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-vendor"
+    },
+    {
+      "slug": "nyc",
+      "city": "Brooklyn",
+      "state": "NY",
+      "venue": "The Brooklyn Monarch",
+      "month": "Nov",
+      "day": "19",
+      "doors": "7PM",
+      "presale_price": "19.05",
+      "ticket_link": "https://kyd.to/1P7BRQdg",
+      "artist_link": "/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/apply?city=nyc&type=vendor"
     }
   ]
 }
