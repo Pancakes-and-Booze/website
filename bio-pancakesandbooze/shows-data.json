@@ -233,6 +233,19 @@
       "ticket_link": "https://tixr.com/groups/publicsf/pancakesandbooze",
       "artist_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-vendor"
+    },
+    {
+      "slug": "nyc",
+      "city": "Brooklyn",
+      "state": "NY",
+      "venue": "The Brooklyn Monarch",
+      "month": "Nov",
+      "day": "19",
+      "doors": "7PM",
+      "presale_price": "19.05",
+      "ticket_link": "https://kyd.to/1P7BRQdg",
+      "artist_link": "https://www.voxxypresents.com/events/the-brooklyn-pancakes-booze-art-show-2/apply/575",
+      "vendor_link": "https://www.voxxypresents.com/events/the-brooklyn-pancakes-booze-art-show-2/apply/576"
     }
   ]
 }
