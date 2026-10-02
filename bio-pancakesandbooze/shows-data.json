@@ -259,6 +259,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-houston-pancakes-booze-art-show-tickets-2002746452552?aff=PBEmails",
       "artist_link": "https://www.voxxypresents.com/events/the-houston-pancakes-booze-art-show/apply/578",
       "vendor_link": "https://www.voxxypresents.com/events/the-houston-pancakes-booze-art-show/apply/577"
+    },
+    {
+      "slug": "toronto",
+      "city": "Toronto",
+      "state": "ON",
+      "venue": "Revival",
+      "month": "Nov",
+      "day": "27",
+      "doors": "7PM",
+      "presale_price": "20",
+      "ticket_link": "https://www.eventbrite.com/e/the-toronto-pancakes-booze-art-show-tickets-2002750943986?aff=PBEmails",
+      "artist_link": "/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/apply?city=toronto&type=vendor"
     }
   ]
 }
