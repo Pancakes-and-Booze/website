@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T20:05:28Z",
+  "generated_at": "2026-10-07T17:02:53Z",
   "shows": [
     {
       "live": true,
@@ -7,7 +7,7 @@
       "city": "Hartford",
       "venue": "The Webster",
       "address": "31 Webster Street",
-      "event_time": "8pm - Midnight",
+      "event_time": "7pm - Midnight",
       "age": "18",
       "ticket_link": "https://thewebsterct.com/event/the-pancakes-booze-art-show/the-webster-underground/",
       "apply_link": "https://shows.pancakesandbooze.com/shows/hartford",
@@ -196,7 +196,7 @@
       "artist_submission_link": "https://shows.pancakesandbooze.com/shows/atlanta-2026-10/submit-artwork",
       "vendor_submission_link": "https://shows.pancakesandbooze.com/shows/atlanta-2026-10/submit-vendor",
       "artist_install_date": "2026/10/23",
-      "artist_install_time": "11a - 5p",
+      "artist_install_time": "2p - 5p",
       "vendor_install_date": "2026/10/23",
       "vendor_install_time": "5:00 PM",
       "artist_payment_link": "https://eventbrite.com/e/1999473232262/?discount=AtlantaArtists_Oct23",
