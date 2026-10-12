@@ -1,45 +1,6 @@
 {
   "shows": [
     {
-      "slug": "hartford",
-      "city": "Hartford",
-      "state": null,
-      "venue": "The Webster",
-      "month": "Oct",
-      "day": "08",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://thewebsterct.com/event/the-pancakes-booze-art-show/the-webster-underground/",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/hartford/submit-vendor"
-    },
-    {
-      "slug": "dallas",
-      "city": "Dallas",
-      "state": "TX",
-      "venue": "Deep Ellum Art Co",
-      "month": "Oct",
-      "day": "10",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-dallas-pancakes-booze-art-show-registration-1996312699022?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/dallas/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/dallas/submit-vendor"
-    },
-    {
-      "slug": "denver",
-      "city": "Denver",
-      "state": "CO",
-      "venue": "Asterisk",
-      "month": "Oct",
-      "day": "10",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-denver-pancakes-booze-art-show-tickets-1996313937727?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/denver/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/denver/submit-vendor"
-    },
-    {
       "slug": "boston",
       "city": "Boston",
       "state": "MA",
@@ -233,6 +194,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-toronto-pancakes-booze-art-show-tickets-2002750943986?aff=PBEmails",
       "artist_link": "https://www.voxxypresents.com/events/the-toronto-pancakes-booze-art-show/apply/579",
       "vendor_link": "https://www.voxxypresents.com/events/the-toronto-pancakes-booze-art-show/apply/580"
+    },
+    {
+      "slug": "sanantonio",
+      "city": "San Antonio",
+      "state": "TX",
+      "venue": "The Rock Box",
+      "month": "Dec",
+      "day": "04",
+      "doors": "8PM",
+      "presale_price": "15",
+      "ticket_link": "https://www.therockboxsa.com/",
+      "artist_link": "/submit-artwork",
+      "vendor_link": "https://shows.pancakesandbooze.com/apply?city=sanantonio&type=vendor"
     }
   ]
 }
