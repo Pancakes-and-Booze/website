@@ -207,6 +207,19 @@
       "ticket_link": "https://www.therockboxsa.com/",
       "artist_link": "/submit-artwork",
       "vendor_link": "https://shows.pancakesandbooze.com/apply?city=sanantonio&type=vendor"
+    },
+    {
+      "slug": "albuquerque",
+      "city": "Albuquerque",
+      "state": "NM",
+      "venue": "Fusion",
+      "month": "Dec",
+      "day": "05",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/2003120493318",
+      "artist_link": "https://www.voxxypresents.com/events/the-albuquerque-pancakes-booze-art-show/apply/586",
+      "vendor_link": "https://www.voxxypresents.com/events/the-albuquerque-pancakes-booze-art-show/apply/585"
     }
   ]
 }
