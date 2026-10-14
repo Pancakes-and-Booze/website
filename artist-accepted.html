@@ -927,9 +927,9 @@
     }
 
     // ════════════ WALL SPACE PRICING ════════════
-    // From the Bible's Pricing tab. The US table applies everywhere except
-    // the regions in REGION_BY_SLUG — when Canada/Mexico numbers are set,
-    // fill in their tables below and the right one renders automatically.
+    // Fallback copy of the Bible's Pricing tab, used only when shows.json has
+    // no `pricing` key (n8n exports the live tab). The US table applies
+    // everywhere except the regions in REGION_BY_SLUG.
     const PRICING_TABLES = {
       us: {
         note: '',
@@ -963,17 +963,17 @@
       },
       mexico: {
         note: 'Prices in MXN',
-        cols: ['Price'], // flat rate — no early bird for Mexico right now
+        cols: ['Early Bird', 'Regular'],
         rows: [
-          [2, '$200'],
-          [3, '$400'],
-          [4, '$600'],
-          [5, '$800'],
-          [6, '$1,000'],
-          [7, '$1,200'],
-          [8, '$1,400'],
-          [9, '$1,600'],
-          [10, '$1,800']
+          [2, '$200', '$290'],
+          [3, '$400', '$580'],
+          [4, '$600', '$870'],
+          [5, '$800', '$1,160'],
+          [6, '$1,000', '$1,450'],
+          [7, '$1,200', '$1,740'],
+          [8, '$1,400', '$2,030'],
+          [9, '$1,600', '$2,320'],
+          [10, '$1,800', '$2,610']
         ]
       }
     };
