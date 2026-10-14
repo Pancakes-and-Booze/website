@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T21:57:40Z",
+  "generated_at": "2026-10-14T18:19:04Z",
   "shows": [
     {
       "live": true,
@@ -566,11 +566,11 @@
       "slug": "albuquerque",
       "city": "Albuquerque",
       "venue": "Fusion",
-      "address": null,
-      "event_time": null,
+      "address": "708 1st St NW",
+      "event_time": "8pm - Midnight",
       "age": "21",
-      "ticket_link": null,
-      "apply_link": null,
+      "ticket_link": "https://www.eventbrite.com/e/2003120493318",
+      "apply_link": "https://www.voxxypresents.com/events/pancakes-and-booze-4/the-albuquerque-pancakes-booze-art-show-284",
       "flyer_url": "/images/flyers/albuquerque-flyer-dec-2026.webp",
       "fb_link": null,
       "early_bird_price": "17",
@@ -578,8 +578,8 @@
       "min_pieces": 2,
       "artist_price": "20",
       "vendor_price": "85",
-      "artist_submission_link": "/submit-artwork",
-      "vendor_submission_link": "/submit-vendor",
+      "artist_submission_link": "https://www.voxxypresents.com/events/the-albuquerque-pancakes-booze-art-show/apply/586",
+      "vendor_submission_link": "https://www.voxxypresents.com/events/the-albuquerque-pancakes-booze-art-show/apply/585",
       "artist_install_date": "2026/12/5",
       "artist_install_time": "2p - 5p",
       "vendor_install_date": "2026/12/5",
