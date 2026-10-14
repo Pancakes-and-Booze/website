@@ -238,11 +238,12 @@
     }
     .flyer-inner img { width: 100%; display: block; }
     @media (min-width: 860px) {
-      /* height:0 + flex:1 makes the flyer absorb exactly the leftover
-         column height (cropping via object-fit), so the left column always
-         ends level with the pricing card — no dead space either side. */
-      .flyer-inner { display: flex; flex-direction: column; flex: 1; min-height: 0; }
-      .flyer-inner img { height: 0; flex: 1; min-height: 0; object-fit: cover; }
+      /* The flyer takes whatever column height is left beside the pricing
+         card, shown whole (contain, never cropped), but never shrinks below
+         300px. The basis must be 0px: a 0% basis is ignored in an
+         auto-height column, and the flyer then stretches the row instead. */
+      .flyer-inner { display: flex; flex-direction: column; flex: 1 1 0px; min-height: min-content; }
+      .flyer-inner img { height: 0; flex: 1 1 0px; min-height: 300px; object-fit: contain; }
     }
 
     /* Pricing card (sits where the map sits on the artist hub) */
@@ -314,6 +315,10 @@
     .price-chip--now { background: var(--yellow); color: var(--black); }
     .price-chip--off { background: var(--dark-card-2); color: var(--gray); border: 1px solid var(--dark-border); }
     .pricing-table-wrap { padding-bottom: 18px; }
+    /* When the flyer column is taller, spread the rows instead of leaving a gap. */
+    @media (min-width: 860px) {
+      .pricing-table { height: 100%; }
+    }
 
     /* Checkout */
     .checkout-section { padding: 28px 0; border-top: 1px solid var(--dark-border); }
