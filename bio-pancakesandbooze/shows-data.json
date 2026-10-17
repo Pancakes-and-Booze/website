@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "boston",
-      "city": "Boston",
-      "state": "MA",
-      "venue": "Mixx360",
-      "month": "Oct",
-      "day": "15",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-boston-pancakes-booze-art-show-tickets-1996316553551?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/Boston/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/Boston/submit-vendor"
-    },
-    {
       "slug": "minneapolis",
       "city": "Minneapolis",
       "state": "MN",
