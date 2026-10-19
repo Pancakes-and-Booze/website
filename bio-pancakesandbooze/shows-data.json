@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "minneapolis",
-      "city": "Minneapolis",
-      "state": "MN",
-      "venue": "Granada Theater",
-      "month": "Oct",
-      "day": "17",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-minneapolis-pancakes-booze-art-show-tickets-1996350876211?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/Minneapolis/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/Minneapolis/submit-vendor"
-    },
-    {
       "slug": "atlanta",
       "city": "Atlanta",
       "state": "GA",
