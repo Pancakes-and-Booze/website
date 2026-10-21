@@ -753,6 +753,22 @@
     return String(str).replace(/"/g, '&quot;').replace(/</g, '&lt;');
   }
 
+  /* ── Append UTM params to a URL ── */
+  function addUtm(url, slug, button) {
+    if (!url || url === '#') return url;
+    if (url.includes('utm_')) return url;          // already tagged — leave untouched
+    const year = new Date().getFullYear();
+    const params = 'utm_source=bio&utm_medium=link'
+      + '&utm_campaign=' + slug + '-show-' + year
+      + '&utm_content=' + button;
+    // Keep hash fragment after the query string, not before it
+    const hashIdx = url.indexOf('#');
+    const base = hashIdx === -1 ? url : url.slice(0, hashIdx);
+    const hash = hashIdx === -1 ? '' : url.slice(hashIdx);
+    const sep  = base.includes('?') ? '&' : '?';
+    return base + sep + params + hash;
+  }
+
   /* ── Build link panel HTML ── */
   function buildPanel(show) {
     const subtitleParts = [];
@@ -773,7 +789,7 @@
       <div class="panel-section">
         <div class="panel-section-label">Tickets</div>
         <a class="btn-primary"
-           href="${escAttr(show.ticket_link)}"
+           href="${escAttr(addUtm(show.ticket_link, show.slug, 'tickets'))}"
            target="_blank" rel="noopener"
            data-slug="${escAttr(show.slug)}" data-action="tickets">
           <span class="btn-primary-label">Get Tickets</span>
@@ -785,7 +801,7 @@
       <div class="panel-section">
         <div class="panel-section-label">Participate</div>
         <a class="btn-outline"
-           href="${escAttr(show.artist_link)}"
+           href="${escAttr(addUtm(show.artist_link, show.slug, 'artist-apply'))}"
            target="_blank" rel="noopener"
            data-slug="${escAttr(show.slug)}" data-action="artist">
           <div class="btn-outline-content">
@@ -795,7 +811,7 @@
           <span class="btn-outline-arrow">→</span>
         </a>
         <a class="btn-outline"
-           href="${escAttr(show.vendor_link)}"
+           href="${escAttr(addUtm(show.vendor_link, show.slug, 'vendor-apply'))}"
            target="_blank" rel="noopener"
            data-slug="${escAttr(show.slug)}" data-action="vendor">
           <div class="btn-outline-content">
