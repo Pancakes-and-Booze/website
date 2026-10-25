@@ -1,32 +1,6 @@
 {
   "shows": [
     {
-      "slug": "atlanta",
-      "city": "Atlanta",
-      "state": "GA",
-      "venue": "The Garage @ Monday Night Brewing",
-      "month": "Oct",
-      "day": "23",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-atlanta-pancakes-booze-art-show-tickets-1999473232262?aff=PBwebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/atlanta-2026-10/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/atlanta-2026-10/submit-vendor"
-    },
-    {
-      "slug": "philadelphia",
-      "city": "Philadelphia",
-      "state": "PA",
-      "venue": "Underground Arts",
-      "month": "Oct",
-      "day": "24",
-      "doors": "8PM",
-      "presale_price": "21",
-      "ticket_link": "https://tixr.com/pr/h/206111",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/philadelphia-2026-10/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/philadelphia-2026-10/submit-vendor"
-    },
-    {
       "slug": "charleston",
       "city": "Charleston",
       "state": null,
@@ -194,6 +168,19 @@
       "ticket_link": "https://www.eventbrite.com/e/2003120493318",
       "artist_link": "https://www.voxxypresents.com/events/the-albuquerque-pancakes-booze-art-show/apply/586",
       "vendor_link": "https://www.voxxypresents.com/events/the-albuquerque-pancakes-booze-art-show/apply/585"
+    },
+    {
+      "slug": "chicago",
+      "city": "Chicago",
+      "state": "IL",
+      "venue": "Reggie's",
+      "month": "Dec",
+      "day": "05",
+      "doors": "8PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.ticketweb.com/event/the-pancakes-and-booze-art-reggies-rock-club-tickets/14391204",
+      "artist_link": "https://www.voxxypresents.com/events/the-chicago-pancakes-booze-art-show/apply/582",
+      "vendor_link": "https://www.voxxypresents.com/events/the-chicago-pancakes-booze-art-show/apply/581"
     }
   ]
 }
