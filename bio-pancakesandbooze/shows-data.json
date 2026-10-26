@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "charleston",
-      "city": "Charleston",
-      "state": null,
-      "venue": "New Realm Brewing",
-      "month": "Nov",
-      "day": "06",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-charleston-pancakes-booze-art-show-tickets-2000663970793?aff=PBwebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/charleston-2026-11-2/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/charleston-2026-11-2/submit-vendor"
-    },
-    {
       "slug": "portland",
       "city": "Portland",
       "state": "OR",
