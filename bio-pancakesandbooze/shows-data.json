@@ -27,19 +27,6 @@
       "vendor_link": "https://shows.pancakesandbooze.com/shows/portland-2026-11/submit-vendor"
     },
     {
-      "slug": "nashville",
-      "city": "Nashville",
-      "state": "TN",
-      "venue": "The Trimble",
-      "month": "Nov",
-      "day": "07",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-nashville-pancakes-booze-art-show-tickets-1992844266848?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/nashville/submit-vendor"
-    },
-    {
       "slug": "vancouver",
       "city": "Vancouver",
       "state": "BC",
