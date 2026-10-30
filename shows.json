@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T20:44:12Z",
+  "generated_at": "2026-10-30T01:46:52Z",
   "shows": [
     {
       "live": true,
@@ -737,7 +737,7 @@
       "early_bird_ends_display": null
     },
     {
-      "live": true,
+      "live": false,
       "slug": "charleston",
       "city": "Charleston",
       "venue": null,
@@ -1200,18 +1200,18 @@
       "event_time": "7pm - Midnight",
       "age": "18",
       "ticket_link": null,
-      "apply_link": null,
+      "apply_link": "https://www.voxxypresents.com/events/pancakes-and-booze-4/el-pancakes-booze-art-show-mexico-city-287",
       "flyer_url": "/images/flyers/mexicocity-flyer-jan-2027.webp",
       "fb_link": null,
       "early_bird_price": "200",
       "day_of_price": "300",
       "min_pieces": 2,
-      "artist_price": "200",
-      "vendor_price": "800",
-      "artist_submission_link": null,
-      "vendor_submission_link": null,
+      "artist_price": "300",
+      "vendor_price": "1000",
+      "artist_submission_link": "https://www.voxxypresents.com/events/el-pancakes-booze-art-show-mexico-city/apply/592",
+      "vendor_submission_link": "https://www.voxxypresents.com/events/el-pancakes-booze-art-show-mexico-city/apply/591",
       "artist_install_date": "2027/1/30",
-      "artist_install_time": "1p - 5p",
+      "artist_install_time": "2p - 5p",
       "vendor_install_date": "2027/1/30",
       "vendor_install_time": "5:00 PM",
       "artist_payment_link": null,
@@ -1367,7 +1367,7 @@
       "early_bird_ends_display": null
     },
     {
-      "live": true,
+      "live": false,
       "slug": "nashville",
       "city": "Nashville",
       "venue": null,
