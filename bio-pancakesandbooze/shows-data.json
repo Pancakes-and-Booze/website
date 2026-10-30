@@ -155,6 +155,19 @@
       "ticket_link": "https://www.ticketweb.com/event/the-pancakes-and-booze-art-reggies-rock-club-tickets/14391204",
       "artist_link": "https://www.voxxypresents.com/events/the-chicago-pancakes-booze-art-show/apply/582",
       "vendor_link": "https://www.voxxypresents.com/events/the-chicago-pancakes-booze-art-show/apply/581"
+    },
+    {
+      "slug": "oakland",
+      "city": "Oakland",
+      "state": "CA",
+      "venue": "Crybaby",
+      "month": "Jan",
+      "day": "28",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-oakland-pancakes-booze-art-show-tickets-2004131710897?aff=PBEmails",
+      "artist_link": "https://www.voxxypresents.com/events/the-oakland-pancakes-booze-art-show/apply/590",
+      "vendor_link": "https://www.voxxypresents.com/events/the-oakland-pancakes-booze-art-show/apply/589"
     }
   ]
 }
