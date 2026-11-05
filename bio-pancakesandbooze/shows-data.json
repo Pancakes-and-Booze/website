@@ -168,6 +168,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-oakland-pancakes-booze-art-show-tickets-2004131710897?aff=PBEmails",
       "artist_link": "https://www.voxxypresents.com/events/the-oakland-pancakes-booze-art-show/apply/590",
       "vendor_link": "https://www.voxxypresents.com/events/the-oakland-pancakes-booze-art-show/apply/589"
+    },
+    {
+      "slug": "washingtondc",
+      "city": "Washington DC",
+      "state": "DC",
+      "venue": "Penn Social",
+      "month": "Feb",
+      "day": "20",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-washington-dc-pancakes-booze-art-show-tickets-2004454059049?aff=PBWebsite",
+      "artist_link": "https://www.voxxypresents.com/events/the-washington-dc-pancakes-booze-art-show/apply/594",
+      "vendor_link": "https://www.voxxypresents.com/events/the-washington-dc-pancakes-booze-art-show/apply/593"
     }
   ]
 }
