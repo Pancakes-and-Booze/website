@@ -113,7 +113,7 @@
       "day": "04",
       "doors": "8PM",
       "presale_price": "15",
-      "ticket_link": "https://www.therockboxsa.com/",
+      "ticket_link": "https://www.eventbrite.com/e/the-san-antonio-pancakes-booze-art-show-artistvendor-reservations-only-tickets-2003120168346?aff=PBwebsite",
       "artist_link": "https://www.voxxypresents.com/events/the-san-antonio-pancakes-booze-art-show/apply/584",
       "vendor_link": "https://www.voxxypresents.com/events/the-san-antonio-pancakes-booze-art-show/apply/583"
     },
@@ -168,6 +168,19 @@
       "ticket_link": "https://www.eventbrite.com/e/the-washington-dc-pancakes-booze-art-show-tickets-2004454059049?aff=PBWebsite",
       "artist_link": "https://www.voxxypresents.com/events/the-washington-dc-pancakes-booze-art-show/apply/594",
       "vendor_link": "https://www.voxxypresents.com/events/the-washington-dc-pancakes-booze-art-show/apply/593"
+    },
+    {
+      "slug": "orlando",
+      "city": "Orlando",
+      "state": "FL",
+      "venue": "The Abbey",
+      "month": "Mar",
+      "day": "06",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-orlando-pancakes-booze-art-show-tickets-2004527891885?aff=PBWebsite",
+      "artist_link": "https://www.voxxypresents.com/events/the-orlando-pancakes-booze-art-show/apply/595",
+      "vendor_link": "https://www.voxxypresents.com/events/the-orlando-pancakes-booze-art-show/apply/596"
     }
   ]
 }
