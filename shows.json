@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T18:05:58Z",
+  "generated_at": "2026-11-12T19:13:50Z",
   "shows": [
     {
       "live": true,
@@ -429,11 +429,11 @@
       "address": "Lago Iseo 296, Anáhuac I Secc, Miguel Hidalgo, 11320",
       "event_time": "7pm - Midnight",
       "age": "18",
-      "ticket_link": null,
+      "ticket_link": "https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-2004784425183?aff=emailCDMX",
       "apply_link": "https://www.voxxypresents.com/events/pancakes-and-booze-4/el-pancakes-booze-art-show-mexico-city-287",
       "flyer_url": "/images/flyers/mexicocity-flyer-jan-2027.webp",
       "fb_link": null,
-      "early_bird_price": "250",
+      "early_bird_price": "200",
       "day_of_price": "250",
       "min_pieces": 2,
       "artist_price": "250",
@@ -444,8 +444,8 @@
       "artist_install_time": "2p - 5p",
       "vendor_install_date": "2027/1/30",
       "vendor_install_time": "5:00 PM",
-      "artist_payment_link": null,
-      "vendor_payment_link": null,
+      "artist_payment_link": "https://www.eventbrite.com/e/2004784425183/?discount=ArtistasCDMX_2027ene30",
+      "vendor_payment_link": "https://www.eventbrite.com/e/2004784425183/?discount=VendedoresCDMX_2027ene30",
       "live_painter_install_time": "6:30 PM",
       "body_painter_install_time": "6:30 PM",
       "date_iso": "2027-01-30",
