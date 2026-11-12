@@ -157,6 +157,19 @@
       "vendor_link": "https://www.voxxypresents.com/events/the-oakland-pancakes-booze-art-show/apply/589"
     },
     {
+      "slug": "mexicocity",
+      "city": "Mexico City",
+      "state": null,
+      "venue": "Pinche Bar",
+      "month": "Jan",
+      "day": "30",
+      "doors": "7PM",
+      "presale_price": "200",
+      "ticket_link": "https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-2004784425183?aff=emailCDMX",
+      "artist_link": "https://www.voxxypresents.com/events/el-pancakes-booze-art-show-mexico-city/apply/592",
+      "vendor_link": "https://www.voxxypresents.com/events/el-pancakes-booze-art-show-mexico-city/apply/591"
+    },
+    {
       "slug": "washingtondc",
       "city": "Washington DC",
       "state": "DC",
