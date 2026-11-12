@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pancakes &amp; Booze Mexico City &mdash; September 5, 2026</title>
-  <meta name="description" content="The underground art show hits Mexico City on September 5 at Pinche Bar. Free pancakes, real artists, live DJs. Support local artists while they're still alive.">
+  <title>Pancakes &amp; Booze Mexico City &mdash; January 30, 2027</title>
+  <meta name="description" content="The underground art show hits Mexico City on January 30 at Pinche Bar. Free pancakes, real artists, live DJs. Support local artists while they're still alive.">
 
   <!-- Bilingual SEO -->
   <link rel="canonical" href="https://pancakesandbooze.com/mexicocity/en">
@@ -489,7 +489,7 @@
 
 
   <div class="announcement">
-    Pinche Bar &middot; Saturday September 5, 2026 &mdash; <a href="#tickets">Get Tickets</a>
+    <span id="announceShow">Pinche Bar &middot; Saturday January 30, 2027</span> &mdash; <a href="#tickets">Get Tickets</a>
   </div>
 
   <nav>
@@ -527,17 +527,17 @@
       </p>
 
       <div id="tickets">
-        <div class="live-date">SATURDAY SEPTEMBER 5</div>
-        <div class="live-venue">Pinche Bar</div>
-        <div class="live-address">
+        <div class="live-date" id="liveDate">SATURDAY JANUARY 30</div>
+        <div class="live-venue" id="liveVenue">Pinche Bar</div>
+        <div class="live-address" id="liveAddress">
           <a href="https://maps.google.com/?q=Pinche+Bar+Lago+Iseo+296+Anahuac+Miguel+Hidalgo+CDMX" target="_blank" rel="noopener">
             Lago Iseo 296, Anáhuac I Secc &middot; Miguel Hidalgo, 11320, CDMX
           </a>
         </div>
-        <div class="live-time">8:00 PM &mdash; Midnight &middot; 18+</div>
+        <div class="live-time" id="liveTime">7pm &mdash; Midnight &middot; 18+</div>
 
         <div class="show-actions">
-          <a href="https://shows.pancakesandbooze.com/shows/mexicocity-05-sep-2026" target="_blank" rel="noopener" class="btn btn-primary" id="ticketsBtn">Get Tickets</a>
+          <a href="https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-2004784425183?aff=emailCDMX" target="_blank" rel="noopener" class="btn btn-primary" id="ticketsBtn">Get Tickets</a>
           <a href="#exhibit" class="btn btn-secondary">Exhibit Your Art</a>
         </div>
       </div>
@@ -578,7 +578,7 @@
       </p>
 
       <div class="show-actions" style="margin-top: 36px;">
-        <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Submission%20%E2%80%94%20CDMX%205%20Sep%202026&amp;body=Hi%20Pancakes%20%26%20Booze%2C%0A%0AI%27d%20like%20to%20exhibit%20my%20work%20at%20the%20Mexico%20City%20edition%20on%20September%205.%0A%0AName%3A%20%0AInstagram%20%2F%20portfolio%3A%20%0AHow%20many%20pieces%20I%27d%20like%20to%20exhibit%20(2%E2%80%9310)%3A%20%0AApproximate%20size%20of%20pieces%3A%20%0AQuestions%20or%20notes%3A%20%0A%0AThanks!" class="btn btn-primary" id="applyBtn">Apply Now</a>
+        <a href="mailto:info@pancakesandbooze.com?subject=Artist%20Submission%20%E2%80%94%20CDMX%2030%20Jan%202027&amp;body=Hi%20Pancakes%20%26%20Booze%2C%0A%0AI%27d%20like%20to%20exhibit%20my%20work%20at%20the%20Mexico%20City%20edition%20on%20January%2030.%0A%0AName%3A%20%0AInstagram%20%2F%20portfolio%3A%20%0AHow%20many%20pieces%20I%27d%20like%20to%20exhibit%20(2%E2%80%9310)%3A%20%0AApproximate%20size%20of%20pieces%3A%20%0AQuestions%20or%20notes%3A%20%0A%0AThanks!" class="btn btn-primary" id="applyBtn">Apply Now</a>
         <a href="#faq" class="btn btn-secondary">See FAQ</a>
       </div>
     </div>
@@ -823,10 +823,10 @@
   <!-- ════════════ BIG CTA ════════════ -->
   <section class="big-cta">
     <div class="container-narrow">
-      <h2>September 5 &middot; CDMX.</h2>
+      <h2 id="ctaHeading">January 30 &middot; CDMX.</h2>
       <p>Lock your ticket. Lock your space. <strong>Where culture gets fed.</strong></p>
       <div class="show-actions" style="justify-content: center;">
-        <a href="https://shows.pancakesandbooze.com/shows/mexicocity-05-sep-2026" target="_blank" rel="noopener" class="btn btn-primary" id="ticketsBtn2">Get Tickets</a>
+        <a href="https://www.eventbrite.com.mx/e/the-mexico-city-pancakes-booze-art-show-tickets-2004784425183?aff=emailCDMX" target="_blank" rel="noopener" class="btn btn-primary" id="ticketsBtn2">Get Tickets</a>
         <a href="#exhibit" class="btn btn-secondary">Exhibit Your Art</a>
       </div>
     </div>
@@ -898,21 +898,96 @@
       });
     });
 
-    // Hydrate ticket buttons + flyer from shows.json (when MX row is added)
+    // ═══════════════════════════════════════════
+    // Hydrate the show block from shows.json (Google Sheet → n8n → shows.json)
+    // ───────────────────────────────────────────
+    // The hardcoded hero values in the markup are FALLBACKS ONLY — they exist
+    // so crawlers and no-JS visitors see something sane. The sheet is the
+    // source of truth for date (col D), venue (E), address (F), time (G) and
+    // age (I). Mirrors renderLive() in city.html, which does the same job for
+    // every other city, and the Spanish twin in mexicocity.html — if you
+    // change one, change the other.
+    // ═══════════════════════════════════════════
+    const EN_MONTHS = ['January','February','March','April','May','June','July',
+                       'August','September','October','November','December'];
+    const EN_WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+    // date_iso is "YYYY-MM-DD". Parse the parts by hand — new Date('2027-01-30')
+    // is treated as UTC and renders as the 29th west of Greenwich.
+    function enDateParts(iso) {
+      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || '').trim());
+      if (!m) return null;
+      const y = +m[1], mo = +m[2] - 1, d = +m[3];
+      const dt = new Date(y, mo, d);
+      if (isNaN(dt)) return null;
+      return { year: y, day: d, month: EN_MONTHS[mo], weekday: EN_WEEKDAYS[dt.getDay()] };
+    }
+
     (async () => {
       try {
         const r = await fetch('/shows.json', { cache: 'no-store' });
         if (!r.ok) return;
         const data = await r.json();
         const mx = (data.shows || []).find(s => s.slug === 'mexicocity');
-        if (mx && mx.ticket_link) {
+        if (!mx) return;
+
+        const parts = enDateParts(mx.date_iso);
+
+        // Hero date — markup is uppercase (no text-transform on .live-date).
+        if (parts) {
+          const el = document.getElementById('liveDate');
+          if (el) el.textContent =
+            (parts.weekday + ' ' + parts.month + ' ' + parts.day).toUpperCase();
+        }
+
+        // Hero venue
+        if (mx.venue) {
+          const el = document.getElementById('liveVenue');
+          if (el) el.textContent = mx.venue;
+        }
+
+        // Hero address — Maps link, same pattern as city.html
+        if (mx.address) {
+          const el = document.getElementById('liveAddress');
+          if (el) {
+            const a = document.createElement('a');
+            a.href = 'https://www.google.com/maps/search/?api=1&query=' +
+                     encodeURIComponent(mx.address + ', CDMX');
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.textContent = mx.address + ', CDMX';
+            el.textContent = '';
+            el.appendChild(a);
+          }
+        }
+
+        // Hero time + age — "7pm - Midnight · 18+" (CSS uppercases it)
+        if (mx.event_time) {
+          const bits = [String(mx.event_time).replace(/\s*-\s*/g, ' — ')];
+          if (mx.age) bits.push(String(mx.age).replace(/\D/g, '') + '+');
+          const el = document.getElementById('liveTime');
+          if (el) el.textContent = bits.join(' · ');
+        }
+
+        // Announcement bar + big CTA heading + document title
+        if (parts) {
+          const dateShort = parts.month + ' ' + parts.day;
+          const ann = document.getElementById('announceShow');
+          if (ann) ann.textContent = (mx.venue || 'Pinche Bar') + ' · ' +
+            parts.weekday + ' ' + dateShort + ', ' + parts.year;
+          const cta = document.getElementById('ctaHeading');
+          if (cta) cta.textContent = dateShort + ' · CDMX.';
+          document.title = 'Pancakes & Booze Mexico City — ' + dateShort + ', ' + parts.year;
+        }
+
+        if (mx.ticket_link) {
           document.querySelectorAll('#ticketsBtn, #ticketsBtn2').forEach(b => {
             b.href = mx.ticket_link;
             b.target = '_blank';
             b.rel = 'noopener';
           });
         }
-        if (mx && mx.apply_link) {
+        if (mx.apply_link) {
           const ab = document.getElementById('applyBtn');
           if (ab) {
             ab.href = mx.apply_link;
@@ -920,7 +995,7 @@
             ab.rel = 'noopener';
           }
         }
-        if (mx && mx.flyer_url) {
+        if (mx.flyer_url) {
           const wrap = document.getElementById('flyerWrap');
           const sec = document.getElementById('flyerSection');
           if (wrap && sec) {
