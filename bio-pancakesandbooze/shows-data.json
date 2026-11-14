@@ -1,45 +1,6 @@
 {
   "shows": [
     {
-      "slug": "vancouver",
-      "city": "Vancouver",
-      "state": "BC",
-      "venue": "Fortune Sound Club",
-      "month": "Nov",
-      "day": "12",
-      "doors": "7PM",
-      "presale_price": "20",
-      "ticket_link": "https://www.eventbrite.com/e/the-vancouver-pancakes-booze-art-show-tickets-1998600009429?aff=PBwebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/vancouver-2026-11/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/vancouver-2026-11/submit-vendor"
-    },
-    {
-      "slug": "cincinnati",
-      "city": "Cincinnati",
-      "state": "OH",
-      "venue": "Bogart's",
-      "month": "Nov",
-      "day": "13",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.universe.com/events/the-cincinnati-pancakes-booze-art-show-tickets-V8YHZ9?ref=pbweb",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/cincinnati-2026-11/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/cincinnati-2026-11/submit-vendor"
-    },
-    {
-      "slug": "phoenix",
-      "city": "Phoenix",
-      "state": "AZ",
-      "venue": "Walter Studios",
-      "month": "Nov",
-      "day": "13",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://wl.eventim.us/event/the-pancakes-and-booze-art-show/707827?afflky=WalterStudios",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/phoenix-2026-11/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/phoenix-2026-11/submit-vendor"
-    },
-    {
       "slug": "detroit",
       "city": "Detroit",
       "state": "MI",
