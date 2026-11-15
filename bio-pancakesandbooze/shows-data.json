@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "detroit",
-      "city": "Detroit",
-      "state": "MI",
-      "venue": "Tangent Gallery",
-      "month": "Nov",
-      "day": "14",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-detroit-pancakes-booze-art-show-tickets-2001020674704?aff=PBWebsite",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/detroit-2026-11/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/detroit-2026-11/submit-vendor"
-    },
-    {
       "slug": "sanfrancisco",
       "city": "San Francisco",
       "state": "CA",
