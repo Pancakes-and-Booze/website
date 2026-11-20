@@ -1,32 +1,6 @@
 {
   "shows": [
     {
-      "slug": "sanfrancisco",
-      "city": "San Francisco",
-      "state": "CA",
-      "venue": "Public Works",
-      "month": "Nov",
-      "day": "19",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://tixr.com/groups/publicsf/pancakesandbooze",
-      "artist_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-artwork",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/san-francisco-2026-11/submit-vendor"
-    },
-    {
-      "slug": "nyc",
-      "city": "Brooklyn",
-      "state": "NY",
-      "venue": "The Brooklyn Monarch",
-      "month": "Nov",
-      "day": "19",
-      "doors": "7PM",
-      "presale_price": "19.05",
-      "ticket_link": "https://kyd.to/1P7BRQdg",
-      "artist_link": "https://www.voxxypresents.com/events/the-brooklyn-pancakes-booze-art-show-2/apply/575",
-      "vendor_link": "https://www.voxxypresents.com/events/the-brooklyn-pancakes-booze-art-show-2/apply/576"
-    },
-    {
       "slug": "houston",
       "city": "Houston",
       "state": "TX",
@@ -77,19 +51,6 @@
       "ticket_link": "https://www.ticketweb.com/event/the-pancakes-and-booze-art-reggies-rock-club-tickets/14391204",
       "artist_link": "https://www.voxxypresents.com/events/the-chicago-pancakes-booze-art-show/apply/582",
       "vendor_link": "https://www.voxxypresents.com/events/the-chicago-pancakes-booze-art-show/apply/581"
-    },
-    {
-      "slug": "providence",
-      "city": "Providence",
-      "state": null,
-      "venue": "The Met",
-      "month": "Jan",
-      "day": "22",
-      "doors": "7PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-providence-pancakes-booze-art-show-artistvendor-reservations-only-tickets-2005104112376?aff=PBEmails",
-      "artist_link": "https://www.eventbrite.com/e/2005104112376/?discount=ArtistsProvidence_Jan22_2027",
-      "vendor_link": "https://shows.pancakesandbooze.com/shows/providence-29-aug-2026/submit-vendor"
     },
     {
       "slug": "mexicocity",
