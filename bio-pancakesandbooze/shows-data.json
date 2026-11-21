@@ -53,6 +53,19 @@
       "vendor_link": "https://www.voxxypresents.com/events/the-chicago-pancakes-booze-art-show/apply/581"
     },
     {
+      "slug": "providence",
+      "city": "Providence",
+      "state": null,
+      "venue": "The Met",
+      "month": "Jan",
+      "day": "22",
+      "doors": "7PM",
+      "presale_price": "17",
+      "ticket_link": "https://www.eventbrite.com/e/the-providence-pancakes-booze-art-show-artistvendor-reservations-only-tickets-2005104112376?aff=PBWebsite",
+      "artist_link": "https://www.voxxypresents.com/events/the-providence-pancakes-booze-art-show/apply/597",
+      "vendor_link": "https://www.voxxypresents.com/events/the-providence-pancakes-booze-art-show/apply/598"
+    },
+    {
       "slug": "mexicocity",
       "city": "Mexico City",
       "state": null,
