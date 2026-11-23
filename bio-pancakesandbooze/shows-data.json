@@ -1,19 +1,6 @@
 {
   "shows": [
     {
-      "slug": "houston",
-      "city": "Houston",
-      "state": "TX",
-      "venue": "Bad Astronaut Brewing Co.",
-      "month": "Nov",
-      "day": "21",
-      "doors": "8PM",
-      "presale_price": "17",
-      "ticket_link": "https://www.eventbrite.com/e/the-houston-pancakes-booze-art-show-tickets-2002746452552?aff=PBEmails",
-      "artist_link": "https://www.voxxypresents.com/events/the-houston-pancakes-booze-art-show/apply/578",
-      "vendor_link": "https://www.voxxypresents.com/events/the-houston-pancakes-booze-art-show/apply/577"
-    },
-    {
       "slug": "toronto",
       "city": "Toronto",
       "state": "ON",
